@@ -1,6 +1,6 @@
-﻿using FargowiltasSouls.Buffs.Masomode;
-using FargowiltasSouls.EternityMode.Net.Strategies;
-using FargowiltasSouls.EternityMode.Net;
+using System.IO;
+using Terraria.ModLoader.IO;
+using FargowiltasSouls.Buffs.Masomode;
 using FargowiltasSouls.EternityMode.NPCMatching;
 using FargowiltasSouls.Projectiles.Masomode;
 using System.Collections.Generic;
@@ -34,19 +34,33 @@ namespace FargowiltasSouls.EternityMode.Content.Enemy.Cavern
 
         public Vector2 LockVector = Vector2.Zero;
 
-        public override Dictionary<Ref<object>, CompoundStrategy> GetNetInfo() =>
-            new Dictionary<Ref<object>, CompoundStrategy> {
-                { new Ref<object>(AttackTimer), IntStrategies.CompoundStrategy },
-                { new Ref<object>(Attack), IntStrategies.CompoundStrategy },
-                { new Ref<object>(FlightCD), IntStrategies.CompoundStrategy },
-                { new Ref<object>(LockVector), IntStrategies.CompoundStrategy },
-            };
+        public override void SendExtraAI(NPC npc, BitWriter bitWriter, BinaryWriter binaryWriter)
+        {
+            base.SendExtraAI(npc, bitWriter, binaryWriter);
+
+            binaryWriter.Write7BitEncodedInt(AttackTimer);
+            binaryWriter.Write7BitEncodedInt(Attack);
+            binaryWriter.Write7BitEncodedInt(FlightCD);
+            binaryWriter.Write(LockVector.X);
+            binaryWriter.Write(LockVector.Y);
+        }
+
+        public override void ReceiveExtraAI(NPC npc, BitReader bitReader, BinaryReader binaryReader)
+        {
+            base.ReceiveExtraAI(npc, bitReader, binaryReader);
+
+            AttackTimer = binaryReader.Read7BitEncodedInt();
+            Attack = binaryReader.Read7BitEncodedInt();
+            FlightCD = binaryReader.Read7BitEncodedInt();
+            LockVector.X = binaryReader.ReadSingle();
+            LockVector.Y = binaryReader.ReadSingle();
+        }
 
         public override void SetDefaults(NPC npc)
         {
             base.SetDefaults(npc);
             if (!Main.hardMode)
-                npc.damage = 60; //base is 80
+                npc.damage = (int)Math.Round(npc.damage * 0.5);
         }
 
         public override bool SafePreAI(NPC npc)
@@ -192,7 +206,7 @@ namespace FargowiltasSouls.EternityMode.Content.Enemy.Cavern
                         npc.velocity.Y = -0.05f;
                     }
                 }
-                if (npc.ai[0] == 1 && player.active && !player.dead) //if mimic awake and target active
+                if (npc.life < npc.lifeMax && npc.ai[0] == 1 && player.active && !player.dead) //if mimic awake and target active
                 {
                     if (AttackTimer < AttackCD) //only do flight when not attacking
                     {

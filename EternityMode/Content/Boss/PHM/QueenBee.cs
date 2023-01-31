@@ -1,6 +1,6 @@
-﻿using FargowiltasSouls.Buffs.Masomode;
-using FargowiltasSouls.EternityMode.Net;
-using FargowiltasSouls.EternityMode.Net.Strategies;
+using System.IO;
+using Terraria.ModLoader.IO;
+using FargowiltasSouls.Buffs.Masomode;
 using FargowiltasSouls.EternityMode.NPCMatching;
 using FargowiltasSouls.ItemDropRules.Conditions;
 using FargowiltasSouls.Items.Accessories.Masomode;
@@ -39,16 +39,30 @@ namespace FargowiltasSouls.EternityMode.Content.Boss.PHM
 
         public bool DroppedSummon;
 
-        public override Dictionary<Ref<object>, CompoundStrategy> GetNetInfo() =>
-            new Dictionary<Ref<object>, CompoundStrategy> {
-                { new Ref<object>(HiveThrowTimer), IntStrategies.CompoundStrategy },
-                { new Ref<object>(StingerRingTimer), IntStrategies.CompoundStrategy },
-                { new Ref<object>(BeeSwarmTimer), IntStrategies.CompoundStrategy },
 
-                { new Ref<object>(SpawnedRoyalSubjectWave1), BoolStrategies.CompoundStrategy },
-                { new Ref<object>(SpawnedRoyalSubjectWave2), BoolStrategies.CompoundStrategy },
-                { new Ref<object>(InPhase2), BoolStrategies.CompoundStrategy },
-            };
+        public override void SendExtraAI(NPC npc, BitWriter bitWriter, BinaryWriter binaryWriter)
+        {
+            base.SendExtraAI(npc, bitWriter, binaryWriter);
+
+            binaryWriter.Write7BitEncodedInt(HiveThrowTimer);
+            binaryWriter.Write7BitEncodedInt(StingerRingTimer);
+            binaryWriter.Write7BitEncodedInt(BeeSwarmTimer);
+            bitWriter.WriteBit(SpawnedRoyalSubjectWave1);
+            bitWriter.WriteBit(SpawnedRoyalSubjectWave2);
+            bitWriter.WriteBit(InPhase2);
+        }
+
+        public override void ReceiveExtraAI(NPC npc, BitReader bitReader, BinaryReader binaryReader)
+        {
+            base.ReceiveExtraAI(npc, bitReader, binaryReader);
+
+            HiveThrowTimer = binaryReader.Read7BitEncodedInt();
+            StingerRingTimer = binaryReader.Read7BitEncodedInt();
+            BeeSwarmTimer = binaryReader.Read7BitEncodedInt();
+            SpawnedRoyalSubjectWave1 = bitReader.ReadBit();
+            SpawnedRoyalSubjectWave2 = bitReader.ReadBit();
+            InPhase2 = bitReader.ReadBit();
+        }
 
         public override void SetDefaults(NPC npc)
         {
@@ -160,7 +174,7 @@ namespace FargowiltasSouls.EternityMode.Content.Boss.PHM
                 //if in dash mode, but not actually dashing right this second
                 if (npc.ai[0] == 0 && npc.ai[1] % 2 == 0)
                 {
-                    npc.ai[0] = 3;
+                    npc.ai[0] = 3; //dont
                     npc.ai[1] = 0;
                     npc.netUpdate = true;
                 }
@@ -339,6 +353,16 @@ namespace FargowiltasSouls.EternityMode.Content.Boss.PHM
                     npc.ai[2]++;
 
                     return false;
+                }
+            }
+
+            if (FargoSoulsWorld.MasochistModeReal)
+            {
+                //if in dash mode, but not actually dashing right this second
+                if (npc.ai[0] == 0 && npc.ai[1] % 2 == 0)
+                {
+                    if (npc.HasValidTarget && Math.Abs(Main.player[npc.target].Center.Y - npc.Center.Y) > npc.velocity.Y * 2)
+                        npc.position.Y += npc.velocity.Y;
                 }
             }
 
