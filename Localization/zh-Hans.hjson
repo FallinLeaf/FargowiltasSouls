@@ -545,6 +545,7 @@ Mods: {
 			AbomScytheFriendly: 憎恶镰刀
 			BeeDash: 冲刺
 			BetsyDash: 冲刺
+			BloomLine: 预警光线
 			CirnoBomb: 琪露诺炸弹
 			CreeperHitbox: 飞眼怪
 			Explosion: 爆炸
@@ -708,7 +709,6 @@ Mods: {
 			SpiritArrowFlame: 心灵焰火
 
 			// == Challengers ==
-			BloomLine: 预警光线
 			JevilScar: 附魔光之剑
 			LifeBlaster: 生命湮灭炮
 			LifeBomb: 生命雷
@@ -720,7 +720,7 @@ Mods: {
 			LifeChalDeathray: 神圣死亡射线
 			LifeCrosshair: 生命瞄准点
 			LifeHomingProj: 小妖精
-			LifeNeggravProj: 水晶刺球
+			LifeNeggravProj: 水晶十字
 			LifeNuke: 生命炸弹
 			LifeProjLarge: 水晶十字
 			LifeProjSmall: 曙光子弹
@@ -2187,7 +2187,7 @@ Mods: {
 			EarthChampionRelic: 大地英灵圣物
 			EridanusRelic: 宇宙英灵圣物
 			LifeChampionRelic: 生命英灵圣物
-			LufeChallengerRelic: 飘渺游光圣物
+			LifeChallengerRelic: 飘渺游光圣物
 			MutantRelic: 寻神者圣物
 			NatureChampionRelic: 自然英灵圣物
 			ShadowChampionRelic: 暗影英灵圣物
