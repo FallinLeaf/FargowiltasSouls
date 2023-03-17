@@ -34,7 +34,7 @@ Mods: {
 			Lead: 增加铅中毒伤害，持续伤害减免提升到60%
 			Meteor: ""
 			Miner: ""
-			Molten: 易伤效果增加到50%伤害加成，生效范围增加1.5倍
+			Molten: 易伤效果增加到50%，生效范围增加1.5倍
 			Mythril: 增加最大攻速加成，持续时间更长
 			Nebula: ""
 			Necro: ""
@@ -192,7 +192,7 @@ Mods: {
 		}
 
 		NPCName:{
-			AbomBoss: 高仿魔君
+			AbomBoss: 神玩者，亚瑞姆
 			DeviBoss: 戴薇安
 			MutantBoss: 寻神者，亚利姆
 			MutantIllusion: 寻神者，亚利姆
@@ -1107,8 +1107,8 @@ Mods: {
 			MutantRitual5: 寻神者之结界
 			MutantScythe1: 猩红圆月
 			MutantScythe2: 猩红圆月
-			MutantSlimeBall: 星流棱晶
-			MutantSlimeBall2: 星流棱晶
+			MutantSlimeBall: 无限大地流星
+			MutantSlimeBall2: 无限大地流星
 			MutantSlimeRain: 无限大地
 			MutantSpazmarang: 真·泰阿克提斯之圣骑士魔锤
 			MutantSpearAim: 魔君之刃
@@ -2278,7 +2278,7 @@ Mods: {
 			
 			HentaiSpear: 洞察者
 			PhantasmalLeashOfCthulhu: 幻影克苏鲁连枷
-			SlimeRain: 史莱姆雨
+			SlimeRain: 无限大地（史莱姆雨）
 			SparklingLove: 闪闪发光的爱
 			StyxGazer: 冥河凝视
 
