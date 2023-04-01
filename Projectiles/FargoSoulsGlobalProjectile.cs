@@ -998,7 +998,7 @@ namespace FargowiltasSouls.Projectiles
 
                 int actualDefenseIgnored = Math.Min(defenseIgnored, target.defense);
                 int effectOnDamage = actualDefenseIgnored / 2;
-                
+
                 return effectOnDamage / modifier;
             }
 
