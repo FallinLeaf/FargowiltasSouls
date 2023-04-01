@@ -146,3 +146,21 @@ force and wizard tooltips explain molten hidden range buff
 fixed armor penetration ignoring adam and ninja, which made apen give insane dps up
 refactored oceanic maul, curse of the moon, rotting damage taken up when applied to enemies, now obeys the above
 	check for issues when loading and then reloading the mod btw, look for a crash while reloading mods
+
+reduced tiki ench crit buff duration even more
+fixed mp boss spawners again
+
+fixed parry allowing debuffs to refresh their duration if you already have the debuff prior to parrying
+removed silver ench from ancient hallow ench recipe
+necro ench
+	prioritizes bosses whenever possible
+	fixed force graves floating away
+	default cap is 15 graves at once, bosses can create up to 45
+	visual adjustments
+removed cascade from obsidian ench recipe, making it pre-skeletron
+increased obsidian ench cooldown from 30 to 40 ticks (force cd unchanged)
+adjusted how spears interact with adam ench (yes i know it breaks north pole idk how to fix it)
+
+fixed spear crash with adam?
+fixed necro ench spawning graves with 0 damage
+fixed magical bulb regen breaking in multiplayer

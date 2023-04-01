@@ -1,5 +1,6 @@
 ﻿using FargowiltasSouls.ItemDropRules.Conditions;
 using FargowiltasSouls.NPCs;
+using FargowiltasSouls.NPCs.Challengers;
 using FargowiltasSouls.Projectiles;
 using FargowiltasSouls.Toggler;
 using Microsoft.Xna.Framework;
@@ -10,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Terraria;
+using Terraria.Audio;
 using Terraria.Chat;
 using Terraria.DataStructures;
 using Terraria.GameContent.Creative;
@@ -357,21 +359,33 @@ namespace FargowiltasSouls
             Main.gore[index7].velocity *= 0.4f;
         }
 
-        public static int FindClosestHostileNPC(Vector2 location, float detectionRange, bool lineCheck = false)
+        public static int FindClosestHostileNPC(Vector2 location, float detectionRange, bool lineCheck = false, bool prioritizeBoss = false)
         {
             NPC closestNpc = null;
-            foreach (NPC n in Main.npc)
+
+            void FindClosest(IEnumerable<NPC> npcs)
             {
-                if (n.CanBeChasedBy() && n.Distance(location) < detectionRange && (!lineCheck || Collision.CanHitLine(location, 0, 0, n.Center, 0, 0)))
+                float range = detectionRange;
+                foreach (NPC n in npcs)
                 {
-                    detectionRange = n.Distance(location);
-                    closestNpc = n;
+                    if (n.CanBeChasedBy() && n.Distance(location) < range
+                        && (!lineCheck || Collision.CanHitLine(location, 0, 0, n.Center, 0, 0)))
+                    {
+                        range = n.Distance(location);
+                        closestNpc = n;
+                    }
                 }
             }
+
+            if (prioritizeBoss)
+                FindClosest(Main.npc.Where(n => n.boss));
+            if (closestNpc == null)
+                FindClosest(Main.npc);
+            
             return closestNpc == null ? -1 : closestNpc.whoAmI;
         }
 
-        public static int FindClosestHostileNPCPrioritizingMinionFocus(Projectile projectile, float detectionRange, bool lineCheck = false, Vector2 center = default)
+        public static int FindClosestHostileNPCPrioritizingMinionFocus(Projectile projectile, float detectionRange, bool lineCheck = false, Vector2 center = default, bool prioritizeBoss = false)
         {
             if (center == default)
                 center = projectile.Center;
@@ -382,7 +396,7 @@ namespace FargowiltasSouls
             {
                 return minionAttackTargetNpc.whoAmI;
             }
-            return FindClosestHostileNPC(center, detectionRange, lineCheck);
+            return FindClosestHostileNPC(center, detectionRange, lineCheck, prioritizeBoss);
         }
 
         public static void DustRing(Vector2 location, int max, int dust, float speed, Color color = default, float scale = 1f, bool noLight = false)
@@ -543,44 +557,26 @@ namespace FargowiltasSouls
                 //&& (projectile.DamageType != DamageClass.Default || ProjectileID.Sets.MinionShot[projectile.type]);
         }
 
-        public static void SpawnBossTryFromNPC(int playerTarget, int originalType, int bossType)
+        public static void SpawnBossNetcoded(Player player, int bossType, bool obeyLocalPlayerCheck = true)
         {
-            if (Main.netMode != NetmodeID.SinglePlayer)
-                NPC.SpawnOnPlayer(playerTarget, bossType);
-
-            if (Main.netMode == NetmodeID.MultiplayerClient)
-                return;
-
-            NPC npc = NPCExists(NPC.FindFirstNPC(originalType));
-            if (npc != null)
+            if (player.whoAmI == Main.myPlayer || !obeyLocalPlayerCheck)
             {
-                Vector2 pos = npc.Bottom;
+                // If the player using the item is the client
+                // (explicitely excluded serverside here)
+                SoundEngine.PlaySound(SoundID.Roar, player.position);
 
-                npc.life = 0;
-                npc.active = false;
-                if (Main.netMode == NetmodeID.Server)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
-                    NetMessage.SendData(MessageID.SyncNPC, number: npc.whoAmI);
+                    // If the player is not in multiplayer, spawn directly
+                    NPC.SpawnOnPlayer(player.whoAmI, bossType);
                 }
-                else //todo, figure out how to make this work 100% consistent in mp
+                else
                 {
-                    int n = NewNPCEasy(NPC.GetBossSpawnSource(playerTarget), pos, bossType);
-                    if (n != Main.maxNPCs)
-                    {
-                        Main.npc[n].Bottom = pos;
-                        if (Main.netMode == NetmodeID.Server)
-                            NetMessage.SendData(MessageID.SyncNPC, number: n);
-
-                        PrintText(Language.GetTextValue("Announcement.HasAwoken", Main.npc[n].TypeName), new Color(175, 75, 255));
-                    }
+                    // If the player is in multiplayer, request a spawn
+                    // This will only work if NPCID.Sets.MPAllowedEnemies[type] is true, set in NPC code
+                    NetMessage.SendData(MessageID.SpawnBoss, number: player.whoAmI, number2: bossType);
                 }
             }
-        }
-
-        public static void SpawnBossTryFromNPC(int playerTarget, string originalType, int bossType)
-        {
-            int type = ModContent.TryFind(originalType, out ModNPC modNPC) ? modNPC.Type : 0;
-            SpawnBossTryFromNPC(playerTarget, type, bossType);
         }
 
         public static bool IsProjSourceItemUseReal(Projectile proj, IEntitySource source)

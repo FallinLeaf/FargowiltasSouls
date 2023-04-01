@@ -459,6 +459,7 @@ namespace FargowiltasSouls
         public bool CerebralMindbreak;
         public bool NanoInjection;
         public bool Stunned;
+        public bool HaveCheckedAttackSpeed;
 
 
 
@@ -474,9 +475,9 @@ namespace FargowiltasSouls
         public int shieldTimer;
         public int shieldCD;
         public bool wasHoldingShield;
-        public int LightslingerHitShots = 0;
+        public int LightslingerHitShots;
 
-        public bool NoUsingItems;
+        public int NoUsingItems;
 
         public bool HasDash;
 
@@ -761,6 +762,9 @@ namespace FargowiltasSouls
             if (Screenshake > 0)
                 Screenshake--;
 
+            if (NoUsingItems > 0)
+                NoUsingItems--;
+
             //            Wood = false;
 
             WingTimeModifier = 1f;
@@ -1007,6 +1011,7 @@ namespace FargowiltasSouls
             CerebralMindbreak = false;
             NanoInjection = false;
             Stunned = false;
+            HaveCheckedAttackSpeed = false;
             BoxofGizmos = false;
             //IronEnchantShield = false;
             SilverEnchantItem = null;
@@ -1098,7 +1103,7 @@ namespace FargowiltasSouls
             lightningRodTimer = 0;
 
             BuilderMode = false;
-            NoUsingItems = false;
+            NoUsingItems = 0;
 
             FreezeTime = false;
             freezeLength = 0;
@@ -1810,8 +1815,6 @@ namespace FargowiltasSouls
 
         public override void PostUpdate()
         {
-            NoUsingItems = false; //set here so that when something else sets this, it actually blocks items
-
             if (!FreeEaterSummon && !Main.npc.Any(n => n.active && (n.type == NPCID.EaterofWorldsHead || n.type == NPCID.EaterofWorldsBody || n.type == NPCID.EaterofWorldsTail)))
             {
                 FreeEaterSummon = true;
@@ -1833,8 +1836,10 @@ namespace FargowiltasSouls
             int useTime = item.useTime;
             int useAnimate = item.useAnimation;
 
-            if (useTime <= 0 || useAnimate <= 0 || item.damage <= 0)
+            if (useTime <= 0 || useAnimate <= 0 || item.damage <= 0 || HaveCheckedAttackSpeed)
                 return base.UseSpeedMultiplier(item);
+
+            HaveCheckedAttackSpeed = true;
 
             if (!Berserked && !TribalCharm && BoxofGizmos && !item.autoReuse && !Player.FeralGloveReuse(item))
             {
@@ -1875,7 +1880,7 @@ namespace FargowiltasSouls
             //checks so weapons dont break
             while (useTime / AttackSpeed < 1)
             {
-                AttackSpeed -= .02f;
+                AttackSpeed -= .01f;
             }
 
             //modify attack speed so it rounds up
@@ -1884,13 +1889,13 @@ namespace FargowiltasSouls
             {
                 while (useTime / AttackSpeed < useTimeRoundUp)
                 {
-                    AttackSpeed -= .02f; //small increments to avoid skipping past any integers
+                    AttackSpeed -= .01f; //small increments to avoid skipping past any integers
                 }
             }
 
             while (useAnimate / AttackSpeed < 3)
             {
-                AttackSpeed -= .02f;
+                AttackSpeed -= .01f;
             }
 
             if (AttackSpeed < .1f)
@@ -2796,15 +2801,6 @@ namespace FargowiltasSouls
 
             if (npc.GetGlobalNPC<FargoSoulsGlobalNPC>().CurseoftheMoon)
                 damage = (int)(damage * 0.8);
-
-            if (ParryDebuffImmuneTime > 0 || BetsyDashing || GoldShell || Player.HasBuff(ModContent.BuffType<ShellHide>()) || MonkDashing > 0 || CobaltImmuneTimer > 0)
-            {
-                foreach (int debuff in FargowiltasSouls.DebuffIDs) //immune to all debuffs
-                {
-                    if (!Player.HasBuff(debuff))
-                        Player.buffImmune[debuff] = true;
-                }
-            }
         }
 
         public override void ModifyHitByProjectile(Projectile proj, ref int damage, ref bool crit)
@@ -2827,15 +2823,6 @@ namespace FargowiltasSouls
 
             //if (npc.GetGlobalNPC<FargoSoulsGlobalNPC>().CurseoftheMoon)
             //damage = (int)(damage * 0.8);
-
-            if (ParryDebuffImmuneTime > 0 || BetsyDashing || GoldShell || Player.HasBuff(ModContent.BuffType<ShellHide>()) || MonkDashing > 0)
-            {
-                foreach (int debuff in FargowiltasSouls.DebuffIDs) //immune to all debuffs
-                {
-                    if (!Player.HasBuff(debuff))
-                        Player.buffImmune[debuff] = true;
-                }
-            }
         }
 
         public override void OnHitByNPC(NPC npc, int damage, bool crit)

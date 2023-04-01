@@ -316,18 +316,20 @@ namespace FargowiltasSouls.Projectiles
 
             if (modPlayer.AdamantiteEnchantItem != null && player.GetToggleValue("Adamantite")
                 && FargoSoulsUtil.OnSpawnEnchCanAffectProjectile(projectile, false)
-                && CanSplit && Array.IndexOf(noSplit, projectile.type) <= -1)
+                && CanSplit && Array.IndexOf(noSplit, projectile.type) <= -1
+                && projectile.aiStyle != ProjAIStyleID.Spear)
             {
                 if (projectile.owner == Main.myPlayer
                     && (FargoSoulsUtil.IsProjSourceItemUseReal(projectile, source)
-                    || (source is EntitySource_Parent parent && parent.Entity is Projectile sourceProj && (sourceProj.minion || sourceProj.sentry || (ProjectileID.Sets.IsAWhip[sourceProj.type] && !ProjectileID.Sets.IsAWhip[projectile.type])))))
+                    || (source is EntitySource_Parent parent && parent.Entity is Projectile sourceProj && (sourceProj.aiStyle == ProjAIStyleID.Spear || sourceProj.minion || sourceProj.sentry || (ProjectileID.Sets.IsAWhip[sourceProj.type] && !ProjectileID.Sets.IsAWhip[projectile.type])))))
                 {
+                    //apen is inherited from proj to proj
+                    projectile.ArmorPenetration += projectile.damage / 2;
+
                     AdamantiteEnchant.AdamantiteSplit(projectile, modPlayer);
                 }
 
                 AdamModifier = modPlayer.EarthForce ? 3 : 2;
-
-                projectile.ArmorPenetration += projectile.damage / 2;
             }
 
             if (projectile.bobber && CanSplit && source is EntitySource_ItemUse)
@@ -545,6 +547,11 @@ namespace FargowiltasSouls.Projectiles
 
             if (firstTick)
             {
+                if (projectile.aiStyle == ProjAIStyleID.Spear)
+                {
+
+                }
+
                 if (modPlayer.NinjaEnchantItem != null && FargoSoulsUtil.OnSpawnEnchCanAffectProjectile(projectile, true) && projectile.type != ProjectileID.WireKite)
                 {
                     NinjaEnchant.NinjaSpeedSetup(modPlayer, projectile, this);
@@ -1015,7 +1022,7 @@ namespace FargowiltasSouls.Projectiles
                 crit = true;
             }
 
-            if (tikiMinion && tikiTimer > MAX_TIKI_TIMER * projectile.MaxUpdates / 2)
+            if (tikiMinion && tikiTimer > MAX_TIKI_TIMER * projectile.MaxUpdates / 4)
             {
                 crit = true;
             }
