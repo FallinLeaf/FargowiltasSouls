@@ -252,6 +252,20 @@ namespace FargowiltasSouls
                     false,
                     "NPCs/Challengers/LifeChallenger_Still"
                 );
+                Add("Boss",
+                    "BanishedBaron",
+                    //TODO: ADD LOOT
+                    new List<int> { ModContent.NPCType<BanishedBaron>() },
+                    8.7f,
+                    () => FargoSoulsWorld.downedBoss[(int)FargoSoulsWorld.Downed.BanishedBaron],
+                    () => true,
+                    new List<int>(new int[]
+                    {
+
+                    }),
+                    new List<int> { ModContent.ItemType<BaronSummon>() },
+                    true
+                );
                 //Add("Boss",
                 //    "CursedCoffin",
                 //    //TODO: ADD LOOT
@@ -261,7 +275,7 @@ namespace FargowiltasSouls
                 //    () => true,
                 //    new List<int>(new int[]
                 //    {
-                        
+
                 //    }),
                 //    new List<int> { ModContent.ItemType<CoffinSummon>() },
                 //    false,
