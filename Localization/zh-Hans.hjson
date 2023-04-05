@@ -673,7 +673,7 @@ Mods: {
 			PhantasmalSphere2: 幻影球
 			PrimeDeathray: 烈焰死亡射线
 			PrimeLaser: 机械激光
-			PrismaRegaliaProj: 七彩棱晶之御枪
+			PrismaRegaliaProj: 晶霞华枪
 			RazorbladeTyphoonFriendly: 利刃台风
 			RefractorBlaster2Held: 衍射暗星炮
 			RetiDeathray: 烈焰死亡射线
@@ -1316,6 +1316,7 @@ Mods: {
 			NanoInjection: "{0}被纳米机器人从内部吞噬。"
 
 			Fused:"{0}被炸成了碎片。"
+			ReverseManaFlow: "{0}被自己的魔法摧毁了。"
 			Nutcracker: "{0}的“坚果”裂开了。"
 			Derpling: "{0}被吸干了。"
 			Snatchers: "{0}被食人怪咬成了“被吃掉”的男人。"
@@ -1619,7 +1620,7 @@ Mods: {
 
 			FlightMasteryHeader: "{$Mods.FargowiltasSouls.ItemName.FlightMasterySoul}"
 			FlightMasteryInsigniaConfig: 翱翔徽章加速
-			FlightMasteryGravityConfig: 太空中重力正常
+			FlightMasteryGravityConfig: 增加重力
 
 			SupersonicHeader: "{$Mods.FargowiltasSouls.ItemName.SupersonicSoul}"
 			RunSpeedConfig: 提高基础奔跑速度
@@ -2105,8 +2106,8 @@ Mods: {
 			ShadowDodge: 永恒模式：闪避会降低你的攻击速度
 			IceBarrier: 永恒模式：你造成的伤害减少10%
 			SpearRework: 重做长矛挥舞动画
-			PalladiumPikeRework: 暴击敌人后大幅增加生命恢复速度
-			CobaltNaginataRework: 暴击敌人会造成小范围爆炸
+			PalladiumPikeRework: 击中敌人后大幅增加生命恢复速度
+			CobaltNaginataRework: 击中敌人会造成小范围爆炸
 			MythrilHalberdRework: 一段时间不攻击后造成更多伤害
 			TitaniumTridentRework: 长按左键蓄力以投掷长矛而非挥舞
 		}
@@ -3159,7 +3160,7 @@ Mods: {
 				当被诅咒狱火影响时，增加15%攻击速度
 				当被灵液影响时，增加15%暴击率
 				因持续伤害失去生命值时，你的攻击造成诅咒狱火和灵液减益
-				按下“减益负载”键对你自己造成30秒的诅咒狱火和灵液
+				按下“减益负载”键对你自己造成诅咒狱火和灵液，再次按下时取消
 				攻击小概率造成避雷针减益
 				带电攻击或激光击中你会使你超级充能，在未充能完毕时这些攻击的伤害减半
 				充能完毕后，增加移动速度和攻击速度，你的攻击会造成带电和避雷针减益
@@ -3185,7 +3186,7 @@ Mods: {
 				当被诅咒狱火影响时，增加15%攻击速度
 				当被灵液影响时，增加15%暴击率
 				因持续伤害失去生命值时，你的攻击造成诅咒狱火和灵液减益
-				按下“减益负载”键对你自己造成30秒的诅咒狱火和灵液
+				按下“减益负载”键对你自己造成诅咒狱火和灵液，再次按下时取消
 				“融化过度，无法改善视力”
 				'''
 			GalacticGlobe:
@@ -4155,7 +4156,9 @@ Mods: {
 			'''
 			使你获得无限飞行能力
 			按住“下”和“跳跃”键悬停
-			在太空稳定重力
+			按住“上”键可以更快加速
+			略微增加你的重力
+			允许你控制重力
 			“飞升”
 			'''
 			MasochistSoul:
