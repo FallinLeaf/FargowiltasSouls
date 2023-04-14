@@ -4344,6 +4344,6 @@ Mods: {
 			EPatreon: "在永恒模式下"
 			PatreonPlant: "（在血月期间的丛林）"
 			TimAcc: "[i:{0}] 佩戴蒂姆的秘药时的掉落率"
-		}//just a test
+		}
 	}
 }
