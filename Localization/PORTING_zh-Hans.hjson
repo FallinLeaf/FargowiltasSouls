@@ -125,6 +125,7 @@ Mods: {
 		}
 
 		Bestiary: {
+			// == Mobs ==
 			TophatSquirrelCritter: 这只松鼠为自己找到了一顶小巧的帽子！它会用得到的全新力量做什么呢？事实上，或许它能做到的事情并不多。 //for patch
 			GuttedCreeper: 就算被装到某人的口袋里，它们仍然一直保护着猩红之心。它们过去很讨嫌，但现在表现不错！ //for patch
 			RoyalSubject: 如果成长不受阻碍，它们本来也可成长为蜂群之后。蜂后释放着信息素，召唤着它们前去保护它们的皇后。 //for patch
@@ -133,6 +134,8 @@ Mods: {
 			LesserFairy: 这些小精灵被生命英灵的光辉所吸引，它们只关心如何实现它的命令。
 			LesserSquirrel: 这些小动物帮助造出了特洛伊松鼠，但没注意到自己的身上多出了一些小爆炸物。
 			ShadowOrb: 凝聚着黑暗力量的能量球。它们散发的能量使夜幕低垂，唯一的目的是为主人服务。 //for patch
+
+			// == Challengers ==
 			TrojanSquirrel: 由松鼠建造，由松鼠拥有！从广阔土地上搜集的木头构成了它的身体。它比外观看起来更适合松鼠。
 			GuardianOfAncientTreasures: 潜伏在地底深处，小心翼翼地守护着成堆的珠宝和贵金属。它的鳞片坚硬如石。
 			CursedCoffin: 一百多个邪恶灵魂的无意识的融合体。它以迷路旅行者的尸体为食，并吸收他们的灵魂。
@@ -141,6 +144,8 @@ Mods: {
 			FrigidHydrangaea: 这只龙形野兽在冰封的洞穴中冬眠，只有在被激怒时才会醒来。它真的应该生活在这寒冷中吗？
 			BanishedBaron: 被驱逐出群落后，它一边隐藏着，一边试图自我修复。效果并不好，这给它的力量和速度拖了后腿。
 			MagmaConstruct: 行星核心的监督者。在这片地狱的前任主人消失时，它接管了这块土地。它全身都由无机物组成。
+
+			// == Champions ==
 			TimberChampion: 森林之力赋予了这个木制装置神奇的力量。但驾驶舱里的那只松鼠是不是很眼熟？
 			TerraChampion: 这条巨蛇只剩大脑是有机体。其化身为附魔岩石和金属的聚合体，它的身体无法受到攻击。
 			SpiritChampion: 吸收了心灵之力后，这些迷失的灵魂获得了更高的智慧。这并不是说它会停止吃人。
@@ -150,6 +155,8 @@ Mods: {
 			WillChampion: 怒火满腔。以强大的力量进行攻击，并仅通过纯粹的愤怒抵御攻击。这位无名的流放者究竟是谁？
 			EarthChampion: Merging with a Force has given it a power high. This Champion erupts from the magma and rampages through all who cross its path.
 			CosmosChampion: This noble warrior once travelled the stars in search of worthy opponents. It settled nearby after encountering a certain mutated trio.
+			
+			// == Siblings ==
 			DeviBoss: Casts spells of light and love using a living axe made of evil. She must be very lax about death, given she never fights that hard to protect a town.
 			AbomBoss: His blade divides the soul itself. All supernatural phenomena are his domain, but he doesn't use celestial attacks out of respect for Mutant.
 			MutantBoss: The keeper of eternity. Ultimate power incarnate. Master of all with dominion over every aspect of combat. Perhaps it came from a world beyond that dimensional rift...
@@ -158,12 +165,15 @@ Mods: {
 		BossChecklist: {
 			#remember to add spawn conditions with LocalizationHelper!
 			
+			// == Siblings ==
 			DeviBossDespawn: Deviantt bores of the battle...
 			DeviBossKilledAll: Deviantt is satisfied with its show of love.
 			AbomBossDespawn: Abominationn sees no worthy opponent...
 			AbomBossKilledAll: Abominationn has destroyed everyone.
 			MutantBossDespawn: Mutant seals its power once more...
 			MutantBossKilledAll: Mutant has eviscerated everyone under its hands.
+
+			// == Champions ==
 			TimberChampionDespawn: Champion of Timber returns to its squirrel clan...
 			TerraChampionDespawn: Champion of Terra vanishes into the caverns...
 			EarthChampionDespawn: Champion of Earth disappears beneath the magma...
@@ -174,13 +184,20 @@ Mods: {
 			WillChampionDespawn: Champion of Will returns to the depths...
 			CosmosChampionDespawn: Eridanus, Champion of Cosmos returns to the stars...
 			CosmosChampionKilledAll: Eridanus, Champion of Cosmos has slain every foe.
+
+			// == Challengers ==
 			TrojanSquirrelDespawn: Trojan Squirrel returns to its squirrel clan...
 			LifeChallengerDespawn: Lieflight fades away...
 			CursedCoffinDespawn: The Cursed Coffin returns to its slumber...
 			BanishedBaronDespawn: The Banished Baron dives deeper into the ocean...
+
+			// == Spawn ==
+			// -= Siblings =-
 			DeviBossSpawnInfo: Spawn by using [i:FargowiltasSouls/DevisCurse]
 			AbomBossSpawnInfo: Spawn by using [i:FargowiltasSouls/AbomsCure]
 			MutantBossSpawnInfo: Throw [i:FargowiltasSouls/MutantsCurse] into a pool of lava while Abominationn is alive in Mutant's presence.
+
+			// -= Champions =-
 			TimberChampionSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions] on the surface during day.
 			TerraChampionSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions] underground.
 			EarthChampionSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions] in the underworld.
@@ -190,6 +207,8 @@ Mods: {
 			SpiritChampionSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions] in the underground desert.
 			WillChampionSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions] at the ocean.
 			CosmosChampionSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions] in space.
+
+			// -= Challengers =-
 			TrojanSquirrelSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions]
 			LifeChallengerSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions] in the Hallow at day.
 		}
