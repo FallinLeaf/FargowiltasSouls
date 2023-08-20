@@ -9,69 +9,69 @@
 Mods: {
 	FargowiltasSouls: {
 		WizardEffect: {
-			Adamantite: 弹幕现在会分裂成三个
-			// AncientHallow: ""
-			// AncientShadow: ""
-			// Angler: ""
-			// Bee: ""
-			// Beetle: ""
+			Adamantite: 弹幕现在会分裂成三个，造成33%伤害，造成伤害的频率提升到3倍
+			AncientHallow: ""
+			AncientShadow: ""
+			Angler: ""
+			Bee: ""
+			Beetle: ""
 			Boreal: 更频繁的释放更多雪球
-			// Cactus: ""
-			// Chlorophyte: ""
+			Cactus: 增加针刺的数量和伤害
+			Chlorophyte: ""
 			Cobalt: 增加爆炸伤害
 			Copper: 增加闪电伤害，冷却时间减少
-			// Crimson: ""
+			Crimson: ""
 			CrystalAssassin: ""
 			DarkArtist: ""
 			Ebonwood: 伤害判定门槛从10提高至25，并且会杀死光环内任何小于200血量的生物
-			// Forbidden: ""
-			// Fossil: ""
-			// Frost: ""
-			// Gladiator: ""
-			// Gold: ""
-			// Hallow: ""
+			Forbidden: ""
+			Fossil: ""
+			Frost: ""
+			Gladiator: ""
+			Gold: ""
+			Hallow: ""
 			Iron: 物品拾取距离提升到四倍，合成加成现在也对任何秘银砧生效
 			Lead: 增加铅中毒伤害，持续伤害减免提升到60%
-			// Meteor: ""
-			// Miner: ""
-			Molten: ""
-			Mythril: 增加最大攻速加成，持续时间更长
-			// Nebula: ""
-			// Necro: ""
-			Ninja: 弹幕速度增加3倍而非2倍，护甲穿透再增加20点
-			Obsidian: 你不再需要岩浆来引发爆炸，冷却时间减少
+			Meteor: ""
+			Miner: ""
+			Molten: 狱火圈伤害翻倍，易伤生效范围增加1.5倍
+			Mythril: 增加最大攻速加成，延长持续时间
+			Nebula: ""
+			Necro: ""
+			Ninja: 护甲穿透增加提高到45点
+			Obsidian: 不再需要岩浆来引发爆炸，减少冷却时间
 			Orichalcum: 倍数提高到4
 			Palladium: 快速治疗总是持续5秒，增加钯金珠伤害
 			PalmWood: 增加攻击速度和伤害，可以额外召唤两个棕榈树哨兵
-			Pearlwood: 增加伤害，冷却时间减少
-			// Platinum: ""
-			// Pumpkin: ""
-			// Rain: ""
-			// RedRiding: ""
+			Pearlwood: 增加伤害，减少冷却时间
+			Platinum: ""
+			Pumpkin: ""
+			Rain: ""
+			RedRiding: ""
 			RichMahogany: 牵引速度×2.5，伤害减免和荆棘效果大幅提升
 			Shadewood: 增加光环大小和血液伤害，并且会附加灵液效果
-			// Shinobi: ""
-			// Shroomite: ""
-			Silver: 格挡会给予惊人一刻增益
-			// Solar: ""
-			// Spectre: ""
-			// Spider: ""
-			// Spooky: ""
-			// Stardust: ""
-			// Tiki: ""
+			Shinobi: ""
+			Shroomite: ""
+			Silver: 格挡可以抵消至多200伤害，且会给予惊人一刻增益
+			Solar: ""
+			Spectre: ""
+			Spider: ""
+			Spooky: ""
+			Stardust: ""
+			Tiki: ""
 			Tin: 最小暴击率提高到10%，最大暴击率至少有50%，减少了增加暴击过程的冷却时间
-			Titanium: 碎片伤害增加，钛金护盾持续时间提高到5秒，伤害减免提高至75%
-			Tungsten: 将武器大小提升到300%，伤害加成提升到20%，冷却时间减少
-			// Turtle: ""
-			// ValhallaKnight: ""
-			// Vortex: ""
-			Wood: 怪物图鉴和旗帜解锁速度从2倍变为5倍
+			Titanium: 碎片会但只会受到最高的职业伤害加成；伤害减免提高至75%
+			Tungsten: 将武器大小提升到300%，伤害加成提升到20%，减少冷却时间
+			Turtle: ""
+			ValhallaKnight: ""
+			Vortex: ""
+			Wood: 怪物图鉴和旗帜解锁速度增加到5倍
 		}
 
 		SetBonus: {
 			Nekomi:
 				'''
-				增加7%伤害和暴击率
+				增加7%手持武器职业伤害和手持武器职业暴击率
 				增加闪烁祟心的擦弹半径
 				擦弹以暂时积蓄能量
 				受伤时消耗能量，增加生命恢复速度
