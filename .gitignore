@@ -3,17 +3,19 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-masomode stuff to test again.txt
-FargowiltasSouls.csproj
+
 
 # User-specific files
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
+*.csproj
+masomode stuff to test again.txt
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
+
 
 # Build results
 [Dd]ebug/

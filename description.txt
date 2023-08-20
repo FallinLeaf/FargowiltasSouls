@@ -1,6 +1,32 @@
 Fargo's Souls Mod is a content mod that adds the powerful Enchantments and Souls accessories, as well as a variety of bosses and minibosses.
 Features the highly challenging Eternity Mode!
 
+NEW UPDATE - V 1.5
+Updated to tmod 1.4.4, fixing a ton of bugs and issues in the process. Expect some trailing bugs and unintended features to remain.
+
+-Renamed Life Challenger Relic to Lieflight Relic
+-Tons of resprites
+-Breaking or right clicking the Mutant Statue (Gift) now takes the Gift from the statue
+-Decreased Mutant Boss despawn range to be equal to arena pull range to prevent cheese
+-Added small cooldown to Ancient Cobalt Enchant explosion jump to prevent abuse
+-Amalgamated Bullet Pouch recipe now takes Silver or Tungsten pouch
+-Eternity Mode Betsy now idles for 2 seconds at the start of the fight
+-Increased cap of mushrooms spawned by Shroomite Enchant to 100
+-Shadow Orbs can only be respawned by changing the amount of orbs once every 10 seconds
+-Forbidden Enchantment sandstorm now refreshes flight time when touched
+-Changed Mutant's Pact accessory slot to be an Enchantment Slot, which accepts Enchantments, Forces and Souls
+
+* Lieflight:
+	-Increased time before and between many attacks on Eternity Mode and below
+	-Reworked and reintroduced the laser spin attack
+	-Pixies are now destroyed after the attack finishes
+	-Can no longer do pixie charge attack immediately after normal charge attack, or vice versa
+	-Fixed bug causing reaction shotgun attack to break when the player goes too far from the boss
+	-Changed some visuals
+
+-Massive internal reorganization of the entire mod file structure.
+-Way too many bugfixes to count
+
 NEW UPDATE - V 1.4.2.4
 -After countless generations of setbacks and failures Yharim and Yrimir are finally defeatedy
 -Added Eternity-specific spear swing style, used by:
@@ -33,13 +59,6 @@ NEW UPDATE - V 1.4.2.1
 -Enhanced Flight Mastery Soul
 -Fixed World Shaper Soul tool range and 
 
-NEW UPDATE - V 1.4.2
--Vastly improves the mod in every respect possible
--Revolutionize gameplay with a slew of highly engaging new mechanics
--Adds another 200 hours of polished content
--Fully fleshes out the deeply moving and philosophically stimulating lore
--Fixes every bug forever
--Achieved perfect balance to a point that no further balance changes will be needed again ever
 
 -See the wiki for full details!
 

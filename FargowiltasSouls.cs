@@ -1,18 +1,7 @@
-﻿using FargowiltasSouls.Buffs.Boss;
-using FargowiltasSouls.Buffs.Masomode;
-using FargowiltasSouls.Buffs.Souls;
-using FargowiltasSouls.EternityMode;
-using FargowiltasSouls.EternityMode.Content.Boss.HM;
-using FargowiltasSouls.Items.Accessories.Masomode;
-using FargowiltasSouls.Items.Dyes;
-using FargowiltasSouls.Items.Misc;
-using FargowiltasSouls.NPCs;
-using FargowiltasSouls.NPCs.EternityMode;
-using FargowiltasSouls.Shaders;
-using FargowiltasSouls.Sky;
-using FargowiltasSouls.Tiles;
-using FargowiltasSouls.Toggler;
-using FargowiltasSouls.UI;
+﻿global using FargowiltasSouls.Core.ModPlayers;
+global using FargowiltasSouls.Core.Toggler;
+using FargowiltasSouls.Assets.Effects.Shaders;
+using FargowiltasSouls.Content.Sky;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -23,13 +12,28 @@ using System.Linq;
 using Terraria;
 using Terraria.Chat;
 using Terraria.GameContent;
-using Terraria.GameContent.ItemDropRules;
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
+using FargowiltasSouls.Content.Items.Dyes;
+using FargowiltasSouls.Content.Items.Misc;
+using FargowiltasSouls.Content.Items.Accessories.Masomode;
+using FargowiltasSouls.Content.Buffs.Souls;
+using FargowiltasSouls.Content.Buffs.Masomode;
+using FargowiltasSouls.Content.Buffs.Boss;
+using FargowiltasSouls.Content.Tiles;
+using FargowiltasSouls.Content.UI;
+using FargowiltasSouls.Core.Systems;
+using FargowiltasSouls.Content.Bosses.VanillaEternity;
+using FargowiltasSouls.Core.Globals;
+using FargowiltasSouls.Content.Bosses.AbomBoss;
+using FargowiltasSouls.Content.Bosses.DeviBoss;
+using FargowiltasSouls.Content.Bosses.MutantBoss;
+using FargowiltasSouls.Content.NPCs.EternityModeNPCs;
+using FargowiltasSouls.Content.Patreon.Volknet;
 
 namespace FargowiltasSouls
 {
@@ -57,15 +61,15 @@ namespace FargowiltasSouls
 
         public UserInterface CustomResources;
 
-        internal static Dictionary<int, int> ModProjDict = new Dictionary<int, int>();
+        internal static Dictionary<int, int> ModProjDict = new();
 
         internal struct TextureBuffer
         {
-            public static readonly Dictionary<int, Asset<Texture2D>> NPC = new Dictionary<int, Asset<Texture2D>>();
-            public static readonly Dictionary<int, Asset<Texture2D>> NPCHeadBoss = new Dictionary<int, Asset<Texture2D>>();
-            public static readonly Dictionary<int, Asset<Texture2D>> Gore = new Dictionary<int, Asset<Texture2D>>();
-            public static readonly Dictionary<int, Asset<Texture2D>> Golem = new Dictionary<int, Asset<Texture2D>>();
-            public static readonly Dictionary<int, Asset<Texture2D>> Extra = new Dictionary<int, Asset<Texture2D>>();
+            public static readonly Dictionary<int, Asset<Texture2D>> NPC = new();
+            public static readonly Dictionary<int, Asset<Texture2D>> NPCHeadBoss = new();
+            public static readonly Dictionary<int, Asset<Texture2D>> Gore = new();
+            public static readonly Dictionary<int, Asset<Texture2D>> Golem = new();
+            public static readonly Dictionary<int, Asset<Texture2D>> Extra = new();
             public static Asset<Texture2D> Ninja = null;
             public static Asset<Texture2D> BoneArm = null;
             public static Asset<Texture2D> BoneArm2 = null;
@@ -74,19 +78,6 @@ namespace FargowiltasSouls
             public static Asset<Texture2D> Chain27 = null;
             public static Asset<Texture2D> Wof = null;
         }
-
-        public static UIManager UserInterfaceManager => Instance._userInterfaceManager;
-        private UIManager _userInterfaceManager;
-
-        //public Fargowiltas()
-        //{
-        //    Properties = new ModProperties
-        //    {
-        //        Autoload = true,
-        //        AutoloadGores = true,
-        //        AutoloadSounds = true
-        //    };
-        //}
 
         public override void Load()
         {
@@ -112,8 +103,7 @@ namespace FargowiltasSouls
 
             ToggleLoader.Load();
 
-            _userInterfaceManager = new UIManager();
-            _userInterfaceManager.LoadUI();
+            FargoUIManager.LoadUI();
 
             AddLocalizations();
 
@@ -122,20 +112,19 @@ namespace FargowiltasSouls
                 #region shaders
 
                 //loading refs for shaders
-                Ref<Effect> lcRef = new Ref<Effect>(Assets.Request<Effect>("Effects/LifeChampionShader", AssetRequestMode.ImmediateLoad).Value);
-                Ref<Effect> wcRef = new Ref<Effect>(Assets.Request<Effect>("Effects/WillChampionShader", AssetRequestMode.ImmediateLoad).Value);
-                Ref<Effect> gaiaRef = new Ref<Effect>(Assets.Request<Effect>("Effects/GaiaShader", AssetRequestMode.ImmediateLoad).Value);
-                Ref<Effect> textRef = new Ref<Effect>(Assets.Request<Effect>("Effects/TextShader", AssetRequestMode.ImmediateLoad).Value);
-                Ref<Effect> invertRef = new Ref<Effect>(Assets.Request<Effect>("Effects/Invert", AssetRequestMode.ImmediateLoad).Value);
-                Ref<Effect> finalSparkRef = new Ref<Effect>(Assets.Request<Effect>("Effects/FinalSpark", AssetRequestMode.ImmediateLoad).Value);
-                Ref<Effect> mutantDeathrayRef = new(Assets.Request<Effect>("Effects/PrimitiveShaders/MutantFinalDeathrayShader", AssetRequestMode.ImmediateLoad).Value);
-                Ref<Effect> willDeathrayRef = new(Assets.Request<Effect>("Effects/PrimitiveShaders/WillDeathrayShader", AssetRequestMode.ImmediateLoad).Value);
-                Ref<Effect> willBigDeathrayRef = new(Assets.Request<Effect>("Effects/PrimitiveShaders/WillBigDeathrayShader", AssetRequestMode.ImmediateLoad).Value);
-                Ref<Effect> deviBigDeathrayRef = new(Assets.Request<Effect>("Effects/PrimitiveShaders/DeviTouhouDeathrayShader", AssetRequestMode.ImmediateLoad).Value);
-                Ref<Effect> deviRingRef = new(Assets.Request<Effect>("Effects/PrimitiveShaders/DeviRingShader", AssetRequestMode.ImmediateLoad).Value);
-                Ref<Effect> genericDeathrayRef = new(Assets.Request<Effect>("Effects/PrimitiveShaders/GenericDeathrayShader", AssetRequestMode.ImmediateLoad).Value);
-                Ref<Effect> blobTrailRef = new(Assets.Request<Effect>("Effects/PrimitiveShaders/BlobTrailShader", AssetRequestMode.ImmediateLoad).Value);
-                //Ref<Effect> shockwaveRef = new Ref<Effect>(Assets.Request<Effect>("Effects/ShockwaveEffect", AssetRequestMode.ImmediateLoad).Value); // The path to the compiled shader file.
+                Ref<Effect> lcRef = new(Assets.Request<Effect>("Assets/Effects/LifeChampionShader", AssetRequestMode.ImmediateLoad).Value);
+                Ref<Effect> wcRef = new(Assets.Request<Effect>("Assets/Effects/WillChampionShader", AssetRequestMode.ImmediateLoad).Value);
+                Ref<Effect> gaiaRef = new(Assets.Request<Effect>("Assets/Effects/GaiaShader", AssetRequestMode.ImmediateLoad).Value);
+                Ref<Effect> textRef = new(Assets.Request<Effect>("Assets/Effects/TextShader", AssetRequestMode.ImmediateLoad).Value);
+                Ref<Effect> invertRef = new(Assets.Request<Effect>("Assets/Effects/Invert", AssetRequestMode.ImmediateLoad).Value);
+                Ref<Effect> finalSparkRef = new(Assets.Request<Effect>("Assets/Effects/FinalSpark", AssetRequestMode.ImmediateLoad).Value);
+                Ref<Effect> mutantDeathrayRef = new(Assets.Request<Effect>("Assets/Effects/PrimitiveShaders/MutantFinalDeathrayShader", AssetRequestMode.ImmediateLoad).Value);
+                Ref<Effect> willDeathrayRef = new(Assets.Request<Effect>("Assets/Effects/PrimitiveShaders/WillDeathrayShader", AssetRequestMode.ImmediateLoad).Value);
+                Ref<Effect> willBigDeathrayRef = new(Assets.Request<Effect>("Assets/Effects/PrimitiveShaders/WillBigDeathrayShader", AssetRequestMode.ImmediateLoad).Value);
+                Ref<Effect> deviBigDeathrayRef = new(Assets.Request<Effect>("Assets/Effects/PrimitiveShaders/DeviTouhouDeathrayShader", AssetRequestMode.ImmediateLoad).Value);
+                Ref<Effect> deviRingRef = new(Assets.Request<Effect>("Assets/Effects/PrimitiveShaders/DeviRingShader", AssetRequestMode.ImmediateLoad).Value);
+                Ref<Effect> genericDeathrayRef = new(Assets.Request<Effect>("Assets/Effects/PrimitiveShaders/GenericDeathrayShader", AssetRequestMode.ImmediateLoad).Value);
+                Ref<Effect> blobTrailRef = new(Assets.Request<Effect>("Assets/Effects/PrimitiveShaders/BlobTrailShader", AssetRequestMode.ImmediateLoad).Value);
 
                 //loading shaders from refs
                 GameShaders.Misc["LCWingShader"] = new MiscShaderData(lcRef, "LCWings");
@@ -179,13 +168,12 @@ namespace FargowiltasSouls
             //On.Terraria.GameContent.ItemDropRules.DropBasedOnMasterMode.CanDrop += DropBasedOnMasterOrEMode_CanDrop;
             //On.Terraria.GameContent.ItemDropRules.DropBasedOnMasterMode.TryDroppingItem_DropAttemptInfo_ItemDropRuleResolveAction += DropBasedOnMasterOrEMode_TryDroppingItem_DropAttemptInfo_ItemDropRuleResolveAction;
 
-            On.Terraria.Player.CheckSpawn_Internal += LifeRevitalizer_CheckSpawn_Internal;
-            On.Terraria.NPC.checkArmorPenetration += CheckArmorPenetration;
-            On.Terraria.Player.AddBuff += AddBuff;
+            On_Player.CheckSpawn_Internal += LifeRevitalizer_CheckSpawn_Internal;
+            On_Player.AddBuff += AddBuff;
         }
 
         private static bool LifeRevitalizer_CheckSpawn_Internal(
-            On.Terraria.Player.orig_CheckSpawn_Internal orig,
+            On_Player.orig_CheckSpawn_Internal orig,
             int x, int y)
         {
             if (orig(x, y))
@@ -212,24 +200,9 @@ namespace FargowiltasSouls
 
             return true;
         }
-
-        private int CheckArmorPenetration(
-            On.Terraria.NPC.orig_checkArmorPenetration orig,
-            NPC self,
-            int armorPenetration)
-        {
-            FargoSoulsGlobalNPC globalNPC = self.GetGlobalNPC<FargoSoulsGlobalNPC>();
-            if (globalNPC.OceanicMaul)
-                armorPenetration += 20;
-            if (globalNPC.CurseoftheMoon)
-                armorPenetration += 10;
-            if (globalNPC.Rotting)
-                armorPenetration += 10;
-            return orig(self, armorPenetration);
-        }
-
+        
         private void AddBuff(
-            On.Terraria.Player.orig_AddBuff orig,
+            Terraria.On_Player.orig_AddBuff orig,
             Player self, int type, int timeToAdd, bool quiet, bool foodHack)
         {
             FargoSoulsPlayer modPlayer = self.GetModPlayer<FargoSoulsPlayer>();
@@ -256,7 +229,7 @@ namespace FargowiltasSouls
         //    Conditions.IsMasterMode self, DropAttemptInfo info)
         //{
         //    // Use | instead of || so orig runs no matter what.
-        //    return FargoSoulsWorld.EternityMode | orig(self, info);
+        //    return WorldSavingSystem.EternityMode | orig(self, info);
         //}
 
         //private static bool IsMasterModeOrEMode_CanShowItemDropInUI(
@@ -264,7 +237,7 @@ namespace FargowiltasSouls
         //    Conditions.IsMasterMode self)
         //{
         //    // Use | instead of || so orig runs no matter what.
-        //    return FargoSoulsWorld.EternityMode | orig(self);
+        //    return WorldSavingSystem.EternityMode | orig(self);
         //}
 
         //private static bool DropBasedOnMasterOrEMode_CanDrop(
@@ -272,7 +245,7 @@ namespace FargowiltasSouls
         //    DropBasedOnMasterMode self, DropAttemptInfo info)
         //{
         //    // Use | instead of || so orig runs no matter what.
-        //    return (FargoSoulsWorld.EternityMode && self.ruleForMasterMode.CanDrop(info)) | orig(self, info);
+        //    return (WorldSavingSystem.EternityMode && self.ruleForMasterMode.CanDrop(info)) | orig(self, info);
         //}
 
         //private static ItemDropAttemptResult DropBasedOnMasterOrEMode_TryDroppingItem_DropAttemptInfo_ItemDropRuleResolveAction(
@@ -280,7 +253,7 @@ namespace FargowiltasSouls
         //    DropBasedOnMasterMode self, DropAttemptInfo info, ItemDropRuleResolveAction resolveAction)
         //{
         //    ItemDropAttemptResult itemDropAttemptResult = orig(self, info, resolveAction);
-        //    return FargoSoulsWorld.EternityMode ? resolveAction(self.ruleForMasterMode, info) : itemDropAttemptResult;
+        //    return WorldSavingSystem.EternityMode ? resolveAction(self.ruleForMasterMode, info) : itemDropAttemptResult;
         //}
 
         public override void Unload()
@@ -290,9 +263,9 @@ namespace FargowiltasSouls
             //On.Terraria.GameContent.ItemDropRules.DropBasedOnMasterMode.CanDrop -= DropBasedOnMasterOrEMode_CanDrop;
             //On.Terraria.GameContent.ItemDropRules.DropBasedOnMasterMode.TryDroppingItem_DropAttemptInfo_ItemDropRuleResolveAction -= DropBasedOnMasterOrEMode_TryDroppingItem_DropAttemptInfo_ItemDropRuleResolveAction;
 
-            NPC.LunarShieldPowerExpert = 150;
+            NPC.LunarShieldPowerMax = 150;
 
-            void RestoreSprites(Dictionary<int, Asset<Texture2D>> buffer, Asset<Texture2D>[] original)
+            static void RestoreSprites(Dictionary<int, Asset<Texture2D>> buffer, Asset<Texture2D>[] original)
             {
                 foreach (KeyValuePair<int, Asset<Texture2D>> pair in buffer)
                     original[pair.Key] = pair.Value;
@@ -323,9 +296,6 @@ namespace FargowiltasSouls
 
             ToggleLoader.Unload();
 
-            SoulToggler.RemoveItemTags = null;
-            ToggleBackend.ConfigPath = null;
-
             FreezeKey = null;
             GoldKey = null;
             SmokeBombKey = null;
@@ -338,12 +308,9 @@ namespace FargowiltasSouls
             DebuffInstallKey = null;
             AmmoCycleKey = null;
 
-            if (DebuffIDs != null)
-                DebuffIDs.Clear();
+            DebuffIDs?.Clear();
 
             ModProjDict.Clear();
-
-            _userInterfaceManager = null;
 
             Instance = null;
         }
@@ -359,7 +326,7 @@ namespace FargowiltasSouls
                     case "Emode":
                     case "EMode":
                     case "EternityMode":
-                        return FargoSoulsWorld.EternityMode;
+                        return WorldSavingSystem.EternityMode;
 
                     case "Masomode":
                     case "MasoMode":
@@ -372,32 +339,32 @@ namespace FargowiltasSouls
                     case "MasochistModeReal":
                     case "RealMode":
                     case "GetReal":
-                        return FargoSoulsWorld.MasochistModeReal;
+                        return WorldSavingSystem.MasochistModeReal;
 
                     case "DownedMutant":
-                        return FargoSoulsWorld.downedMutant;
+                        return WorldSavingSystem.DownedMutant;
 
                     case "DownedAbom":
                     case "DownedAbominationn":
-                        return FargoSoulsWorld.downedAbom;
+                        return WorldSavingSystem.DownedAbom;
 
                     case "DownedChamp":
                     case "DownedChampion": //arg is internal string name of champ
-                        return FargoSoulsWorld.downedBoss[(int)Enum.Parse<FargoSoulsWorld.Downed>(args[1] as string, true)];
+                        return WorldSavingSystem.DownedBoss[(int)Enum.Parse<WorldSavingSystem.Downed>(args[1] as string, true)];
 
                     case "DownedEri":
                     case "DownedEridanus":
                     case "DownedCosmos":
                     case "DownedCosmosChamp":
                     case "DownedCosmosChampion":
-                        return FargoSoulsWorld.downedBoss[(int)FargoSoulsWorld.Downed.CosmosChampion];
+                        return WorldSavingSystem.DownedBoss[(int)WorldSavingSystem.Downed.CosmosChampion];
 
                     case "DownedDevi":
                     case "DownedDeviantt":
-                        return FargoSoulsWorld.downedDevi;
+                        return WorldSavingSystem.DownedDevi;
 
                     case "DownedFishronEX":
-                        return FargoSoulsWorld.downedFishronEX;
+                        return WorldSavingSystem.DownedFishronEX;
 
                     case "PureHeart":
                         return Main.LocalPlayer.GetModPlayer<FargoSoulsPlayer>().PureHeart;
@@ -409,16 +376,16 @@ namespace FargowiltasSouls
                         return Main.LocalPlayer.GetModPlayer<FargoSoulsPlayer>().SinisterIcon;
 
                     case "AbomAlive":
-                        return FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.abomBoss, ModContent.NPCType<NPCs.AbomBoss.AbomBoss>());
+                        return FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.abomBoss, ModContent.NPCType<AbomBoss>());
 
                     case "MutantAlive":
-                        return FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<NPCs.MutantBoss.MutantBoss>());
+                        return FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.mutantBoss, ModContent.NPCType<MutantBoss>());
 
                     case "DeviAlive":
                     case "DeviBossAlive":
                     case "DevianttAlive":
                     case "DevianttBossAlive":
-                        return FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.deviBoss, ModContent.NPCType<NPCs.DeviBoss.DeviBoss>());
+                        return FargoSoulsUtil.BossIsAlive(ref EModeGlobalNPC.deviBoss, ModContent.NPCType<DeviBoss>());
 
                     case "MutantPact":
                     case "MutantsPact":
@@ -523,25 +490,25 @@ namespace FargowiltasSouls
             Item.NewItem(null, player.Center, ItemID.GrapplingHook);
 
             //only give once per world
-            if (!FargoSoulsWorld.ReceivedTerraStorage)
+            if (!WorldSavingSystem.ReceivedTerraStorage)
             {
-                if (ModLoader.TryGetMod("MagicStorage", out Mod magicStorage))
+                if (ModLoader.TryGetMod("MagicStorage", out Mod _))
                 {
                     GiveItem("MagicStorage", "StorageHeart");
                     GiveItem("MagicStorage", "CraftingAccess");
                     GiveItem("MagicStorage", "StorageUnit", 16);
 
-                    FargoSoulsWorld.ReceivedTerraStorage = true;
+                    WorldSavingSystem.ReceivedTerraStorage = true;
                     if (Main.netMode != NetmodeID.SinglePlayer)
                         NetMessage.SendData(MessageID.WorldData); //sync world in mp
                 }
-                else if (ModLoader.TryGetMod("MagicStorageExtra", out Mod magicStorageExtra))
+                else if (ModLoader.TryGetMod("MagicStorageExtra", out Mod _))
                 {
                     GiveItem("MagicStorageExtra", "StorageHeart");
                     GiveItem("MagicStorageExtra", "CraftingAccess");
                     GiveItem("MagicStorageExtra", "StorageUnit", 16);
 
-                    FargoSoulsWorld.ReceivedTerraStorage = true;
+                    WorldSavingSystem.ReceivedTerraStorage = true;
                     if (Main.netMode != NetmodeID.SinglePlayer)
                         NetMessage.SendData(MessageID.WorldData); //sync world in mp
                 }
@@ -562,64 +529,100 @@ namespace FargowiltasSouls
                 //if (BossChecklistCompatibility != null)
                 //    BossChecklistCompatibility.Initialize();
 
-                DebuffIDs = new List<int> { BuffID.Bleeding, BuffID.OnFire, BuffID.Rabies, BuffID.Confused, BuffID.Weak, BuffID.BrokenArmor, BuffID.Darkness, BuffID.Slow, BuffID.Cursed, BuffID.Poisoned, BuffID.Silenced, 39, 44, 46, 47, 67, 68, 69, 70, 80,
-                            88, 94, 103, 137, 144, 145, 149, 156, 160, 163, 164, 195, 196, 197, 199 };
-                DebuffIDs.Add(ModContent.BuffType<Anticoagulation>());
-                DebuffIDs.Add(ModContent.BuffType<Antisocial>());
-                DebuffIDs.Add(ModContent.BuffType<Atrophied>());
-                DebuffIDs.Add(ModContent.BuffType<Berserked>());
-                DebuffIDs.Add(ModContent.BuffType<Bloodthirsty>());
-                DebuffIDs.Add(ModContent.BuffType<ClippedWings>());
-                DebuffIDs.Add(ModContent.BuffType<Crippled>());
-                DebuffIDs.Add(ModContent.BuffType<CurseoftheMoon>());
-                DebuffIDs.Add(ModContent.BuffType<Defenseless>());
-                DebuffIDs.Add(ModContent.BuffType<FlamesoftheUniverse>());
-                DebuffIDs.Add(ModContent.BuffType<Flipped>());
-                DebuffIDs.Add(ModContent.BuffType<FlippedHallow>());
-                DebuffIDs.Add(ModContent.BuffType<Fused>());
-                DebuffIDs.Add(ModContent.BuffType<GodEater>());
-                DebuffIDs.Add(ModContent.BuffType<Guilty>());
-                DebuffIDs.Add(ModContent.BuffType<Hexed>());
-                DebuffIDs.Add(ModContent.BuffType<HolyPrice>());
-                DebuffIDs.Add(ModContent.BuffType<Hypothermia>());
-                DebuffIDs.Add(ModContent.BuffType<Infested>());
-                DebuffIDs.Add(ModContent.BuffType<Neurotoxin>());
-                DebuffIDs.Add(ModContent.BuffType<IvyVenom>());
-                DebuffIDs.Add(ModContent.BuffType<Jammed>());
-                DebuffIDs.Add(ModContent.BuffType<Lethargic>());
-                DebuffIDs.Add(ModContent.BuffType<LightningRod>());
-                DebuffIDs.Add(ModContent.BuffType<LihzahrdCurse>());
-                DebuffIDs.Add(ModContent.BuffType<LivingWasteland>());
-                DebuffIDs.Add(ModContent.BuffType<Lovestruck>());
-                DebuffIDs.Add(ModContent.BuffType<LowGround>());
-                DebuffIDs.Add(ModContent.BuffType<MarkedforDeath>());
-                DebuffIDs.Add(ModContent.BuffType<Midas>());
-                DebuffIDs.Add(ModContent.BuffType<MutantNibble>());
-                DebuffIDs.Add(ModContent.BuffType<NanoInjection>());
-                DebuffIDs.Add(ModContent.BuffType<NullificationCurse>());
-                DebuffIDs.Add(ModContent.BuffType<OceanicMaul>());
-                DebuffIDs.Add(ModContent.BuffType<OceanicSeal>());
-                DebuffIDs.Add(ModContent.BuffType<Oiled>());
-                DebuffIDs.Add(ModContent.BuffType<Purged>());
-                DebuffIDs.Add(ModContent.BuffType<Purified>());
-                DebuffIDs.Add(ModContent.BuffType<RushJob>());
-                DebuffIDs.Add(ModContent.BuffType<ReverseManaFlow>());
-                DebuffIDs.Add(ModContent.BuffType<Rotting>());
-                DebuffIDs.Add(ModContent.BuffType<Shadowflame>());
-                DebuffIDs.Add(ModContent.BuffType<Smite>());
-                DebuffIDs.Add(ModContent.BuffType<Buffs.Masomode.SqueakyToy>());
-                DebuffIDs.Add(ModContent.BuffType<Stunned>());
-                DebuffIDs.Add(ModContent.BuffType<Swarming>());
-                DebuffIDs.Add(ModContent.BuffType<Unstable>());
+                DebuffIDs = new List<int>
+                {
+                    BuffID.Bleeding,
+                    BuffID.OnFire,
+                    BuffID.Rabies,
+                    BuffID.Confused,
+                    BuffID.Weak,
+                    BuffID.BrokenArmor,
+                    BuffID.Darkness,
+                    BuffID.Slow,
+                    BuffID.Cursed,
+                    BuffID.Poisoned,
+                    BuffID.Silenced,
+                    39,
+                    44,
+                    46,
+                    47,
+                    67,
+                    68,
+                    69,
+                    70,
+                    80,
+                    88,
+                    94,
+                    103,
+                    137,
+                    144,
+                    145,
+                    149,
+                    156,
+                    160,
+                    163,
+                    164,
+                    195,
+                    196,
+                    197,
+                    199,
+                    ModContent.BuffType<AnticoagulationBuff>(),
+                    ModContent.BuffType<AntisocialBuff>(),
+                    ModContent.BuffType<AtrophiedBuff>(),
+                    ModContent.BuffType<BerserkedBuff>(),
+                    ModContent.BuffType<BloodthirstyBuff>(),
+                    ModContent.BuffType<ClippedWingsBuff>(),
+                    ModContent.BuffType<CrippledBuff>(),
+                    ModContent.BuffType<CurseoftheMoonBuff>(),
+                    ModContent.BuffType<DefenselessBuff>(),
+                    ModContent.BuffType<FlamesoftheUniverseBuff>(),
+                    ModContent.BuffType<FlippedBuff>(),
+                    ModContent.BuffType<FlippedHallowBuff>(),
+                    ModContent.BuffType<FusedBuff>(),
+                    ModContent.BuffType<GodEaterBuff>(),
+                    ModContent.BuffType<GuiltyBuff>(),
+                    ModContent.BuffType<HexedBuff>(),
+                    ModContent.BuffType<HolyPriceBuff>(),
+                    ModContent.BuffType<HypothermiaBuff>(),
+                    ModContent.BuffType<InfestedBuff>(),
+                    ModContent.BuffType<NeurotoxinBuff>(),
+                    ModContent.BuffType<IvyVenomBuff>(),
+                    ModContent.BuffType<JammedBuff>(),
+                    ModContent.BuffType<LethargicBuff>(),
+                    ModContent.BuffType<LightningRodBuff>(),
+                    ModContent.BuffType<LihzahrdCurseBuff>(),
+                    ModContent.BuffType<LivingWastelandBuff>(),
+                    ModContent.BuffType<LovestruckBuff>(),
+                    ModContent.BuffType<LowGroundBuff>(),
+                    ModContent.BuffType<MarkedforDeathBuff>(),
+                    ModContent.BuffType<MidasBuff>(),
+                    ModContent.BuffType<MutantNibbleBuff>(),
+                    ModContent.BuffType<NanoInjectionBuff>(),
+                    ModContent.BuffType<NullificationCurseBuff>(),
+                    ModContent.BuffType<OceanicMaulBuff>(),
+                    ModContent.BuffType<OceanicSealBuff>(),
+                    ModContent.BuffType<OiledBuff>(),
+                    ModContent.BuffType<PurgedBuff>(),
+                    ModContent.BuffType<PurifiedBuff>(),
+                    ModContent.BuffType<RushJobBuff>(),
+                    ModContent.BuffType<ReverseManaFlowBuff>(),
+                    ModContent.BuffType<RottingBuff>(),
+                    ModContent.BuffType<ShadowflameBuff>(),
+                    ModContent.BuffType<SmiteBuff>(),
+                    ModContent.BuffType<SqueakyToyBuff>(),
+                    ModContent.BuffType<StunnedBuff>(),
+                    ModContent.BuffType<SwarmingBuff>(),
+                    ModContent.BuffType<UnstableBuff>(),
 
-                DebuffIDs.Add(ModContent.BuffType<AbomFang>());
-                DebuffIDs.Add(ModContent.BuffType<AbomPresence>());
-                DebuffIDs.Add(ModContent.BuffType<MutantFang>());
-                DebuffIDs.Add(ModContent.BuffType<MutantPresence>());
+                    ModContent.BuffType<AbomFangBuff>(),
+                    ModContent.BuffType<AbomPresenceBuff>(),
+                    ModContent.BuffType<MutantFangBuff>(),
+                    ModContent.BuffType<MutantPresenceBuff>(),
 
-                DebuffIDs.Add(ModContent.BuffType<AbomRebirth>());
+                    ModContent.BuffType<AbomRebirthBuff>(),
 
-                DebuffIDs.Add(ModContent.BuffType<TimeFrozen>());
+                    ModContent.BuffType<TimeFrozenBuff>()
+                };
 
                 BossChecklistCompatibility();
 
@@ -649,7 +652,7 @@ namespace FargowiltasSouls
 
                 //    bossHealthBar.Call("hbStart");
                 //    bossHealthBar.Call("hbSetColours", new Color(55, 255, 191), new Color(0f, 1f, 0f), new Color(0f, 0.5f, 1f));
-                //    //bossHealthBar.Call("hbSetBossHeadTexture", GetTexture("NPCs/MutantBoss/MutantBoss_Head_Boss"));
+                //    //bossHealthBar.Call("hbSetBossHeadTexture", GetTexture("Content/NPCs/MutantBoss/MutantBoss_Head_Boss"));
                 //    bossHealthBar.Call("hbSetTexture",
                 //        bossHealthBar.GetTexture("UI/MoonLordBarStart"), null,
                 //        bossHealthBar.GetTexture("UI/MoonLordBarEnd"), null);
@@ -661,13 +664,13 @@ namespace FargowiltasSouls
 
                 //mutant shop
                 Mod fargos = ModLoader.GetMod("Fargowiltas");
-                fargos.Call("AddSummon", 0.5f, "FargowiltasSouls", "SquirrelCoatofArms", new Func<bool>(() => FargoSoulsWorld.downedBoss[(int)FargoSoulsWorld.Downed.TrojanSquirrel]), Item.buyPrice(0, 4));
-                fargos.Call("AddSummon", 6.9f, "FargowiltasSouls", "DevisCurse", new Func<bool>(() => FargoSoulsWorld.downedDevi), Item.buyPrice(0, 17, 50));
-                fargos.Call("AddSummon", 11.49f, "FargowiltasSouls", "FragilePixieLamp", new Func<bool>(() => FargoSoulsWorld.downedBoss[(int)FargoSoulsWorld.Downed.LifeChallenger]), Item.buyPrice(0, 45));
-                fargos.Call("AddSummon", 18.009f, "FargowiltasSouls", "ChampionySigil", new Func<bool>(() => FargoSoulsWorld.downedBoss[(int)FargoSoulsWorld.Downed.CosmosChampion]), Item.buyPrice(5));
-                fargos.Call("AddSummon", 18.01f, "FargowiltasSouls", "AbomsCurse", new Func<bool>(() => FargoSoulsWorld.downedAbom), Item.buyPrice(10));
-                //fargos.Call("AddSummon", 18.01f, "FargowiltasSouls", "TruffleWormEX", () => FargoSoulsWorld.downedFishronEX, Item.buyPrice(10));
-                fargos.Call("AddSummon", 18.02f, "FargowiltasSouls", "MutantsCurse", new Func<bool>(() => FargoSoulsWorld.downedMutant), Item.buyPrice(20));
+                fargos.Call("AddSummon", 0.5f, "FargowiltasSouls", "SquirrelCoatofArms", new Func<bool>(() => WorldSavingSystem.DownedBoss[(int)WorldSavingSystem.Downed.TrojanSquirrel]), Item.buyPrice(0, 4));
+                fargos.Call("AddSummon", 6.9f, "FargowiltasSouls", "DevisCurse", new Func<bool>(() => WorldSavingSystem.DownedDevi), Item.buyPrice(0, 17, 50));
+                fargos.Call("AddSummon", 11.49f, "FargowiltasSouls", "FragilePixieLamp", new Func<bool>(() => WorldSavingSystem.DownedBoss[(int)WorldSavingSystem.Downed.LifeChallenger]), Item.buyPrice(0, 45));
+                fargos.Call("AddSummon", 18.009f, "FargowiltasSouls", "ChampionySigil", new Func<bool>(() => WorldSavingSystem.DownedBoss[(int)WorldSavingSystem.Downed.CosmosChampion]), Item.buyPrice(5));
+                fargos.Call("AddSummon", 18.01f, "FargowiltasSouls", "AbomsCurse", new Func<bool>(() => WorldSavingSystem.DownedAbom), Item.buyPrice(10));
+                //fargos.Call("AddSummon", 18.01f, "FargowiltasSouls", "TruffleWormEX", () => WorldSavingSystem.downedFishronEX, Item.buyPrice(10));
+                fargos.Call("AddSummon", 18.02f, "FargowiltasSouls", "MutantsCurse", new Func<bool>(() => WorldSavingSystem.DownedMutant), Item.buyPrice(20));
             }
             catch (Exception e)
             {
@@ -675,7 +678,7 @@ namespace FargowiltasSouls
             }
         }
 
-        public void ManageMusicTimestop(bool playMusicAgain)
+        public static void ManageMusicTimestop(bool playMusicAgain)
         {
             if (Main.dedServ)
                 return;
@@ -703,16 +706,17 @@ namespace FargowiltasSouls
         }
 
         static float ColorTimer;
+
         public static Color EModeColor()
         {
-            Color mutantColor = new Color(28, 222, 152);
-            Color abomColor = new Color(255, 224, 53);
-            Color deviColor = new Color(255, 51, 153);
+            Color mutantColor = new(28, 222, 152);
+            Color abomColor = new(255, 224, 53);
+            Color deviColor = new(255, 51, 153);
+
             ColorTimer += 0.5f;
+
             if (ColorTimer >= 300)
-            {
                 ColorTimer = 0;
-            }
 
             if (ColorTimer < 100)
                 return Color.Lerp(mutantColor, abomColor, ColorTimer / 100);
@@ -721,59 +725,7 @@ namespace FargowiltasSouls
             else
                 return Color.Lerp(deviColor, mutantColor, (ColorTimer - 200) / 100);
         }
-
-        //        /*public void AddPartialRecipe(ModItem modItem, ModRecipe recipe, int tileType, int replacementItem)
-        //        {
-        //            RecipeGroup group = new RecipeGroup(() => $"{Lang.misc[37]} {modItem.DisplayName.GetDefault()} Material");
-        //            foreach (Item i in recipe.requiredItem)
-        //            {
-        //                if (i == null || i.type == ItemID.None)
-        //                    continue;
-        //                group.ValidItems.Add(i.type);
-        //            }
-        //            string groupName = $"FargowiltasSouls:Any{modItem.Name}Material";
-        //            RecipeGroup.RegisterGroup(groupName, group);
-
-        //            ModRecipe partialRecipe = new ModRecipe(this);
-        //            int originalItemsNeeded = group.ValidItems.Count / 2;
-        //            partialRecipe.AddRecipeGroup(groupName, originalItemsNeeded);
-        //            partialRecipe.AddIngredient(replacementItem, group.ValidItems.Count - originalItemsNeeded);
-        //            partial.AddTile(tileType);
-        //            partialRecipe.SetResult(modItem);
-        //            partialRecipe.AddRecipe();
-        //        }*/
-
-        //        public override void AddRecipes()
-        //        {
-        //            ModRecipe recipe = new ModRecipe(this);
-        //            .AddIngredient(ItemID.SoulofLight, 7)
-        //            .AddIngredient(ItemID.SoulofNight, 7)
-        //            .AddIngredient(ModContent.ItemType<Items.Misc.DeviatingEnergy>(), 5)
-        //            .AddTile(TileID.MythrilAnvil)
-        //            recipe.SetResult(ModContent.ItemType<JungleChest>());
-        //            .Register();
-
-        //            recipe = new ModRecipe(this);
-        //            .AddIngredient(ItemID.WizardHat)
-        //            .AddIngredient(ModContent.ItemType<Items.Misc.DeviatingEnergy>(), 5)
-        //            .AddTile(TileID.MythrilAnvil)
-        //            recipe.SetResult(ModContent.ItemType<RuneOrb>());
-        //            .Register();
-
-        //            recipe = new ModRecipe(this);
-        //            .AddIngredient(ItemID.LifeCrystal)
-        //            .AddTile(TileID.CookingPots)
-        //            recipe.SetResult(ModContent.ItemType<HeartChocolate>());
-        //            .Register();
-
-        //            /*recipe = new ModRecipe(this);
-        //            recipe.AddRecipeGroup("FargowiltasSouls:AnyBonesBanner", 2);
-        //            .AddIngredient(ModContent.ItemType<Items.Misc.DeviatingEnergy>(), 5)
-        //            .AddTile(TileID.Anvils)
-        //            recipe.SetResult(ModContent.ItemType<InnocuousSkull>());
-        //            .Register();*/
-        //        }
-
+        
         internal enum PacketID : byte
         {
             RequestGuttedCreeper,
@@ -924,14 +876,14 @@ namespace FargowiltasSouls
                     case PacketID.SyncCanPlayMaso: //server acknowledges a CanPlayMaso player
                         if (Main.netMode == NetmodeID.Server)
                         {
-                            FargoSoulsWorld.CanPlayMaso = reader.ReadBoolean();
+                            WorldSavingSystem.CanPlayMaso = reader.ReadBoolean();
                         }
                         break;
 
                     case PacketID.SyncNanoCoreMode:
                         {
                             Player player = Main.player[reader.ReadByte()];
-                            player.GetModPlayer<Patreon.Volknet.NanoPlayer>().NanoCoreMode = reader.Read7BitEncodedInt();
+                            player.GetModPlayer<NanoPlayer>().NanoCoreMode = reader.Read7BitEncodedInt();
                         }
                         break;
 
@@ -951,24 +903,6 @@ namespace FargowiltasSouls
             }
         }
 
-        //        public override void UpdateMusic(ref int music, ref MusicPriority priority)
-        //        {
-        //            if (Main.musicVolume != 0 && Main.myPlayer != -1 && !Main.gameMenu && Main.LocalPlayer.active)
-        //            {
-        //                if (MMWorld.MMArmy && priority <= MusicPriority.Environment)
-        //                {
-        //                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/MonsterMadhouse");
-        //                    priority = MusicPriority.Event;
-        //                }
-        //                /*if (FargoSoulsGlobalNPC.FargoSoulsUtil.BossIsAlive(ref FargoSoulsGlobalNPC.mutantBoss, ModContent.NPCType<NPCs.MutantBoss.MutantBoss>())
-        //                    && Main.player[Main.myPlayer].Distance(Main.npc[FargoSoulsGlobalNPC.mutantBoss].Center) < 3000)
-        //                {
-        //                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/SteelRed");
-        //                    priority = (MusicPriority)12;
-        //                }*/
-        //            }
-        //        }
-
         public static bool NoInvasion(NPCSpawnInfo spawnInfo)
         {
             return !spawnInfo.Invasion && (!Main.pumpkinMoon && !Main.snowMoon || spawnInfo.SpawnTileY > Main.worldSurface || Main.dayTime) &&
@@ -981,34 +915,19 @@ namespace FargowiltasSouls
             return !player.ZoneJungle && !player.ZoneDungeon && !player.ZoneCorrupt && !player.ZoneCrimson && !player.ZoneHallow && !player.ZoneSnow && !player.ZoneUndergroundDesert;
         }
 
-        public static bool NoZoneAllowWater(NPCSpawnInfo spawnInfo)
-        {
-            return !spawnInfo.Sky && !spawnInfo.Player.ZoneMeteor && !spawnInfo.SpiderCave;
-        }
+        public static bool NoZoneAllowWater(NPCSpawnInfo spawnInfo) => !spawnInfo.Sky && !spawnInfo.Player.ZoneMeteor && !spawnInfo.SpiderCave;
 
-        public static bool NoZone(NPCSpawnInfo spawnInfo)
-        {
-            return NoZoneAllowWater(spawnInfo) && !spawnInfo.Water;
-        }
+        public static bool NoZone(NPCSpawnInfo spawnInfo) => NoZoneAllowWater(spawnInfo) && !spawnInfo.Water;
 
         public static bool NormalSpawn(NPCSpawnInfo spawnInfo)
         {
             return !spawnInfo.PlayerInTown && NoInvasion(spawnInfo);
         }
 
-        public static bool NoZoneNormalSpawn(NPCSpawnInfo spawnInfo)
-        {
-            return NormalSpawn(spawnInfo) && NoZone(spawnInfo);
-        }
+        public static bool NoZoneNormalSpawn(NPCSpawnInfo spawnInfo) => NormalSpawn(spawnInfo) && NoZone(spawnInfo);
 
-        public static bool NoZoneNormalSpawnAllowWater(NPCSpawnInfo spawnInfo)
-        {
-            return NormalSpawn(spawnInfo) && NoZoneAllowWater(spawnInfo);
-        }
+        public static bool NoZoneNormalSpawnAllowWater(NPCSpawnInfo spawnInfo) => NormalSpawn(spawnInfo) && NoZoneAllowWater(spawnInfo);
 
-        public static bool NoBiomeNormalSpawn(NPCSpawnInfo spawnInfo)
-        {
-            return NormalSpawn(spawnInfo) && NoBiome(spawnInfo) && NoZone(spawnInfo);
-        }
+        public static bool NoBiomeNormalSpawn(NPCSpawnInfo spawnInfo) => NormalSpawn(spawnInfo) && NoBiome(spawnInfo) && NoZone(spawnInfo);
     }
 }

@@ -13,9 +13,19 @@
     <None Remove="Folders to Port\**" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Effects\fx compiler - Shortcut.lnk" />
+    <None Remove="Assets\UI\EnchantSlotIcon.png" />
+    <None Remove="Content\Items\Accessories\Masomode\SlimyShield.png" />
+    <None Remove="Content\Tiles\MutantStatueGift.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\Items\Items\Weapons\BossDrops\" />
+    <Folder Include="Content\Items\Items\Weapons\Challengers\" />
+    <Folder Include="Content\Items\Items\Weapons\FinalUpgrades\" />
+    <Folder Include="Content\Items\Items\Weapons\Misc\" />
+    <Folder Include="Content\Items\Items\Weapons\SummonVariants\" />
+    <Folder Include="Content\Items\Items\Weapons\SwarmDrops\" />
   </ItemGroup>
 </Project>
