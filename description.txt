@@ -6,6 +6,7 @@ Updated to tmod 1.4.4, fixing a ton of bugs and issues in the process. Expect so
 
 -Renamed Life Challenger Relic to Lieflight Relic
 -Tons of resprites
+-Disabled shimmer decrafts for all Enchantments, Forces and Souls
 -Breaking or right clicking the Mutant Statue (Gift) now takes the Gift from the statue
 -Decreased Mutant Boss despawn range to be equal to arena pull range to prevent cheese
 -Added small cooldown to Ancient Cobalt Enchant explosion jump to prevent abuse

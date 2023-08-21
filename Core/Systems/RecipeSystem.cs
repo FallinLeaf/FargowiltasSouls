@@ -1,4 +1,8 @@
-﻿using FargowiltasSouls.Content.Items.Misc;
+﻿using FargowiltasSouls.Content.Items.Accessories.Enchantments;
+using FargowiltasSouls.Content.Items.Accessories.Forces;
+using FargowiltasSouls.Content.Items.Accessories.Souls;
+using FargowiltasSouls.Content.Items.Misc;
+using System;
 using System.Linq;
 using Terraria;
 using Terraria.ID;
@@ -179,12 +183,16 @@ namespace FargowiltasSouls.Core.Systems
             RecipeGroup.RegisterGroup("FargowiltasSouls:AnyGoldBar", group);
 
         }
-
         public override void PostAddRecipes()
         {
             foreach (Recipe recipe in Main.recipe.Where(recipe => recipe.requiredTile.Contains(TileID.Anvils) || recipe.requiredTile.Contains(TileID.MythrilAnvil)))
             {
                 recipe.AddConsumeItemCallback(IronBonusBars);
+            }
+            //disable shimmer decraft for all enchants, forces and souls
+            foreach (Recipe recipe in Main.recipe.Where(recipe => recipe.createItem.ModItem is BaseEnchant || recipe.createItem.ModItem is BaseForce || recipe.createItem.ModItem is BaseSoul))
+            {
+                recipe.DisableDecraft();
             }
         }
     }
