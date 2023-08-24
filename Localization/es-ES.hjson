@@ -58,7 +58,7 @@ Mods: {
 			// Spider: ""
 			// Spooky: ""
 			// Stardust: ""
-			// Tiki: ""
+			// Tiki: Increases whip range by 20%
 			// Tin: Minimum crit increased to 10%, max crit is at least 50%, reduced proc cooldown
 			// Titanium: Shard damage increased, Titanium Shield duration increased to 5 seconds and damage resistance increased to 75%
 			// Tungsten: Increased weapon size to 300%, bonus damage to 20%, cooldown reduced
@@ -1006,7 +1006,7 @@ Mods: {
 			// BrainOfConfusion: Lowers your damage output on successful dodge
 			// ZenithNone: No nerfs in effect
 			// ZenithHitRate: Vastly reduced hit rate, improves by defeating:
-			// VampireKnives: Reduced lifesteal rate when above 33% life
+			// VampireKnives: Reduced lifesteal rate when above 50% life
 			// Zapinator: Cannot stack damage multipliers
 			// OOASet: Set bonus increases minimum summon damage when you attack using other classes
 			// MiningHelmet: Increases Undead Miner spawn rates
@@ -1517,6 +1517,11 @@ Mods: {
 			SeekerOfTreasuresBuff: {
 				// DisplayName: Seeker of Treasures
 				// Description: Give it a few thousand years to grow up
+			}
+
+			NibbleBuff: {
+				// DisplayName: Nibble
+				// Description: Just one tiny bite (please)
 			}
 
 			BrokenShell: {
@@ -2872,7 +2877,6 @@ Mods: {
 				// DisplayName: Tiki Enchantment
 				/* Tooltip:
 					'''
-					Increases whip range by 20%
 					Whip your summons to make them work harder
 					'Aku Aku!'
 					''' */
@@ -3014,9 +3018,8 @@ Mods: {
 				/* Tooltip:
 					'''
 					Works in your inventory
-					Stand still to expose nearby treasure
+					Stand still to expose nearby treasure and enemies
 					Grants autofire to all items
-					Slightly reduces use speed of affected items
 					''' */
 			}
 
@@ -4264,7 +4267,7 @@ Mods: {
 				// DisplayName: Deer Sinew
 				/* Tooltip:
 					'''
-					Allows the ability to dash
+					Allows the ability to dash without a dash accessory
 					Double tap a direction
 					Taking damage may briefly freeze you
 					Reduces damage when your speed increases, down to 0.85x at max
@@ -4467,6 +4470,15 @@ Mods: {
 					'''
 					Summons the spawn of Mutant
 					'You think you're safe?'
+					''' */
+			}
+
+			HokeyBall: {
+				// DisplayName: Hokey Ball
+				/* Tooltip:
+					'''
+					Summons Nibble
+					'Show Nibble'
 					''' */
 			}
 
@@ -6111,6 +6123,7 @@ Mods: {
 			// MimicTitanGlove.DisplayName: Titan Glove
 			// KamikazePixie.DisplayName: Pixie
 			// BabyLifelight.DisplayName: Petlight
+			// Nibble.DisplayName: Nibble
 		}
 
 		// WoodHeader: "[i:FargowiltasSouls/TimberForce] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.WoodHeader}]"

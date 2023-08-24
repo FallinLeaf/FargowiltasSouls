@@ -1,9 +1,11 @@
-﻿using FargowiltasSouls.Core.Systems;
+﻿using FargowiltasSouls.Content.Buffs.Masomode;
+using FargowiltasSouls.Core.Systems;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace FargowiltasSouls.Content.Projectiles.Deathrays
 {
@@ -138,8 +140,9 @@ namespace FargowiltasSouls.Content.Projectiles.Deathrays
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)
         {
-            //target.AddBuff(ModContent.BuffType<Flipped>(), 300);
-            target.AddBuff(BuffID.Confused, 300);
+            target.AddBuff(ModContent.BuffType<SmiteBuff>(), 60 * 30);
+            if (WorldSavingSystem.MasochistModeReal)
+                target.AddBuff(ModContent.BuffType<UnstableBuff>(), 300);
         }
     }
 }

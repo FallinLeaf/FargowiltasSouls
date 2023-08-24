@@ -199,3 +199,29 @@ parry synergy cooldown is midway as intended
 removed fire imp and lava slime modified spawns i give up
 fixed leash sprite being 4x bigger than it should
 fixed being unable to make new characters
+
+added lieflight new theme
+added trojan squirrel new theme
+box of gizmos autofire penalty removed, also grants hunter potion effect when still
+fixed long standing bug where dg swarm had full emode ai
+maso reti fires a comically large deathray
+tiki ench nerfed, no longer gives whip range, reduced buff duration from 1sec to 0.33sec
+added tiki force effect that gives old whip range up
+doubled velocity of big toss mode
+wof ray inflicts smite instead of confused
+maso wof ray also inflicts unstable
+adjusted swarming ai of hornets
+nymph no longer inflicts lovestruck on hit
+bug fix, most keybinds are now properly disabled by timestop, stuns, gold shell, etc.
+low ground disables gravitation
+partially restored vampire knives nerf
+temporary debuff immunities (parry, gold shell, etc.) can only block debuffs that nurse can cleanse
+deer sinew tooltip specifically say dash without accessory
+emode secretly massively reduces damage from DOT debuffs at 10 life or less (NOT in maso)
+nekomi buff, you can only lose meter on hit every 90ticks
+golem geyser telegraph vfx adjusted
+empress p2 angled sword walls buffed, they slightly track your movement
+earth champ life adjusted to reduce p2 heal, overall life slightly reduced
+life champ life adjusted to remove heals, overall life slightly reduced
+abom life adjusted to remove heal, overall life slightly reduced, effective p2 life reduced
+added hokey ball (0.1% drop from shark)

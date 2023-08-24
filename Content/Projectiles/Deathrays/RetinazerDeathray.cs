@@ -1,4 +1,5 @@
 ﻿using FargowiltasSouls.Content.Bosses.VanillaEternity;
+using FargowiltasSouls.Core.Systems;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
@@ -48,17 +49,23 @@ namespace FargowiltasSouls.Content.Projectiles.Deathrays
             {
                 SoundEngine.PlaySound(SoundID.Zombie104, Projectile.Center);
             }
-            float num801 = 1f;
+            float maxScale = 1f;
+            if (WorldSavingSystem.MasochistModeReal)
+            {
+                maxScale = Main.rand.NextFloat(5f, 10f);
+                if (!Main.dedServ && Main.LocalPlayer.GetModPlayer<FargoSoulsPlayer>().Screenshake < 2)
+                    Main.LocalPlayer.GetModPlayer<FargoSoulsPlayer>().Screenshake = 2;
+            }
             Projectile.localAI[0] += 1f;
             if (Projectile.localAI[0] >= maxTime)
             {
                 Projectile.Kill();
                 return;
             }
-            Projectile.scale = (float)Math.Sin(Projectile.localAI[0] * 3.14159274f / maxTime) * 10f * num801;
-            if (Projectile.scale > num801)
+            Projectile.scale = (float)Math.Sin(Projectile.localAI[0] * 3.14159274f / maxTime) * 10f * maxScale;
+            if (Projectile.scale > maxScale)
             {
-                Projectile.scale = num801;
+                Projectile.scale = maxScale;
             }
             //float num804 = Projectile.velocity.ToRotation();
             //num804 += Projectile.ai[0];

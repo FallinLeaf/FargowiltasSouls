@@ -14,7 +14,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\UI\EnchantSlotIcon.png" />
+    <None Remove="Content\Buffs\Pets\NibbleBuff.png" />
     <None Remove="Content\Items\Accessories\Masomode\SlimyShield.png" />
+    <None Remove="Content\Projectiles\Pets\Nibble.png" />
     <None Remove="Content\Tiles\MutantStatueGift.png" />
   </ItemGroup>
   <ItemGroup>

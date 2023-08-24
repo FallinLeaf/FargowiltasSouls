@@ -73,7 +73,7 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.Cavern
         {
             base.OnHitPlayer(npc, target, hurtInfo);
 
-            target.AddBuff(ModContent.BuffType<LovestruckBuff>(), 240);
+            //target.AddBuff(ModContent.BuffType<LovestruckBuff>(), 240);
 
             npc.life += hurtInfo.Damage * 2;
             if (npc.life > npc.lifeMax)

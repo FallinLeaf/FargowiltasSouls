@@ -157,6 +157,8 @@ namespace FargowiltasSouls.Core.ModPlayers
             GaiaSet = false;
             StyxSet = false;
             NekomiSet = false;
+            if (NekomiHitCD > 0)
+                NekomiHitCD--;
 
             BrainMinion = false;
             EaterMinion = false;
@@ -170,6 +172,7 @@ namespace FargowiltasSouls.Core.ModPlayers
             BabyLifelight = false;
             BabySilhouette = false;
             BiteSizeBaron = false;
+            Nibble = false;
             ChibiDevi = false;
             MutantSpawn = false;
             BabyAbom = false;
@@ -584,15 +587,6 @@ namespace FargowiltasSouls.Core.ModPlayers
             if (!HaveCheckedAttackSpeed)
             {
                 HaveCheckedAttackSpeed = true;
-
-                if (!Berserked && !TribalCharm && BoxofGizmos && !item.autoReuse && !Player.autoReuseAllWeapons && !Player.FeralGloveReuse(item))
-                {
-                    int targetUseTime = useTime + 6;
-                    while (useTime / AttackSpeed < targetUseTime)
-                    {
-                        AttackSpeed -= .05f;
-                    }
-                }
 
                 if (Berserked)
                 {

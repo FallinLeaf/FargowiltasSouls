@@ -75,7 +75,7 @@ namespace FargowiltasSouls.Content.Bosses.Champions.Life
             NPC.height = 130;
             NPC.damage = 160;
             NPC.defense = 0;
-            NPC.lifeMax = 35000;
+            NPC.lifeMax = 55000;
             NPC.HitSound = SoundID.NPCHit5;
             NPC.DeathSound = SoundID.NPCDeath7;
             NPC.noGravity = true;
@@ -238,9 +238,12 @@ namespace FargowiltasSouls.Content.Bosses.Champions.Life
                     {
                         SoundEngine.PlaySound(SoundID.ScaryScream, NPC.Center); //arte scream
 
-                        int heal = NPC.lifeMax / 3 - NPC.life;
-                        NPC.life += heal;
-                        CombatText.NewText(NPC.Hitbox, CombatText.HealLife, heal);
+                        if (WorldSavingSystem.MasochistModeReal)
+                        {
+                            int heal = NPC.lifeMax / 3 - NPC.life;
+                            NPC.life += heal;
+                            CombatText.NewText(NPC.Hitbox, CombatText.HealLife, heal);
+                        }
 
                         if (Main.netMode != NetmodeID.MultiplayerClient)
                             Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<Projectiles.GlowRing>(), 0, 0f, Main.myPlayer, NPC.whoAmI, -4);
@@ -265,9 +268,12 @@ namespace FargowiltasSouls.Content.Bosses.Champions.Life
                     {
                         SoundEngine.PlaySound(SoundID.ScaryScream, NPC.Center); //arte scream
 
-                        int heal = NPC.lifeMax - NPC.life;
-                        NPC.life += heal;
-                        CombatText.NewText(NPC.Hitbox, CombatText.HealLife, heal);
+                        if (WorldSavingSystem.MasochistModeReal)
+                        {
+                            int heal = NPC.lifeMax - NPC.life;
+                            NPC.life += heal;
+                            CombatText.NewText(NPC.Hitbox, CombatText.HealLife, heal);
+                        }
 
                         if (Main.netMode != NetmodeID.MultiplayerClient)
                             Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<Projectiles.GlowRing>(), 0, 0f, Main.myPlayer, NPC.whoAmI, -4);
@@ -313,7 +319,7 @@ namespace FargowiltasSouls.Content.Bosses.Champions.Life
                         NPC.netUpdate = true;
                     }
 
-                    if (NPC.localAI[2] == 0 && NPC.life < NPC.lifeMax / 3)
+                    if (NPC.localAI[2] == 0 && NPC.life < NPC.lifeMax * .66)
                     {
                         float buffer = NPC.ai[0];
                         NPC.ai[0] = -1;
@@ -323,7 +329,7 @@ namespace FargowiltasSouls.Content.Bosses.Champions.Life
                         NPC.netUpdate = true;
                     }
 
-                    if (NPC.localAI[2] == 1 && NPC.life < NPC.lifeMax / 3 && WorldSavingSystem.EternityMode)
+                    if (NPC.localAI[2] == 1 && NPC.life < NPC.lifeMax * .33 && WorldSavingSystem.EternityMode)
                     {
                         NPC.ai[0] = -2;
                         NPC.ai[1] = 0;
@@ -696,8 +702,8 @@ namespace FargowiltasSouls.Content.Bosses.Champions.Life
         public override void ModifyIncomingHit(ref NPC.HitModifiers modifiers)
         {
             modifiers.FinalDamage /= 10;
-            if (NPC.localAI[2] == 0 && NPC.life < NPC.lifeMax / 3
-                || NPC.localAI[2] == 1 && NPC.life < NPC.lifeMax / 3 && WorldSavingSystem.EternityMode)
+            if ((NPC.localAI[2] == 0 && NPC.life < NPC.lifeMax * .66)
+                || (NPC.localAI[2] == 1 && NPC.life < NPC.lifeMax * .33 && WorldSavingSystem.EternityMode))
             {
                 modifiers.SetMaxDamage(1);
                 modifiers.DisableCrit();

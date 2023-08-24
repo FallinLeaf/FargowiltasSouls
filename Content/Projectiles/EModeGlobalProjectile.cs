@@ -258,13 +258,13 @@ namespace FargowiltasSouls.Content.Projectiles
                     break;
 
                 case ProjectileID.VampireHeal:
-                    //each lifesteal hits timer again when above 33% life (total, halved lifesteal rate)
-                    //if (Main.player[projectile.owner].statLife > Main.player[projectile.owner].statLifeMax2 / 3)
-                    //    Main.player[projectile.owner].lifeSteal -= projectile.ai[1];
+                    //each lifesteal hits timer again when above 50% life (total, halved lifesteal rate)
+                    if (Main.player[projectile.owner].statLife > Main.player[projectile.owner].statLifeMax2 / 3)
+                        Main.player[projectile.owner].lifeSteal -= projectile.ai[1];
 
-                    //each lifesteal hits timer again when above 33% life (stacks with above, total 1/3rd lifesteal rate)
-                    //if (Main.player[projectile.owner].statLife > Main.player[projectile.owner].statLifeMax2 * 2 / 3)
-                    //    Main.player[projectile.owner].lifeSteal -= projectile.ai[1];
+                    //each lifesteal hits timer again when above 75% life (stacks with above, total 1/3rd lifesteal rate)
+                    if (Main.player[projectile.owner].statLife > Main.player[projectile.owner].statLifeMax2 * 2 / 3)
+                        Main.player[projectile.owner].lifeSteal -= projectile.ai[1];
                     break;
 
                 case ProjectileID.Cthulunado:
@@ -709,9 +709,20 @@ namespace FargowiltasSouls.Content.Projectiles
 
                         projectile.position -= projectile.velocity * slowdown * Utils.Clamp((float)Math.Sqrt(1f - counter / 60f), 0f, 1f);
                     }
-                    else if (NonSwarmFight(projectile, NPCID.HallowBoss) && sourceNPC.ai[0] == 6 && sourceNPC.ai[1] > 60)
+                    else if (NonSwarmFight(projectile, NPCID.HallowBoss))
                     {
-                        projectile.position += sourceNPC.position - sourceNPC.oldPosition;
+                        if (sourceNPC.ai[0] == 7 && sourceNPC.ai[1] < 255) //phase 2 exclusive angled walls attack
+                        {
+                            if (sourceNPC.HasValidTarget)
+                            {
+                                float modifier = WorldSavingSystem.MasochistModeReal ? 0.6f : 0.4f;
+                                projectile.position += modifier * (Main.player[sourceNPC.target].position - Main.player[sourceNPC.target].oldPosition);
+                            }
+                        }
+                        else if (sourceNPC.ai[0] == 6 && sourceNPC.ai[1] > 60) //the massive aoe sword spam during sun beams
+                        {
+                            projectile.position += sourceNPC.position - sourceNPC.oldPosition;
+                        }
                     }
                     break;
 

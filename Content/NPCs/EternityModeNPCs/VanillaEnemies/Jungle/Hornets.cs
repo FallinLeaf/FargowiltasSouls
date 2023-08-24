@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using FargowiltasSouls.Content.Buffs.Masomode;
 using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Core.NPCMatching;
+using FargowiltasSouls.Core.Systems;
 
 namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.Jungle
 {
@@ -50,13 +51,10 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.Jungle
         {
             base.AI(npc);
 
-            if (++Timer > 420) //put here so they dont all dash at once after you get swarming
+            //put here so they dont all dash at once after you get swarming
+            if (++Timer > (WorldSavingSystem.MasochistModeReal ? 240 : 420))
             {
                 Timer = 0;
-
-                //move in more frequently when especially far away
-                if (npc.HasPlayerTarget && npc.Distance(Main.player[npc.target].Center) > 1200)
-                    Timer += 90;
             }
 
             if (npc.HasPlayerTarget)
@@ -78,6 +76,10 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.Jungle
                     {
                         if (!Collision.CanHitLine(npc.Center, 0, 0, Main.player[npc.target].Center, 0, 0))
                             npc.velocity = Math.Min(6f, npc.velocity.Length()) * npc.DirectionTo(Main.player[npc.target].Center);
+
+                        //move in more frequently when especially far away
+                        if (npc.Distance(Main.player[npc.target].Center) > 1200)
+                            Timer += 90;
 
                         npc.netUpdate = true;
                         NetSync(npc);

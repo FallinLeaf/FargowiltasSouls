@@ -14,6 +14,7 @@ using FargowiltasSouls.Content.Bosses.DeviBoss;
 using FargowiltasSouls.Content.Bosses.Champions.Shadow;
 using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Core.NPCMatching;
+using FargowiltasSouls.Core.Systems;
 
 namespace FargowiltasSouls.Content.Bosses.VanillaEternity
 {
@@ -53,6 +54,9 @@ namespace FargowiltasSouls.Content.Bosses.VanillaEternity
         public override void AI(NPC npc)
         {
             base.AI(npc);
+
+            if (WorldSavingSystem.SwarmActive)
+                return;
 
             EModeGlobalNPC.guardBoss = npc.whoAmI;
             npc.damage = npc.defDamage;

@@ -133,6 +133,12 @@ namespace FargowiltasSouls.Core.ModPlayers
                 Player.controlUseItem = true;
                 Player.releaseUseItem = true;
             }
+
+            if (LowGround)
+            {
+                Player.gravControl = false;
+                Player.gravControl2 = false;
+            }
         }
 
         public override void PostUpdateEquips()

@@ -80,7 +80,7 @@ namespace FargowiltasSouls.Content.Bosses.AbomBoss
             NPC.height = 120;
             NPC.damage = 240;
             NPC.defense = 80;
-            NPC.lifeMax = WorldSavingSystem.MasochistModeReal ? 624000 : 576000;
+            NPC.lifeMax = 750000;
             if (Main.expertMode) //compensate universe core
                 NPC.lifeMax *= 2;
             NPC.value = Item.buyPrice(5);
@@ -327,7 +327,7 @@ namespace FargowiltasSouls.Content.Bosses.AbomBoss
                             Main.dust[d].velocity *= 4f;
                         }
                         NPC.localAI[3] = 2; //this marks p2
-                        if (WorldSavingSystem.EternityMode)
+                        if (WorldSavingSystem.MasochistModeReal)
                         {
                             int heal = (int)(NPC.lifeMax / 90 * Main.rand.NextFloat(1f, 1.5f));
                             NPC.life += heal;

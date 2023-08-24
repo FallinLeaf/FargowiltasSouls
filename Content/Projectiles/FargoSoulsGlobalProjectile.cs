@@ -694,7 +694,7 @@ namespace FargowiltasSouls.Content.Projectiles
             }
         }
 
-        const int MAX_TIKI_TIMER = 60;
+        const int MAX_TIKI_TIMER = 20;
 
         public override void AI(Projectile projectile)
         {

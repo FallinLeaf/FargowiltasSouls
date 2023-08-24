@@ -619,7 +619,7 @@ namespace FargowiltasSouls.Core.ModPlayers
                 else if (proj != null)
                     attacker = proj.Center;
                 if (attacker != default)
-                    Player.velocity = Vector2.Normalize(Player.Center - attacker) * 30;
+                    Player.velocity = Vector2.Normalize(Player.Center - attacker) * 30 * 2;
             }
         }
 
@@ -744,8 +744,10 @@ namespace FargowiltasSouls.Core.ModPlayers
                 Player.AddBuff(ModContent.BuffType<TitaniumCDBuff>(), 60 * 10);
             }
 
-            if (NekomiSet)
+            if (NekomiSet && NekomiHitCD <= 0)
             {
+                NekomiHitCD = 90;
+
                 const int heartsLost = 1;
                 int meterPerHeart = NekomiHood.MAX_METER / NekomiHood.MAX_HEARTS;
                 int meterLost = meterPerHeart * heartsLost;

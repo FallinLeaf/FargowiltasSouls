@@ -1373,7 +1373,8 @@ namespace FargowiltasSouls.Core.ModPlayers
 
         public void TikiEffect(bool hideVisual)
         {
-            Player.whipRangeMultiplier += 0.2f;
+            if (SpiritForce)
+                Player.whipRangeMultiplier += 0.2f;
 
             if (Player.GetToggleValue("Tiki"))
                 TikiEnchantActive = true;

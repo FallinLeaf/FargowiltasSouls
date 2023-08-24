@@ -1,6 +1,7 @@
 ﻿using FargowiltasSouls.Content.Bosses.AbomBoss;
 using FargowiltasSouls.Content.Items.Accessories.Masomode;
 using FargowiltasSouls.Content.Items.Consumables;
+using FargowiltasSouls.Content.Items.Pets;
 using FargowiltasSouls.Core.ItemDropRules.Conditions;
 using System;
 using System.Collections.Generic;
@@ -514,6 +515,9 @@ namespace FargowiltasSouls.Core.Globals
                     break;
                 case NPCID.MisterStabby or NPCID.SnowBalla or NPCID.SnowmanGangsta:
                     FargoSoulsUtil.EModeDrop(npcLoot, ItemDropRule.Common(ModContent.ItemType<OrdinaryCarrot>(), 50));
+                    break;
+                case NPCID.Shark:
+                    FargoSoulsUtil.EModeDrop(npcLoot, ItemDropRule.Common(ModContent.ItemType<HokeyBall>(), 1000));
                     break;
 
             }

@@ -426,6 +426,16 @@ namespace FargowiltasSouls.Core.ModPlayers
             }
         }
 
+        public override void UpdateBadLifeRegen()
+        {
+            if (!WorldSavingSystem.EternityMode)
+                return;
+
+            //silently make it much harder to die to DOT debuffs, not in maso
+            if (Player.lifeRegen < 0 && Player.statLife < 10 && !WorldSavingSystem.MasochistModeReal)
+                Player.lifeRegen = 0;
+        }
+
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
         {
             if (!WorldSavingSystem.EternityMode)

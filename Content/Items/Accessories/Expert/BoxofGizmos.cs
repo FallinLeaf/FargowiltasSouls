@@ -33,11 +33,19 @@ Slightly reduces use speed of affected items"); */
         {
             player.GetModPlayer<FargoSoulsPlayer>().BoxofGizmos = true;
 
-            if (++counter > 10)
+            if (player.whoAmI == Main.myPlayer && player.GetModPlayer<FargoSoulsPlayer>().IsStandingStill && player.itemAnimation == 0)
+            {
+                if (++counter > 60)
+                {
+                    player.detectCreature = true;
+
+                    if (counter % 10 == 0)
+                        Main.instance.SpelunkerProjectileHelper.AddSpotToCheck(player.Center);
+                }
+            }
+            else
             {
                 counter = 0;
-                if (player.whoAmI == Main.myPlayer && player.GetModPlayer<FargoSoulsPlayer>().IsStandingStill && player.itemAnimation == 0)
-                    Main.instance.SpelunkerProjectileHelper.AddSpotToCheck(player.Center);
             }
         }
 

@@ -209,6 +209,7 @@ namespace FargowiltasSouls
             if (Main.debuff[type]
                 && timeToAdd > 3 //dont affect auras
                 && !Main.buffNoTimeDisplay[type] //dont affect hidden time debuffs
+                && !BuffID.Sets.NurseCannotRemoveDebuff[type] //only affect debuffs that nurse can cleanse
                 && (modPlayer.ParryDebuffImmuneTime > 0
                     || modPlayer.BetsyDashing 
                     || modPlayer.GoldShell 

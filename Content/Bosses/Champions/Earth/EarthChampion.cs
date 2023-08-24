@@ -76,7 +76,7 @@ namespace FargowiltasSouls.Content.Bosses.Champions.Earth
             NPC.height = 180;
             NPC.damage = 130;
             NPC.defense = 80;
-            NPC.lifeMax = 320000;
+            NPC.lifeMax = 380000;
             NPC.HitSound = SoundID.NPCHit41;
             NPC.DeathSound = SoundID.NPCDeath44;
             NPC.noGravity = true;
@@ -207,10 +207,11 @@ namespace FargowiltasSouls.Content.Bosses.Champions.Earth
                     {
                         NPC.velocity *= 0.9f;
 
-                        int heal = (int)(NPC.lifeMax / 2 / 120 * Main.rand.NextFloat(1f, 1.5f));
+                        int heal = (int)(NPC.lifeMax / 3 / 120 * Main.rand.NextFloat(1f, 1.5f));
                         NPC.life += heal;
-                        if (NPC.life > NPC.lifeMax)
-                            NPC.life = NPC.lifeMax;
+                        int maxLife = NPC.lifeMax / (WorldSavingSystem.MasochistModeReal ? 1 : 2);
+                        if (NPC.life > maxLife)
+                            NPC.life = maxLife;
                         CombatText.NewText(NPC.Hitbox, CombatText.HealLife, heal);
 
                         for (int i = 0; i < 5; i++)
@@ -252,7 +253,7 @@ namespace FargowiltasSouls.Content.Bosses.Champions.Earth
                             Movement(targetPos, 0.4f, 16f, true);
                     }
 
-                    if (NPC.localAI[2] == 0 && NPC.life < NPC.lifeMax / 2)
+                    if (NPC.localAI[2] == 0 && NPC.life < NPC.lifeMax / 3)
                     {
                         NPC.ai[0] = -1;
                         NPC.ai[1] = 0;
@@ -330,7 +331,7 @@ namespace FargowiltasSouls.Content.Bosses.Champions.Earth
                         }
                     }
 
-                    if (NPC.localAI[2] == 0 && NPC.life < NPC.lifeMax / 2)
+                    if (NPC.localAI[2] == 0 && NPC.life < NPC.lifeMax / 3)
                     {
                         NPC.ai[0] = -1;
                         NPC.ai[1] = 0;

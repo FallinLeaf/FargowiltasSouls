@@ -225,7 +225,8 @@ namespace FargowiltasSouls.Content.Bosses.TrojanSquirrel
             NPC.value = Item.buyPrice(silver: 75);
             NPC.boss = true;
 
-            Music = MusicID.OtherworldlyBoss1;
+            Music = ModLoader.TryGetMod("FargowiltasMusic", out Mod musicMod)
+                ? MusicLoader.GetMusicSlot(musicMod, "Assets/Music/TrojanSquirrel") : MusicID.OtherworldlyBoss1;
             SceneEffectPriority = SceneEffectPriority.BossLow;
 
             NPC.BossBar = ModContent.GetInstance<CompositeBossBar>();
