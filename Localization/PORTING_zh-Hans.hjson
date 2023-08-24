@@ -1537,6 +1537,11 @@ Mods: {
 				DisplayName: Seeker of Treasures
 				Description: Give it a few thousand years to grow up
 			}
+			
+			NibbleBuff: {
+				DisplayName: Nibble
+				Description: Just one tiny bite (please)
+			}
 
 			BrokenShell: {
 				DisplayName: Mods.FargowiltasSouls.BuffName.BrokenShell
@@ -4469,6 +4474,15 @@ Mods: {
 					'''
 			}
 
+			HokeyBall: {
+				DisplayName: Hokey Ball
+				Tooltip:
+					'''
+					Summons Nibble
+					'Show Nibble'
+					'''
+			}
+
 			AbomRelic: {
 				DisplayName: Abominationn Relic
 				Tooltip: ""
@@ -6110,6 +6124,7 @@ Mods: {
 			MimicTitanGlove.DisplayName: Titan Glove
 			KamikazePixie.DisplayName: Pixie
 			BabyLifelight.DisplayName: Petlight
+			Nibble.DisplayName: Nibble
 		}
 
 		WoodHeader: "[i:FargowiltasSouls/TimberForce] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.WoodHeader}]"

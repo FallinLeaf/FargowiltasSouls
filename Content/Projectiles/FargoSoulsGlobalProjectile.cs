@@ -1014,7 +1014,6 @@ namespace FargowiltasSouls.Content.Projectiles
                 modifiers.FinalDamage /= 2;
                 // TODO: maybe use defense here
                 //modifiers.FinalDamage.Flat -= AccountForDefenseShred(2);
-                Main.NewText(modifiers.FinalDamage.Flat);
             }
 
             if (noInteractionWithNPCImmunityFrames)
