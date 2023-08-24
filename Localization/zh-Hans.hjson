@@ -50,15 +50,15 @@ Mods: {
 			RedRiding: ""
 			RichMahogany: 牵引速度×2.5，伤害减免和荆棘效果大幅提升
 			Shadewood: 增加光环大小和血液伤害，并且会附加灵液效果
-			// Shinobi: ""
-			// Shroomite: ""
+			Shinobi: ""
+			Shroomite: ""
 			Silver: 格挡可以抵消至多200伤害，且会给予惊人一刻增益
-			// Solar: ""
-			// Spectre: ""
-			// Spider: ""
-			// Spooky: ""
-			// Stardust: ""
-			// Tiki: Increases whip range by 20%
+			Solar: ""
+			Spectre: ""
+			Spider: ""
+			Spooky: ""
+			Stardust: ""
+			Tiki: Increases whip range by 20%
 			Tin: 最小暴击率提高到10%，最大暴击率至少有50%，减少了增加暴击过程的冷却时间
 			Titanium: 碎片会但只会受到最高的职业伤害加成；伤害减免提高至75%
 			Tungsten: 将武器大小提升到300%，伤害加成提升到20%，减少冷却时间
@@ -1518,7 +1518,7 @@ Mods: {
 				DisplayName: 宝藏探索者
 				Description: 再给它几千年时间来长大
 			}
-
+			
 			NibbleBuff: {
 				// DisplayName: Nibble
 				// Description: Just one tiny bite (please)
@@ -4433,7 +4433,7 @@ Mods: {
 					“你以为你安全了？”
 					'''
 			}
-
+			
 			HokeyBall: {
 				// DisplayName: Hokey Ball
 				/* Tooltip:
@@ -6031,57 +6031,57 @@ Mods: {
 			VenomSpit.DisplayName: 毒唾沫
 			RainbowSlimeSpikeFriendly.DisplayName: 彩虹史莱姆尖刺
 			PlasmaDeathRay.DisplayName: 等离子死亡射线
-			// AbomBossProjectile.DisplayName: Abominationn
-			// BaronMine.DisplayName: Banished Baron's Mine
-			// BaronNuke.DisplayName: Banished Baron's Spicy Beeping Nuclear Torpedo of Death and Destruction
-			// BaronRocket.DisplayName: Banished Baron's Rocket
-			// BaronScrap.DisplayName: Banished Baron Scrap
-			// BaronShrapnel.DisplayName: Banished Baron Mine Shrapnel
-			// ShadowOrbProjectile.DisplayName: Shadow Orb
-			// WillDeathrayBig.DisplayName: Will Deathray
-			// DeviBossProjectile.DisplayName: Deviantt
-			// JevilScar.DisplayName: Enchanted Lightblade
-			// LifeBlaster.DisplayName: Life Blaster
-			// LifeBomb.DisplayName: Life Mine
-			// LifeTransitionBomb.DisplayName: Life Mine
-			// LifeBombExplosion.DisplayName: Life Bomb
-			// LifeCageExplosion.DisplayName: Cage Explosion
-			// LifeCageProjectile.DisplayName: Life Cage
-			// LifeCageTelegraph.DisplayName: Cage Telegraph
-			// LifeChalBlasterDeathray.DisplayName: Holy Deathray
-			// LifeChalDeathray.DisplayName: Holy Deathray
-			// LifeCrosshair.DisplayName: Crosshair
-			// LifeHomingProj.DisplayName: Lesser Fairy
-			// LifeNeggravProj.DisplayName: Cross
-			// LifeNuke.DisplayName: Life Bomb
-			// LifeProjLarge.DisplayName: Cross
-			// LifeProjSmall.DisplayName: Life Shot
-			// LifeRuneHitbox.DisplayName: Life Rune
-			// LifeScar.DisplayName: Life Mine
-			// LifeSlurp.DisplayName: Gem
-			// LifeSplittingProjSmall.DisplayName: Life Shot
-			// LifeTpTelegraph.DisplayName: Teleport Telegraph
-			// LifeWave.DisplayName: Life Wave
-			// MutantBossProjectile.DisplayName: Mutant
-			// ArcTelegraph.DisplayName: Arc Telegraph
-			// BloomLine.DisplayName: Bloom Line
-			// FishStickProjTornado.DisplayName: Fish Stick
-			// PrismaRegaliaProj.DisplayName: Prisma Regalia
-			// PrismaRegaliaStar.DisplayName: Star
-			// CrystallineCongregationProj.DisplayName: Crystal Ball
-			// EnchantedLifebladeProjectile.DisplayName: Enchanted Lifeblade
-			// LightslingerBomb.DisplayName: Light Bomb
-			// LightslingerBombshot.DisplayName: Light Shot
-			// LightslingerShot.DisplayName: Light Shot
-			// SpiritArrow.DisplayName: Spirit Arrow
-			// SpiritArrowFlame.DisplayName: Spirit Flame
-			// CirnoBomb.DisplayName: Cirno Bomb
-			// RetinazerDeathray.DisplayName: Blazing Deathray
-			// MimicDagger.DisplayName: Magic Dagger
-			// MimicHallowStar.DisplayName: Hallow Star
-			// MimicTitanGlove.DisplayName: Titan Glove
-			// KamikazePixie.DisplayName: Pixie
-			// BabyLifelight.DisplayName: Petlight
+			AbomBossProjectile.DisplayName: Abominationn
+			BaronMine.DisplayName: Banished Baron's Mine
+			BaronNuke.DisplayName: Banished Baron's Spicy Beeping Nuclear Torpedo of Death and Destruction
+			BaronRocket.DisplayName: Banished Baron's Rocket
+			BaronScrap.DisplayName: Banished Baron Scrap
+			BaronShrapnel.DisplayName: Banished Baron Mine Shrapnel
+			ShadowOrbProjectile.DisplayName: Shadow Orb
+			WillDeathrayBig.DisplayName: Will Deathray
+			DeviBossProjectile.DisplayName: Deviantt
+			JevilScar.DisplayName: Enchanted Lightblade
+			LifeBlaster.DisplayName: Life Blaster
+			LifeBomb.DisplayName: Life Mine
+			LifeTransitionBomb.DisplayName: Life Mine
+			LifeBombExplosion.DisplayName: Life Bomb
+			LifeCageExplosion.DisplayName: Cage Explosion
+			LifeCageProjectile.DisplayName: Life Cage
+			LifeCageTelegraph.DisplayName: Cage Telegraph
+			LifeChalBlasterDeathray.DisplayName: Holy Deathray
+			LifeChalDeathray.DisplayName: Holy Deathray
+			LifeCrosshair.DisplayName: Crosshair
+			LifeHomingProj.DisplayName: Lesser Fairy
+			LifeNeggravProj.DisplayName: Cross
+			LifeNuke.DisplayName: Life Bomb
+			LifeProjLarge.DisplayName: Cross
+			LifeProjSmall.DisplayName: Life Shot
+			LifeRuneHitbox.DisplayName: Life Rune
+			LifeScar.DisplayName: Life Mine
+			LifeSlurp.DisplayName: Gem
+			LifeSplittingProjSmall.DisplayName: Life Shot
+			LifeTpTelegraph.DisplayName: Teleport Telegraph
+			LifeWave.DisplayName: Life Wave
+			MutantBossProjectile.DisplayName: Mutant
+			ArcTelegraph.DisplayName: Arc Telegraph
+			BloomLine.DisplayName: Bloom Line
+			FishStickProjTornado.DisplayName: Fish Stick
+			PrismaRegaliaProj.DisplayName: Prisma Regalia
+			PrismaRegaliaStar.DisplayName: Star
+			CrystallineCongregationProj.DisplayName: Crystal Ball
+			EnchantedLifebladeProjectile.DisplayName: Enchanted Lifeblade
+			LightslingerBomb.DisplayName: Light Bomb
+			LightslingerBombshot.DisplayName: Light Shot
+			LightslingerShot.DisplayName: Light Shot
+			SpiritArrow.DisplayName: Spirit Arrow
+			SpiritArrowFlame.DisplayName: Spirit Flame
+			CirnoBomb.DisplayName: Cirno Bomb
+			RetinazerDeathray.DisplayName: Blazing Deathray
+			MimicDagger.DisplayName: Magic Dagger
+			MimicHallowStar.DisplayName: Hallow Star
+			MimicTitanGlove.DisplayName: Titan Glove
+			KamikazePixie.DisplayName: Pixie
+			BabyLifelight.DisplayName: Petlight
 		}
 
 		WoodHeader: "[i:FargowiltasSouls/TimberForce] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.WoodHeader}]"
