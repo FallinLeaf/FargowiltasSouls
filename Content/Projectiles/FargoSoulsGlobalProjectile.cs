@@ -988,8 +988,8 @@ namespace FargowiltasSouls.Content.Projectiles
             if (stormTimer > 0)
                 modifiers.FinalDamage *= Main.player[projectile.owner].GetModPlayer<FargoSoulsPlayer>().SpiritForce ? 1.6f : 1.3f;
 
-            int AccountForDefenseShred(int modifier)
-            {
+            /*int AccountForDefenseShred(int modifier)
+            /{
                 int defenseIgnored = projectile.ArmorPenetration;
                 if (target.ichor)
                     defenseIgnored += 15;
@@ -1000,20 +1000,21 @@ namespace FargowiltasSouls.Content.Projectiles
                 int effectOnDamage = actualDefenseIgnored / 2;
 
                 return effectOnDamage / modifier;
-            }
+            }*/
 
             if (AdamModifier != 0)
             {
                 modifiers.FinalDamage /= AdamModifier;
                 // TODO: maybe use defense here
-                modifiers.FinalDamage.Flat -= AccountForDefenseShred(AdamModifier);
+                //modifiers.FinalDamage.Flat -= AccountForDefenseShred(AdamModifier);
             }
 
             if (NinjaSpeedup > 0)
             {
                 modifiers.FinalDamage /= 2;
                 // TODO: maybe use defense here
-                modifiers.FinalDamage.Flat -= AccountForDefenseShred(2);
+                //modifiers.FinalDamage.Flat -= AccountForDefenseShred(2);
+                Main.NewText(modifiers.FinalDamage.Flat);
             }
 
             if (noInteractionWithNPCImmunityFrames)
