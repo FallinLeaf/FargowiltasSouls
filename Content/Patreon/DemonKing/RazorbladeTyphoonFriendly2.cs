@@ -27,7 +27,8 @@ namespace FargowiltasSouls.Content.Patreon.DemonKing
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            //if (target.defense > 0) damage += target.defense / 4;
+            /*if (target.defense > 0)
+                modifiers.FinalDamage.Flat += target.defense / 4;*/
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
