@@ -8,12 +8,14 @@ using Terraria.ModLoader;
 using FargowiltasSouls.Core.Systems;
 using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Core.NPCMatching;
+using System.Linq;
 
-namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEvents
+namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEvents.Solar
 {
     public class SolarEnemies : EModeNPCBehaviour
     {
-        public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchTypeRange(
+        public static int[] SolarEnemyIDs =
+        {
             NPCID.SolarCrawltipedeHead,
             NPCID.SolarCrawltipedeBody,
             NPCID.SolarCrawltipedeTail,
@@ -25,12 +27,15 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
             NPCID.SolarSroller,
             NPCID.SolarFlare,
             NPCID.SolarGoop
+
+        };
+        public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchTypeRange(
+            SolarEnemyIDs
         );
 
         public override void OnFirstTick(NPC npc)
         {
             base.OnFirstTick(npc);
-
             npc.buffImmune[BuffID.Suffocation] = true;
             npc.buffImmune[BuffID.OnFire] = true;
             npc.buffImmune[BuffID.OnFire3] = true;

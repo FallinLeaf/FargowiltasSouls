@@ -52,7 +52,7 @@ namespace FargowiltasSouls.Content.Projectiles.Deathrays
             float maxScale = 1f;
             if (WorldSavingSystem.MasochistModeReal)
             {
-                maxScale = Main.rand.NextFloat(5f, 10f);
+                maxScale = Main.rand.NextFloat(2.5f, 5f);
                 if (!Main.dedServ && Main.LocalPlayer.GetModPlayer<FargoSoulsPlayer>().Screenshake < 2)
                     Main.LocalPlayer.GetModPlayer<FargoSoulsPlayer>().Screenshake = 2;
             }

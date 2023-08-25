@@ -56,7 +56,7 @@ namespace FargowiltasSouls.Content.Bosses.Champions.Will
                 Projectile.localAI[0] = 0.0f;
                 for (int index1 = 0; index1 < 12; ++index1)
                 {
-                    Vector2 vector2 = (Vector2.UnitX * -Projectile.width / 2f + -Vector2.UnitY.RotatedBy(index1 * 3.14159274101257 / 6.0, new Vector2()) * new Vector2(8f, 16f)).RotatedBy(Projectile.rotation - 1.57079637050629, new Vector2());
+                    Vector2 vector2 = (Vector2.UnitX * -Projectile.width / 2f + -Vector2.UnitY.RotatedBy(index1 * 3.14159274101257 / 6.0, new Vector2()) * new Vector2(8f, 16f)).RotatedBy(Projectile.rotation - (float)Math.PI / 2, new Vector2());
                     int index2 = Dust.NewDust(Projectile.Center, 0, 0, DustID.Torch, 0.0f, 0.0f, 160, new Color(), 1f);
                     Main.dust[index2].scale = 1.1f;
                     Main.dust[index2].noGravity = true;

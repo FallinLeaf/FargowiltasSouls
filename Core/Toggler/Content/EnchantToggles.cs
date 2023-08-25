@@ -37,6 +37,7 @@ namespace FargowiltasSouls.Core.Toggler.Content
         public string Tungsten;
         public string TungstenProj;
         public string Obsidian;
+        public string AshWood;
 
         public int WillHeader = ModContent.ItemType<WillForce>();
         public string Gladiator;

@@ -27,7 +27,7 @@ Grants knockback immunity when you are facing the attack
         }
 
         protected override Color nameColor => new(156, 146, 78);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Gladiator");
+        
 
         public override void SetDefaults()
         {

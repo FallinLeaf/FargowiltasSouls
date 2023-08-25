@@ -225,3 +225,11 @@ earth champ life adjusted to reduce p2 heal, overall life slightly reduced
 life champ life adjusted to remove heals, overall life slightly reduced
 abom life adjusted to remove heal, overall life slightly reduced, effective p2 life reduced
 added hokey ball (0.1% drop from shark)
+
+pumpkin moon loot is locked to wave 15
+fixed emode DOT death prevention not working
+fixed certain stuns e.g. actual stunned debuff not blocking keybinds as intended
+getting hit by mutant spark disables items
+maso skeletron has no reticle and uses dg attacks when spinning
+
+reduced size of comically large reti ray

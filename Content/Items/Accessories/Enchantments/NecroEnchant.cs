@@ -32,7 +32,7 @@ Effects of Bone Glove
         }
 
         protected override Color nameColor => new(86, 86, 67);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Necro");
+        
 
         public override void SetDefaults()
         {

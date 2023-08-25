@@ -47,7 +47,7 @@ namespace FargowiltasSouls.Content.Bosses.MutantBoss
 
         public override void AI()
         {
-            Projectile.rotation = Projectile.velocity.ToRotation() + 1.570796f;
+            Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2;
 
             if (Projectile.localAI[0] < ProjectileID.Sets.TrailCacheLength[Projectile.type])
             {

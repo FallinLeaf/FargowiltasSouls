@@ -20,7 +20,7 @@ namespace FargowiltasSouls.Content.Items.Accessories.Souls
 @"Increases HP by 100
 15% damage reduction
 Increases life regeneration by 5
-Grants immunity to knockback, several debuffs, and fall damage
+Grants immunity to knockback, several debuffs, Shimmering, and fall damage
 Enemies are more likely to target you
 Effects of Brain of Confusion, Star Veil, and Bee Cloak
 Effects of Shiny Stone, Paladin's Shield, and Frozen Turtle Shell
@@ -72,6 +72,7 @@ Effects of Shiny Stone, Paladin's Shield, and Frozen Turtle Shell
             .AddIngredient(ItemID.HeroShield)
             .AddIngredient(ItemID.FrozenShield)
             .AddIngredient(ItemID.AnkhShield)
+            .AddIngredient(ItemID.ShimmerCloak)
 
             .AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"))
 

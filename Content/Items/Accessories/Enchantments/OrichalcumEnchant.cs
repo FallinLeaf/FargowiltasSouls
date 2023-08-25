@@ -19,7 +19,7 @@ Damaging debuffs deal 2.5x damage
         }
 
         protected override Color nameColor => new(235, 50, 145);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Orichalcum");
+        
 
         public override void SetDefaults()
         {

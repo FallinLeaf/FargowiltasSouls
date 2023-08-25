@@ -22,7 +22,6 @@ namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
         }
 
         protected override Color nameColor => new(221, 85, 125);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Adamantite");
 
         public override void SetDefaults()
         {

@@ -55,7 +55,6 @@ namespace FargowiltasSouls.Content.Projectiles.BossWeapons
         }
 
         int soundtimer;
-        int dieTimer;
         public override void AI()
         {
             int byIdentity = FargoSoulsUtil.GetProjectileByIdentity(Projectile.owner, (int)Projectile.localAI[0], ModContent.ProjectileType<BlenderYoyoProj>());
@@ -63,8 +62,7 @@ namespace FargowiltasSouls.Content.Projectiles.BossWeapons
             {
                 if (Projectile.owner == Main.myPlayer)
                 {
-                    if (++dieTimer > 30)
-                        Projectile.Kill();
+                    Projectile.Kill();
                     return;
                 }
             }
@@ -104,8 +102,6 @@ namespace FargowiltasSouls.Content.Projectiles.BossWeapons
 
             if (soundtimer > 0)
                 soundtimer--;
-
-            dieTimer = 0;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

@@ -26,7 +26,6 @@ Effects of Lavaproof Tackle Bag
         }
 
         protected override Color nameColor => new(113, 125, 109);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Angler");
 
         public override void SetDefaults()
         {

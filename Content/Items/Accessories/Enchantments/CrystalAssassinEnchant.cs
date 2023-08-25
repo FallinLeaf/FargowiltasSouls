@@ -24,7 +24,6 @@ First Strike ensures your next attack hits a vital spot dealing 3x damage and re
         }
 
         protected override Color nameColor => new(36, 157, 207);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.CrystalAssassin");
 
         public override void SetDefaults()
         {

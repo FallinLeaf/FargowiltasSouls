@@ -18,6 +18,7 @@ using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Common.Utilities;
 using FargowiltasSouls.Content.Bosses.Champions.Shadow;
 using FargowiltasSouls.Core.NPCMatching;
+using FargowiltasSouls.Content.Bosses.DeviBoss;
 
 namespace FargowiltasSouls.Content.Bosses.VanillaEternity
 {
@@ -86,7 +87,7 @@ namespace FargowiltasSouls.Content.Bosses.VanillaEternity
             {
                 if (npc.ai[2] == 800 - 90) //telegraph spin
                 {
-                    if (Main.netMode != NetmodeID.MultiplayerClient)
+                    if (Main.netMode != NetmodeID.MultiplayerClient && !WorldSavingSystem.MasochistModeReal)
                         Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center, Vector2.Zero, ModContent.ProjectileType<TargetingReticle>(), 0, 0f, Main.myPlayer, npc.whoAmI, npc.type);
                 }
                 if (npc.ai[2] < 800 - 5)
@@ -115,34 +116,9 @@ namespace FargowiltasSouls.Content.Bosses.VanillaEternity
                     if (!npc.HasValidTarget)
                         npc.TargetClosest(false);
 
-                    if (npc.ai[1] == 1) //do cross guardian attack
+                    if (npc.ai[1] == 1)
                     {
-                        if (!WorldSavingSystem.MasochistModeReal)
-                        {
-                            for (int i = 0; i < Main.maxProjectiles; i++) //also clear leftover babies
-                            {
-                                if (Main.projectile[i].active && Main.projectile[i].hostile && Main.projectile[i].type == ModContent.ProjectileType<SkeletronGuardian2>())
-                                    Main.projectile[i].Kill();
-                            }
-                        }
-
-                        if ((npc.life >= npc.lifeMax * .75 || WorldSavingSystem.MasochistModeReal) && Main.netMode != NetmodeID.MultiplayerClient)
-                        {
-                            for (int i = 0; i < 4; i++)
-                            {
-                                for (int j = -2; j <= 2; j++)
-                                {
-                                    Vector2 spawnPos = new(1200, 80 * j);
-                                    Vector2 vel = -8 * Vector2.UnitX;
-                                    spawnPos = Main.player[npc.target].Center + spawnPos.RotatedBy(Math.PI / 2 * (i + 0.5));
-                                    vel = vel.RotatedBy(Math.PI / 2 * (i + 0.5));
-                                    int p = Projectile.NewProjectile(npc.GetSource_FromThis(), spawnPos, vel, ModContent.ProjectileType<ShadowGuardian>(),
-                                        FargoSoulsUtil.ScaledProjectileDamage(npc.damage), 0f, Main.myPlayer);
-                                    if (p != Main.maxProjectiles)
-                                        Main.projectile[p].timeLeft = 1200 / 8 + 1;
-                                }
-                            }
-                        }
+                        CrossGuardianAttack(npc);
                     }
                 }
 
@@ -172,21 +148,12 @@ namespace FargowiltasSouls.Content.Bosses.VanillaEternity
 
                     SoundEngine.PlaySound(SoundID.ForceRoarPitched, npc.Center);
 
-                    if (Main.netMode != NetmodeID.MultiplayerClient) //spray of baby guardian missiles
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
-                        const int max = 30;
-                        float modifier = 1f - (float)npc.life / npc.lifeMax;
-                        modifier *= 4f / 3f; //scaling maxes at 25% life
-                        if (modifier > 1f || WorldSavingSystem.MasochistModeReal) //cap it, or force it to cap in emode
-                            modifier = 1f;
-                        int actualNumberToSpawn = (int)(max * modifier);
-                        for (int i = 0; i < actualNumberToSpawn; i++)
-                        {
-                            float speed = Main.rand.NextFloat(3f, 9f);
-                            Vector2 velocity = speed * npc.DirectionFrom(Main.player[npc.target].Center).RotatedBy(Math.PI * (Main.rand.NextDouble() - 0.5));
-                            float ai1 = speed / (60f + Main.rand.NextFloat(actualNumberToSpawn * 2));
-                            Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center, velocity, ModContent.ProjectileType<SkeletronGuardian>(), FargoSoulsUtil.ScaledProjectileDamage(npc.damage, 0.8f), 0f, Main.myPlayer, 0f, ai1);
-                        }
+                        SprayHomingBabies(npc);
+
+                        if (WorldSavingSystem.MasochistModeReal)
+                            DungeonGuardianAttack(npc);
                     }
                 }
             }
@@ -296,6 +263,110 @@ namespace FargowiltasSouls.Content.Bosses.VanillaEternity
             EModeUtils.DropSummon(npc, "SuspiciousSkull", NPC.downedBoss3, ref DroppedSummon);
 
             return result;
+        }
+
+        void CrossGuardianAttack(NPC npc)
+        {
+            if (!WorldSavingSystem.MasochistModeReal)
+            {
+                for (int i = 0; i < Main.maxProjectiles; i++) //also clear leftover babies
+                {
+                    if (Main.projectile[i].active && Main.projectile[i].hostile && Main.projectile[i].type == ModContent.ProjectileType<SkeletronGuardian2>())
+                        Main.projectile[i].Kill();
+                }
+            }
+
+            if ((npc.life >= npc.lifeMax * .75 || WorldSavingSystem.MasochistModeReal) && Main.netMode != NetmodeID.MultiplayerClient)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    for (int j = -2; j <= 2; j++)
+                    {
+                        Vector2 spawnPos = new(1200, 80 * j);
+                        Vector2 vel = -8 * Vector2.UnitX;
+                        spawnPos = Main.player[npc.target].Center + spawnPos.RotatedBy(Math.PI / 2 * (i + 0.5));
+                        vel = vel.RotatedBy(Math.PI / 2 * (i + 0.5));
+                        int p = Projectile.NewProjectile(npc.GetSource_FromThis(), spawnPos, vel, ModContent.ProjectileType<ShadowGuardian>(),
+                            FargoSoulsUtil.ScaledProjectileDamage(npc.damage), 0f, Main.myPlayer);
+                        if (p != Main.maxProjectiles)
+                            Main.projectile[p].timeLeft = 1200 / 8 + 1;
+                    }
+                }
+            }
+        }
+
+        void SprayHomingBabies(NPC npc)
+        {
+            const int max = 30;
+            float modifier = 1f - (float)npc.life / npc.lifeMax;
+            modifier *= 4f / 3f; //scaling maxes at 25% life
+            if (modifier > 1f || WorldSavingSystem.MasochistModeReal) //cap it, or force it to cap in emode
+                modifier = 1f;
+            int actualNumberToSpawn = (int)(max * modifier);
+            for (int i = 0; i < actualNumberToSpawn; i++)
+            {
+                float speed = Main.rand.NextFloat(3f, 9f);
+                Vector2 velocity = speed * npc.DirectionFrom(Main.player[npc.target].Center).RotatedBy(Math.PI * (Main.rand.NextDouble() - 0.5));
+                float ai1 = speed / (60f + Main.rand.NextFloat(actualNumberToSpawn * 2));
+                Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center, velocity, ModContent.ProjectileType<SkeletronGuardian>(), FargoSoulsUtil.ScaledProjectileDamage(npc.damage, 0.8f), 0f, Main.myPlayer, 0f, ai1);
+            }
+        }
+
+        void DungeonGuardianAttack(NPC npc)
+        {
+            switch(Main.rand.Next(4))
+            {
+                case 0: //walls of guardians
+                    for (int i = 0; i < 4; i++)
+                    {
+                        for (int j = -2; j <= 2; j++)
+                        {
+                            Vector2 spawnPos = new(1200, 80 * j);
+                            Vector2 vel = -8 * Vector2.UnitX;
+                            spawnPos = Main.player[npc.target].Center + spawnPos.RotatedBy(Math.PI / 2 * i);
+                            vel = vel.RotatedBy(Math.PI / 2 * i);
+                            Projectile.NewProjectile(npc.GetSource_FromThis(), spawnPos, vel, ModContent.ProjectileType<ShadowGuardian>(),
+                                FargoSoulsUtil.ScaledProjectileDamage(npc.damage), 0f, Main.myPlayer);
+                        }
+                    }
+                    break;
+
+                case 1: //ring of babies
+                    {
+                        const int max = 16;
+                        Vector2 baseOffset = npc.DirectionTo(Main.player[npc.target].Center);
+                        for (int i = 0; i < max; i++)
+                        {
+                            Projectile.NewProjectile(npc.GetSource_FromThis(), Main.player[npc.target].Center + 1000 * baseOffset.RotatedBy(2 * Math.PI / max * i),
+                                -8f * baseOffset.RotatedBy(2 * Math.PI / max * i), ModContent.ProjectileType<DeviGuardian>(),
+                                FargoSoulsUtil.ScaledProjectileDamage(npc.damage), 0f, Main.myPlayer);
+                        }
+                    }
+                    break;
+
+                case 2: //homing skulls
+                    {
+                        Vector2 speed = Main.player[npc.target].Center - npc.Center;
+                        speed.X += Main.rand.Next(-20, 21);
+                        speed.Y += Main.rand.Next(-20, 21);
+                        speed.Normalize();
+                        speed *= 3f;
+                        for (int i = 0; i < 6; i++)
+                        {
+                            Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center, speed.RotatedBy(Math.PI / 3 * i),
+                                ProjectileID.Skull, FargoSoulsUtil.ScaledProjectileDamage(npc.damage), 0, Main.myPlayer, -1f, 0);
+                        }
+                    }
+                    break;
+
+                case 3:
+                    CrossGuardianAttack(npc);
+                    break;
+
+                default:
+                    SprayHomingBabies(npc);
+                    break;
+            }
         }
 
         public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)

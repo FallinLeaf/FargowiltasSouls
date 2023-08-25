@@ -18,7 +18,6 @@ Attacking a Shadow Orb will cause it to release a burst of homing shadow energy
         }
 
         protected override Color nameColor => new(66, 53, 111);
-        public override string wizardEffect => "";
 
         public override void SetDefaults()
         {

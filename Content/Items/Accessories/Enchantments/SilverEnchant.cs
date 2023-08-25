@@ -24,7 +24,7 @@ Parry blocks up to 100 damage
         }
 
         protected override Color nameColor => new(180, 180, 204);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Silver");
+        
 
         public override void SetDefaults()
         {

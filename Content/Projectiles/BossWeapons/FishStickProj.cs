@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Linq;
 using Terraria;
 using Terraria.GameContent;
@@ -40,7 +41,7 @@ namespace FargowiltasSouls.Content.Projectiles.BossWeapons
             for (int i = 0; i < max; i++)
             {
                 Vector2 vector2_1 = Projectile.position;
-                Vector2 vector2_2 = ((float)(Main.rand.NextDouble() * 3.14159274101257) - 1.570796f).ToRotationVector2() * Main.rand.Next(3, 8);
+                Vector2 vector2_2 = ((float)(Main.rand.NextDouble() * 3.14159274101257) - (float)Math.PI / 2).ToRotationVector2() * Main.rand.Next(3, 8);
                 Vector2 vector2_3 = vector2_2;
                 int index2 = Dust.NewDust(vector2_1 + vector2_3, Projectile.width, Projectile.height, DustID.DungeonWater, vector2_2.X * 2f, vector2_2.Y * 2f, 100, new Color(), 1f);
                 Main.dust[index2].noGravity = true;

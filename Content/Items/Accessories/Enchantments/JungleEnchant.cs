@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 
 namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
 {
@@ -27,7 +28,6 @@ Double tap a direction
         }
 
         protected override Color nameColor => new(113, 151, 31);
-        public override string wizardEffect => "";
 
         public override void SetDefaults()
         {

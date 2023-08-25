@@ -24,7 +24,7 @@ Buff booster stacking capped at 2
         }
 
         protected override Color nameColor => new(254, 126, 229);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Nebula");
+        
 
         public override void SetDefaults()
         {

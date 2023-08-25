@@ -156,7 +156,7 @@ namespace FargowiltasSouls.Content.Projectiles.Minions
                                 Projectile.ai[1]++;
                             }
 
-                            float num3 = Projectile.velocity.ToRotation() + 1.570796f;
+                            float num3 = Projectile.velocity.ToRotation() + (float)Math.PI / 2;
                             if (Math.Abs(Projectile.rotation - num3) >= 3.14159274101257)
                                 Projectile.rotation = num3 >= Projectile.rotation ? Projectile.rotation + 6.283185f : Projectile.rotation - 6.283185f;
                             float num4 = 12f;
@@ -243,7 +243,7 @@ namespace FargowiltasSouls.Content.Projectiles.Minions
                 }
                 if (Projectile.velocity.Length() > 6) //when moving fast, rotate in direction of velocity
                 {
-                    float num3 = Projectile.velocity.ToRotation() + 1.570796f;
+                    float num3 = Projectile.velocity.ToRotation() + (float)Math.PI / 2;
                     if (Math.Abs(Projectile.rotation - num3) >= 3.14159274101257)
                         Projectile.rotation = num3 >= Projectile.rotation ? Projectile.rotation + 6.283185f : Projectile.rotation - 6.283185f;
                     Projectile.rotation = (Projectile.rotation * 11f + num3) / 12f;

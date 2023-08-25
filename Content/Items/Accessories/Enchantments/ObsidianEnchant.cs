@@ -25,7 +25,6 @@ While standing in lava or lava wet, your attacks spawn explosions and apply Fire
         }
 
         protected override Color nameColor => new(69, 62, 115);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Obsidian");
 
         public override void SetDefaults()
         {
@@ -38,6 +37,7 @@ While standing in lava or lava wet, your attacks spawn explosions and apply Fire
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             ObsidianEffect(player, Item);
+            AshWoodEnchant.AshwoodEffect(player, Item);
         }
 
         public static void ObsidianEffect(Player player, Item item)
@@ -46,7 +46,7 @@ While standing in lava or lava wet, your attacks spawn explosions and apply Fire
 
             player.lavaImmune = true;
             player.fireWalk = true;
-            player.buffImmune[BuffID.OnFire] = true;
+            //player.buffImmune[BuffID.OnFire] = true;
 
             //in lava effects
             if (player.lavaWet)
@@ -77,8 +77,6 @@ While standing in lava or lava wet, your attacks spawn explosions and apply Fire
             Player player = modPlayer.Player;
             Projectile.NewProjectile(player.GetSource_Accessory(modPlayer.ObsidianEnchantItem), target.Center, Vector2.Zero, ModContent.ProjectileType<ExplosionSmall>(), damage, 0, player.whoAmI);
 
-            target.AddBuff(BuffID.FlameWhipEnemyDebuff, 30);
-
             if (modPlayer.TerraForce)
             {
                 modPlayer.ObsidianCD = 20;
@@ -97,7 +95,7 @@ While standing in lava or lava wet, your attacks spawn explosions and apply Fire
             .AddIngredient(ItemID.ObsidianPants)
             .AddIngredient(ItemID.MoltenSkullRose) //molten skull rose
             //.AddIngredient(ItemID.Cascade)
-            .AddIngredient(ItemID.Fireblossom)
+            .AddIngredient(null, "AshWoodEnchant")
 
             .AddTile(TileID.DemonAltar)
             .Register();

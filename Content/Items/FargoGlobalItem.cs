@@ -2,6 +2,7 @@ using FargowiltasSouls.Content.Bosses.AbomBoss;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using FargowiltasSouls.Content.Buffs.Souls;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
+using FargowiltasSouls.Content.Items.Placables;
 using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Core.Systems;
 //using FargowiltasSouls.Content.Buffs.Souls;
@@ -9,6 +10,7 @@ using FargowiltasSouls.Core.Systems;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -243,7 +245,6 @@ namespace FargowiltasSouls.Content.Items
             {
                 player.GetModPlayer<FargoSoulsPlayer>().WeaponUseTimer = Math.Max(item.useTime, item.useAnimation) + item.reuseDelay + 6;
             }
-
             return true;
         }
 
@@ -256,7 +257,6 @@ namespace FargowiltasSouls.Content.Items
                 if (player.GetModPlayer<FargoSoulsPlayer>().CrystalEnchantActive)
                     player.AddBuff(ModContent.BuffType<FirstStrikeBuff>(), 60);
             }
-
             return base.UseItem(item, player);
         }
 
@@ -308,6 +308,37 @@ namespace FargowiltasSouls.Content.Items
         //            return true;
         //        }
 
+        public override void HoldItem(Item item, Player player)
+        {
+            if (item.type == ItemID.Binoculars) //the amount of nesting here exists to prevent excessive lag
+            {
+                if (NPC.AnyNPCs(NPCID.TownCat))
+                {
+                    for (int j = 0; j < Main.maxNPCs; j++)
+                    {
+                        if (Main.npc[j].active && Main.npc[j].type == NPCID.TownCat)
+                        {
+                            NPC cat = Main.npc[j];
+                            for (int i = 0; i < Main.maxItems; i++)
+                            {
+                                if (Main.item[i].active && Main.item[i].type == ItemID.CellPhone)
+                                {
+                                    if (cat.Distance(Main.item[i].Center) < cat.Size.Length() && Main.MouseWorld.Distance(cat.Center) < cat.Size.Length())
+                                    {
+                                        Item.NewItem(player.GetSource_ItemUse(item), cat.Center, ModContent.ItemType<WiresPainting>());
+                                        Main.item[i].active = false;
+                                        cat.active = false;
+                                        return;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+            base.HoldItem(item, player);
+        }
         public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             FargoSoulsPlayer modPlayer = player.GetModPlayer<FargoSoulsPlayer>();

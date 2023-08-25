@@ -23,7 +23,7 @@ Whip your summons to make them work harder
         }
 
         protected override Color nameColor => new(86, 165, 43);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Tiki");
+        
 
         public override void SetDefaults()
         {

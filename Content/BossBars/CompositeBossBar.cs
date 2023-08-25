@@ -1,5 +1,7 @@
 ﻿using FargowiltasSouls.Content.Bosses.Champions.Shadow;
 using FargowiltasSouls.Content.Bosses.TrojanSquirrel;
+using FargowiltasSouls.Content.Bosses.VanillaEternity;
+using FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEvents.Stardust;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -7,6 +9,7 @@ using System.Linq;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.GameContent.UI.BigProgressBar;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace FargowiltasSouls.Content.BossBars
@@ -68,6 +71,19 @@ namespace FargowiltasSouls.Content.BossBars
                     }
 
                 }
+            }
+            else if (npc.type == NPCID.LunarTowerStardust)
+            {
+                int cellLife = 0;
+                int cellLifeMax = 0;
+                foreach (NPC n in Main.npc.Where(n => n.active && n.type == ModContent.NPCType<StardustMinion>() && n.ai[2] == npc.whoAmI && n.frame.Y == 0)) //frame check is to check if big
+                {
+                    cellLife += n.life;
+                    cellLifeMax += n.lifeMax;
+                }
+                life = npc.life + cellLife;
+                lifeMax = npc.lifeMax + cellLifeMax;
+                return true;
             }
             else
             {

@@ -23,7 +23,7 @@ Bonus ends after attacking for 3 seconds and rebuilds over 5 seconds
         }
 
         protected override Color nameColor => new(157, 210, 144);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Mythril");
+        
 
         public override void SetDefaults()
         {

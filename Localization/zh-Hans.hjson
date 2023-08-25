@@ -10,61 +10,62 @@ Mods: {
 	FargowiltasSouls: {
 		WizardEffect: {
 			Adamantite: 弹幕现在会分裂成三个，造成33%伤害，造成伤害的频率提升到3倍
-			AncientHallow: ""
-			AncientShadow: ""
-			Angler: ""
-			Bee: ""
-			Beetle: ""
+			AncientHallow: 无强化
+			AncientShadow: 无强化
+			Angler: 无强化
+			AshWood: Fires balls of fire more often
+			Bee: 无强化
+			Beetle: 无强化
 			Boreal: 更频繁的释放更多雪球
 			Cactus: 增加针刺的数量和伤害
-			Chlorophyte: ""
+			Chlorophyte: 无强化
 			Cobalt: 增加爆炸伤害
 			Copper: 增加闪电伤害，减少冷却时间 //for patch
-			Crimson: ""
-			CrystalAssassin: ""
-			DarkArtist: ""
-			Ebonwood: 伤害判定门槛从10提高至25，并且会杀死光环内任何小于200血量的生物
-			Forbidden: ""
-			Fossil: ""
-			Frost: ""
-			Gladiator: ""
-			Gold: ""
-			Hallow: ""
+			Crimson: 无强化
+			CrystalAssassin: 无强化
+			DarkArtist: 无强化
+			Ebonwood: 伤害判定门槛从10提高至25，并且会杀死光环内任何小于200血量的生物 //needing update
+			Forbidden: 无强化
+			Fossil: 无强化
+			Frost: 无强化
+			Gladiator: 无强化
+			Gold: 无强化
+			Hallow: 无强化
 			Iron: 物品拾取距离提升到四倍，合成加成现在也对任何秘银砧生效
 			Lead: 增加铅中毒伤害，持续伤害减免提升到60%
-			Meteor: ""
-			Miner: ""
+			Meteor: 无强化
+			Miner: 无强化
 			Molten: 狱火圈伤害翻倍，易伤生效范围增加1.5倍 //for patch
 			Mythril: 增加最大攻速加成，延长持续时间 //for patch
-			Nebula: ""
-			Necro: ""
-			Ninja: 护甲穿透增加提高到45点
-			Obsidian: 不再需要岩浆来引发爆炸，减少冷却时间 //for patch
+			Nebula: 无强化
+			Necro: 无强化
+			Ninja: 弹幕速度增加3倍而非2倍，护甲穿透再增加20点
+			Obsidian: 你不再需要岩浆来引发爆炸，冷却时间减少
 			Orichalcum: 倍数提高到4
 			Palladium: 快速治疗总是持续5秒，增加钯金珠伤害
 			PalmWood: 增加攻击速度和伤害，可以额外召唤两个棕榈树哨兵
-			Pearlwood: 增加伤害，减少冷却时间 //for patch
-			Platinum: ""
-			Pumpkin: ""
-			Rain: ""
-			RedRiding: ""
+			Pearlwood: 增加伤害，冷却时间减少
+			Platinum: 无强化
+			Pumpkin: 无强化
+			Rain: 无强化
+			RedRiding: 无强化
 			RichMahogany: 牵引速度×2.5，伤害减免和荆棘效果大幅提升
 			Shadewood: 增加光环大小和血液伤害，并附加灵液效果 //for patch
-			Shinobi: ""
-			Shroomite: ""
+			Shinobi: 无强化
+			Shroomite: 无强化
 			Silver: 格挡可以抵消至多200伤害，且会给予惊人一刻增益
-			Solar: ""
-			Spectre: ""
-			Spider: ""
-			Spooky: ""
-			Stardust: ""
-			Tiki: ""
+			Solar: 无强化
+			Spectre: 无强化
+			Spider: 无强化
+			Spooky: 无强化
+			Stardust: 无强化
+			Tiki: Increases whip range by 20%
 			Tin: 最小暴击率提高到10%，最大暴击率至少有50%，减少增加暴击过程的冷却时间 //for patch
 			Titanium: 碎片会但只会受到最高的职业伤害加成；伤害减免提高至75% //for patch
 			Tungsten: 将武器大小提升到300%，伤害加成提升到20%，减少冷却时间 //for patch
-			Turtle: ""
-			ValhallaKnight: ""
-			Vortex: ""
+			Turtle: 无强化
+			ValhallaKnight: 无强化
+			Vortex: 无强化
 			Wood: 怪物图鉴和旗帜解锁速度增加到5倍 //for patch
 		}
 
@@ -421,6 +422,7 @@ Mods: {
 			TungstenConfig: Tungsten Item Effect
 			TungstenProjConfig: Tungsten Projectile Effect
 			ObsidianConfig: Obsidian Explosions
+			AshWoodConfig: Ash Fireballs
 			WillHeader: "{$Mods.FargowiltasSouls.Items.WillForce.DisplayName}"
 			GladiatorConfig: Gladiator Rain
 			GoldConfig: Gold Lucky Coin
@@ -563,6 +565,7 @@ Mods: {
 			DefenseFleshKnuckleConfig: Flesh Knuckles Aggro
 			DefensePaladinConfig: Paladin's Shield
 			DefenseFrozenConfig: Frozen Turtle Shell
+			ShimmerImmunityConfig: Shimmer Immunity
 			FlightMasteryHeader: "{$Mods.FargowiltasSouls.Items.FlightMasterySoul.DisplayName}"
 			FlightMasteryInsigniaConfig: Soaring Insignia Acceleration
 			FlightMasteryGravityConfig: Amplified Gravity
@@ -2240,6 +2243,11 @@ Mods: {
 				Description: Mods.FargowiltasSouls.BuffDescription.SuperBleedBuff
 			}
 
+			CorruptingBuff: {
+				DisplayName: Corrupting
+				Description: You are becoming corrupted
+			}
+
 			TimeFrozenBuff: {
 				DisplayName: Time Frozen
 				Description: You are stopped in time
@@ -2282,6 +2290,16 @@ Mods: {
 
 			Recovering.Description: Mods.FargowiltasSouls.BuffDescription.Recovering
 			Shadwoflame.Description: Mods.FargowiltasSouls.BuffDescription.Shadwoflame
+
+			CorruptedBuff: {
+				DisplayName: Corrupted Buff
+				Description: Mods.FargowiltasSouls.Buffs.CorruptedBuff.Description
+			}
+
+			CorruptedBuffForce: {
+				DisplayName: Corrupted Buff Force
+				Description: Mods.FargowiltasSouls.Buffs.CorruptedBuffForce.Description
+			}
 		}
 
 		Items: {
@@ -2339,6 +2357,16 @@ Mods: {
 					Switching weapons will increase the next attack's damage by 50% and spawn an inferno
 					Flameburst field of view and range are dramatically increased
 					'A long way to perfection'
+					'''
+			}
+
+			AshWoodEnchant: {
+				DisplayName: Ash Enchantment
+				Tooltip:
+					'''
+					On Fire debuff doesn't damage you or town NPCs
+					While you're burning, attacks are accompanied by balls of fire
+					Reduces damage from touching lava
 					'''
 			}
 
@@ -5260,6 +5288,11 @@ Mods: {
 			}
 
 			MostlyOrdinaryrock.Tooltip: Mods.FargowiltasSouls.ItemTooltip.MostlyOrdinaryrock
+
+			WiresPainting: {
+				DisplayName: Wires Painting
+				Tooltip: Look inside
+			}
 		}
 
 		NPCs: {
@@ -5441,6 +5474,7 @@ Mods: {
 			}
 
 			DetonatingBubbleNPC.DisplayName: Detonating Bubble
+			StardustMinion.DisplayName: Stardust Minion
 		}
 
 		Tiles: {
@@ -6125,14 +6159,26 @@ Mods: {
 			KamikazePixie.DisplayName: Pixie
 			BabyLifelight.DisplayName: Petlight
 			Nibble.DisplayName: Nibble
+			SolarMeteor.DisplayName: Solar Meteor
+			SolarFlamePillarSpawner.DisplayName: Solar Flame Pillar Spawner
+			SolarFlamePillar.DisplayName: Solar Flame Pillar
+			LightningTelegraph.DisplayName: Lightning Telegraph
+			PillarSpawner.DisplayName: Pillar Spawner
+			VortexVortex.DisplayName: Vortex Vortex
+			VortexVortexProjectile.DisplayName: Vortex Vortex Projectile
+			PillarNebulaBlaze.DisplayName: Pillar Nebula Blaze
+			NebulaDeathray.DisplayName: Nebula Deathray
+			NebulaPillarProj.DisplayName: Nebula Pillar Proj
+			NebulaTelegraph.DisplayName: Nebula Telegraph
+			PillarArcanum.DisplayName: Pillar Arcanum
 		}
 
-		WoodHeader: "[i:FargowiltasSouls/TimberForce] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.WoodHeader}]"
-		BorealConfig: "[i:FargowiltasSouls/BorealWoodEnchant] [c/8B7464:{$Mods.FargowiltasSouls.Toggler.BorealConfig}]"
-		MahoganyConfig: "[i:FargowiltasSouls/RichMahoganyEnchant] [c/b56c64:{$Mods.FargowiltasSouls.Toggler.MahoganyConfig}]"
-		EbonConfig: "[i:FargowiltasSouls/EbonwoodEnchant] [c/645a8d:{$Mods.FargowiltasSouls.Toggler.EbonConfig}]"
-		ShadeConfig: "[i:FargowiltasSouls/ShadewoodEnchant] [c/586876:{$Mods.FargowiltasSouls.Toggler.ShadeConfig}]"
-		ShadeOnHitConfig: "[i:FargowiltasSouls/ShadewoodEnchant] [c/586876:{$Mods.FargowiltasSouls.Toggler.ShadeOnHitConfig}]"
+		WoodHeader: "[i:FargowiltasSouls/TimberForce][c/ffffff:{$Mods.FargowiltasSouls.Toggler.WoodHeader}]"
+		BorealConfig: "[i:FargowiltasSouls/BorealWoodEnchant][c/8B7464:{$Mods.FargowiltasSouls.Toggler.BorealConfig}]"
+		MahoganyConfig: "[i:FargowiltasSouls/RichMahoganyEnchant][c/b56c64:{$Mods.FargowiltasSouls.Toggler.MahoganyConfig}]"
+		EbonConfig: "[i:FargowiltasSouls/EbonwoodEnchant][c/645a8d:{$Mods.FargowiltasSouls.Toggler.EbonConfig}]"
+		ShadeConfig: "[i:FargowiltasSouls/ShadewoodEnchant][c/586876:{$Mods.FargowiltasSouls.Toggler.ShadeConfig}]"
+		ShadeOnHitConfig: "[i:FargowiltasSouls/ShadewoodEnchant][c/586876:{$Mods.FargowiltasSouls.Toggler.ShadeOnHitConfig}]"
 		PalmConfig: "[i:FargowiltasSouls/PalmWoodEnchant][c/b78d56:{$Mods.FargowiltasSouls.Toggler.PalmConfig}]"
 		PearlConfig: "[i:FargowiltasSouls/PearlwoodEnchant][c/ad9a5f:{$Mods.FargowiltasSouls.Toggler.PearlConfig}]"
 		EarthHeader: "[i:FargowiltasSouls/EarthForce][c/ffffff:{$Mods.FargowiltasSouls.Toggler.EarthHeader}]"
@@ -6152,6 +6198,7 @@ Mods: {
 		TungstenConfig: "[i:FargowiltasSouls/TungstenEnchant][c/b0d2b2:{$Mods.FargowiltasSouls.Toggler.TungstenConfig}]"
 		TungstenProjConfig: "[i:FargowiltasSouls/TungstenEnchant][c/b0d2b2:{$Mods.FargowiltasSouls.Toggler.TungstenProjConfig}]"
 		ObsidianConfig: "[i:FargowiltasSouls/ObsidianEnchant][c/453e73:{$Mods.FargowiltasSouls.Toggler.ObsidianConfig}]"
+		AshWoodConfig: "[i:FargowiltasSouls/AshWoodEnchant][c/958083:{$Mods.FargowiltasSouls.Toggler.AshWoodConfig}]"
 		WillHeader: "[i:FargowiltasSouls/WillForce][c/ffffff:{$Mods.FargowiltasSouls.Toggler.WillHeader}]"
 		GladiatorConfig: "[i:FargowiltasSouls/GladiatorEnchant][c/9c924e:{$Mods.FargowiltasSouls.Toggler.GladiatorConfig}]"
 		GoldConfig: "[i:FargowiltasSouls/GoldEnchant][c/e7b21c:{$Mods.FargowiltasSouls.Toggler.GoldConfig}]"
@@ -6294,6 +6341,7 @@ Mods: {
 		DefenseFleshKnuckleConfig: "[i:FargowiltasSouls/ColossusSoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.DefenseFleshKnuckleConfig}]"
 		DefensePaladinConfig: "[i:FargowiltasSouls/ColossusSoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.DefensePaladinConfig}]"
 		DefenseFrozenConfig: "[i:FargowiltasSouls/ColossusSoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.DefenseFrozenConfig}]"
+		ShimmerImmunityConfig: "[i:FargowiltasSouls/ColossusSoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.ShimmerImmunityConfig}]"
 		FlightMasteryHeader: "[i:FargowiltasSouls/FlightMasterySoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.FlightMasteryHeader}]"
 		FlightMasteryInsigniaConfig: "[i:FargowiltasSouls/FlightMasterySoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.FlightMasteryInsigniaConfig}]"
 		FlightMasteryGravityConfig: "[i:FargowiltasSouls/FlightMasterySoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.FlightMasteryGravityConfig}]"
@@ -6316,79 +6364,79 @@ Mods: {
 		TrawlerGelConfig: "[i:FargowiltasSouls/TrawlerSoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.TrawlerGelConfig}]"
 		EternityHeader: "[i:FargowiltasSouls/EternitySoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.EternityHeader}]"
 		EternityConfig: "[i:FargowiltasSouls/EternitySoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.EternityConfig}]"
-		PetHeader: "[i:2420] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetHeader}]"
-		PetDinoConfig: "[i:1242] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDinoConfig}]"
-		PetEaterConfig: "[i:994] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEaterConfig}]"
-		PetFaceMonsterConfig: "[i:3060] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetFaceMonsterConfig}]"
-		PetGrinchConfig: "[i:1959] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGrinchConfig}]"
-		PetHornetConfig: "[i:1170] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetHornetConfig}]"
-		PetImpConfig: "[i:4551] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetImpConfig}]"
-		PetPenguinConfig: "[i:669] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPenguinConfig}]"
-		PetPandaConfig: "[i:4550] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPandaConfig}]"
-		PetDGConfig: "[i:1169] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDGConfig}]"
-		PetSnowmanConfig: "[i:1312] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSnowmanConfig}]"
-		PetShroomConfig: "[i:1181] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetShroomConfig}]"
-		PetWerewolfConfig: "[i:4736] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetWerewolfConfig}]"
-		PetBernieConfig: "[i:5088] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetBernieConfig}]"
-		PetBlackCatConfig: "[i:1810] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetBlackCatConfig}]"
-		PetChesterConfig: "[i:5098] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetChesterConfig}]"
-		PetCompanionCubeConfig: "[i:3628] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetCompanionCubeConfig}]"
-		PetCursedSaplingConfig: "[i:1837] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetCursedSaplingConfig}]"
-		PetKittenConfig: "[i:4735] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetKittenConfig}]"
-		PetEsteeConfig: "[i:4365] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEsteeConfig}]"
-		PetEyeSpringConfig: "[i:1311] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEyeSpringConfig}]"
-		PetFoxConfig: "[i:4604] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetFoxConfig}]"
-		PetButterflyConfig: "[i:4605] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetButterflyConfig}]"
-		PetGlommerConfig: "[i:5089] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGlommerConfig}]"
-		PetDragonConfig: "[i:3857] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDragonConfig}]"
-		PetHarpyConfig: "[i:4603] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetHarpyConfig}]"
-		PetLizardConfig: "[i:1172] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetLizardConfig}]"
-		PetMinitaurConfig: "[i:2587] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetMinitaurConfig}]"
-		PetParrotConfig: "[i:1180] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetParrotConfig}]"
-		PetPigmanConfig: "[i:5091] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPigmanConfig}]"
-		PetPlanteroConfig: "[i:4701] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPlanteroConfig}]"
-		PetGatoConfig: "[i:3855] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGatoConfig}]"
-		PetPupConfig: "[i:1927] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPupConfig}]"
-		PetSeedConfig: "[i:1182] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSeedConfig}]"
-		PetSpiderConfig: "[i:1798] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSpiderConfig}]"
-		PetMimicConfig: "[i:4737] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetMimicConfig}]"
-		PetSharkConfig: "[i:4425] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSharkConfig}]"
-		PetSquashConfig: "[i:1799] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSquashConfig}]"
-		PetGliderConfig: "[i:4366] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGliderConfig}]"
-		PetTikiConfig: "[i:1171] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetTikiConfig}]"
-		PetTurtleConfig: "[i:753] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetTurtleConfig}]"
-		PetVoltConfig: "[i:4777] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetVoltConfig}]"
-		PetZephyrConfig: "[i:2420] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetZephyrConfig}]"
-		PetOrbConfig: "[i:115] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetOrbConfig}]"
-		PetHeartConfig: "[i:3062] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetHeartConfig}]"
-		PetLanternConfig: "[i:3043] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetLanternConfig}]"
-		PetNaviConfig: "[i:425] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetNaviConfig}]"
-		PetFlickerConfig: "[i:4816] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetFlickerConfig}]"
-		PetWispConfig: "[i:1183] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetWispConfig}]"
-		PetSuspEyeConfig: "[i:3577] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSuspEyeConfig}]"
-		PetKSConfig: "[i:4797] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetKSConfig}]"
-		PetEoCConfig: "[i:4798] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEoCConfig}]"
-		PetEoWConfig: "[i:4799] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEoWConfig}]"
-		PetBoCConfig: "[i:4800] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetBoCConfig}]"
-		PetDeerConfig: "[i:5090] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDeerConfig}]"
-		PetQBConfig: "[i:4802] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetQBConfig}]"
-		PetSkeleConfig: "[i:4801] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSkeleConfig}]"
-		PetQSConfig: "[i:4960] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetQSConfig}]"
-		PetDestroyerConfig: "[i:4803] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDestroyerConfig}]"
-		PetTwinsConfig: "[i:4804] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetTwinsConfig}]"
-		PetSkelePrimeConfig: "[i:4805] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSkelePrimeConfig}]"
-		PetOgreConfig: "[i:4816] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetOgreConfig}]"
-		PetPlanteraConfig: "[i:4806] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPlanteraConfig}]"
-		PetPumpkingConfig: "[i:4812] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPumpkingConfig}]"
-		PetEverscreamConfig: "[i:4813] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEverscreamConfig}]"
-		PetIceQueenConfig: "[i:4814] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetIceQueenConfig}]"
-		PetDukeConfig: "[i:4808] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDukeConfig}]"
-		PetGolemConfig: "[i:4807] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGolemConfig}]"
-		PetEoLConfig: "[i:4811] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEoLConfig}]"
-		PetBetsyConfig: "[i:4817] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetBetsyConfig}]"
-		PetMartianConfig: "[i:4815] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetMartianConfig}]"
-		PetLCConfig: "[i:4809] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetLCConfig}]"
-		PetMLConfig: "[i:4810] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetMLConfig}]"
+		PetHeader: "[i:2420][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetHeader}]"
+		PetDinoConfig: "[i:1242][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDinoConfig}]"
+		PetEaterConfig: "[i:994][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEaterConfig}]"
+		PetFaceMonsterConfig: "[i:3060][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetFaceMonsterConfig}]"
+		PetGrinchConfig: "[i:1959][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGrinchConfig}]"
+		PetHornetConfig: "[i:1170][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetHornetConfig}]"
+		PetImpConfig: "[i:4551][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetImpConfig}]"
+		PetPenguinConfig: "[i:669][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPenguinConfig}]"
+		PetPandaConfig: "[i:4550][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPandaConfig}]"
+		PetDGConfig: "[i:1169][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDGConfig}]"
+		PetSnowmanConfig: "[i:1312][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSnowmanConfig}]"
+		PetShroomConfig: "[i:1181][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetShroomConfig}]"
+		PetWerewolfConfig: "[i:4736][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetWerewolfConfig}]"
+		PetBernieConfig: "[i:5088][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetBernieConfig}]"
+		PetBlackCatConfig: "[i:1810][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetBlackCatConfig}]"
+		PetChesterConfig: "[i:5098][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetChesterConfig}]"
+		PetCompanionCubeConfig: "[i:3628][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetCompanionCubeConfig}]"
+		PetCursedSaplingConfig: "[i:1837][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetCursedSaplingConfig}]"
+		PetKittenConfig: "[i:4735][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetKittenConfig}]"
+		PetEsteeConfig: "[i:4365][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEsteeConfig}]"
+		PetEyeSpringConfig: "[i:1311][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEyeSpringConfig}]"
+		PetFoxConfig: "[i:4604][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetFoxConfig}]"
+		PetButterflyConfig: "[i:4605][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetButterflyConfig}]"
+		PetGlommerConfig: "[i:5089][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGlommerConfig}]"
+		PetDragonConfig: "[i:3857][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDragonConfig}]"
+		PetHarpyConfig: "[i:4603][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetHarpyConfig}]"
+		PetLizardConfig: "[i:1172][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetLizardConfig}]"
+		PetMinitaurConfig: "[i:2587][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetMinitaurConfig}]"
+		PetParrotConfig: "[i:1180][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetParrotConfig}]"
+		PetPigmanConfig: "[i:5091][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPigmanConfig}]"
+		PetPlanteroConfig: "[i:4701][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPlanteroConfig}]"
+		PetGatoConfig: "[i:3855][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGatoConfig}]"
+		PetPupConfig: "[i:1927][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPupConfig}]"
+		PetSeedConfig: "[i:1182][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSeedConfig}]"
+		PetSpiderConfig: "[i:1798][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSpiderConfig}]"
+		PetMimicConfig: "[i:4737][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetMimicConfig}]"
+		PetSharkConfig: "[i:4425][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSharkConfig}]"
+		PetSquashConfig: "[i:1799][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSquashConfig}]"
+		PetGliderConfig: "[i:4366][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGliderConfig}]"
+		PetTikiConfig: "[i:1171][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetTikiConfig}]"
+		PetTurtleConfig: "[i:753][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetTurtleConfig}]"
+		PetVoltConfig: "[i:4777][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetVoltConfig}]"
+		PetZephyrConfig: "[i:2420][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetZephyrConfig}]"
+		PetOrbConfig: "[i:115][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetOrbConfig}]"
+		PetHeartConfig: "[i:3062][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetHeartConfig}]"
+		PetLanternConfig: "[i:3043][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetLanternConfig}]"
+		PetNaviConfig: "[i:425][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetNaviConfig}]"
+		PetFlickerConfig: "[i:4816][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetFlickerConfig}]"
+		PetWispConfig: "[i:1183][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetWispConfig}]"
+		PetSuspEyeConfig: "[i:3577][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSuspEyeConfig}]"
+		PetKSConfig: "[i:4797][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetKSConfig}]"
+		PetEoCConfig: "[i:4798][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEoCConfig}]"
+		PetEoWConfig: "[i:4799][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEoWConfig}]"
+		PetBoCConfig: "[i:4800][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetBoCConfig}]"
+		PetDeerConfig: "[i:5090][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDeerConfig}]"
+		PetQBConfig: "[i:4802][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetQBConfig}]"
+		PetSkeleConfig: "[i:4801][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSkeleConfig}]"
+		PetQSConfig: "[i:4960][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetQSConfig}]"
+		PetDestroyerConfig: "[i:4803][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDestroyerConfig}]"
+		PetTwinsConfig: "[i:4804][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetTwinsConfig}]"
+		PetSkelePrimeConfig: "[i:4805][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSkelePrimeConfig}]"
+		PetOgreConfig: "[i:4816][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetOgreConfig}]"
+		PetPlanteraConfig: "[i:4806][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPlanteraConfig}]"
+		PetPumpkingConfig: "[i:4812][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPumpkingConfig}]"
+		PetEverscreamConfig: "[i:4813][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEverscreamConfig}]"
+		PetIceQueenConfig: "[i:4814][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetIceQueenConfig}]"
+		PetDukeConfig: "[i:4808][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDukeConfig}]"
+		PetGolemConfig: "[i:4807][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGolemConfig}]"
+		PetEoLConfig: "[i:4811][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEoLConfig}]"
+		PetBetsyConfig: "[i:4817][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetBetsyConfig}]"
+		PetMartianConfig: "[i:4815][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetMartianConfig}]"
+		PetLCConfig: "[i:4809][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetLCConfig}]"
+		PetMLConfig: "[i:4810][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetMLConfig}]"
 		PatreonHeader: "[i:FargowiltasSouls/RoombaPet][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PatreonHeader}]"
 		PatreonRoomba: "[i:FargowiltasSouls/RoombaPet][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PatreonRoomba}]"
 		PatreonOrb: "[i:FargowiltasSouls/ComputationOrb][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PatreonOrb}]"
@@ -6417,6 +6465,17 @@ Mods: {
 			"Frigid Spell.DisplayName": Frigid  Spell
 			"Debuff Install.DisplayName": Debuff  Install
 			"Ammo Cycle.DisplayName": Ammo  Cycle
+			冻结.DisplayName: 冻结
+			金身.DisplayName: 金身
+			投掷烟雾弹.DisplayName: 投掷烟雾弹
+			特殊冲刺.DisplayName: 特殊冲刺
+			突变炸弹.DisplayName: 突变炸弹
+			打开魂石效果设置.DisplayName: 打开魂石效果设置
+			玲珑圣印精确模式.DisplayName: 玲珑圣印精确模式
+			魔法净化.DisplayName: 魔法净化
+			寒霜咒语.DisplayName: 寒霜咒语
+			减益负载.DisplayName: 减益负载
+			弹药切换.DisplayName: 弹药切换
 		}
 
 		Configs: {

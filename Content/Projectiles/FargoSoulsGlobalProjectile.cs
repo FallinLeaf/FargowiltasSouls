@@ -211,7 +211,7 @@ namespace FargowiltasSouls.Content.Projectiles
                 case ProjectileID.DD2ExplosiveTrapT3Explosion:
                     {
                         if (projectile.damage > 0 && source is EntitySource_Parent parent && parent.Entity is NPC npc && npc.active
-                            && (npc.type == ModContent.NPCType<TrojanSquirrel>() || npc.type == ModContent.NPCType<TimberChampion>()))
+                            && (npc.ModNPC is TrojanSquirrelPart || npc.type == ModContent.NPCType<TimberChampion>()))
                         {
                             projectile.DamageType = DamageClass.Default;
                             projectile.friendly = false;
@@ -985,6 +985,8 @@ namespace FargowiltasSouls.Content.Projectiles
 
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
         {
+            NPC sourceNPC = projectile.GetSourceNPC();
+
             if (stormTimer > 0)
                 modifiers.FinalDamage *= Main.player[projectile.owner].GetModPlayer<FargoSoulsPlayer>().SpiritForce ? 1.6f : 1.3f;
 

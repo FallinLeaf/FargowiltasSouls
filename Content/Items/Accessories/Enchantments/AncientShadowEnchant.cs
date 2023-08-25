@@ -26,7 +26,6 @@ Three Shadow Orbs will orbit around you
         }
 
         protected override Color nameColor => new(94, 85, 220);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.AncientShadow");
 
         public override void SetDefaults()
         {

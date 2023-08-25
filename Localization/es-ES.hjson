@@ -9,63 +9,65 @@
 Mods: {
 	FargowiltasSouls: {
 		WizardEffect: {
-			// Adamantite: Projectiles now split into 3
-			// AncientHallow: ""
-			// AncientShadow: ""
-			// Angler: ""
-			// Bee: ""
-			// Beetle: ""
+			// Wizard: Adamantite: Projectiles now split into 3
+			// AncientHallow: No upgrade
+			// AncientShadow: Number of Shadow Orbs increased
+			// Angler: No upgrade
+			// Bee: No upgrade
+			// Beetle: No upgrade
 			// Boreal: Fires more snowballs more often
 			// Cactus: Number of needles and damage increased
-			// Chlorophyte: ""
+			// Chlorophyte: No upgrade
 			// Cobalt: Explosion damage increased
 			// Copper: Lightning damage increased, cooldown reduced
-			// Crimson: ""
-			// CrystalAssassin: ""
-			// DarkArtist: ""
+			// Crimson: No upgrade
+			// CrystalAssassin: No upgrade
+			// DarkArtist: No upgrade
 			// Ebonwood: Damage threshold increased to 25, additonally kills any npcs with less than 200 HP
-			// Forbidden: ""
-			// Fossil: ""
-			// Frost: ""
-			// Gladiator: ""
-			// Gold: ""
-			// Hallow: ""
+			// Forbidden: No upgrade
+			// Fossil: No upgrade
+			// Frost: No upgrade
+			// Gladiator: No upgrade
+			// Gold: No upgrade
+			// Hallow: No upgrade
 			// Iron: Increases item range by 4x, crafting bonus now affects Mythril Anvil
 			// Lead: Lead Poisoning damage increased, DoT resistance increased to 60%
-			// Meteor: ""
-			// Miner: ""
+			// Meteor: No upgrade
+			// Miner: No upgrade
 			// Molten: Inferno ring does more damage and can affect enemies in slightly larger range
 			// Mythril: Max attack speed bonus increased and lasts longer
-			// Nebula: ""
-			// Necro: ""
+			// Nebula: No upgrade
+			// Necro: No upgrade
 			// Ninja: Armor pen increased to 45
 			// Obsidian: You no longer need lava to spawn explosions, cooldown reduced
 			// Orichalcum: Increases multiplier to 4x
 			// Palladium: Rapid Healing always lasts 5 seconds, increases orb damage
 			// PalmWood: Attack speed and damage increased, 2 more trees can be spawned
 			// Pearlwood: Damage increased and cooldown reduced
-			// Platinum: ""
-			// Pumpkin: ""
-			// Rain: ""
-			// RedRiding: ""
+			// Platinum: No upgrade
+			// Pumpkin: No upgrade
+			// Rain: No upgrade
+			// RedRiding: No upgrade
 			// RichMahogany: Hooks pull 2.5x as fast, damage resistance and thorns increased greatly
 			// Shadewood: Aura size and blood damage increased, additionally applies Ichor
-			// Shinobi: ""
-			// Shroomite: ""
+			// Shinobi: No upgrade
+			// Shroomite: No upgrade
 			// Silver: Parrying blocks up to 200 damage and grants the Striking Moment buff
-			// Solar: ""
-			// Spectre: ""
-			// Spider: ""
-			// Spooky: ""
-			// Stardust: ""
+			// Solar: No upgrade
+			// Spectre: No upgrade
+			// Spider: No upgrade
+			// Spooky: No upgrade
+			// Stardust: No upgrade
 			// Tiki: Increases whip range by 20%
 			// Tin: Minimum crit increased to 10%, max crit is at least 50%, reduced proc cooldown
 			// Titanium: Shard damage increased, Titanium Shield duration increased to 5 seconds and damage resistance increased to 75%
 			// Tungsten: Increased weapon size to 300%, bonus damage to 20%, cooldown reduced
-			// Turtle: ""
-			// ValhallaKnight: ""
-			// Vortex: ""
+			// Turtle: No upgrade
+			// ValhallaKnight: No upgrade
+			// Vortex: No upgrade
 			// Wood: Bestiary and banner multiplier increased to 5
+			// AshWood: Fires balls of fire more often
+			// Adamantite: Projectiles now split into 3
 		}
 
 		SetBonus: {
@@ -402,6 +404,7 @@ Mods: {
 			// TungstenConfig: Tungsten Item Effect
 			// TungstenProjConfig: Tungsten Projectile Effect
 			// ObsidianConfig: Obsidian Explosions
+			// AshWoodConfig: Ash Fireballs
 			// WillHeader: "{$Mods.FargowiltasSouls.Items.WillForce.DisplayName}"
 			// GladiatorConfig: Gladiator Rain
 			// GoldConfig: Gold Lucky Coin
@@ -658,6 +661,7 @@ Mods: {
 			// CrystalGelatinConfig: Mods.FargowiltasSouls.Toggler.CrystalGelatinConfig
 			// SilverConfig: Mods.FargowiltasSouls.Toggler.SilverConfig
 			// MasoHoneyConfig: Mods.FargowiltasSouls.Toggler.MasoHoneyConfig
+			// ShimmerImmunityConfig: Shimmer Immunity
 		}
 
 		UI: {
@@ -2221,6 +2225,11 @@ Mods: {
 				// Description: Mods.FargowiltasSouls.BuffDescription.SuperBleedBuff
 			}
 
+			CorruptingBuff: {
+				// DisplayName: Corrupting
+				// Description: You are becoming corrupted
+			}
+
 			TimeFrozenBuff: {
 				// DisplayName: Time Frozen
 				// Description: You are stopped in time
@@ -2263,6 +2272,16 @@ Mods: {
 
 			// Recovering.Description: Mods.FargowiltasSouls.BuffDescription.Recovering
 			// Shadwoflame.Description: Mods.FargowiltasSouls.BuffDescription.Shadwoflame
+
+			CorruptedBuff: {
+				// DisplayName: Corrupted Buff
+				// Description: Mods.FargowiltasSouls.Buffs.CorruptedBuff.Description
+			}
+
+			CorruptedBuffForce: {
+				// DisplayName: Corrupted Buff Force
+				// Description: Mods.FargowiltasSouls.Buffs.CorruptedBuffForce.Description
+			}
 		}
 
 		Items: {
@@ -2323,12 +2342,22 @@ Mods: {
 					''' */
 			}
 
+			AshWoodEnchant: {
+				// DisplayName: Ash Enchantment
+				/* Tooltip:
+					'''
+					On Fire debuff doesn't damage you or town NPCs
+					While you're burning, attacks are accompanied by balls of fire
+					Reduces damage from touching lava
+					''' */
+			}
+
 			BeeEnchant: {
 				// DisplayName: Bee Enchantment
 				/* Tooltip:
 					'''
-					Increases the strength of friendly bees
 					Melee hits and most piercing attacks spawn bees
+					Effects of Hive Pack
 					'According to all known laws of aviation, there is no way a bee should be able to fly'
 					''' */
 			}
@@ -2435,8 +2464,9 @@ Mods: {
 				// DisplayName: Ebonwood Enchantment
 				/* Tooltip:
 					'''
-					You are surrounded by an aura of Shadowflame
-					Any projectiles that would deal less than 10 damage to you are destroyed
+					You are surrounded by an aura that builds up Corruption on enemies
+					After 4 seconds of buildup they burst, Corrupting all nearby enemies
+					Corrupted enemies have 10 less defense and deal 10% less contact damage
 					'Untapped potential'
 					''' */
 			}
@@ -2645,9 +2675,10 @@ Mods: {
 				// DisplayName: Obsidian Enchantment
 				/* Tooltip:
 					'''
-					Grants immunity to fire and lava
+					Grants immunity to lava
 					You have normal movement and can swim in lava
-					While standing in lava or lava wet, your attacks spawn explosions and apply Firecracker
+					While standing in lava or lava wet, your attacks spawn explosions and are accompanied by balls of fire
+					Effects of Ash Enchantment
 					'The earth calls'
 					''' */
 			}
@@ -2954,7 +2985,7 @@ Mods: {
 				// DisplayName: Wizard Enchantment
 				/* Tooltip:
 					'''
-					Enhances the power of all other Enchantments to their Force effects
+					Enhances the power of most other Enchantments to their Force effects
 					'I'm a what?'
 					''' */
 			}
@@ -3053,8 +3084,8 @@ Mods: {
 				/* Tooltip:
 					'''
 					[i:FargowiltasSouls/CobaltEnchant] Grants an explosion jump and you explode on hit
-					[i:FargowiltasSouls/PalladiumEnchant] Stop attacking to gradually increase attack speed for up to 5 seconds
-					[i:FargowiltasSouls/MythrilEnchant] Grants Rapid Healing after striking an enemy and spawn life orbs based on healing
+					[i:FargowiltasSouls/MythrilEnchant] Stop attacking to gradually increase attack speed for up to 5 seconds
+					[i:FargowiltasSouls/PalladiumEnchant] Grants Rapid Healing after striking an enemy and spawn life orbs based on healing
 					[i:FargowiltasSouls/OrichalcumEnchant] Attacks spawn flower petals and damaging debuffs deal 4x damage
 					[i:FargowiltasSouls/AdamantiteEnchant] Every weapon shot will split into 3, deal 33% damage and have 66% less iframes
 					[i:FargowiltasSouls/TitaniumEnchant] Attacks generate titanium shards, reaching max grants Titanium Shield
@@ -3069,6 +3100,7 @@ Mods: {
 					[i:FargowiltasSouls/PumpkinEnchant] You will grow pumpkins while walking on the ground
 					[i:FargowiltasSouls/CactusEnchant] Enemies may explode into needles on death
 					[i:FargowiltasSouls/BeeEnchant] Melee hits and most piercing attacks spawn bees
+					[i:FargowiltasSouls/BeeEnchant] Effects of Hive Pack
 					[i:FargowiltasSouls/SpiderEnchant] 30% chance for minions and sentries to crit for x1.5 damage instead of x2
 					[i:FargowiltasSouls/TurtleEnchant] When standing still and not attacking, you will enter your shell
 					[i:FargowiltasSouls/BeetleEnchant] Beetles aid both offense and defense
@@ -3103,7 +3135,6 @@ Mods: {
 					[i:FargowiltasSouls/NecroEnchant] Slain enemies may drop a pile of bones
 					[i:FargowiltasSouls/NinjaEnchant] Drastically increases projectile and attack speed but reduces damage
 					[i:FargowiltasSouls/CrystalAssassinEnchant] Throw a smoke bomb to teleport to it and gain the First Strike Buff
-					[i:FargowiltasSouls/CrystalAssassinEnchant] Effects of Volatile Gel
 					[i:FargowiltasSouls/SpookyEnchant] All of your minions gain an extra scythe attack
 					[i:FargowiltasSouls/MonkEnchant] Don't attack to gain a single use monk dash
 					[i:FargowiltasSouls/ShinobiEnchant] Dash into any walls, to teleport through them to the next opening
@@ -3141,7 +3172,8 @@ Mods: {
 					[i:FargowiltasSouls/LeadEnchant] You take 60% less from damage over time
 					[i:FargowiltasSouls/SilverEnchant] Right Click to guard with your shield
 					[i:FargowiltasSouls/TungstenEnchant] 300% increased sword size and projectile size every quarter second
-					[i:FargowiltasSouls/ObsidianEnchant] Grants immunity to fire and lava
+					[i:FargowiltasSouls/ObsidianEnchant] Grants immunity to lava
+					[i:FargowiltasSouls/AshWoodEnchant] While burning or in lava, player and town NPC attacks are accompanied by fireballs
 					'The land lends its strength'
 					''' */
 			}
@@ -5259,6 +5291,11 @@ Mods: {
 			}
 
 			// MostlyOrdinaryrock.Tooltip: Mods.FargowiltasSouls.ItemTooltip.MostlyOrdinaryrock
+
+			WiresPainting: {
+				// DisplayName: Wires Painting
+				// Tooltip: Look inside
+			}
 		}
 
 		NPCs: {
@@ -5440,6 +5477,7 @@ Mods: {
 			}
 
 			// DetonatingBubbleNPC.DisplayName: Detonating Bubble
+			// StardustMinion.DisplayName: Stardust Minion
 		}
 
 		Tiles: {
@@ -6124,14 +6162,26 @@ Mods: {
 			// KamikazePixie.DisplayName: Pixie
 			// BabyLifelight.DisplayName: Petlight
 			// Nibble.DisplayName: Nibble
+			// SolarMeteor.DisplayName: Solar Meteor
+			// SolarFlamePillarSpawner.DisplayName: Solar Flame Pillar Spawner
+			// SolarFlamePillar.DisplayName: Solar Flame Pillar
+			// LightningTelegraph.DisplayName: Lightning Telegraph
+			// PillarSpawner.DisplayName: Pillar Spawner
+			// VortexVortex.DisplayName: Vortex Vortex
+			// VortexVortexProjectile.DisplayName: Vortex Vortex Projectile
+			// PillarNebulaBlaze.DisplayName: Pillar Nebula Blaze
+			// NebulaDeathray.DisplayName: Nebula Deathray
+			// NebulaPillarProj.DisplayName: Nebula Pillar Proj
+			// NebulaTelegraph.DisplayName: Nebula Telegraph
+			// PillarArcanum.DisplayName: Pillar Arcanum
 		}
 
-		// WoodHeader: "[i:FargowiltasSouls/TimberForce] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.WoodHeader}]"
-		// BorealConfig: "[i:FargowiltasSouls/BorealWoodEnchant] [c/8B7464:{$Mods.FargowiltasSouls.Toggler.BorealConfig}]"
-		// MahoganyConfig: "[i:FargowiltasSouls/RichMahoganyEnchant] [c/b56c64:{$Mods.FargowiltasSouls.Toggler.MahoganyConfig}]"
-		// EbonConfig: "[i:FargowiltasSouls/EbonwoodEnchant] [c/645a8d:{$Mods.FargowiltasSouls.Toggler.EbonConfig}]"
-		// ShadeConfig: "[i:FargowiltasSouls/ShadewoodEnchant] [c/586876:{$Mods.FargowiltasSouls.Toggler.ShadeConfig}]"
-		// ShadeOnHitConfig: "[i:FargowiltasSouls/ShadewoodEnchant] [c/586876:{$Mods.FargowiltasSouls.Toggler.ShadeOnHitConfig}]"
+		// WoodHeader: "[i:FargowiltasSouls/TimberForce][c/ffffff:{$Mods.FargowiltasSouls.Toggler.WoodHeader}]"
+		// BorealConfig: "[i:FargowiltasSouls/BorealWoodEnchant][c/8B7464:{$Mods.FargowiltasSouls.Toggler.BorealConfig}]"
+		// MahoganyConfig: "[i:FargowiltasSouls/RichMahoganyEnchant][c/b56c64:{$Mods.FargowiltasSouls.Toggler.MahoganyConfig}]"
+		// EbonConfig: "[i:FargowiltasSouls/EbonwoodEnchant][c/645a8d:{$Mods.FargowiltasSouls.Toggler.EbonConfig}]"
+		// ShadeConfig: "[i:FargowiltasSouls/ShadewoodEnchant][c/586876:{$Mods.FargowiltasSouls.Toggler.ShadeConfig}]"
+		// ShadeOnHitConfig: "[i:FargowiltasSouls/ShadewoodEnchant][c/586876:{$Mods.FargowiltasSouls.Toggler.ShadeOnHitConfig}]"
 		// PalmConfig: "[i:FargowiltasSouls/PalmWoodEnchant][c/b78d56:{$Mods.FargowiltasSouls.Toggler.PalmConfig}]"
 		// PearlConfig: "[i:FargowiltasSouls/PearlwoodEnchant][c/ad9a5f:{$Mods.FargowiltasSouls.Toggler.PearlConfig}]"
 		// EarthHeader: "[i:FargowiltasSouls/EarthForce][c/ffffff:{$Mods.FargowiltasSouls.Toggler.EarthHeader}]"
@@ -6151,6 +6201,7 @@ Mods: {
 		// TungstenConfig: "[i:FargowiltasSouls/TungstenEnchant][c/b0d2b2:{$Mods.FargowiltasSouls.Toggler.TungstenConfig}]"
 		// TungstenProjConfig: "[i:FargowiltasSouls/TungstenEnchant][c/b0d2b2:{$Mods.FargowiltasSouls.Toggler.TungstenProjConfig}]"
 		// ObsidianConfig: "[i:FargowiltasSouls/ObsidianEnchant][c/453e73:{$Mods.FargowiltasSouls.Toggler.ObsidianConfig}]"
+		// AshWoodConfig: "[i:FargowiltasSouls/AshWoodEnchant][c/958083:{$Mods.FargowiltasSouls.Toggler.AshWoodConfig}]"
 		// WillHeader: "[i:FargowiltasSouls/WillForce][c/ffffff:{$Mods.FargowiltasSouls.Toggler.WillHeader}]"
 		// GladiatorConfig: "[i:FargowiltasSouls/GladiatorEnchant][c/9c924e:{$Mods.FargowiltasSouls.Toggler.GladiatorConfig}]"
 		// GoldConfig: "[i:FargowiltasSouls/GoldEnchant][c/e7b21c:{$Mods.FargowiltasSouls.Toggler.GoldConfig}]"
@@ -6315,79 +6366,79 @@ Mods: {
 		// TrawlerGelConfig: "[i:FargowiltasSouls/TrawlerSoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.TrawlerGelConfig}]"
 		// EternityHeader: "[i:FargowiltasSouls/EternitySoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.EternityHeader}]"
 		// EternityConfig: "[i:FargowiltasSouls/EternitySoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.EternityConfig}]"
-		// PetHeader: "[i:2420] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetHeader}]"
-		// PetDinoConfig: "[i:1242] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDinoConfig}]"
-		// PetEaterConfig: "[i:994] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEaterConfig}]"
-		// PetFaceMonsterConfig: "[i:3060] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetFaceMonsterConfig}]"
-		// PetGrinchConfig: "[i:1959] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGrinchConfig}]"
-		// PetHornetConfig: "[i:1170] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetHornetConfig}]"
-		// PetImpConfig: "[i:4551] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetImpConfig}]"
-		// PetPenguinConfig: "[i:669] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPenguinConfig}]"
-		// PetPandaConfig: "[i:4550] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPandaConfig}]"
-		// PetDGConfig: "[i:1169] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDGConfig}]"
-		// PetSnowmanConfig: "[i:1312] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSnowmanConfig}]"
-		// PetShroomConfig: "[i:1181] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetShroomConfig}]"
-		// PetWerewolfConfig: "[i:4736] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetWerewolfConfig}]"
-		// PetBernieConfig: "[i:5088] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetBernieConfig}]"
-		// PetBlackCatConfig: "[i:1810] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetBlackCatConfig}]"
-		// PetChesterConfig: "[i:5098] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetChesterConfig}]"
-		// PetCompanionCubeConfig: "[i:3628] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetCompanionCubeConfig}]"
-		// PetCursedSaplingConfig: "[i:1837] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetCursedSaplingConfig}]"
-		// PetKittenConfig: "[i:4735] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetKittenConfig}]"
-		// PetEsteeConfig: "[i:4365] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEsteeConfig}]"
-		// PetEyeSpringConfig: "[i:1311] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEyeSpringConfig}]"
-		// PetFoxConfig: "[i:4604] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetFoxConfig}]"
-		// PetButterflyConfig: "[i:4605] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetButterflyConfig}]"
-		// PetGlommerConfig: "[i:5089] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGlommerConfig}]"
-		// PetDragonConfig: "[i:3857] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDragonConfig}]"
-		// PetHarpyConfig: "[i:4603] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetHarpyConfig}]"
-		// PetLizardConfig: "[i:1172] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetLizardConfig}]"
-		// PetMinitaurConfig: "[i:2587] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetMinitaurConfig}]"
-		// PetParrotConfig: "[i:1180] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetParrotConfig}]"
-		// PetPigmanConfig: "[i:5091] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPigmanConfig}]"
-		// PetPlanteroConfig: "[i:4701] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPlanteroConfig}]"
-		// PetGatoConfig: "[i:3855] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGatoConfig}]"
-		// PetPupConfig: "[i:1927] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPupConfig}]"
-		// PetSeedConfig: "[i:1182] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSeedConfig}]"
-		// PetSpiderConfig: "[i:1798] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSpiderConfig}]"
-		// PetMimicConfig: "[i:4737] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetMimicConfig}]"
-		// PetSharkConfig: "[i:4425] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSharkConfig}]"
-		// PetSquashConfig: "[i:1799] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSquashConfig}]"
-		// PetGliderConfig: "[i:4366] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGliderConfig}]"
-		// PetTikiConfig: "[i:1171] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetTikiConfig}]"
-		// PetTurtleConfig: "[i:753] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetTurtleConfig}]"
-		// PetVoltConfig: "[i:4777] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetVoltConfig}]"
-		// PetZephyrConfig: "[i:2420] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetZephyrConfig}]"
-		// PetOrbConfig: "[i:115] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetOrbConfig}]"
-		// PetHeartConfig: "[i:3062] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetHeartConfig}]"
-		// PetLanternConfig: "[i:3043] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetLanternConfig}]"
-		// PetNaviConfig: "[i:425] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetNaviConfig}]"
-		// PetFlickerConfig: "[i:4816] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetFlickerConfig}]"
-		// PetWispConfig: "[i:1183] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetWispConfig}]"
-		// PetSuspEyeConfig: "[i:3577] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSuspEyeConfig}]"
-		// PetKSConfig: "[i:4797] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetKSConfig}]"
-		// PetEoCConfig: "[i:4798] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEoCConfig}]"
-		// PetEoWConfig: "[i:4799] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEoWConfig}]"
-		// PetBoCConfig: "[i:4800] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetBoCConfig}]"
-		// PetDeerConfig: "[i:5090] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDeerConfig}]"
-		// PetQBConfig: "[i:4802] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetQBConfig}]"
-		// PetSkeleConfig: "[i:4801] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSkeleConfig}]"
-		// PetQSConfig: "[i:4960] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetQSConfig}]"
-		// PetDestroyerConfig: "[i:4803] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDestroyerConfig}]"
-		// PetTwinsConfig: "[i:4804] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetTwinsConfig}]"
-		// PetSkelePrimeConfig: "[i:4805] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSkelePrimeConfig}]"
-		// PetOgreConfig: "[i:4816] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetOgreConfig}]"
-		// PetPlanteraConfig: "[i:4806] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPlanteraConfig}]"
-		// PetPumpkingConfig: "[i:4812] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPumpkingConfig}]"
-		// PetEverscreamConfig: "[i:4813] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEverscreamConfig}]"
-		// PetIceQueenConfig: "[i:4814] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetIceQueenConfig}]"
-		// PetDukeConfig: "[i:4808] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDukeConfig}]"
-		// PetGolemConfig: "[i:4807] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGolemConfig}]"
-		// PetEoLConfig: "[i:4811] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEoLConfig}]"
-		// PetBetsyConfig: "[i:4817] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetBetsyConfig}]"
-		// PetMartianConfig: "[i:4815] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetMartianConfig}]"
-		// PetLCConfig: "[i:4809] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetLCConfig}]"
-		// PetMLConfig: "[i:4810] [c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetMLConfig}]"
+		// PetHeader: "[i:2420][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetHeader}]"
+		// PetDinoConfig: "[i:1242][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDinoConfig}]"
+		// PetEaterConfig: "[i:994][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEaterConfig}]"
+		// PetFaceMonsterConfig: "[i:3060][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetFaceMonsterConfig}]"
+		// PetGrinchConfig: "[i:1959][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGrinchConfig}]"
+		// PetHornetConfig: "[i:1170][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetHornetConfig}]"
+		// PetImpConfig: "[i:4551][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetImpConfig}]"
+		// PetPenguinConfig: "[i:669][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPenguinConfig}]"
+		// PetPandaConfig: "[i:4550][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPandaConfig}]"
+		// PetDGConfig: "[i:1169][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDGConfig}]"
+		// PetSnowmanConfig: "[i:1312][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSnowmanConfig}]"
+		// PetShroomConfig: "[i:1181][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetShroomConfig}]"
+		// PetWerewolfConfig: "[i:4736][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetWerewolfConfig}]"
+		// PetBernieConfig: "[i:5088][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetBernieConfig}]"
+		// PetBlackCatConfig: "[i:1810][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetBlackCatConfig}]"
+		// PetChesterConfig: "[i:5098][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetChesterConfig}]"
+		// PetCompanionCubeConfig: "[i:3628][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetCompanionCubeConfig}]"
+		// PetCursedSaplingConfig: "[i:1837][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetCursedSaplingConfig}]"
+		// PetKittenConfig: "[i:4735][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetKittenConfig}]"
+		// PetEsteeConfig: "[i:4365][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEsteeConfig}]"
+		// PetEyeSpringConfig: "[i:1311][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEyeSpringConfig}]"
+		// PetFoxConfig: "[i:4604][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetFoxConfig}]"
+		// PetButterflyConfig: "[i:4605][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetButterflyConfig}]"
+		// PetGlommerConfig: "[i:5089][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGlommerConfig}]"
+		// PetDragonConfig: "[i:3857][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDragonConfig}]"
+		// PetHarpyConfig: "[i:4603][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetHarpyConfig}]"
+		// PetLizardConfig: "[i:1172][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetLizardConfig}]"
+		// PetMinitaurConfig: "[i:2587][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetMinitaurConfig}]"
+		// PetParrotConfig: "[i:1180][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetParrotConfig}]"
+		// PetPigmanConfig: "[i:5091][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPigmanConfig}]"
+		// PetPlanteroConfig: "[i:4701][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPlanteroConfig}]"
+		// PetGatoConfig: "[i:3855][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGatoConfig}]"
+		// PetPupConfig: "[i:1927][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPupConfig}]"
+		// PetSeedConfig: "[i:1182][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSeedConfig}]"
+		// PetSpiderConfig: "[i:1798][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSpiderConfig}]"
+		// PetMimicConfig: "[i:4737][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetMimicConfig}]"
+		// PetSharkConfig: "[i:4425][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSharkConfig}]"
+		// PetSquashConfig: "[i:1799][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSquashConfig}]"
+		// PetGliderConfig: "[i:4366][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGliderConfig}]"
+		// PetTikiConfig: "[i:1171][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetTikiConfig}]"
+		// PetTurtleConfig: "[i:753][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetTurtleConfig}]"
+		// PetVoltConfig: "[i:4777][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetVoltConfig}]"
+		// PetZephyrConfig: "[i:2420][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetZephyrConfig}]"
+		// PetOrbConfig: "[i:115][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetOrbConfig}]"
+		// PetHeartConfig: "[i:3062][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetHeartConfig}]"
+		// PetLanternConfig: "[i:3043][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetLanternConfig}]"
+		// PetNaviConfig: "[i:425][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetNaviConfig}]"
+		// PetFlickerConfig: "[i:4816][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetFlickerConfig}]"
+		// PetWispConfig: "[i:1183][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetWispConfig}]"
+		// PetSuspEyeConfig: "[i:3577][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSuspEyeConfig}]"
+		// PetKSConfig: "[i:4797][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetKSConfig}]"
+		// PetEoCConfig: "[i:4798][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEoCConfig}]"
+		// PetEoWConfig: "[i:4799][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEoWConfig}]"
+		// PetBoCConfig: "[i:4800][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetBoCConfig}]"
+		// PetDeerConfig: "[i:5090][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDeerConfig}]"
+		// PetQBConfig: "[i:4802][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetQBConfig}]"
+		// PetSkeleConfig: "[i:4801][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSkeleConfig}]"
+		// PetQSConfig: "[i:4960][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetQSConfig}]"
+		// PetDestroyerConfig: "[i:4803][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDestroyerConfig}]"
+		// PetTwinsConfig: "[i:4804][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetTwinsConfig}]"
+		// PetSkelePrimeConfig: "[i:4805][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetSkelePrimeConfig}]"
+		// PetOgreConfig: "[i:4816][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetOgreConfig}]"
+		// PetPlanteraConfig: "[i:4806][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPlanteraConfig}]"
+		// PetPumpkingConfig: "[i:4812][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetPumpkingConfig}]"
+		// PetEverscreamConfig: "[i:4813][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEverscreamConfig}]"
+		// PetIceQueenConfig: "[i:4814][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetIceQueenConfig}]"
+		// PetDukeConfig: "[i:4808][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetDukeConfig}]"
+		// PetGolemConfig: "[i:4807][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetGolemConfig}]"
+		// PetEoLConfig: "[i:4811][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetEoLConfig}]"
+		// PetBetsyConfig: "[i:4817][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetBetsyConfig}]"
+		// PetMartianConfig: "[i:4815][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetMartianConfig}]"
+		// PetLCConfig: "[i:4809][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetLCConfig}]"
+		// PetMLConfig: "[i:4810][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PetMLConfig}]"
 		// PatreonHeader: "[i:FargowiltasSouls/RoombaPet][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PatreonHeader}]"
 		// PatreonRoomba: "[i:FargowiltasSouls/RoombaPet][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PatreonRoomba}]"
 		// PatreonOrb: "[i:FargowiltasSouls/ComputationOrb][c/ffffff:{$Mods.FargowiltasSouls.Toggler.PatreonOrb}]"
@@ -6546,5 +6597,6 @@ Mods: {
 		}
 
 		// Conditions.RoombaPetSold: Mods.FargowiltasSouls.Conditions.RoombaPetSold
+		// ShimmerImmunityConfig: "[i:FargowiltasSouls/ColossusSoul][c/ffffff:Shimmer Immunity]"
 	}
 }

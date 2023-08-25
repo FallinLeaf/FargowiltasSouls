@@ -32,7 +32,7 @@ Enemies will explode into needles on death if they are struck with your needles
         }
 
         protected override Color nameColor => new(248, 156, 92);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Turtle");
+        
 
         public override void SetDefaults()
         {

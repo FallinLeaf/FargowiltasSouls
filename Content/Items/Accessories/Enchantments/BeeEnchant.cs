@@ -29,7 +29,6 @@ Melee hits and most piercing attacks spawn bees
         }
 
         protected override Color nameColor => new(254, 246, 37);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Bee");
 
         public override void SetDefaults()
         {

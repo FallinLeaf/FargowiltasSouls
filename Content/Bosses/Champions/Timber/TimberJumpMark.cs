@@ -51,7 +51,12 @@ namespace FargowiltasSouls.Content.Bosses.Champions.Timber
                     SoundEngine.PlaySound(SoundID.Item14, spawnPos);
 
                     if (Main.netMode != NetmodeID.MultiplayerClient)
-                        Projectile.NewProjectile(npc.GetSource_FromThis(), spawnPos, Vector2.Zero, ProjectileID.DD2ExplosiveTrapT3Explosion, Projectile.damage, 0f, Main.myPlayer);
+                    {
+                        Projectile p = Projectile.NewProjectileDirect(npc.GetSource_FromThis(), spawnPos, Vector2.Zero, ProjectileID.DD2ExplosiveTrapT3Explosion, Projectile.damage, 0f, Main.myPlayer);
+                        p.friendly = false;
+                        p.hostile = true;
+                    }
+                        
                 }
 
                 int max = WorldSavingSystem.MasochistModeReal ? 18 : 6;

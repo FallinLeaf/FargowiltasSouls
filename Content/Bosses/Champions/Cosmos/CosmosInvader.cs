@@ -53,7 +53,7 @@ namespace FargowiltasSouls.Content.Bosses.Champions.Cosmos
         {
             Projectile.velocity *= 1 + Projectile.ai[1];
 
-            Projectile.rotation = Projectile.velocity.ToRotation() + 1.570796f;
+            Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2;
 
             if (++Projectile.frameCounter >= 4)
             {

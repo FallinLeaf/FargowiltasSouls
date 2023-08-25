@@ -66,7 +66,7 @@ namespace FargowiltasSouls.Content.Projectiles.Masomode
                     Dust dust = Main.dust[Dust.NewDust(Projectile.Center - spinningpoint * 30f, 0, 0, DustID.Vortex, 0.0f, 0.0f, 0, new Color(), 1f)];
                     dust.noGravity = true;
                     dust.position = Projectile.Center - spinningpoint * Main.rand.Next(10, 21);
-                    dust.velocity = spinningpoint.RotatedBy(1.57079637050629, new Vector2()) * 4f;
+                    dust.velocity = spinningpoint.RotatedBy((float)Math.PI / 2, new Vector2()) * 4f;
                     dust.scale = 0.5f + Main.rand.NextFloat();
                     dust.fadeIn = 0.5f;
                 }
@@ -76,7 +76,7 @@ namespace FargowiltasSouls.Content.Projectiles.Masomode
                     Dust dust = Main.dust[Dust.NewDust(Projectile.Center - spinningpoint * 30f, 0, 0, DustID.Granite, 0.0f, 0.0f, 0, new Color(), 1f)];
                     dust.noGravity = true;
                     dust.position = Projectile.Center - spinningpoint * 30f;
-                    dust.velocity = spinningpoint.RotatedBy(-1.57079637050629, new Vector2()) * 2f;
+                    dust.velocity = spinningpoint.RotatedBy(-(float)Math.PI / 2, new Vector2()) * 2f;
                     dust.scale = 0.5f + Main.rand.NextFloat();
                     dust.fadeIn = 0.5f;
                 }
@@ -92,7 +92,7 @@ namespace FargowiltasSouls.Content.Projectiles.Masomode
                     Dust dust = Main.dust[Dust.NewDust(Projectile.Center - spinningpoint * 30f, 0, 0, DustID.Vortex, 0.0f, 0.0f, 0, new Color(), 1f)];
                     dust.noGravity = true;
                     dust.position = Projectile.Center - spinningpoint * Main.rand.Next(10, 21);
-                    dust.velocity = spinningpoint.RotatedBy(1.57079637050629, new Vector2()) * 6f;
+                    dust.velocity = spinningpoint.RotatedBy((float)Math.PI / 2, new Vector2()) * 6f;
                     dust.scale = 0.5f + Main.rand.NextFloat();
                     dust.fadeIn = 0.5f;
                     dust.customData = Projectile.Center;
@@ -103,7 +103,7 @@ namespace FargowiltasSouls.Content.Projectiles.Masomode
                     Dust dust = Main.dust[Dust.NewDust(Projectile.Center - spinningpoint * 30f, 0, 0, DustID.Granite, 0.0f, 0.0f, 0, new Color(), 1f)];
                     dust.noGravity = true;
                     dust.position = Projectile.Center - spinningpoint * 30f;
-                    dust.velocity = spinningpoint.RotatedBy(-1.57079637050629, new Vector2()) * 3f;
+                    dust.velocity = spinningpoint.RotatedBy(-(float)Math.PI / 2, new Vector2()) * 3f;
                     dust.scale = 0.5f + Main.rand.NextFloat();
                     dust.fadeIn = 0.5f;
                     dust.customData = Projectile.Center;
@@ -120,7 +120,7 @@ namespace FargowiltasSouls.Content.Projectiles.Masomode
                     Dust dust = Main.dust[Dust.NewDust(Projectile.Center - spinningpoint * 30f, 0, 0, DustID.Vortex, 0.0f, 0.0f, 0, new Color(), 1f)];
                     dust.noGravity = true;
                     dust.position = Projectile.Center - spinningpoint * Main.rand.Next(10, 21);
-                    dust.velocity = spinningpoint.RotatedBy(1.57079637050629, new Vector2()) * 6f;
+                    dust.velocity = spinningpoint.RotatedBy((float)Math.PI / 2, new Vector2()) * 6f;
                     dust.scale = 0.5f + Main.rand.NextFloat();
                     dust.fadeIn = 0.5f;
                     dust.customData = Projectile.Center;
@@ -131,7 +131,7 @@ namespace FargowiltasSouls.Content.Projectiles.Masomode
                     Dust dust = Main.dust[Dust.NewDust(Projectile.Center - spinningpoint * 30f, 0, 0, DustID.Granite, 0.0f, 0.0f, 0, new Color(), 1f)];
                     dust.noGravity = true;
                     dust.position = Projectile.Center - spinningpoint * 30f;
-                    dust.velocity = spinningpoint.RotatedBy(-1.57079637050629, new Vector2()) * 3f;
+                    dust.velocity = spinningpoint.RotatedBy(-(float)Math.PI / 2, new Vector2()) * 3f;
                     dust.scale = 0.5f + Main.rand.NextFloat();
                     dust.fadeIn = 0.5f;
                     dust.customData = Projectile.Center;
@@ -167,7 +167,7 @@ namespace FargowiltasSouls.Content.Projectiles.Masomode
                             Dust dust1 = Main.dust[Dust.NewDust(Projectile.Center - spinningpoint1 * 30f, 0, 0, DustID.Vortex, 0.0f, 0.0f, 0, new Color(), 1f)];
                             dust1.noGravity = true;
                             dust1.position = Projectile.Center - spinningpoint1 * Main.rand.Next(10, 21);
-                            dust1.velocity = spinningpoint1.RotatedBy(1.57079637050629, new Vector2()) * 6f;
+                            dust1.velocity = spinningpoint1.RotatedBy((float)Math.PI / 2, new Vector2()) * 6f;
                             dust1.scale = 0.5f + Main.rand.NextFloat();
                             dust1.fadeIn = 0.5f;
                             dust1.customData = Projectile.Center;
@@ -177,7 +177,7 @@ namespace FargowiltasSouls.Content.Projectiles.Masomode
                             Dust dust2 = Main.dust[Dust.NewDust(Projectile.Center - spinningpoint2 * 30f, 0, 0, DustID.Granite, 0.0f, 0.0f, 0, new Color(), 1f)];
                             dust2.noGravity = true;
                             dust2.position = Projectile.Center - spinningpoint2 * 30f;
-                            dust2.velocity = spinningpoint2.RotatedBy(-1.57079637050629, new Vector2()) * 3f;
+                            dust2.velocity = spinningpoint2.RotatedBy(-(float)Math.PI / 2, new Vector2()) * 3f;
                             dust2.scale = 0.5f + Main.rand.NextFloat();
                             dust2.fadeIn = 0.5f;
                             dust2.customData = Projectile.Center;

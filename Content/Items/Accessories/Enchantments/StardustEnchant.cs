@@ -28,7 +28,7 @@ There is a 60 second cooldown for this effect
         }
 
         protected override Color nameColor => new(0, 174, 238);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Stardust");
+        
 
         public override void SetDefaults()
         {

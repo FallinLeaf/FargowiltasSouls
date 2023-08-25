@@ -238,6 +238,7 @@ namespace FargowiltasSouls.Core.ModPlayers
             EbonwoodEnchantItem = null;
             ShadewoodEnchantItem = null;
             PearlwoodEnchantItem = null;
+            AshWoodEnchantItem = null;
 
             RainEnchantActive = false;
             AncientShadowEnchantActive = false;
@@ -1405,14 +1406,18 @@ namespace FargowiltasSouls.Core.ModPlayers
 
             if (BorealEnchantItem != null && Player.GetToggleValue("Boreal") && BorealCD <= 0)
             {
-                BorealCD = 60;
+                BorealCD = WoodForce ? 30 : 60;
 
-                if (WoodForce)
-                {
-                    BorealCD = 30;
-                }
 
                 BorealWoodEnchant.BorealSnowballs(this, damage);
+            }
+
+            bool ashBurning = AshWoodEnchantItem != null && (Player.onFire || Player.onFire2 || Player.onFire3);
+            bool obsidianWet = Player.lavaWet && ObsidianEnchantItem != null;
+            if ((ashBurning || obsidianWet) && Player.GetToggleValue("AshWood") && AshwoodCD <= 0)
+            {
+                AshwoodCD = TerraForce ? 20 : 30;
+                AshWoodEnchant.AshwoodFireball(this, damage);
             }
 
             if (AdditionalAttacks && AdditionalAttacksTimer <= 0)

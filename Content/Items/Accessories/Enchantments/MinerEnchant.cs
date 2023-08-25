@@ -26,7 +26,7 @@ Effects of Night Owl, Spelunker, Hunter, Shine, and Dangersense Potions
         }
 
         protected override Color nameColor => new(95, 117, 151);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Miner");
+        
 
         public override void SetDefaults()
         {

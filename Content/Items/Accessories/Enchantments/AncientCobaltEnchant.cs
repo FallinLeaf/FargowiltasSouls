@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
@@ -19,7 +20,6 @@ namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
         }
 
         protected override Color nameColor => new(53, 76, 116);
-        public override string wizardEffect => "";
 
         public override void SetDefaults()
         {

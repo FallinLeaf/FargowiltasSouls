@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Core.NPCMatching;
+using System;
 
 namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.FrostMoon
 {
@@ -90,7 +91,7 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.FrostMoo
                 int num22 = 2;
                 for (int index1 = 0; index1 < num22; ++index1)
                 {
-                    Vector2 vector2_2 = ((float)(Main.rand.NextDouble() * 3.14159274101257) - 1.570796f).ToRotationVector2() * Main.rand.Next(3, 8);
+                    Vector2 vector2_2 = ((float)(Main.rand.NextDouble() * 3.14159274101257) - (float)Math.PI / 2).ToRotationVector2() * Main.rand.Next(3, 8);
                     int index2 = Dust.NewDust(npc.position, npc.width, npc.height, DustID.Snow, vector2_2.X * 2f, vector2_2.Y * 2f, 100, new Color(), 1.4f);
                     Main.dust[index2].noGravity = true;
                     Main.dust[index2].noLight = true;

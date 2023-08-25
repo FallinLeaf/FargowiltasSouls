@@ -264,7 +264,7 @@ namespace FargowiltasSouls
             //On.Terraria.GameContent.ItemDropRules.DropBasedOnMasterMode.CanDrop -= DropBasedOnMasterOrEMode_CanDrop;
             //On.Terraria.GameContent.ItemDropRules.DropBasedOnMasterMode.TryDroppingItem_DropAttemptInfo_ItemDropRuleResolveAction -= DropBasedOnMasterOrEMode_TryDroppingItem_DropAttemptInfo_ItemDropRuleResolveAction;
 
-            NPC.LunarShieldPowerMax = 150;
+            //NPC.LunarShieldPowerMax = NPC.downedMoonlord ? 50 : 100;
 
             static void RestoreSprites(Dictionary<int, Asset<Texture2D>> buffer, Asset<Texture2D>[] original)
             {
@@ -487,8 +487,14 @@ namespace FargowiltasSouls
 
             Item.NewItem(null, player.Center, ModContent.ItemType<EurusSock>());
             Item.NewItem(null, player.Center, ModContent.ItemType<PuffInABottle>());
+            //int bugnet = (Main.zenithWorld || Main.remixWorld) ? ItemID.FireproofBugNet : ItemID.BugNet;
             Item.NewItem(null, player.Center, ItemID.BugNet);
             Item.NewItem(null, player.Center, ItemID.GrapplingHook);
+
+            if (Main.zenithWorld || Main.remixWorld)
+            {
+                Item.NewItem(null, player.Center, ItemID.ObsidianSkinPotion, 5);
+            }
 
             //only give once per world
             if (!WorldSavingSystem.ReceivedTerraStorage)

@@ -23,7 +23,7 @@ namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
         }
 
         protected override Color nameColor => new(95, 71, 82);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Meteor");
+        
 
         public override void SetDefaults()
         {

@@ -23,7 +23,7 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.PumpkinM
 
         public override bool PreKill(NPC npc)
         {
-            if (Main.pumpkinMoon && NPC.waveNumber < 12)
+            if (Main.pumpkinMoon && NPC.waveNumber < 15)
             {
                 for (int i = 0; i < 10; i++)
                 {

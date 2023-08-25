@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -57,7 +58,7 @@ namespace FargowiltasSouls.Content.Bosses.Champions.Cosmos
             if (Projectile.localAI[0] < startup)
                 Projectile.velocity += Projectile.ai[1].ToRotationVector2() * Projectile.localAI[1] / startup;
 
-            Projectile.rotation = Projectile.velocity.ToRotation() + 1.570796f;
+            Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2;
 
             if (++Projectile.frameCounter >= 4)
             {

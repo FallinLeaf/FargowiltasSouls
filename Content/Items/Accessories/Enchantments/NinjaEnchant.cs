@@ -22,7 +22,7 @@ Increases armor pen by 15
         }
 
         protected override Color nameColor => new(48, 49, 52);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Ninja");
+        
 
         public override void SetDefaults()
         {

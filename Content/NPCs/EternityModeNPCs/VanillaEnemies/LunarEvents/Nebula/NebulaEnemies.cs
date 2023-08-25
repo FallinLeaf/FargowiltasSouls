@@ -6,15 +6,19 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEvents
+namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEvents.Nebula
 {
     public class NebulaEnemies : EModeNPCBehaviour
     {
-        public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchTypeRange(
+        public static int[] NebulaEnemyIDs =
+        {
             NPCID.NebulaBeast,
             NPCID.NebulaHeadcrab,
             NPCID.NebulaBrain,
             NPCID.NebulaSoldier
+        };
+        public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchTypeRange(
+            NebulaEnemyIDs
         );
 
         public override void OnFirstTick(NPC npc)

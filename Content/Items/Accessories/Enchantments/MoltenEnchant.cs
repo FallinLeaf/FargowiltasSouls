@@ -20,7 +20,7 @@ Enemies take 25% increased damage while inside the inferno ring
         }
 
         protected override Color nameColor => new(193, 43, 43);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Molten");
+        
 
         public override void SetDefaults()
         {

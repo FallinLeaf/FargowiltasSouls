@@ -26,7 +26,7 @@ Attacks may inflict the Solar Flare debuff
         }
 
         protected override Color nameColor => new(254, 158, 35);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Solar");
+        
 
         public override void SetDefaults()
         {

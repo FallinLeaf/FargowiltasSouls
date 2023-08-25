@@ -14,7 +14,31 @@ namespace FargowiltasSouls.Core.Systems
 
         public override void PostUpdateWorld()
         {
-            NPC.LunarShieldPowerMax = 150;
+            //NPC.LunarShieldPowerMax = NPC.downedMoonlord ? 50 : 100;
+            
+            if (!PlacedMutantStatue && (Main.zenithWorld || Main.remixWorld))
+            {
+                int positionX = Main.spawnTileX; //offset by dimensions of statue
+                int positionY = Main.spawnTileY;
+                int checkUp = -30;
+                int checkDown = 10;
+                bool placed = false;
+                for (int offsetX = -50; offsetX <= 50; offsetX++)
+                {
+                    for (int offsetY = checkUp; offsetY <= checkDown; offsetY++)
+                    {
+                        if (WorldGenSystem.TryPlacingStatue(positionX + offsetX, positionY + offsetY))
+                        {
+                            placed = true;
+                            PlacedMutantStatue = true;
+                            break;
+                        }
+                    }
+
+                    if (placed)
+                        break;
+                }
+            }
 
             if (ShouldBeEternityMode)
             {
@@ -49,7 +73,7 @@ namespace FargowiltasSouls.Core.Systems
 
             if (WorldSavingSystem.EternityMode)
             {
-                NPC.LunarShieldPowerMax = 50;
+                //NPC.LunarShieldPowerMax = 25;
 
                 if (Main.raining || Sandstorm.Happening || Main.bloodMoon)
                 {

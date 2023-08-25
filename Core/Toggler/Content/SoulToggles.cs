@@ -35,6 +35,7 @@ namespace FargowiltasSouls.Core.Toggler.Content
         public string DefensePaladin;
         public string DefenseBrain;
         public string DefenseFrozen;
+        public string ShimmerImmunity;
 
         public int FlightMasteryHeader = ModContent.ItemType<SupersonicSoul>();
         public string FlightMasteryInsignia;

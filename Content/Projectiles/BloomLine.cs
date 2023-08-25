@@ -134,8 +134,31 @@ namespace FargowiltasSouls.Content.Projectiles
                     }
                     break;
                 */
+                case 5: //nebula pillar shot telegraph
+                    {
+                        Projectile.rotation = Projectile.ai[1];
+                        color = Color.DeepPink;
+                        alphaModifier = 1;
+                        Projectile.scale = 1f;
+                        maxTime = (int)Projectile.ai[2];
+                        break;
+                    }
+                case 6: //sweeping nebula pillar shot telegraph
+                    {
+                        const int startAngle = 30;
+                        ref float direction = ref Projectile.ai[1];
+                        maxTime = (int)Projectile.ai[2];
+                        float ratio = ((float)counter / maxTime);
+                        float startRot = direction * MathHelper.ToRadians(startAngle);
+                        float maxRot = MathHelper.ToRadians(150);
+                        Projectile.rotation = (-Vector2.UnitY).RotatedBy(startRot).RotatedBy(direction * maxRot * ratio).ToRotation();
+                        color = Color.DeepPink;
+                        Projectile.scale = 1f;
+                        
+                        break;
+                    }
                 default:
-                    Main.NewText("gloom line: you shouldnt be seeing this text, show terry or javyz");
+                    Main.NewText("bloom line: you shouldnt be seeing this text, show terry or javyz");
                     break;
             }
 

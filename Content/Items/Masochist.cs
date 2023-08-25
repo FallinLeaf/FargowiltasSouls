@@ -92,7 +92,11 @@ Cannot be used while a boss is alive
                         WorldSavingSystem.SpawnedDevi = true;
 
                         if (ModContent.TryFind("Fargowiltas", "SpawnProj", out ModProjectile spawnProj))
-                            Projectile.NewProjectile(player.GetSource_ItemUse(Item), player.Center - 1000 * Vector2.UnitY, Vector2.Zero, spawnProj.Type, 0, 0, Main.myPlayer, deviantt.Type);
+                        {
+                            Vector2 spawnPos = (Main.zenithWorld || Main.remixWorld) ? player.Center : player.Center - 1000 * Vector2.UnitY;
+                            Projectile.NewProjectile(player.GetSource_ItemUse(Item), spawnPos, Vector2.Zero, spawnProj.Type, 0, 0, Main.myPlayer, deviantt.Type);
+                        }
+                            
 
                         FargoSoulsUtil.PrintLocalization($"Mods.{Mod.Name}.Message.{Name}SpawnDevi", new Color(175, 75, 255));
                     }

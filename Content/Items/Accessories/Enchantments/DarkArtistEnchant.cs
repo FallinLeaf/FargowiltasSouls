@@ -35,7 +35,7 @@ Greatly enhances Flameburst effectiveness
         }
 
         protected override Color nameColor => new(155, 92, 176);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.DarkArtist");
+        
 
         public override void SetDefaults()
         {

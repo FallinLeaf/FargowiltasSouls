@@ -22,7 +22,7 @@ Touch it yourself to add back missing wing time
         }
 
         protected override Color nameColor => new(231, 178, 28);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Forbidden");
+        
 
         public override void SetDefaults()
         {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 
 namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
 {
@@ -25,7 +26,6 @@ Flameburst field of view and range are dramatically increased
         }
 
         protected override Color nameColor => new(93, 134, 166);
-        public override string wizardEffect => "";
 
         public override void SetDefaults()
         {

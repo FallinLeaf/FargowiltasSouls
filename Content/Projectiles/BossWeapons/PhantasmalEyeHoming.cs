@@ -80,7 +80,7 @@ namespace FargowiltasSouls.Content.Projectiles.BossWeapons
             if (Projectile.ai[1] < 0)
                 Projectile.velocity = Vector2.Normalize(Projectile.velocity) * MathHelper.Lerp(Projectile.velocity.Length(), 24f, 0.02f);
 
-            Projectile.rotation = Projectile.velocity.ToRotation() + 1.570796f;
+            Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2;
 
             if (Projectile.localAI[0] < ProjectileID.Sets.TrailCacheLength[Projectile.type])
                 Projectile.localAI[0] += 0.1f;

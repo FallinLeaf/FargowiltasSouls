@@ -14,9 +14,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\UI\EnchantSlotIcon.png" />
-    <None Remove="Content\Buffs\Pets\NibbleBuff.png" />
+    <None Remove="Content\Buffs\Souls\CorruptedBuff.png" />
+    <None Remove="Content\Items\Accessories\Enchantments\AshWoodEnchant.png" />
     <None Remove="Content\Items\Accessories\Masomode\SlimyShield.png" />
-    <None Remove="Content\Projectiles\Pets\Nibble.png" />
+    <None Remove="Content\Items\Placables\WiresPainting.png" />
+    <None Remove="Content\Items\Placables\WiresPaintingSheet.png" />
+    <None Remove="Content\NPCs\EternityModeNPCs\VanillaEnemies\LunarEvents\Stardust\StardustMinion.png" />
+    <None Remove="Content\NPCs\EternityModeNPCs\VanillaEnemies\LunarEvents\Stardust\StardustMinionOld.png" />
+    <None Remove="Content\NPCs\EternityModeNPCs\VanillaEnemies\LunarEvents\Vortex\LightningTelegraph.png" />
+    <None Remove="Content\NPCs\EternityModeNPCs\VanillaEnemies\LunarEvents\Vortex\VortexVortexProjectile.png" />
     <None Remove="Content\Tiles\MutantStatueGift.png" />
   </ItemGroup>
   <ItemGroup>

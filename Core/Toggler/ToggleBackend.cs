@@ -131,6 +131,7 @@ namespace FargowiltasSouls.Core.Toggler
             player.SetToggleValue("PalladiumOrb", false);
 
             player.SetToggleValue("CopperConfig", false);
+            player.SetToggleValue("AshWood", false);
 
             player.SetToggleValue("Gladiator", false);
             player.SetToggleValue("RedRidingRain", false);
@@ -251,6 +252,7 @@ namespace FargowiltasSouls.Core.Toggler
             player.SetToggleValue("FlightMasteryGravity", true);
             player.SetToggleValue("Universe", true);
             player.SetToggleValue("DefensePaladin", true);
+            player.SetToggleValue("ShimmerImmunity", true);
             player.SetToggleValue("MasoAeolus", true);
             player.SetToggleValue("MasoConcoction", true);
             player.SetToggleValue("ManaFlower", true);

@@ -72,6 +72,8 @@ namespace FargowiltasSouls.Core.ModPlayers
         public bool TinCritBuffered;
         public Item TungstenEnchantItem;
         public int TungstenCD;
+        public Item AshWoodEnchantItem;
+        public int AshwoodCD;
         //force of earth
         public Item AdamantiteEnchantItem;
         public bool AdamantiteCanSplit;

@@ -25,7 +25,7 @@ Missing any attack will reset these bonuses
         }
 
         protected override Color nameColor => new(192, 27, 60);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.RedRiding");
+        
 
         public override void SetDefaults()
         {

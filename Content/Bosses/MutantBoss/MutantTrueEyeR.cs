@@ -142,7 +142,7 @@ namespace FargowiltasSouls.Content.Bosses.MutantBoss
                         Projectile.ai[1]++;
                     }
 
-                    float num3 = Projectile.velocity.ToRotation() + 1.570796f;
+                    float num3 = Projectile.velocity.ToRotation() + (float)Math.PI / 2;
                     if (Math.Abs(Projectile.rotation - num3) >= 3.14159274101257)
                         Projectile.rotation = num3 >= Projectile.rotation ? Projectile.rotation + 6.283185f : Projectile.rotation - 6.283185f;
                     float num4 = 12f;

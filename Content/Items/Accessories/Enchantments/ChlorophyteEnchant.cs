@@ -33,7 +33,6 @@ Double tap a direction
         }
 
         protected override Color nameColor => new(36, 137, 0);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Chlorophyte");
 
         public override void SetDefaults()
         {

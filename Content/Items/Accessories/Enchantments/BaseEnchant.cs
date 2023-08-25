@@ -1,8 +1,10 @@
 using FargowiltasSouls.Common.Utilities;
 using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
@@ -10,7 +12,7 @@ namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
     public abstract class BaseEnchant : SoulsItem
     {
         protected abstract Color nameColor { get; }
-        public abstract string wizardEffect { get; }
+        public string wizardEffect => Language.GetTextValue($"Mods.FargowiltasSouls.WizardEffect.{Name.Replace("Enchantment", "").Replace("Enchant", "")}");
 
         public override void SetStaticDefaults()
         {

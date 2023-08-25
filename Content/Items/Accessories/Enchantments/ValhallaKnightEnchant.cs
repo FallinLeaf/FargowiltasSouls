@@ -24,7 +24,7 @@ Greatly enhances Ballista effectiveness
         }
 
         protected override Color nameColor => new(147, 101, 30);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.ValhallaKnight");
+        
 
         public override void SetDefaults()
         {

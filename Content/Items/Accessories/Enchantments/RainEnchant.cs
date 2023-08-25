@@ -23,7 +23,7 @@ Effects of Inner Tube
         }
 
         protected override Color nameColor => new(255, 236, 0);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Rain");
+        
 
         public override void SetDefaults()
         {

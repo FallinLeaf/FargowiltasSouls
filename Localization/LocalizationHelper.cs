@@ -166,6 +166,7 @@ namespace FargowiltasSouls
             AddToggle("TungstenConfig", "TungstenEnchant", "b0d2b2");
             AddToggle("TungstenProjConfig", "TungstenEnchant", "b0d2b2");
             AddToggle("ObsidianConfig", "ObsidianEnchant", "453e73");
+            AddToggle("AshWoodConfig", "AshWoodEnchant", "958083");
 
             AddToggle("WillHeader", "WillForce");
             AddToggle("GladiatorConfig", "GladiatorEnchant", "9c924e");
@@ -346,6 +347,7 @@ namespace FargowiltasSouls
             AddToggle("DefenseFleshKnuckleConfig", "ColossusSoul");
             AddToggle("DefensePaladinConfig", "ColossusSoul");
             AddToggle("DefenseFrozenConfig", "ColossusSoul");
+            AddToggle("ShimmerImmunityConfig", "ColossusSoul");
 
             AddToggle("FlightMasteryHeader", "FlightMasterySoul");
             AddToggle("FlightMasteryInsigniaConfig", "FlightMasterySoul");

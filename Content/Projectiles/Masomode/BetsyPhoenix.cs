@@ -84,7 +84,7 @@ namespace FargowiltasSouls.Content.Projectiles.Masomode
                         dust.noLight = true;
                     }
                 }
-                Vector2 vector2_1 = 16f * new Vector2(0f, (float)Math.Cos(Projectile.frameCounter * 6.28318548202515 / 40.0 - 1.57079637050629)).RotatedBy(Projectile.rotation);
+                Vector2 vector2_1 = 16f * new Vector2(0f, (float)Math.Cos(Projectile.frameCounter * 6.28318548202515 / 40.0 - (float)Math.PI / 2)).RotatedBy(Projectile.rotation);
                 Vector2 vector2_2 = Vector2.Normalize(Projectile.velocity);
 
                 Dust dust1 = Dust.NewDustDirect(Projectile.Center - Projectile.Size / 4f, Projectile.width / 2, Projectile.height / 2, DustID.Torch, 0.0f, 0.0f, 0, default, 1f);

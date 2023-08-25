@@ -11,6 +11,7 @@ namespace FargowiltasSouls.Content.Projectiles.BossWeapons
     internal class BlenderYoyoProj : ModProjectile
     {
         public bool yoyosSpawned = false;
+        public bool checkedYoyos = false;
 
         public override void SetStaticDefaults()
         {
@@ -56,7 +57,6 @@ namespace FargowiltasSouls.Content.Projectiles.BossWeapons
                 {
                     if (Main.projectile[i].active && Main.projectile[i].friendly && Main.projectile[i].owner == Projectile.owner && Main.projectile[i].type == ModContent.ProjectileType<BlenderOrbital>())
                     {
-                        localAI1 = Main.projectile[i].localAI[1] + MathHelper.Pi;
                         break;
                     }
                 }

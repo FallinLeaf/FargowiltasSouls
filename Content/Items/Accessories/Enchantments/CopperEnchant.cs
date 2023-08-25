@@ -22,7 +22,7 @@ namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
         }
 
         protected override Color nameColor => new(213, 102, 23);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Copper");
+        
 
         public override void SetDefaults()
         {

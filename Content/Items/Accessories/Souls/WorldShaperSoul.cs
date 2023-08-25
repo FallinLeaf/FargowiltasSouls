@@ -85,6 +85,8 @@ Summons a pet Magic Lantern
             player.accThirdEye = true;
             player.accCalendar = true;
             player.accWeatherRadio = true;
+            player.chiselSpeed = true;
+            player.treasureMagnet = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -97,15 +99,13 @@ Summons a pet Magic Lantern
         {
             CreateRecipe()
 
-            //ancient chisel
             //step stool
             //greedy ring
-            //treasure magnet
 
             .AddIngredient(null, "MinerEnchant")
             .AddIngredient(ItemID.Toolbelt)
             .AddIngredient(ItemID.Toolbox)
-            .AddIngredient(ItemID.ArchitectGizmoPack)
+            .AddIngredient(ItemID.HandOfCreation)
             .AddIngredient(ItemID.ActuationAccessory)
             .AddIngredient(ItemID.LaserRuler)
             .AddIngredient(ItemID.RoyalGel)

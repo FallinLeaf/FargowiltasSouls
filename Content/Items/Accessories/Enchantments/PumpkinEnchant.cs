@@ -29,7 +29,7 @@ Enemies that touch them will destroy them and take damage
         }
 
         protected override Color nameColor => new(227, 101, 28);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Pumpkin");
+        
 
         public override void SetDefaults()
         {

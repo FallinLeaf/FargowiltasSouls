@@ -344,7 +344,7 @@ namespace FargowiltasSouls.Content.Bosses.Champions.Earth
 
                                 if (Main.netMode != NetmodeID.MultiplayerClient) //spawn geysers and bombs
                                 {
-                                    Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ProjectileID.DD2ExplosiveTrapT3Explosion, 0, 0f, Main.myPlayer);
+                                    Projectile p = Projectile.NewProjectileDirect(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ProjectileID.DD2ExplosiveTrapT3Explosion, 0, 0f, Main.myPlayer);
                                     Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<FuseBomb>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage), 0f, Main.myPlayer);
 
                                     if (head.localAI[2] == 1 && WorldSavingSystem.EternityMode)

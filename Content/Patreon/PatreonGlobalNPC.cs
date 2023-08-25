@@ -14,6 +14,8 @@ using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using FargowiltasSouls.Content.Bosses.AbomBoss;
+using FargowiltasSouls.Content.Patreon.DemonKing;
 
 namespace FargowiltasSouls.Content.Patreon
 {
@@ -40,7 +42,6 @@ namespace FargowiltasSouls.Content.Patreon
                 RuntimeDropCondition dropCondition = new(condition, description);
                 npcLoot.Add(ItemDropRule.ByCondition(dropCondition, item, chanceDenominator));
             }
-
             switch (npc.type)
             {
                 case NPCID.BrainofCthulhu:
@@ -97,6 +98,14 @@ namespace FargowiltasSouls.Content.Patreon
 
                 default:
                     break;
+                
+            }
+            if (npc.type == ModContent.NPCType<AbomBoss>())
+            {
+                AddPatreonDrop(
+                        () => SoulConfig.Instance.PatreonFishron,
+                        ModContent.ItemType<StaffOfUnleashedOcean>(),
+                        25);
             }
         }
     }

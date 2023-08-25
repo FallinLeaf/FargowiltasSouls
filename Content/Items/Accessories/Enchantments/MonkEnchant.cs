@@ -29,7 +29,6 @@ Lightning Aura can now crit and strikes faster
         }
 
         protected override Color nameColor => new(146, 5, 32);
-        public override string wizardEffect => "";
 
         public override void SetDefaults()
         {

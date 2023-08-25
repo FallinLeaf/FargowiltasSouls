@@ -21,7 +21,7 @@ namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
         }
 
         protected override Color nameColor => new(152, 142, 131);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Iron");
+        
 
         public override void SetDefaults()
         {

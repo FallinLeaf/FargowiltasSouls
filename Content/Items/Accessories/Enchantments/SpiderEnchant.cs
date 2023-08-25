@@ -29,7 +29,7 @@ Summon crits do x1.5 damage instead of x2
         }
 
         protected override Color nameColor => new(109, 78, 69);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Spider");
+        
 
         public override void SetDefaults()
         {

@@ -77,7 +77,7 @@ namespace FargowiltasSouls.Content.Projectiles
                     return;
                 for (int index1 = 0; index1 < 2; ++index1)
                 {
-                    float num1 = Projectile.rotation + (float)((Main.rand.NextBool(2)? -1.0 : 1.0) * 1.57079637050629);
+                    float num1 = Projectile.rotation + (float)((Main.rand.NextBool(2)? -1.0 : 1.0) * (float)Math.PI / 2);
                     float num2 = (float)(Main.rand.NextDouble() * 0.800000011920929 + 1.0);
                     Vector2 vector2 = new((float)Math.Cos((double)num1) * num2, (float)Math.Sin((double)num1) * num2);
                     int index2 = Dust.NewDust(Projectile.Center, 0, 0, DustID.Electric, vector2.X, vector2.Y, 0, new Color(), 1f);
@@ -86,7 +86,7 @@ namespace FargowiltasSouls.Content.Projectiles
                 }
                 if (!Main.rand.NextBool(5))
                     return;
-                int index3 = Dust.NewDust(Projectile.Center + Projectile.velocity.RotatedBy(1.57079637050629, new Vector2()) * ((float)Main.rand.NextDouble() - 0.5f) * Projectile.width - Vector2.One * 4f, 8, 8, DustID.Smoke, 0.0f, 0.0f, 100, new Color(), 1.5f);
+                int index3 = Dust.NewDust(Projectile.Center + Projectile.velocity.RotatedBy((float)Math.PI / 2, new Vector2()) * ((float)Main.rand.NextDouble() - 0.5f) * Projectile.width - Vector2.One * 4f, 8, 8, DustID.Smoke, 0.0f, 0.0f, 100, new Color(), 1.5f);
                 Dust dust = Main.dust[index3];
                 dust.velocity *= 0.5f;
                 Main.dust[index3].velocity.Y = -Math.Abs(Main.dust[index3].velocity.Y);
@@ -138,8 +138,8 @@ namespace FargowiltasSouls.Content.Projectiles
                     return;
                 }
                 Projectile.localAI[0] += (float)(spinningpoint.X * (double)(Projectile.extraUpdates + 1) * 2.0) * num1;
-                Projectile.velocity = spinningpoint.RotatedBy(Projectile.ai[0] + 1.57079637050629, new Vector2()) * num1;
-                Projectile.rotation = Projectile.velocity.ToRotation() + 1.570796f;
+                Projectile.velocity = spinningpoint.RotatedBy(Projectile.ai[0] + (float)Math.PI / 2, new Vector2()) * num1;
+                Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2;
             }
 
             /*for (int index1 = 1; index1 < Projectile.oldPos.Length; index1++)
@@ -172,7 +172,7 @@ namespace FargowiltasSouls.Content.Projectiles
 
         public override void Kill(int timeLeft)
         {
-            float num2 = (float)(Projectile.rotation + 1.57079637050629 + (Main.rand.NextBool(2)? -1.0 : 1.0) * 1.57079637050629);
+            float num2 = (float)(Projectile.rotation + (float)Math.PI / 2 + (Main.rand.NextBool(2)? -1.0 : 1.0) * (float)Math.PI / 2);
             float num3 = (float)(Main.rand.NextDouble() * 2.0 + 2.0);
             Vector2 vector2 = new((float)Math.Cos(num2) * num3, (float)Math.Sin(num2) * num3);
             for (int i = 0; i < Projectile.oldPos.Length; i++)

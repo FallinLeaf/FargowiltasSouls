@@ -20,7 +20,7 @@ namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
         }
 
         protected override Color nameColor => new(173, 154, 95);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Pearlwood");
+        
 
         public override void SetDefaults()
         {

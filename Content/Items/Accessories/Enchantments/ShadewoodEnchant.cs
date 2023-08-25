@@ -24,7 +24,7 @@ Enemies struck while Bleeding spew damaging blood
         }
 
         protected override Color nameColor => new(88, 104, 118);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Shadewood");
+        
 
         public override void SetDefaults()
         {

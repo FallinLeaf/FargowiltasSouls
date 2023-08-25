@@ -273,6 +273,8 @@ namespace FargowiltasSouls.Content.Bosses.MutantBoss
             target.hurtCooldowns[1] = 0;
 
             target.velocity = -0.4f * Vector2.UnitY;
+
+            target.GetModPlayer<FargoSoulsPlayer>().NoUsingItems = 2;
         }
 
         public float WidthFunction(float trailInterpolant)

@@ -295,6 +295,25 @@ namespace FargowiltasSouls
             }
         }
 
+        public static bool NPCInAnyTiles(NPC npc, bool platforms)
+        {
+            //WHERE'S TJHE FKC IJNGI METHOD FOR HTIS? ITS NOT COLLISION.SOLKIDCOLLIOSOM ITS NOPT COLLISON.SOLDITILES I HATE 1.4 IHATE TMODLAOREI I HATE THIS FUSPTID FUCKIGN GNAME SOFU KIGN MCUCH FUCK FUCK FUCK
+            bool isInTiles = false;
+            for (int x = 0; x < npc.width; x += 16)
+            {
+                for (float y = 0; y < npc.height; y += 16)
+                {
+                    Tile tile = Framing.GetTileSafely((int)(npc.position.X + x) / 16, (int)(npc.position.Y + y) / 16);
+                    if ((tile.HasUnactuatedTile && platforms) && (Main.tileSolid[tile.TileType] || (Main.tileSolidTop[tile.TileType] && platforms)))
+                    {
+                        isInTiles = true;
+                        break;
+                    }
+                }
+            }
+            return isInTiles;
+        }
+
         public static void PrintAI(NPC npc)
         {
             Main.NewText($"{npc.whoAmI} ai: {npc.ai[0]} {npc.ai[1]} {npc.ai[2]} {npc.ai[3]}, local: {npc.localAI[0]} {npc.localAI[1]} {npc.localAI[2]} {npc.localAI[3]}");

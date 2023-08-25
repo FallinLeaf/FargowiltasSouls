@@ -84,6 +84,8 @@ namespace FargowiltasSouls.Core.Systems
 
         public static bool SwarmActive { get => swarmActive; set => swarmActive = value; }
 
+        public static bool PlacedMutantStatue;
+
         public override void Unload() => DownedBoss = null;
 
         private static void ResetFlags()
@@ -112,6 +114,8 @@ namespace FargowiltasSouls.Core.Systems
 
             DownedAnyBoss = false;
             WOFDroppedDeviGift2 = false;
+
+            PlacedMutantStatue = false;
         }
 
         public override void OnWorldLoad() => ResetFlags();
@@ -166,6 +170,8 @@ namespace FargowiltasSouls.Core.Systems
 
             if (WOFDroppedDeviGift2)
                 downed.Add("WOFDroppedDeviGift2");
+            if (PlacedMutantStatue)
+                downed.Add("PlacedMutantStatue");
 
             for (int i = 0; i < DownedBoss.Length; i++)
             {
@@ -195,6 +201,7 @@ namespace FargowiltasSouls.Core.Systems
             SpawnedDevi = downed.Contains("spawnedDevi");
             DownedAnyBoss = downed.Contains("downedAnyBoss");
             WOFDroppedDeviGift2 = downed.Contains("WOFDroppedDeviGift2");
+            PlacedMutantStatue = downed.Contains("PlacedMutantStatue");
 
             for (int i = 0; i < DownedBoss.Length; i++)
                 DownedBoss[i] = downed.Contains($"downedBoss{i}") || downed.Contains($"downedChampion{i}");
@@ -209,7 +216,7 @@ namespace FargowiltasSouls.Core.Systems
 
             BitsByte flags = reader.ReadByte();
             DownedBetsy = flags[0];
-            WorldSavingSystem.EternityMode = flags[1];
+            EternityMode = flags[1];
             DownedFishronEX = flags[2];
             DownedDevi = flags[3];
             DownedAbom = flags[4];
@@ -225,6 +232,7 @@ namespace FargowiltasSouls.Core.Systems
             ShouldBeEternityMode = flags[4];
             DownedAnyBoss = flags[5];
             WOFDroppedDeviGift2 = flags[6];
+            PlacedMutantStatue = flags[7];
 
             for (int i = 0; i < DownedBoss.Length; i++)
             {
@@ -260,7 +268,8 @@ namespace FargowiltasSouls.Core.Systems
                 [3] = CanPlayMaso,
                 [4] = ShouldBeEternityMode,
                 [5] = DownedAnyBoss,
-                [6] = WOFDroppedDeviGift2
+                [6] = WOFDroppedDeviGift2,
+                [7] = PlacedMutantStatue
             });
 
             BitsByte bitsByte = new();

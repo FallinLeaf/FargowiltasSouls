@@ -299,17 +299,6 @@ namespace FargowiltasSouls.Content.Bosses.VanillaEternity
             base.ModifyIncomingHit(npc, ref modifiers);
         }
 
-        public override void OnKill(NPC npc)
-        {
-            base.OnKill(npc);
-
-            //to make up for no loot creepers
-            Item.NewItem(npc.GetSource_Loot(), npc.Hitbox, ItemID.TissueSample, 60);
-            Item.NewItem(npc.GetSource_Loot(), npc.Hitbox, ItemID.CrimtaneOre, 200);
-
-            npc.DropItemInstanced(npc.position, npc.Size, ItemID.CrimsonFishingCrate, 5);
-        }
-
         public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo hurtInfo)
         {
             base.OnHitPlayer(npc, target, hurtInfo);

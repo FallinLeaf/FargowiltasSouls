@@ -24,7 +24,6 @@ Summons a Terraprisma familiar that scales with minion damage
         }
 
         protected override Color nameColor => new(150, 133, 100);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.AncientHallow");
 
         public override void SetDefaults()
         {

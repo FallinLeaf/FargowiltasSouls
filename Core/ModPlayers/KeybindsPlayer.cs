@@ -61,11 +61,6 @@ namespace FargowiltasSouls.Core.ModPlayers
                     MashPressed[3] = false;
             }
 
-            if (FargowiltasSouls.GoldKey.JustPressed && GoldEnchantActive)
-            {
-                GoldKey();
-            }
-
             if (FargowiltasSouls.FreezeKey.JustPressed)
             {
                 if (StardustEnchantActive && !Player.HasBuff(ModContent.BuffType<TimeStopCDBuff>()))
@@ -127,6 +122,11 @@ namespace FargowiltasSouls.Core.ModPlayers
 
             if (FargowiltasSouls.SoulToggleKey.JustPressed)
                 FargoUIManager.ToggleSoulToggler();
+
+            if (FargowiltasSouls.GoldKey.JustPressed && GoldEnchantActive)
+            {
+                GoldKey();
+            }
 
             #endregion
 

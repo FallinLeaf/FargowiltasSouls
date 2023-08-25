@@ -25,7 +25,7 @@ namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
         }
 
         protected override Color nameColor => new(83, 103, 143);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Platinum");
+        
 
         public override void SetDefaults()
         {

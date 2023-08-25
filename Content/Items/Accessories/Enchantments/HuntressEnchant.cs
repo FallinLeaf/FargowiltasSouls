@@ -3,6 +3,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 
 namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
 {
@@ -23,7 +24,6 @@ Missing any attack will reset these bonuses
         }
 
         protected override Color nameColor => new(122, 192, 76);
-        public override string wizardEffect => "";
 
         public override void SetDefaults()
         {

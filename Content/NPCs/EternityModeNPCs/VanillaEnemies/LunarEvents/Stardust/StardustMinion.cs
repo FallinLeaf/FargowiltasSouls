@@ -1,0 +1,319 @@
+using FargowiltasSouls.Content.Bosses.VanillaEternity;
+using FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEvents.Stardust;
+using FargowiltasSouls.Core.Globals;
+using FargowiltasSouls.Core.Systems;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.IO;
+using System;
+using Terraria;
+using Terraria.Audio;
+using Terraria.GameContent.Golf;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.UI;
+using FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.PirateInvasion;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEvents.Stardust
+{
+    public class StardustMinion : ModNPC
+    {
+        public enum States 
+        {
+            Idle = 1,
+            PrepareExpand,
+            Expand,
+            Contract,
+            PrepareRush,
+            Rush,
+            PrepareScissor,
+            Scissor,
+            ScissorContract,
+            Curve
+        }
+        public List<int> NoDamage = new List<int>
+        {
+            (int)States.PrepareScissor
+        };
+        public override void SetStaticDefaults()
+        {
+            // DisplayName.SetDefault("Crystal Slime");
+            Main.npcFrameCount[NPC.type] = 2;
+            NPCID.Sets.CantTakeLunchMoney[Type] = true;
+            NPCID.Sets.DebuffImmunitySets.Add(NPC.type, new Terraria.DataStructures.NPCDebuffImmunityData
+            {
+                SpecificallyImmuneTo = NPCID.Sets.DebuffImmunitySets[NPCID.LunarTowerStardust].SpecificallyImmuneTo
+            });
+            NPCID.Sets.NPCBestiaryDrawOffset.Add(NPC.type, new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            {
+                Hide = true
+            });
+        }
+
+        public override void SetDefaults()
+        {
+            NPC.CloneDefaults(NPCID.StardustCellBig);
+
+            NPC.lifeMax = 12000;
+            NPC.damage = 110;
+
+            NPC.aiStyle = -1;
+            NPC.knockBackResist = 0;
+            NPC.timeLeft = 60 * 60 * 30;
+            NPC.noTileCollide = true;
+
+            NPC.scale = 1f;
+        }
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(NPC.localAI[0]);
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            NPC.localAI[0] = reader.ReadSingle();
+        }
+        public override bool CanHitPlayer(Player target, ref int CooldownSlot)
+        {
+            return !NoDamage.Contains((int)NPC.ai[1]);
+        }
+        public override void AI()
+        {
+            StardustMinionAI();
+        }
+        private Vector2 LockPos = Vector2.Zero;
+        public void StardustMinionAI()
+        {
+            ref float Timer = ref NPC.ai[0];
+            ref float State = ref NPC.ai[1];
+            ref float parentIndex = ref NPC.ai[2];
+            ref float num = ref NPC.ai[3];
+
+            ref float substate = ref NPC.localAI[0];
+
+            NPC parent = Main.npc[(int)parentIndex];
+            if (!parent.active || parent.type != NPCID.LunarTowerStardust)
+            {
+                NPC.active = false;
+            }
+            LunarTowerStardust parentModNPC = parent.GetGlobalNPC<LunarTowerStardust>();
+            float NearParent = parent.height * 0.8f;
+            
+            
+            switch (State)
+            {
+                case (int)States.Idle: //default, chill around center of pillar
+                    {
+                        const float speedFactor = 0.05f;
+                        //rotating at 1/2 rotations per second
+                        float rotation = MathHelper.Pi * parentModNPC.CellRotation / 60f;
+                        rotation += MathHelper.TwoPi * (num / LunarTowerStardust.CellAmount);
+                        Vector2 desiredLocation = parent.Center + NearParent * rotation.ToRotationVector2();
+                        NPC.velocity = (desiredLocation - NPC.Center) * speedFactor;
+                        break;
+                    }
+                case (int)States.PrepareExpand:
+                    {
+                        const float speedFactor = 0.05f;
+                        //rotating at 1/12 rotations per second
+                        float rotation = (MathHelper.Pi / 6) * parentModNPC.CellRotation / 60f;
+                        rotation += MathHelper.TwoPi * (num / LunarTowerStardust.CellAmount);
+                        Vector2 desiredLocation = parent.Center + NearParent * rotation.ToRotationVector2();
+                        NPC.velocity = (desiredLocation - NPC.Center) * speedFactor;
+                        break;
+                    }
+                case (int)States.Expand:
+                    {
+                        const int expansionSpeed = 16;
+                        //rotating at 1/12 rotations per second
+                        float rotation = (MathHelper.Pi / 6) * parentModNPC.CellRotation / 60f;
+                        rotation += MathHelper.TwoPi * (num / LunarTowerStardust.CellAmount);
+                        Vector2 desiredLocation = parent.Center + (parentModNPC.AuraSize + 400) * rotation.ToRotationVector2();
+                        NPC.velocity = Vector2.Normalize(desiredLocation - NPC.Center) * expansionSpeed;
+                        if (NPC.Distance(parent.Center) > parentModNPC.AuraSize)
+                        {
+                            State = (int)States.Contract;
+                        }
+                        break;
+                    }
+                case (int)States.Contract:
+                    {
+                        const int contractionSpeed = 16;
+                        //rotating at 1/12 rotations per second
+                        float rotation = (MathHelper.Pi / 6) * parentModNPC.CellRotation / 60f;
+                        rotation += MathHelper.TwoPi * (num / LunarTowerStardust.CellAmount);
+                        Vector2 desiredLocation = parent.Center + NearParent * rotation.ToRotationVector2();
+                        NPC.velocity = Vector2.Normalize(NPC.velocity) * contractionSpeed;
+                        RotateTowards(desiredLocation, 2);
+                        if (NPC.Distance(desiredLocation) <= 100)
+                        {
+                            State = (int)States.Idle;
+                        }
+                        break;
+                    }
+                case (int)States.PrepareRush:
+                    {
+                        const int ReactionTime = 60;
+                        const float speedFactor = 0.05f;
+                        Player player = Main.player[parent.target];
+                        //rotating at 1/3 rotations per second
+                        float rotation = (MathHelper.Pi / 1.5f) * parentModNPC.CellRotation / 60f;
+                        rotation += MathHelper.TwoPi * (num / LunarTowerStardust.CellAmount);
+                        Vector2 desiredLocation = parent.Center + NearParent * rotation.ToRotationVector2();
+                        NPC.velocity = (desiredLocation - NPC.Center) * speedFactor;
+                        float fromCenter = NPC.DirectionFrom(parent.Center).ToRotation();
+                        float toPlayer = NPC.DirectionTo(player.Center).ToRotation();
+                        if (parentModNPC.AttackTimer > ReactionTime)
+                        {
+                            if (parentModNPC.AttackTimer > ReactionTime && player.active && !player.ghost && Math.Abs(toPlayer - fromCenter) < MathHelper.Pi / 8)
+                            {
+
+                                substate = 0;
+                                SoundEngine.PlaySound(SoundID.Item96, NPC.Center);
+                                State = (int)States.Rush;
+                            }
+                        }
+                        break;
+                    }
+                case (int)States.Rush:
+                    {
+                        const int RushSpeed = 20;
+                        Player player = Main.player[parent.target];
+                        if (substate != (float)States.Rush && player.active && !player.ghost)
+                        {
+                            NPC.velocity = NPC.DirectionTo(player.Center) * RushSpeed;
+                            substate = (float)States.Rush;
+                        }
+                        if (NPC.Distance(parent.Center) > parentModNPC.AuraSize)
+                        {
+                            substate = 0;
+                            State = (int)States.Contract;
+                        }
+                        break;
+                    }
+                case (int)States.PrepareScissor:
+                    {
+                        Scissor(parent, num, parentModNPC, true);
+                        break;
+                    }
+                case (int)States.Scissor:
+                    {
+                        Scissor(parent, num, parentModNPC, false);
+                        break;
+                    }
+                case (int)States.ScissorContract:
+                    {
+                        float contractionSpeed = NPC.velocity.Length();
+                        //rotating at 1/12 rotations per second
+                        float rotation = (MathHelper.Pi / 6) * parentModNPC.CellRotation / 60f;
+                        rotation += MathHelper.TwoPi * (num / LunarTowerStardust.CellAmount);
+                        Vector2 desiredLocation = parent.Center + NearParent * rotation.ToRotationVector2();
+                        NPC.velocity = Vector2.Normalize(NPC.velocity) * contractionSpeed;
+                        RotateTowards(desiredLocation, 3);
+                        if (NPC.Distance(desiredLocation) <= 100)
+                        {
+                            State = (int)States.Idle;
+                        }
+                        break;
+                    }
+                case (int)States.Curve:
+                    {
+                        const int HomeBack = -1;
+                        Player player = Main.player[parent.target];
+                        if (substate != (float)States.Curve && substate != HomeBack && player.active && !player.ghost)
+                        {
+                            int side = Main.rand.NextBool() ? 1 : -1;
+                            NPC.velocity = NPC.DirectionTo(player.Center).RotatedBy(90 * side);
+                            LockPos = (player.Center - parent.Center) * Main.rand.NextFloat(0.8f, 1.2f);
+                            substate = (float)States.Curve;
+                            NPC.netUpdate = true;
+                            Timer = 0;
+                        }
+                        int Speed = 16;
+                        Vector2 desiredLocation = parent.Center + LockPos;
+                        NPC.velocity = Vector2.Normalize(NPC.velocity) * Speed;
+                        RotateTowards(desiredLocation, 2);
+                        Timer++;
+                        if ((NPC.Distance(desiredLocation) <= 300 && substate != HomeBack) || Timer > 60 * 3)
+                        {
+                            LockPos = Vector2.Zero;
+                            substate = -1;
+                        }
+                        if (NPC.Distance(parent.Center) <= NearParent && substate == HomeBack)
+                        {
+                            substate = 0;
+                            State = (float)States.Idle;
+                        }
+                        break;
+                    }
+            }
+        }
+        public void Scissor(NPC parent, float num, LunarTowerStardust parentModNPC, bool trackPlayer)
+        {
+            const float speedFactor = 0.05f;
+            Player player = Main.player[parent.target];
+            int Side = (num >= LunarTowerStardust.CellAmount / 2) ? 1 : -1;
+            int x = Side == 1 ? (int)num - LunarTowerStardust.CellAmount / 2 : (int)num;
+            float ScissorSpeed = 1f + (0.08f * (5-x));
+            int Distance = (x * parentModNPC.AuraSize / (LunarTowerStardust.CellAmount / 2)) + (parent.width / 2);
+            if (Side == 1)
+            {
+                Distance += parentModNPC.AuraSize / (LunarTowerStardust.CellAmount); //offset one side by half the distance between cells so it overlaps with space on other side
+            }
+            float rotation;
+            if (trackPlayer)
+            {
+                rotation = parent.DirectionTo(player.Center).ToRotation() + (parentModNPC.CellRotation * Side);
+                
+            }
+            else
+            {
+                rotation = LockPos.ToRotation();
+                LockPos = LockPos.RotatedBy(MathHelper.ToRadians(-ScissorSpeed * Side));
+            }
+            Vector2 desiredLocation = parent.Center + Distance * rotation.ToRotationVector2();
+            NPC.velocity = (desiredLocation - NPC.Center) * speedFactor;
+            if (trackPlayer)
+            {
+                LockPos = (parent.DirectionTo(player.Center).ToRotation() + (parentModNPC.CellRotation * Side)).ToRotationVector2();
+            }
+        }
+        public override bool CheckDead()
+        {
+            ref float State = ref NPC.ai[1];
+            ref float parentIndex = ref NPC.ai[2];
+            NPC parent = Main.npc[(int)parentIndex];
+            if (!parent.active)
+            {
+                return true;
+            }
+            NPC.life = NPC.lifeMax;
+            NPC.dontTakeDamage = true;
+            NPC.position = NPC.Center;
+            NPC.width = 26;
+            NPC.height = 26;
+            NPC.Center = NPC.position;
+            return false;
+        }
+        public override void DrawBehind(int index)
+        {
+            Main.instance.DrawCacheNPCProjectiles.Add(index);
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            NPC.frame.Y = NPC.dontTakeDamage ? frameHeight : 0;
+        }
+
+        void RotateTowards(Vector2 target, float speed)
+        {
+            Vector2 PV = NPC.DirectionTo(target);
+            Vector2 LV = NPC.velocity;
+            float anglediff = (float)(Math.Atan2(PV.Y * LV.X - PV.X * LV.Y, LV.X * PV.X + LV.Y * PV.Y)); //real
+            //change rotation towards target
+            NPC.velocity = NPC.velocity.RotatedBy(Math.Sign(anglediff) * Math.Min(Math.Abs(anglediff), speed * MathHelper.Pi / 180));
+        }
+    }
+}

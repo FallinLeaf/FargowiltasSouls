@@ -24,7 +24,7 @@ namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
         }
 
         protected override Color nameColor => new(150, 133, 100);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Hallow");
+        
 
         public override void SetDefaults()
         {

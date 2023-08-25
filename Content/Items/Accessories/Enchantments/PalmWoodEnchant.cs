@@ -22,7 +22,7 @@ namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
         }
 
         protected override Color nameColor => new(183, 141, 86);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.PalmWood");
+        
 
         public override void SetDefaults()
         {

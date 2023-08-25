@@ -13,7 +13,6 @@ namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
     public class WoodEnchant : BaseEnchant
     {
         protected override Color nameColor => new(151, 107, 75);
-        public override string wizardEffect => Language.GetTextValue("Mods.FargowiltasSouls.WizardEffect.Wood");
 
         public override void SetStaticDefaults()
         {

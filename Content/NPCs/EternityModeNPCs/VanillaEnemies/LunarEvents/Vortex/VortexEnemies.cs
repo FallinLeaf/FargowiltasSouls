@@ -11,16 +11,20 @@ using FargowiltasSouls.Content.Buffs.Masomode;
 using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Core.NPCMatching;
 
-namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEvents
+namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEvents.Vortex
 {
     public class VortexEnemies : EModeNPCBehaviour
     {
-        public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchTypeRange(
+        public static int[] VortexEnemyIDs =
+        {
             NPCID.VortexLarva,
             NPCID.VortexHornet,
             NPCID.VortexHornetQueen,
             NPCID.VortexSoldier,
             NPCID.VortexRifleman
+        };
+        public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchTypeRange(
+            VortexEnemyIDs
         );
 
         public override void OnFirstTick(NPC npc)

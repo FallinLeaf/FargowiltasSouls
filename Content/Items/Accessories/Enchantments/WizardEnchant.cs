@@ -20,7 +20,6 @@ namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
         }
 
         protected override Color nameColor => new(50, 80, 193);
-        public override string wizardEffect => "";
 
         public override void SetDefaults()
         {
@@ -39,6 +38,10 @@ namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
 
             foreach (BaseEnchant enchant in Main.LocalPlayer.GetModPlayer<FargoSoulsPlayer>().EquippedEnchants)
             {
+                if (enchant.Type == Type)
+                {
+                    continue;
+                }
                 if (enchant.wizardEffect.Length != 0)
                     tooltips.Add(new TooltipLine(Mod, "wizard", $"[i:{enchant.Item.type}] " + enchant.wizardEffect));
             }

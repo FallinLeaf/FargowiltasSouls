@@ -58,11 +58,12 @@ namespace FargowiltasSouls.Content.Projectiles
 
             if (Main.rand.NextBool(6))
             {
-                if (!Main.rand.NextBool(Projectile.extraUpdates))
-                    return;
+                if (Projectile.extraUpdates >= 1)
+                    if (!Main.rand.NextBool(Projectile.extraUpdates))
+                        return;
                 for (int index1 = 0; index1 < 2; ++index1)
                 {
-                    float num1 = Projectile.rotation + (float)((Main.rand.NextBool(2)? -1.0 : 1.0) * 1.57079637050629);
+                    float num1 = Projectile.rotation + (float)((Main.rand.NextBool(2)? -1.0 : 1.0) * (float)Math.PI / 2);
                     float num2 = (float)(Main.rand.NextDouble() * 0.800000011920929 + 1.0);
                     Vector2 vector2 = new((float)Math.Cos((double)num1) * num2, (float)Math.Sin((double)num1) * num2);
                     int index2 = Dust.NewDust(Projectile.Center, 0, 0, DustID.Electric, vector2.X, vector2.Y, 0, DrawColor, 1f);
@@ -72,7 +73,7 @@ namespace FargowiltasSouls.Content.Projectiles
                 }
                 if (!Main.rand.NextBool(5))
                     return;
-                int index3 = Dust.NewDust(Projectile.Center + Projectile.velocity.RotatedBy(1.57079637050629, new Vector2()) * ((float)Main.rand.NextDouble() - 0.5f) * Projectile.width - Vector2.One * 4f, 8, 8, DustID.Smoke, 0.0f, 0.0f, 100, DrawColor, 1.5f);
+                int index3 = Dust.NewDust(Projectile.Center + Projectile.velocity.RotatedBy((float)Math.PI / 2, new Vector2()) * ((float)Main.rand.NextDouble() - 0.5f) * Projectile.width - Vector2.One * 4f, 8, 8, DustID.Smoke, 0.0f, 0.0f, 100, DrawColor, 1.5f);
                 Dust dust = Main.dust[index3];
                 dust.shader = GameShaders.Armor.GetSecondaryShader(shadertype, Main.LocalPlayer);
                 dust.velocity *= 0.5f;
@@ -83,7 +84,7 @@ namespace FargowiltasSouls.Content.Projectiles
             Vector2 spinningpoint = Vector2.UnitX.RotatedBy(Projectile.ai[0]) * num3; //create a base velocity to modify for actual velocity of projectile
             Vector2 rotationVector2 = spinningpoint.RotatedBy(Projectile.ai[1] * (Math.Floor(Math.Sin((Projectile.localAI[0] - MathHelper.Pi / 4) * 2)) + 0.5f) * MathHelper.Pi / 4); //math thing for zigzag pattern
             Projectile.velocity = rotationVector2;
-            Projectile.rotation = Projectile.velocity.ToRotation() + 1.570796f;
+            Projectile.rotation = Projectile.velocity.ToRotation() + (float)Math.PI / 2;
 
             /*for (int index1 = 1; index1 < Projectile.oldPos.Length; index1++)
             {
@@ -116,7 +117,7 @@ namespace FargowiltasSouls.Content.Projectiles
         public override void Kill(int timeLeft)
         {
             int shadertype = DrawColor == new Color(231, 174, 254) ? 100 : 0;
-            float num2 = (float)(Projectile.rotation + 1.57079637050629 + (Main.rand.NextBool(2)? -1.0 : 1.0) * 1.57079637050629);
+            float num2 = (float)(Projectile.rotation + (float)Math.PI / 2 + (Main.rand.NextBool(2)? -1.0 : 1.0) * (float)Math.PI / 2);
             float num3 = (float)(Main.rand.NextDouble() * 2.0 + 2.0);
             Vector2 vector2 = new((float)Math.Cos(num2) * num3, (float)Math.Sin(num2) * num3);
             for (int i = 0; i < Projectile.oldPos.Length; i++)
