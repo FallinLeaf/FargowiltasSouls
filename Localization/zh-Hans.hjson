@@ -26,7 +26,7 @@ Mods: {
 			Crimson: 无强化
 			CrystalAssassin: 无强化
 			DarkArtist: 无强化
-			Ebonwood: 伤害判定门槛从10提高至25，并且会杀死光环内任何小于200血量的生物 //needing update
+			Ebonwood: Aura size increased, defense reduction increased to 30
 			Forbidden: 无强化
 			Fossil: 无强化
 			Frost: 无强化
@@ -200,13 +200,10 @@ Mods: {
 			CursedCoffinDespawn: 诅咒殓棺在它的巢穴沉沉睡去……
 			BanishedBaronDespawn: 放逐遗爵潜入了更深的汪洋…… //for patch
 
-			// == Spawn ==
-			// -= Siblings =-
 			DeviBossSpawnInfo: Spawn by using [i:FargowiltasSouls/DevisCurse]
-			AbomBossSpawnInfo: Spawn by using [i:FargowiltasSouls/AbomsCure]
+			AbomBossSpawnInfo: Spawn by using [i:FargowiltasSouls/AbomsCurse]
 			MutantBossSpawnInfo: Throw [i:FargowiltasSouls/MutantsCurse] into a pool of lava while Abominationn is alive in Mutant's presence.
 
-			// -= Champions =-
 			TimberChampionSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions] on the surface during day.
 			TerraChampionSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions] underground.
 			EarthChampionSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions] in the underworld.
@@ -217,7 +214,6 @@ Mods: {
 			WillChampionSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions] at the ocean.
 			CosmosChampionSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions] in space.
 
-			// -= Challengers =-
 			TrojanSquirrelSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions]
 			LifeChallengerSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions] in the Hallow at day.
 		}
@@ -1036,7 +1032,7 @@ Mods: {
 			BrainOfConfusion: Lowers your damage output on successful dodge
 			ZenithNone: No nerfs in effect
 			ZenithHitRate: Vastly reduced hit rate, improves by defeating:
-			VampireKnives: Reduced lifesteal rate when above 33% life
+			VampireKnives: Reduced lifesteal rate when above 50% life
 			Zapinator: Cannot stack damage multipliers
 			OOASet: Set bonus increases minimum summon damage when you attack using other classes
 			MiningHelmet: Increases Undead Miner spawn rates
@@ -1548,7 +1544,7 @@ Mods: {
 				DisplayName: Seeker of Treasures
 				Description: Give it a few thousand years to grow up
 			}
-			
+
 			NibbleBuff: {
 				DisplayName: Nibble
 				Description: Just one tiny bite (please)
@@ -2382,8 +2378,8 @@ Mods: {
 				DisplayName: Bee Enchantment
 				Tooltip:
 					'''
-					Increases the strength of friendly bees
 					Melee hits and most piercing attacks spawn bees
+					Effects of Hive Pack
 					'According to all known laws of aviation, there is no way a bee should be able to fly'
 					'''
 			}
@@ -2490,8 +2486,9 @@ Mods: {
 				DisplayName: Ebonwood Enchantment
 				Tooltip:
 					'''
-					You are surrounded by an aura of Shadowflame
-					Any projectiles that would deal less than 10 damage to you are destroyed
+					You are surrounded by an aura that builds up Corruption on enemies
+					After 4 seconds of buildup they burst, Corrupting all nearby enemies
+					Corrupted enemies have 10 less defense and deal 10% less contact damage
 					'Untapped potential'
 					'''
 			}
@@ -2700,9 +2697,10 @@ Mods: {
 				DisplayName: Obsidian Enchantment
 				Tooltip:
 					'''
-					Grants immunity to fire and lava
+					Grants immunity to lava
 					You have normal movement and can swim in lava
-					While standing in lava or lava wet, your attacks spawn explosions and apply Firecracker
+					While standing in lava or lava wet, your attacks spawn explosions and are accompanied by balls of fire
+					Effects of Ash Wood Enchantment
 					'The earth calls'
 					'''
 			}
@@ -2932,7 +2930,6 @@ Mods: {
 				DisplayName: Tiki Enchantment
 				Tooltip:
 					'''
-					Increases whip range by 20%
 					Whip your summons to make them work harder
 					'Aku Aku!'
 					'''
@@ -3010,7 +3007,7 @@ Mods: {
 				DisplayName: Wizard Enchantment
 				Tooltip:
 					'''
-					Enhances the power of all other Enchantments to their Force effects
+					Enhances the power of most other Enchantments to their Force effects
 					'I'm a what?'
 					'''
 			}
@@ -3074,9 +3071,8 @@ Mods: {
 				Tooltip:
 					'''
 					Works in your inventory
-					Stand still to expose nearby treasure
+					Stand still to expose nearby treasure and enemies
 					Grants autofire to all items
-					Slightly reduces use speed of affected items
 					'''
 			}
 
@@ -3110,8 +3106,8 @@ Mods: {
 				Tooltip:
 					'''
 					[i:FargowiltasSouls/CobaltEnchant] Grants an explosion jump and you explode on hit
-					[i:FargowiltasSouls/PalladiumEnchant] Stop attacking to gradually increase attack speed for up to 5 seconds
-					[i:FargowiltasSouls/MythrilEnchant] Grants Rapid Healing after striking an enemy and spawn life orbs based on healing
+					[i:FargowiltasSouls/MythrilEnchant] Stop attacking to gradually increase attack speed for up to 5 seconds
+					[i:FargowiltasSouls/PalladiumEnchant] Grants Rapid Healing after striking an enemy and spawn life orbs based on healing
 					[i:FargowiltasSouls/OrichalcumEnchant] Attacks spawn flower petals and damaging debuffs deal 4x damage
 					[i:FargowiltasSouls/AdamantiteEnchant] Every weapon shot will split into 3, deal 33% damage and have 66% less iframes
 					[i:FargowiltasSouls/TitaniumEnchant] Attacks generate titanium shards, reaching max grants Titanium Shield
@@ -3126,6 +3122,7 @@ Mods: {
 					[i:FargowiltasSouls/PumpkinEnchant] You will grow pumpkins while walking on the ground
 					[i:FargowiltasSouls/CactusEnchant] Enemies may explode into needles on death
 					[i:FargowiltasSouls/BeeEnchant] Melee hits and most piercing attacks spawn bees
+					[i:FargowiltasSouls/BeeEnchant] Effects of Hive Pack
 					[i:FargowiltasSouls/SpiderEnchant] 30% chance for minions and sentries to crit for x1.5 damage instead of x2
 					[i:FargowiltasSouls/TurtleEnchant] When standing still and not attacking, you will enter your shell
 					[i:FargowiltasSouls/BeetleEnchant] Beetles aid both offense and defense
@@ -3160,7 +3157,6 @@ Mods: {
 					[i:FargowiltasSouls/NecroEnchant] Slain enemies may drop a pile of bones
 					[i:FargowiltasSouls/NinjaEnchant] Drastically increases projectile and attack speed but reduces damage
 					[i:FargowiltasSouls/CrystalAssassinEnchant] Throw a smoke bomb to teleport to it and gain the First Strike Buff
-					[i:FargowiltasSouls/CrystalAssassinEnchant] Effects of Volatile Gel
 					[i:FargowiltasSouls/SpookyEnchant] All of your minions gain an extra scythe attack
 					[i:FargowiltasSouls/MonkEnchant] Don't attack to gain a single use monk dash
 					[i:FargowiltasSouls/ShinobiEnchant] Dash into any walls, to teleport through them to the next opening
@@ -3198,7 +3194,8 @@ Mods: {
 					[i:FargowiltasSouls/LeadEnchant] You take 60% less from damage over time
 					[i:FargowiltasSouls/SilverEnchant] Right Click to guard with your shield
 					[i:FargowiltasSouls/TungstenEnchant] 300% increased sword size and projectile size every quarter second
-					[i:FargowiltasSouls/ObsidianEnchant] Grants immunity to fire and lava
+					[i:FargowiltasSouls/ObsidianEnchant] Grants immunity to lava
+					[i:FargowiltasSouls/AshWoodEnchant] While burning or in lava, player and town NPC attacks are accompanied by fireballs
 					'The land lends its strength'
 					'''
 			}
@@ -3902,7 +3899,7 @@ Mods: {
 					Increases HP by 100
 					15% damage reduction
 					Increases life regeneration by 5
-					Grants immunity to knockback, several debuffs, and fall damage
+					Grants immunity to knockback, several debuffs, Shimmering, and fall damage
 					Enemies are more likely to target you
 					Effects of Brain of Confusion, Star Veil, and Bee Cloak
 					Effects of Shiny Stone, Paladin's Shield, and Frozen Turtle Shell
@@ -4097,7 +4094,7 @@ Mods: {
 					'''
 					Increased block and wall placement speed by 50%
 					Near infinite block placement and mining reach
-					Mining speed tripled
+					Mining speed tripled, plus effect of Ancient Chisel
 					Shows the location of enemies, traps, and treasures
 					Auto paint and actuator effect
 					Provides light and allows gravity control
@@ -4105,7 +4102,7 @@ Mods: {
 					    Tiles and walls will not be consumed
 						Increased placement speed and range
 					Effect can be disabled in Soul Toggles menu
-					Effects of the Cell Phone and Royal Gel
+					Effects of the Cell Phone, Royal Gel and Treasure Magnet
 					Summons a pet Magic Lantern
 					'Limitless possibilities'
 					'''
@@ -4304,7 +4301,7 @@ Mods: {
 				DisplayName: Deer Sinew
 				Tooltip:
 					'''
-					Allows the ability to dash
+					Allows the ability to dash without a dash accessory
 					Double tap a direction
 					Taking damage may briefly freeze you
 					Reduces damage when your speed increases, down to 0.85x at max
@@ -4414,7 +4411,11 @@ Mods: {
 
 			EternityAdvisor: {
 				DisplayName: Eternity Advisor
-				Tooltip: Suggests loadouts for Eternity Mode based on progression
+				Tooltip:
+					'''
+					Suggests loadouts for Eternity Mode based on progression
+					[c/ff0000: Note: These suggestions are currently outdated. Take them with a grain of salt.]
+					'''
 			}
 
 			GalacticReformer: {
@@ -5303,19 +5304,19 @@ Mods: {
 			}
 
 			PrismaRegalia: {
-				// DisplayName: Prisma Regalia
-				/* Tooltip:
+				DisplayName: Prisma Regalia
+				Tooltip:
 					'''
 					Hitting with the tip of the spear releases homing stars
 					Hold to charge for more damage
 					While fully charged, hits release extra stars regardless
 					'The radiant power of a foe's pure essence...'
-					''' */
+					'''
 			}
 
 			BaronSummon: {
-				// Tooltip: ""
-				// DisplayName: Baron Summon
+				Tooltip: ""
+				DisplayName: Baron Summon
 			}
 		}
 
@@ -5497,8 +5498,9 @@ Mods: {
 				}
 			}
 
-			// DetonatingBubbleNPC.DisplayName: Detonating Bubble
-			// StardustMinion.DisplayName: Stardust Minion
+			DetonatingBubbleNPC.DisplayName: Detonating Bubble
+			StardustMinion.DisplayName: Stardust Minion
+			BanishedBaron.DisplayName: Banished Baron
 		}
 
 		Tiles: {
@@ -5517,684 +5519,685 @@ Mods: {
 		}
 
 		Projectiles: {
-			AbomBoss.DisplayName: 憎恶
-			AbomDeathScythe.DisplayName: 憎恶镰刀
-			AbomDeathray.DisplayName: 憎恶死亡射线
-			AbomDeathrayMark.DisplayName: 死亡射线
-			AbomDeathraySmall.DisplayName: 憎恶死亡射线
-			AbomDeathraySmall2.DisplayName: 死亡射线
-			AbomFlocko.DisplayName: 超级雪花怪
-			AbomFrostShard.DisplayName: 寒霜碎块
-			AbomFrostWave.DisplayName: 寒霜波
-			AbomReticle.DisplayName: 憎恶瞄准点
-			AbomRitual.DisplayName: 憎恶结界
-			AbomRitual2.DisplayName: 憎恶结界
-			AbomRitualMaso.DisplayName: 憎恶结界
-			AbomRocket.DisplayName: 火箭
-			AbomScytheFlaming.DisplayName: 憎恶镰刀
-			AbomScytheSpin.DisplayName: 憎恶镰刀
-			AbomScytheSplit.DisplayName: 憎恶镰刀
-			AbomSickle.DisplayName: 憎恶镰刀
-			AbomSickle2.DisplayName: 憎恶镰刀
-			AbomSickle3.DisplayName: 憎恶镰刀
-			AbomSickleSplit1.DisplayName: 憎恶镰刀
-			AbomSickleSplit2.DisplayName: 憎恶镰刀
-			AbomStyxGazer.DisplayName: 冥河凝视
-			AbomSword.DisplayName: 冥河凝视之刃
-			AbomSwordHandle.DisplayName: 冥河凝视之刃
-			FargoArrowProj.DisplayName: 混合之箭
-			FargoBulletProj.DisplayName: 混合子弹
-			BigSting22.DisplayName: 大螯刺工蜂
-			BigStinger.DisplayName: 大螯刺
-			BeeDash.DisplayName: 冲刺
-			BlenderOrbital.DisplayName: 绞肉机
-			BlenderPetal.DisplayName: 绞肉机
-			BlenderProj3.DisplayName: 绞肉机
-			// BlenderSpray.DisplayName: Blender Spray
-			BlenderYoyoProj.DisplayName: 绞肉机
-			Bonez.DisplayName: 骸骨
-			DarkStarFriendly.DisplayName: 暗星
-			// Dash.DisplayName: Dash
-			// Dash2.DisplayName: Dash2
-			// DicerMine.DisplayName: Dicer Mine
-			// DicerSpray.DisplayName: Dicer Spray
-			DicerYoyo.DisplayName: 切肉机
-			DragonBreathProj.DisplayName: 巨龙之息
-			DragonFireball.DisplayName: 火球
-			DragonFireballBoom.DisplayName: 火球
-			DungeonGuardian.DisplayName: 地牢守卫
-			EaterRocket.DisplayName: 吞噬者火箭
-			EyeFireFriendly.DisplayName: 魔眼烈火
-			// EyeProjectile2.DisplayName: Mods.FargowiltasSouls.Projectiles.EyeProjectile2.DisplayName
-			FishNuke.DisplayName: 猪鲨核弹
-			FishNukeExplosion.DisplayName: 猪鲨核弹
-			FishStickProj.DisplayName: 鱼杖
-			FishStickShark.DisplayName: 鲨鱼
-			FleshLaser.DisplayName: 红色激光
-			GibExplosion.DisplayName: 爆炸
-			GolemGib.DisplayName: 石巨人碎片
-			GolemHeadProj.DisplayName: 石巨人头
-			HellBone.DisplayName: 地狱之骨
-			HellBonez.DisplayName: 地狱骸骨
-			HellFlame.DisplayName: 地狱烈焰
-			HellSkeletron.DisplayName: 地狱骷髅
-			HellSkull2.DisplayName: 地狱头骨
-			HentaiNuke.DisplayName: 幻象爆炸
-			HentaiSpear.DisplayName: 洞察者
-			HentaiSpearArc.DisplayName: 闪电弧
-			HentaiSpearBigDeathray.DisplayName: 幻影死亡射线
-			HentaiSpearDeathray.DisplayName: 幻影死亡射线
-			HentaiSpearDeathray2.DisplayName: 幻影死亡射线
-			HentaiSpearDive.DisplayName: 洞察者
-			HentaiSpearHeld.DisplayName: 洞察者
-			HentaiSpearSpin.DisplayName: 洞察者
-			HentaiSpearSpinBoundary.DisplayName: 洞察者
-			HentaiSpearSpinThrown.DisplayName: 洞察者
-			HentaiSpearThrown.DisplayName: 洞察者
-			HentaiSpearWand.DisplayName: 洞察者
-			// HentaiSphereRing.DisplayName: Phantasmal Sphere
-			Hungry.DisplayName: 饿鬼
-			Hungry2.DisplayName: 饿鬼
-			LeashFlail.DisplayName: 克苏鲁连枷
-			MechEyeProjectile.DisplayName: 机械眼球
-			MechFlail.DisplayName: 机械克苏鲁连枷
-			PhantasmalBlast.DisplayName: 幻象爆炸
-			PhantasmalBolt.DisplayName: 幻影矢
-			PhantasmalEyeBoundary.DisplayName: 幻影眼
-			PhantasmalEyeHoming.DisplayName: 幻影眼
-			PhantasmalEyeLeashProj.DisplayName: 幻影眼
-			PhantasmalFlail.DisplayName: 幻影克苏鲁连枷
-			PhantasmalSphere2.DisplayName: 幻影球
-			PrimeDeathray.DisplayName: 烈焰死亡射线
-			PrimeLaser.DisplayName: 机械激光
-			RazorbladeTyphoonFriendly.DisplayName: 利刃台风
-			RefractorBlaster2Held.DisplayName: 衍射暗星炮
-			RetiDeathray.DisplayName: 烈焰死亡射线
-			Retiglaive.DisplayName: 激光飞轮刃
-			Retirang.DisplayName: 激光回旋镖
-			SlimeBall.DisplayName: 粘液球
-			SlimeBallHoming.DisplayName: 粘液球
-			SlimeRainBall.DisplayName: 史莱姆雨
-			SlimeSpikeFriendly.DisplayName: 史莱姆尖刺
-			SmallStinger.DisplayName: 小刺
-			SparklingDevi.DisplayName: 戴薇安
-			SparklingLove.DisplayName: 闪闪发光的爱
-			SparklingLoveBig.DisplayName: 闪闪发光的爱
-			SparklingLoveDeathray.DisplayName: 爱之光
-			SparklingLoveDeathray2.DisplayName: 爱之光
-			SparklingLoveEnergyHeart.DisplayName: 能量爱心
-			SparklingLoveHeart.DisplayName: 友善爱心
-			SparklingLoveHeart2.DisplayName: 友善爱心
-			Spazmaglaive.DisplayName: 魔焰飞轮刃
-			SpazmaglaiveExplosion.DisplayName: 诅咒狱火
-			Spazmarang.DisplayName: 魔焰回旋镖
-			Stinger.DisplayName: 毒刺
-			StyxGazer.DisplayName: 冥河凝视
-			StyxGazerHandle.DisplayName: 冥河凝视
-			StyxScythe.DisplayName: 冥河镰刀
-			StyxSickle.DisplayName: 冥河镰刀
-			Whirlpool.DisplayName: 旋涡
-			WhirlpoolBase.DisplayName: 旋涡
-			Acorn.DisplayName: 橡实
-			RollingSnowball.DisplayName: 雪球
-			Sprout.DisplayName: 新芽
-			SproutingAcorn.DisplayName: 橡实
-			TheLightning.DisplayName: 闪电弧
-			TheLightningRodProj.DisplayName: 避雷针
-			TrojanAcorn.DisplayName: 橡实
-			TrojanHook.DisplayName: 松鼠钩
-			TrojanSnowball.DisplayName: 雪球
-			TrojanSquirrelProj.DisplayName: 高顶礼帽松鼠
-			CactusMine.DisplayName: 仙人掌雷
-			ChampionBee.DisplayName: 蜜蜂
-			ChampionBeetle.DisplayName: 甲虫
-			CosmosBolt.DisplayName: 宇宙矢
-			CosmosDeathray.DisplayName: 宇宙死亡射线
-			CosmosDeathray2.DisplayName: 宇宙死亡射线
-			// CosmicFireball.DisplayName: Mods.FargowiltasSouls.Projectiles.CosmicFireball.DisplayName
-			// CosmicFireball2.DisplayName: Mods.FargowiltasSouls.Projectiles.CosmicFireball2.DisplayName
-			CosmosGlowything.DisplayName: 宇宙入侵怪仆从
-			CosmosInvader.DisplayName: 宇宙入侵怪仆从
-			CosmosInvaderTime.DisplayName: 宇宙入侵怪仆从
-			CosmosLightning.DisplayName: 闪电弧
-			CosmosLightningOrb.DisplayName: 闪电珠
-			CosmosMeteor.DisplayName: 宇宙流星
-			CosmosMoon.DisplayName: 宇宙之月
-			CosmosNebulaBlaze.DisplayName: 星云烈焰
-			CosmosReticle.DisplayName: 宇宙瞄准点
-			CosmosRitual.DisplayName: 宇宙结界
-			CosmosSphere.DisplayName: 宇宙球
-			CosmosVortex.DisplayName: 星旋旋涡
-			CrystalBomb.DisplayName: 水晶炸弹
-			CrystalBombShard.DisplayName: 水晶碎块
-			EarthChainBlast.DisplayName: 连锁爆炸
-			EarthChainBlast2.DisplayName: 连锁爆炸
-			EarthGeyser.DisplayName: 喷泉
-			// EarthPalladOrb.DisplayName: Palladium Life Orb
-			FlowerPetal.DisplayName: 花瓣
-			LifeDeathray.DisplayName: 神圣死亡射线
-			LifeDeathray2.DisplayName: 神圣死亡射线
-			LifeDeathraySmall.DisplayName: 神圣死亡射线
-			LifeDeathraySmall2.DisplayName: 神圣死亡射线
-			LifeFireball.DisplayName: 火球
-			LifeRitual.DisplayName: 生命结界
-			NatureBullet.DisplayName: 自然子弹
-			NatureCloudMoving.DisplayName: 自然雨云
-			NatureCloudRaining.DisplayName: 自然雨云
-			NatureCrystalLeaf.DisplayName: 叶状水晶
-			NatureDeathray.DisplayName: 自然死亡射线
-			NatureDeathraySmall.DisplayName: 自然死亡射线
-			NatureExplosion.DisplayName: 自然爆炸
-			NatureFireball.DisplayName: 火球
-			NatureIcicle.DisplayName: 自然冰锥
-			NatureRain.DisplayName: 自然之雨
-			ShadowClone.DisplayName: 暗影英灵
-			ShadowDeathraySmall.DisplayName: 暗影死亡射线
-			// ShadowFlameScythe.DisplayName: Mods.FargowiltasSouls.Projectiles.ShadowFlameScythe.DisplayName
-			ShadowGuardian.DisplayName: 地牢守卫
-			ShadowOrb.DisplayName: 暗影珠
-			SpiritCrossBone.DisplayName: 交叉骨头
-			SpiritCrossBoneReverse.DisplayName: 交叉骨头
-			SpiritHand.DisplayName: 心灵英灵之手
-			SpiritHeal.DisplayName: 幽魂珠
-			SpiritSpirit.DisplayName: 幽魂珠
-			SpiritSword.DisplayName: 心灵断钢剑
-			TerraFireball.DisplayName: 火球
-			TerraLightningOrb.DisplayName: 闪电珠
-			TerraLightningOrb2.DisplayName: 闪电珠
-			TerraLightningOrbDeathray.DisplayName: 闪电死亡射线
-			TimberAcorn.DisplayName: 橡实
-			TimberHook.DisplayName: 松鼠钩
-			TimberHook2.DisplayName: 松鼠钩
-			TimberJumpMark.DisplayName: 森林爆炸
-			TimberLaser.DisplayName: 激光
-			TimberLightningOrb.DisplayName: 闪电珠
-			// TimberPalmTree.DisplayName: Palm Tree
-			TimberSnowball.DisplayName: 雪球
-			TimberSnowball2.DisplayName: 雪球
-			// TimberSquirrel.DisplayName: Timber Squirrel
-			TimberTree.DisplayName: 树
-			TimberTreeAcorn.DisplayName: 橡实
-			WillBomb.DisplayName: 意志英灵炸弹
-			WillDeathray.DisplayName: 意志死亡射线
-			WillDeathray2.DisplayName: 意志死亡射线
-			WillDeathraySmall.DisplayName: 意志死亡射线
-			WillFireball.DisplayName: 火球
-			// WillFireball2.DisplayName: Fireball
-			WillJavelin.DisplayName: 标枪
-			WillJavelin2.DisplayName: 标枪
-			WillJavelin3.DisplayName: 标枪
-			WillRitual.DisplayName: 意志结界
-			WillShell.DisplayName: 意志外壳
-			WillTyphoon.DisplayName: 意志台风
-			TopHatSquirrelLaser.DisplayName: 松鼠审判
-			TopHatSquirrelProj.DisplayName: 高顶礼帽松鼠
-			ChainDeathrayWOFS.DisplayName: 神圣死亡射线
-			CursedDeathrayWOFS.DisplayName: 诅咒死亡射线
-			DeerclopsDeathray.DisplayName: 冰冻光束
-			DeviBigDeathray.DisplayName: 爱之光
-			DeviDeathray.DisplayName: 爱之光
-			DeviDeathraySmall.DisplayName: 爱之光
-			DeviLightBeam.DisplayName: 光束
-			GolemBeam.DisplayName: 烈焰死亡射线
-			PhantasmalDeathray.DisplayName: 烈焰死亡射线
-			PhantasmalDeathrayML.DisplayName: 幻影死亡射线II型
-			PhantasmalDeathrayMLSmall.DisplayName: 幻影死亡射线II型
-			PhantasmalDeathrayWOF.DisplayName: 神圣死亡射线
-			PhantasmalDeathrayWOFS.DisplayName: 神圣死亡射线
-			DeviAxe.DisplayName: 闪闪发光的爱
-			DeviBigMimic.DisplayName: 群系宝箱怪
-			DeviBoss.DisplayName: 戴薇安
-			DeviButterfly.DisplayName: 蛾
-			DeviEnergyHeart.DisplayName: 能量爱心
-			DeviGuardian.DisplayName: 宝宝守卫
-			DeviHammer.DisplayName: 圣骑士之锤
-			DeviHammerHeld.DisplayName: 圣骑士之锤
-			DeviHeart.DisplayName: 假心
-			DeviLightBall.DisplayName: 光球
-			DeviLightBall2.DisplayName: 光球
-			DeviLostSoul.DisplayName: 迷失灵魂
-			DeviMedusa.DisplayName: 美杜莎之头
-			DeviMimic.DisplayName: 宝箱怪
-			DeviRainHeart.DisplayName: 假心
-			DeviRainHeart2.DisplayName: 假心
-			DeviRingHeart.DisplayName: 能量爱心
-			DeviRitual.DisplayName: 戴薇安结界
-			DeviSparklingLove.DisplayName: 闪闪发光的爱
-			DeviSparklingLoveSmall.DisplayName: 闪闪发光的爱
-			DeviVisualHeart.DisplayName: 假心
-			AcornProjectile.DisplayName: 橡实
-			AcornProjectileExplosion.DisplayName: 橡实爆炸
-			JungleMimicSummon.DisplayName: 丛林宝箱怪
-			JungleMimicSummonCoin.DisplayName: 钱币
-			// MahogunyLeafProjectile.DisplayName: Mahoguny Leaf Projectile
-			VineslingerBall.DisplayName: 藤蔓抛环
-			VineslingerProjectileFriendly.DisplayName: 活树叶
-			AncientVision.DisplayName: 远古幻影妖
-			AncientVisionLunarCultist.DisplayName: 远古幻影妖
-			Bee.DisplayName: 蜜蜂
-			Beehive.DisplayName: 蜂巢
-			BetsyElectrosphere.DisplayName: 天龙之怒
-			BetsyElectrosphere2.DisplayName: 天龙之怒
-			BetsyFury.DisplayName: 天龙之怒
-			BetsyFury2.DisplayName: 天龙之怒
-			BetsyPhoenix.DisplayName: 幽灵凤凰
-			BigMimicExplosion.DisplayName: 爆炸
-			BloodFountain.DisplayName: 血喷泉
-			BloodScythe.DisplayName: 月之镰刀
-			BloodScytheFriendly.DisplayName: 血镰刀
-			BloodThornMissile.DisplayName: 血荆棘
-			Bloodshed.DisplayName: 血流
-			BrainIllusionProj.DisplayName: 克苏鲁之脑
-			BrainofConfusion.DisplayName: 混乱之脑
-			BubbleHostile.DisplayName: 泡泡
-			CelestialFragment.DisplayName: 天界碎片
-			CelestialPillar.DisplayName: 天界柱
-			CelestialRuneAncientVision.DisplayName: 远古幻影妖
-			CelestialRuneFireball.DisplayName: 火球
-			CelestialRuneIceMist.DisplayName: 冰雪雾
-			CelestialRuneIceSpike.DisplayName: 冰刺
-			CelestialRuneLightningArc.DisplayName: 闪电弧
-			ClingerFlame.DisplayName: 诅咒焰
-			ClownBomb.DisplayName: 小丑炸弹
-			CrystalLeafShot.DisplayName: 叶状水晶
-			CultistArrow.DisplayName: 教徒之箭
-			CultistFireball.DisplayName: 火球
-			CultistRitual.DisplayName: 教徒仪式
-			CultistVortex.DisplayName: 星旋旋涡
-			// CultistFireballHoming.DisplayName: Mods.FargowiltasSouls.Projectiles.CultistFireballHoming.DisplayName
-			// CuresedFlameHostile2.DisplayName: Mods.FargowiltasSouls.Projectiles.CuresedFlameHostile2.DisplayName
-			CursedFlamethrower.DisplayName: 魔眼烈火
-			DarkStar.DisplayName: 暗星
-			DarkStarDestroyer.DisplayName: 暗星
-			DarkStarHoming.DisplayName: 暗星
-			DarkStarTwins.DisplayName: 暗星
-			DeathSkull.DisplayName: 死亡标记头骨
-			DeerclopsHand.DisplayName: 暗影之手
-			DestroyerLaser.DisplayName: 死亡激光
-			// DicerPlantera.DisplayName: Dicer Plantera
-			DrakanianDaybreak.DisplayName: 破晓之光
-			ElfArcherArrow.DisplayName: 霜冻箭
-			ElfCopterBullet.DisplayName: 爆炸子弹
-			// ElfcopterBulletExplosion.DisplayName: Mods.FargowiltasSouls.Projectiles.ElfcopterBulletExplosion.DisplayName
-			EyeBeam2.DisplayName: 魔眼光束
-			EyeFire2.DisplayName: 魔眼烈火
-			FakeHeart.DisplayName: 假心
-			FakeHeart2.DisplayName: 假心
-			FishronBubble.DisplayName: 爆炸泡泡
-			FishronFishron.DisplayName: 幽灵猪龙鱼
-			FishronRitual.DisplayName: 海洋仪式
-			FishronRitual2.DisplayName: 海洋仪式
-			FlamingJack.DisplayName: 烈焰杰克南瓜
-			FragmentRitual.DisplayName: 月亮仪式
-			FriendHeart.DisplayName: 友善爱心
-			FrostFireball.DisplayName: 霜火球
-			FrostfireballHostile.DisplayName: 霜火球
-			FuseBomb.DisplayName: 导火线炸弹
-			FusedExplosion.DisplayName: 导火线爆炸
-			GelicWingSpike.DisplayName: 水晶尖刺
-			GoblinSpikyBall.DisplayName: 尖球
-			GoldenShowerHoming.DisplayName: 黄金雨
-			GoldenShowerWOF.DisplayName: 黄金雨
-			GolemBoulder.DisplayName: 巨石
-			GolemDeathraySmall.DisplayName: 烈焰死亡射线
-			GolemFireball.DisplayName: 火球
-			GolemGeyser.DisplayName: 喷泉
-			GolemGeyser2.DisplayName: 喷泉
-			GolemSpikeBallBig.DisplayName: 尖球
-			GolemSpikyBall.DisplayName: 尖球
-			GuardianDeathraySmall.DisplayName: 暗影死亡射线
-			HoneyDrop.DisplayName: 蜂蜜滴
-			HorsemansBlade.DisplayName: 无头骑士剑
-			HostileHealingHeart.DisplayName: 敌方治疗爱心
-			JungleTentacle.DisplayName: 丛林触手
-			LightBall.DisplayName: 光球
-			LihzahrdBoulderFriendly.DisplayName: 巨石
-			LunarRitual.DisplayName: 月亮仪式
-			MimicCoin.DisplayName: 钱币
-			MoonLordFireball.DisplayName: 火球
-			MoonLordMoon.DisplayName: 月亮
-			MoonLordMoonBlast.DisplayName: 月光爆炸
-			MoonLordNebulaBlaze.DisplayName: 星云烈焰
-			MoonLordNebulaBlaze2.DisplayName: 星云烈焰
-			MoonLordSun.DisplayName: 太阳
-			MoonLordSunBlast.DisplayName: 太阳爆炸
-			MoonLordVortex.DisplayName: 星旋旋涡
-			// MoonLordvortexOld.DisplayName: Mods.FargowiltasSouls.Projectiles.MoonLordvortexOld.DisplayName
-			MothDust.DisplayName: 蛾尘
-			MothronZenith.DisplayName: 天顶剑
-			PhantasmalBolt2.DisplayName: 幻影矢
-			PhantasmalSphereDeathray.DisplayName: 幻影死亡射线
-			PhantasmalSphereRing.DisplayName: 幻影球
-			PlanteraCrystalLeafRing.DisplayName: 叶状水晶
-			PlanteraTentacle.DisplayName: 植物触手
-			PrimeGuardian.DisplayName: 机械地牢守卫
-			PrimeTrail.DisplayName: 轨迹
-			PumpkingFlamingScythe.DisplayName: 烈焰镰刀
-			QueenFlocko.DisplayName: 超级雪花怪
-			RainbowSlimeSpike.DisplayName: 彩虹史莱姆尖刺
-			RazorbladeTyphoon.DisplayName: 利刃台风
-			ShadowflamePortal.DisplayName: 暗影焰传送门
-			ShadowflameTentacle.DisplayName: 暗影焰触手
-			SkeletonArcherArrow.DisplayName: 毒液箭
-			SkeletronBone.DisplayName: 骨头
-			SkeletronGuardian.DisplayName: 宝宝守卫
-			SkeletronGuardian2.DisplayName: 宝宝守卫
-			SlimeBallHostile.DisplayName: 粘液球
-			SlimeSpike.DisplayName: 史莱姆尖刺
-			SlimeSpike2.DisplayName: 史莱姆尖刺
-			SniperBullet.DisplayName: 高速水晶子弹
-			SniperBulletShard.DisplayName: 高速水晶子弹
-			StardustRain.DisplayName: 宇宙入侵怪仆从
-			TargetingReticle.DisplayName: 瞄准点
-			TorchGodFlame.DisplayName: 火把神
-			VultureFeather.DisplayName: 秃鹰羽毛
-			WOFBlast.DisplayName: 神圣爆炸
-			WOFChain.DisplayName: 饿鬼
-			WOFReticle.DisplayName: 血肉墙瞄准点
-			AbomMinion.DisplayName: 憎恶
-			AbomMinionScythe.DisplayName: 憎恶镰刀
-			AbomMinionSickle.DisplayName: 憎恶镰刀
-			BigBrainIllusion.DisplayName: 克苏鲁大脑
-			BigBrainProj.DisplayName: 克苏鲁大脑
-			BrainMinion.DisplayName: 克苏鲁之脑
-			CreeperMinion.DisplayName: 飞眼怪
-			CrystalSkull.DisplayName: 水晶头骨
-			DarkStarHomingFriendly.DisplayName: 暗星
-			DestroyerBody.DisplayName: 毁灭者身体
-			DestroyerBody2.DisplayName: 毁灭者身体
-			DestroyerHead.DisplayName: 毁灭者头
-			DestroyerHead2.DisplayName: 毁灭者头
-			DestroyerTail.DisplayName: 毁灭者尾
-			DestroyerTail2.DisplayName: 毁灭者尾
-			EaterBody.DisplayName: 吞噬者身体
-			EaterHead.DisplayName: 吞噬者头
-			EaterTail.DisplayName: 吞噬者尾
-			EridanusBullet.DisplayName: 厄里达诺斯之能量弹
-			EridanusDeathray.DisplayName: 厄里达诺斯之死亡射线
-			EridanusFist.DisplayName: 厄里达诺斯之拳
-			EridanusMinion.DisplayName: 厄里达诺斯
-			EridanusRitual.DisplayName: 月之仪式
-			FlameburstMinion.DisplayName: 爆炸烈焰仆从
-			FriendRay.DisplayName: 爱心射线
-			HallowSword.DisplayName: 泰拉棱镜
-			KamikazeSquirrel.DisplayName: 神风松鼠
-			LunarCultist.DisplayName: 拜月教邪教徒
-			LunarCultistFireball.DisplayName: 火球
-			LunarCultistIceMist.DisplayName: 冰雪雾
-			LunarCultistIceSpike.DisplayName: 冰雪尖刺
-			LunarCultistLight.DisplayName: 远古光明妖
-			LunarCultistLightningArc.DisplayName: 闪电珠弧
-			LunarCultistLightningOrb.DisplayName: 闪电珠
-			MiniSaucer.DisplayName: 迷你飞碟
-			NekomiAxe.DisplayName: 闪闪发光的爱
-			NekomiDevi.DisplayName: 戴薇安
-			NekomiRitual.DisplayName: 猫猫睡衣仪式
-			OpticFlame.DisplayName: 魔眼烈火
-			OpticLaser.DisplayName: 死亡激光
-			OpticRetinazer.DisplayName: 激光眼
-			OpticSpazmatism.DisplayName: 魔焰眼
-			PalmTreeSentry.DisplayName: 棕榈树
-			PhantasmalBoltTrueEye.DisplayName: 幻影矢
-			PhantasmalDeathrayPungent.DisplayName: 神圣死亡射线
-			PhantasmalDeathrayTrueEye.DisplayName: 幻影死亡射线
-			PhantasmalRing.DisplayName: 幻影之环
-			PhantasmalRing2.DisplayName: 幻影之环
-			PhantasmalSphereTrueEye.DisplayName: 幻影球
-			PlanterasChild.DisplayName: 世纪之花的孩子
-			PoisonSeedPlanterasChild.DisplayName: 毒种子
-			Probe1.DisplayName: 探测怪
-			Probe2.DisplayName: 探测怪
-			ProbeLaser.DisplayName: 迷你激光
-			PungentEyeball.DisplayName: 尖刻眼球
-			RainbowSlime.DisplayName: 彩虹史莱姆宝宝
-			RingDeathray.DisplayName: 幻影死亡射线
-			SaucerDeathray.DisplayName: 飞碟死亡射线
-			SaucerLaser.DisplayName: 激光
-			SaucerRocket.DisplayName: 火箭
-			SeedPlanterasChild.DisplayName: 种子
-			ShadowflamesFriendly.DisplayName: 暗影焰
-			SilverSword.DisplayName: 银剑
-			SkeletronArmL.DisplayName: 骷髅王之手
-			SkeletronArmR.DisplayName: 骷髅王之手
-			SpikyBallPlanterasChild.DisplayName: 刺球
-			TrueEyeL.DisplayName: 克苏鲁真眼
-			TrueEyeR.DisplayName: 克苏鲁真眼
-			TrueEyeS.DisplayName: 克苏鲁真眼
-			BossRush.DisplayName: 突变结界
-			MutantBomb.DisplayName: 幻象爆炸
-			MutantBombSmall.DisplayName: 幻象爆炸
-			MutantBoss.DisplayName: 突变体
-			MutantCrystalLeaf.DisplayName: 叶状水晶
-			MutantDeathray1.DisplayName: 幻影死亡射线
-			MutantDeathray2.DisplayName: 幻影死亡射线
-			MutantDeathray3.DisplayName: 烈焰死亡射线
-			MutantDeathrayAim.DisplayName: 幻影死亡射线
-			MutantDeathraySmall.DisplayName: 幻影死亡射线
-			MutantDestroyerBody.DisplayName: 毁灭者
-			MutantDestroyerHead.DisplayName: 毁灭者
-			MutantDestroyerTail.DisplayName: 毁灭者
-			MutantEye.DisplayName: 幻影眼
-			MutantEyeHoming.DisplayName: 幻影眼
-			MutantEyeOfCthulhu.DisplayName: 克苏鲁之眼
-			MutantEyeWavy.DisplayName: 幻影眼
-			MutantFishron.DisplayName: 幽灵猪龙鱼
-			MutantFishronRitual.DisplayName: 猪鲨核弹
-			MutantFragment.DisplayName: 天界碎片
-			MutantGiantDeathray2.DisplayName: 幻影死亡射线
-			MutantGlowything.DisplayName: 魔眼激光预警
-			MutantGuardian.DisplayName: 机械骷髅王
-			MutantHeal.DisplayName: 突变治疗
-			MutantMark1.DisplayName: 幻影球
-			MutantMark2.DisplayName: 叶状水晶
-			MutantNuke.DisplayName: 猪鲨核弹
-			MutantPillar.DisplayName: 天界柱
-			MutantReticle.DisplayName: 突变瞄准点
-			MutantReticle2.DisplayName: 突变瞄准点
-			MutantRetirang.DisplayName: 激光回旋镖
-			MutantRitual.DisplayName: 突变结界
-			MutantRitual2.DisplayName: 突变结界
-			MutantRitual3.DisplayName: 突变结界
-			MutantRitual4.DisplayName: 突变结界
-			MutantRitual5.DisplayName: 突变结界
-			MutantScythe1.DisplayName: 突变镰刀
-			MutantScythe2.DisplayName: 突变镰刀
-			MutantSlimeBall.DisplayName: 史莱姆雨
-			MutantSlimeBall2.DisplayName: 史莱姆雨
-			MutantSlimeRain.DisplayName: 史莱姆雨
-			MutantSpazmarang.DisplayName: 魔焰回旋镖
-			MutantSpearAim.DisplayName: 洞察者
-			MutantSpearDash.DisplayName: 洞察者
-			MutantSpearMagical.DisplayName: 洞察者
-			MutantSpearSpin.DisplayName: 洞察者
-			MutantSpearThrown.DisplayName: 洞察者
-			MutantSpearThrownFriendly.DisplayName: 洞察者
-			MutantSphereRing.DisplayName: 幻影球
-			MutantSphereSmall.DisplayName: 幻影球
-			MutantSword.DisplayName: 幻影球
-			MutantTrueEyeDeathray.DisplayName: 幻影死亡射线
-			MutantTrueEyeL.DisplayName: 突变真眼
-			MutantTrueEyeR.DisplayName: 突变真眼
-			MutantTrueEyeS.DisplayName: 突变真眼
-			MutantTrueEyeSphere.DisplayName: 幻影球
-			MutantTyphoon.DisplayName: 利刃台风
-			AccursedSarcophagus.DisplayName: 被诅咒的石棺
-			BabyAbom.DisplayName: 憎恶宝宝
-			BabySilhouette.DisplayName: 黑雾宝宝
-			BiteSizeBaron.DisplayName: 小小公爵
-			ChibiDevi.DisplayName: 小不点德薇
-			MutantSpawn.DisplayName: 突变体的卵
-			SeekerOfTreasures.DisplayName: 宝藏探索者
-			ArrowRain.DisplayName: 箭雨
-			CactusNeedle.DisplayName: 仙人掌刺
-			Chlorofuck.DisplayName: 叶绿水晶
-			CobaltExplosion.DisplayName: 爆炸
-			CopperLightning.DisplayName: 闪电弧
-			DungeonGuardianNecro.DisplayName: 地牢守卫
-			ForbiddenTornado.DisplayName: 禁戒风暴
-			FossilBone.DisplayName: 化石骨头
-			FrostIcicle.DisplayName: 寒霜冰锥
-			GladiatorJavelin.DisplayName: 标枪
-			GoldShellProj.DisplayName: 黄金壳
-			GrowingPumpkin.DisplayName: 南瓜
-			IronParry.DisplayName: 铁魔石格挡
-			MegaFlameburst.DisplayName: 超级爆炸烈焰
-			NecroGrave.DisplayName: 死灵骨堆
-			PalladOrb.DisplayName: 钯金治疗珠
-			PumpkinFlame.DisplayName: 火焰
-			RainCloud.DisplayName: 雨云
-			ShadowBall.DisplayName: 暗影球
-			ShadowEnchantOrb.DisplayName: 暗影珠
-			ShroomiteShroom.DisplayName: 蘑菇
-			Snowstorm.DisplayName: 暴雪
-			SpookyScythe.DisplayName: 镰刀
-			StardustKnife.DisplayName: 星尘飞刀
-			SuperBlood.DisplayName: 大出血
-			TitaniumShard.DisplayName: 钛金碎片
-			TurtleShield.DisplayName: 龟壳
-			Void.DisplayName: 虚空
-			AbomScytheFriendly.DisplayName: 憎恶镰刀
-			BetsyDash.DisplayName: 冲刺
-			CreeperHitbox.DisplayName: 飞眼怪
-			Explosion.DisplayName: 爆炸
-			ExplosionSmall.DisplayName: 爆炸
-			GalacticReformerProj.DisplayName: 核弹
-			GeyserFriendly.DisplayName: 喷泉
-			GiantDeathray.DisplayName: 幻影死亡射线
-			GlowLine.DisplayName: 预警光线
-			GlowRing.DisplayName: 预警光环
-			// GlowRingHollow.DisplayName: Glow Ring
-			GrazeRing.DisplayName: 擦弹光环
-			HostileLightning.DisplayName: 闪电弧
-			LightningArc.DisplayName: 闪电弧
-			LightningVortex.DisplayName: 星旋旋涡
-			LightningVortexHostile.DisplayName: 星旋旋涡
-			LihzahrdSpikyBallFriendly.DisplayName: 尖球
-			PhantasmalSphere.DisplayName: 幻影球
-			SpectralAbominationn.DisplayName: 幽灵憎恶
-			StyxArmorScythe.DisplayName: 冥河镰刀
-			StyxArmorScythe2.DisplayName: 冥河镰刀
-			StyxGazerArmor.DisplayName: 冥河凝视
-			UniversalCollapseProj.DisplayName: 核弹
-			// KingSlimeBallPiercing.DisplayName: Slime Ball
-			KingSlimeMinion.DisplayName: 史莱姆王
-			// KingSlimeSpike.DisplayName: Slime Spike
-			DukeFishronMinion.DisplayName: 猪龙鱼公爵
-			// RazorbladeTyphoonFriendly2.DisplayName: Razorblade Typhoon
-			DevRocket.DisplayName: 艳岚火箭
-			RailgunBlast.DisplayName: 电磁炮爆炸
-			// RoombaPetProj.DisplayName: Roomba Pet Proj
-			// VortexBolt.DisplayName: Lightning Arc
-			VortexRitualProj.DisplayName: 星旋圣仪
-			// DoveProj.DisplayName: Dove Proj
-			WolfDashProj.DisplayName: 狼魂冲刺
-			ChibiiRemii.DisplayName: 小蕾米
-			PrimeMinionCannon.DisplayName: 机械炮
-			PrimeMinionLaserGun.DisplayName: 机械激光
-			PrimeMinionProj.DisplayName: 迷你机械骷髅王
-			PrimeMinionSaw.DisplayName: 机械锯
-			PrimeMinionVice.DisplayName: 机械钳
-			Bubble.DisplayName: 泡泡
-			FishMinion.DisplayName: 和风鱼
-			PufferRang.DisplayName: 气泡环
-			PufferSpray.DisplayName: 气泡泉
-			SpikyLure.DisplayName: 尖刺鱼饵
-			WaterStream.DisplayName: 水流
-			// Crimetroid.DisplayName: Crimetroid
-			NanoBase.DisplayName: 纳米基核
-			NanoBlade.DisplayName: 等离子能量刃
-			NanoProbe.DisplayName: 纳米探针
-			PlasmaArrow.DisplayName: 等离子矢
-			// PlasmaDeathray.DisplayName: Mods.FargowiltasSouls.Projectiles.PlasmaDeathray.DisplayName
-			PlasmaProj.DisplayName: 等离子束
-			GlowRingHallow.DisplayName: 预警光环
-			AbomBlast.DisplayName: 幻象爆炸
-			AbomFlocko2.DisplayName: 超级雪花怪
-			AbomFlocko3.DisplayName: 超级雪花怪
-			AbomLaser.DisplayName: 激光
-			EyeProjectile.DisplayName: 眼球
-			HentaiSpearDash.DisplayName: 洞察者
-			HentaiSpearRing.DisplayName: 洞察者
-			CosmosFireball.DisplayName: 宇宙火球
-			CosmosFireball2.DisplayName: 宇宙火球
-			EatrhPalladOrb.DisplayName: 钯金治疗珠
-			ShadowFlameburst.DisplayName: 爆炸烈焰
-			ShadowFlamingScythe.DisplayName: 烈焰镰刀
-			TimerPalmTree.DisplayName: 棕榈树
-			WireFireball2.DisplayName: 火球
-			DeviRitual2.DisplayName: 戴薇安结界
-			CursedFireballHoming.DisplayName: 诅咒焰
-			CursedFlameHostile2.DisplayName: 诅咒焰
-			ElfCopterBulletExplosion.DisplayName: 爆炸子弹
-			MoonLordVortexOld.DisplayName: 星旋旋涡
-			RazorbladeTyphoon2.DisplayName: 利刃台风
-			VenomSpit.DisplayName: 毒唾沫
-			RainbowSlimeSpikeFriendly.DisplayName: 彩虹史莱姆尖刺
-			PlasmaDeathRay.DisplayName: 等离子死亡射线
-			// AbomBossProjectile.DisplayName: Abominationn
-			// BaronMine.DisplayName: Banished Baron's Mine
-			// BaronNuke.DisplayName: Banished Baron's Spicy Beeping Nuclear Torpedo of Death and Destruction
-			// BaronRocket.DisplayName: Banished Baron's Rocket
-			// BaronScrap.DisplayName: Banished Baron Scrap
-			// BaronShrapnel.DisplayName: Banished Baron Mine Shrapnel
-			// ShadowOrbProjectile.DisplayName: Shadow Orb
-			// WillDeathrayBig.DisplayName: Will Deathray
-			// DeviBossProjectile.DisplayName: Deviantt
-			// JevilScar.DisplayName: Enchanted Lightblade
-			// LifeBlaster.DisplayName: Life Blaster
-			// LifeBomb.DisplayName: Life Mine
-			// LifeTransitionBomb.DisplayName: Life Mine
-			// LifeBombExplosion.DisplayName: Life Bomb
-			// LifeCageExplosion.DisplayName: Cage Explosion
-			// LifeCageProjectile.DisplayName: Life Cage
-			// LifeCageTelegraph.DisplayName: Cage Telegraph
-			// LifeChalBlasterDeathray.DisplayName: Holy Deathray
-			// LifeChalDeathray.DisplayName: Holy Deathray
-			// LifeCrosshair.DisplayName: Crosshair
-			// LifeHomingProj.DisplayName: Lesser Fairy
-			// LifeNeggravProj.DisplayName: Cross
-			// LifeNuke.DisplayName: Life Bomb
-			// LifeProjLarge.DisplayName: Cross
-			// LifeProjSmall.DisplayName: Life Shot
-			// LifeRuneHitbox.DisplayName: Life Rune
-			// LifeScar.DisplayName: Life Mine
-			// LifeSlurp.DisplayName: Gem
-			// LifeSplittingProjSmall.DisplayName: Life Shot
-			// LifeTpTelegraph.DisplayName: Teleport Telegraph
-			// LifeWave.DisplayName: Life Wave
-			// MutantBossProjectile.DisplayName: Mutant
-			// ArcTelegraph.DisplayName: Arc Telegraph
-			// BloomLine.DisplayName: Bloom Line
-			// FishStickProjTornado.DisplayName: Fish Stick
-			// PrismaRegaliaProj.DisplayName: Prisma Regalia
-			// PrismaRegaliaStar.DisplayName: Star
-			// CrystallineCongregationProj.DisplayName: Crystal Ball
-			// EnchantedLifebladeProjectile.DisplayName: Enchanted Lifeblade
-			// LightslingerBomb.DisplayName: Light Bomb
-			// LightslingerBombshot.DisplayName: Light Shot
-			// LightslingerShot.DisplayName: Light Shot
-			// SpiritArrow.DisplayName: Spirit Arrow
-			// SpiritArrowFlame.DisplayName: Spirit Flame
-			// CirnoBomb.DisplayName: Cirno Bomb
-			// RetinazerDeathray.DisplayName: Blazing Deathray
-			// MimicDagger.DisplayName: Magic Dagger
-			// MimicHallowStar.DisplayName: Hallow Star
-			// MimicTitanGlove.DisplayName: Titan Glove
-			// KamikazePixie.DisplayName: Pixie
-			// BabyLifelight.DisplayName: Petlight
-			// Nibble.DisplayName: Nibble
-			// SolarMeteor.DisplayName: Solar Meteor
-			// SolarFlamePillarSpawner.DisplayName: Solar Flame Pillar Spawner
-			// SolarFlamePillar.DisplayName: Solar Flame Pillar
-			// LightningTelegraph.DisplayName: Lightning Telegraph
-			// PillarSpawner.DisplayName: Pillar Spawner
-			// VortexVortex.DisplayName: Vortex Vortex
-			// VortexVortexProjectile.DisplayName: Vortex Vortex Projectile
-			// PillarNebulaBlaze.DisplayName: Pillar Nebula Blaze
-			// NebulaDeathray.DisplayName: Nebula Deathray
-			// NebulaPillarProj.DisplayName: Nebula Pillar Proj
-			// NebulaTelegraph.DisplayName: Nebula Telegraph
-			// PillarArcanum.DisplayName: Pillar Arcanum
+			AbomBoss.DisplayName: Mods.FargowiltasSouls.Projectiles.AbomBoss.DisplayName
+			AbomDeathScythe.DisplayName: Abominationn Scythe
+			AbomDeathray.DisplayName: Abominable Deathray
+			AbomDeathrayMark.DisplayName: Deathray
+			AbomDeathraySmall.DisplayName: Abominable Deathray
+			AbomDeathraySmall2.DisplayName: Deathray
+			AbomFlocko.DisplayName: Super Flocko
+			AbomFrostShard.DisplayName: Frost Shard
+			AbomFrostWave.DisplayName: Frost Wave
+			AbomReticle.DisplayName: Abominationn Reticle
+			AbomRitual.DisplayName: Abominationn Seal
+			AbomRitual2.DisplayName: Abominationn Seal
+			AbomRitualMaso.DisplayName: Abominationn Seal
+			AbomRocket.DisplayName: Rocket
+			AbomScytheFlaming.DisplayName: Abominationn Scythe
+			AbomScytheSpin.DisplayName: Abominationn Scythe
+			AbomScytheSplit.DisplayName: Abominationn Scythe
+			AbomSickle.DisplayName: Abominationn Sickle
+			AbomSickle2.DisplayName: Abominationn Sickle
+			AbomSickle3.DisplayName: Abominationn Sickle
+			AbomSickleSplit1.DisplayName: Abominationn Sickle
+			AbomSickleSplit2.DisplayName: Abominationn Sickle
+			AbomStyxGazer.DisplayName: Styx Gazer
+			AbomSword.DisplayName: Styx Gazer Blade
+			AbomSwordHandle.DisplayName: Styx Gazer Blade
+			FargoArrowProj.DisplayName: Fargo Arrow
+			FargoBulletProj.DisplayName: Fargo Bullet
+			BigSting22.DisplayName: "22"
+			BigStinger.DisplayName: Big Stinger
+			BeeDash.DisplayName: Dash
+			BlenderOrbital.DisplayName: The Blender
+			BlenderPetal.DisplayName: The Blender
+			BlenderProj3.DisplayName: The Blender
+			BlenderSpray.DisplayName: Blender Spray
+			BlenderYoyoProj.DisplayName: The Blender
+			Bonez.DisplayName: Bonez
+			DarkStarFriendly.DisplayName: Dark Star
+			Dash.DisplayName: Dash
+			Dash2.DisplayName: Dash2
+			DicerMine.DisplayName: Dicer Mine
+			DicerSpray.DisplayName: Dicer Spray
+			DicerYoyo.DisplayName: Dicer Yoyo
+			DragonBreathProj.DisplayName: Dragon's Breath
+			DragonFireball.DisplayName: Fireball
+			DragonFireballBoom.DisplayName: Fireball
+			DungeonGuardian.DisplayName: Dungeon Guardian
+			EaterRocket.DisplayName: Eater Rocket
+			EyeFireFriendly.DisplayName: Eye Fire
+			EyeProjectile2.DisplayName: Mods.FargowiltasSouls.Projectiles.EyeProjectile2.DisplayName
+			FishNuke.DisplayName: Fish Nuke
+			FishNukeExplosion.DisplayName: Fish Nuke
+			FishStickProj.DisplayName: Fish Stick
+			FishStickShark.DisplayName: Shark
+			FleshLaser.DisplayName: Red Laser
+			GibExplosion.DisplayName: Explosion
+			GolemGib.DisplayName: Golem Gibs
+			GolemHeadProj.DisplayName: Golem Head
+			HellBone.DisplayName: Hell Bone
+			HellBonez.DisplayName: Hell Bonez
+			HellFlame.DisplayName: Hell Flame
+			HellSkeletron.DisplayName: Hell Skeletron
+			HellSkull2.DisplayName: Hell Skull
+			HentaiNuke.DisplayName: Phantasmal Blast
+			HentaiSpear.DisplayName: The Penetrator
+			HentaiSpearArc.DisplayName: Lightning Arc
+			HentaiSpearBigDeathray.DisplayName: Phantasmal Deathray
+			HentaiSpearDeathray.DisplayName: Phantasmal Deathray
+			HentaiSpearDeathray2.DisplayName: Phantasmal Deathray
+			HentaiSpearDive.DisplayName: The Penetrator
+			HentaiSpearHeld.DisplayName: The Penetrator
+			HentaiSpearSpin.DisplayName: The Penetrator
+			HentaiSpearSpinBoundary.DisplayName: The Penetrator
+			HentaiSpearSpinThrown.DisplayName: The Penetrator
+			HentaiSpearThrown.DisplayName: The Penetrator
+			HentaiSpearWand.DisplayName: The Penetrator
+			HentaiSphereRing.DisplayName: Phantasmal Sphere
+			Hungry.DisplayName: Hungry
+			Hungry2.DisplayName: Hungry
+			LeashFlail.DisplayName: Leash Flail
+			MechEyeProjectile.DisplayName: MechEyeProjectile
+			MechFlail.DisplayName: Mech Flail
+			PhantasmalBlast.DisplayName: Phantasmal Blast
+			PhantasmalBolt.DisplayName: Phantasmal Bolt
+			PhantasmalEyeBoundary.DisplayName: Phantasmal Eye
+			PhantasmalEyeHoming.DisplayName: Phantasmal Eye
+			PhantasmalEyeLeashProj.DisplayName: Phantasmal Eye
+			PhantasmalFlail.DisplayName: Phantasmal Flail
+			PhantasmalSphere2.DisplayName: Phantasmal Sphere
+			PrimeDeathray.DisplayName: Blazing Deathray
+			PrimeLaser.DisplayName: Prime Laser
+			RazorbladeTyphoonFriendly.DisplayName: Razorblade Typhoon
+			RefractorBlaster2Held.DisplayName: Diffractor Blaster
+			RetiDeathray.DisplayName: Blazing Deathray
+			Retiglaive.DisplayName: Retiglaive
+			Retirang.DisplayName: Retirang
+			SlimeBall.DisplayName: Slime Ball
+			SlimeBallHoming.DisplayName: Slime Ball
+			SlimeRainBall.DisplayName: Slime Rain
+			SlimeSpikeFriendly.DisplayName: Slime Spike
+			SmallStinger.DisplayName: Small Stinger
+			SparklingDevi.DisplayName: Deviantt
+			SparklingLove.DisplayName: Sparkling Love
+			SparklingLoveBig.DisplayName: Sparkling Love
+			SparklingLoveDeathray.DisplayName: Love Ray
+			SparklingLoveDeathray2.DisplayName: Love Ray
+			SparklingLoveEnergyHeart.DisplayName: Energy Heart
+			SparklingLoveHeart.DisplayName: Friend Heart
+			SparklingLoveHeart2.DisplayName: Friend Heart
+			Spazmaglaive.DisplayName: Spazmaglaive
+			SpazmaglaiveExplosion.DisplayName: Cursed Inferno
+			Spazmarang.DisplayName: Spazmarang
+			Stinger.DisplayName: Stinger
+			StyxGazer.DisplayName: Styx Gazer
+			StyxGazerHandle.DisplayName: Styx Gazer
+			StyxScythe.DisplayName: Styx Scythe
+			StyxSickle.DisplayName: Styx Sickle
+			Whirlpool.DisplayName: Whirlpool
+			WhirlpoolBase.DisplayName: Whirlpool
+			Acorn.DisplayName: Acorn
+			RollingSnowball.DisplayName: Rolling Snowball
+			Sprout.DisplayName: Sprout
+			SproutingAcorn.DisplayName: Acorn
+			TheLightning.DisplayName: Lightning Arc
+			TheLightningRodProj.DisplayName: The Lightning Rod
+			TrojanAcorn.DisplayName: Acorn
+			TrojanHook.DisplayName: Squirrel Hook
+			TrojanSnowball.DisplayName: Snowball
+			TrojanSquirrelProj.DisplayName: Top Hat Squirrel
+			CactusMine.DisplayName: Cactus Mine
+			ChampionBee.DisplayName: Bee
+			ChampionBeetle.DisplayName: Beetle
+			CosmosBolt.DisplayName: Cosmic Bolt
+			CosmosDeathray.DisplayName: Cosmic Deathray
+			CosmosDeathray2.DisplayName: Cosmic Deathray
+			CosmicFireball.DisplayName: Mods.FargowiltasSouls.Projectiles.CosmicFireball.DisplayName
+			CosmicFireball2.DisplayName: Mods.FargowiltasSouls.Projectiles.CosmicFireball2.DisplayName
+			CosmosGlowything.DisplayName: Cosmic Invader
+			CosmosInvader.DisplayName: Cosmic Invader
+			CosmosInvaderTime.DisplayName: Cosmic Invader
+			CosmosLightning.DisplayName: Lightning Arc
+			CosmosLightningOrb.DisplayName: Lightning Orb
+			CosmosMeteor.DisplayName: Cosmic Meteor
+			CosmosMoon.DisplayName: Cosmic Moon
+			CosmosNebulaBlaze.DisplayName: Nebula Blaze
+			CosmosReticle.DisplayName: Cosmic Reticle
+			CosmosRitual.DisplayName: Cosmic Seal
+			CosmosSphere.DisplayName: Cosmic Sphere
+			CosmosVortex.DisplayName: Vortex
+			CrystalBomb.DisplayName: Crystal Bomb
+			CrystalBombShard.DisplayName: Crystal Shard
+			EarthChainBlast.DisplayName: Chain Blast
+			EarthChainBlast2.DisplayName: Chain Blast
+			EarthGeyser.DisplayName: Geyser
+			EarthPalladOrb.DisplayName: Palladium Life Orb
+			FlowerPetal.DisplayName: Flower Petal
+			LifeDeathray.DisplayName: Holy Deathray
+			LifeDeathray2.DisplayName: Holy Deathray
+			LifeDeathraySmall.DisplayName: Holy Deathray
+			LifeDeathraySmall2.DisplayName: Holy Deathray
+			LifeFireball.DisplayName: Fireball
+			LifeRitual.DisplayName: Life Seal
+			NatureBullet.DisplayName: Nature Bullet
+			NatureCloudMoving.DisplayName: Nature Cloud
+			NatureCloudRaining.DisplayName: Nature Cloud
+			NatureCrystalLeaf.DisplayName: Crystal Leaf
+			NatureDeathray.DisplayName: Nature Deathray
+			NatureDeathraySmall.DisplayName: Nature Deathray
+			NatureExplosion.DisplayName: Nature Explosion
+			NatureFireball.DisplayName: Fireball
+			NatureIcicle.DisplayName: Nature Icicle
+			NatureRain.DisplayName: Nature Rain
+			ShadowClone.DisplayName: Champion of Shadow
+			ShadowDeathraySmall.DisplayName: Shadow Deathray
+			ShadowFlameScythe.DisplayName: Mods.FargowiltasSouls.Projectiles.ShadowFlameScythe.DisplayName
+			ShadowGuardian.DisplayName: Dungeon Guardian
+			ShadowOrb.DisplayName: Mods.FargowiltasSouls.Projectiles.ShadowOrb.DisplayName
+			SpiritCrossBone.DisplayName: Cross Bone
+			SpiritCrossBoneReverse.DisplayName: Cross Bone
+			SpiritHand.DisplayName: Spirit Hand
+			SpiritHeal.DisplayName: Spirit
+			SpiritSpirit.DisplayName: Spirit
+			SpiritSword.DisplayName: Spirit Sword
+			TerraFireball.DisplayName: Fireball
+			TerraLightningOrb.DisplayName: Lightning Orb
+			TerraLightningOrb2.DisplayName: Lightning Orb
+			TerraLightningOrbDeathray.DisplayName: Lightning Deathray
+			TimberAcorn.DisplayName: Acorn
+			TimberHook.DisplayName: Squirrel Hook
+			TimberHook2.DisplayName: Squirrel Hook
+			TimberJumpMark.DisplayName: Timber Explosion
+			TimberLaser.DisplayName: Laser
+			TimberLightningOrb.DisplayName: Lightning Orb
+			TimberPalmTree.DisplayName: Palm Tree
+			TimberSnowball.DisplayName: Snowball
+			TimberSnowball2.DisplayName: Snowball
+			TimberSquirrel.DisplayName: Timber Squirrel
+			TimberTree.DisplayName: Tree
+			TimberTreeAcorn.DisplayName: Acorn
+			WillBomb.DisplayName: Will Bomb
+			WillDeathray.DisplayName: Will Deathray
+			WillDeathray2.DisplayName: Mods.FargowiltasSouls.Projectiles.WillDeathray2.DisplayName
+			WillDeathraySmall.DisplayName: Will Deathray
+			WillFireball.DisplayName: Fireball
+			WillFireball2.DisplayName: Fireball
+			WillJavelin.DisplayName: Javelin
+			WillJavelin2.DisplayName: Javelin
+			WillJavelin3.DisplayName: Javelin
+			WillRitual.DisplayName: Will Seal
+			WillShell.DisplayName: Will Shell
+			WillTyphoon.DisplayName: Will Typhoon
+			TopHatSquirrelLaser.DisplayName: Squirrel's Judgement
+			TopHatSquirrelProj.DisplayName: Top Hat Squirrel
+			ChainDeathrayWOFS.DisplayName: Divine Deathray
+			CursedDeathrayWOFS.DisplayName: Cursed Deathray
+			DeerclopsDeathray.DisplayName: Ice Beam
+			DeviBigDeathray.DisplayName: Love Ray
+			DeviDeathray.DisplayName: Love Ray
+			DeviDeathraySmall.DisplayName: Love Ray
+			DeviLightBeam.DisplayName: Light Ray
+			GolemBeam.DisplayName: Blazing Deathray
+			PhantasmalDeathray.DisplayName: Mods.FargowiltasSouls.Projectiles.PhantasmalDeathray.DisplayName
+			PhantasmalDeathrayML.DisplayName: Phantasmal Deathray II
+			PhantasmalDeathrayMLSmall.DisplayName: Phantasmal Deathray II
+			PhantasmalDeathrayWOF.DisplayName: Divine Deathray
+			PhantasmalDeathrayWOFS.DisplayName: Divine Deathray
+			DeviAxe.DisplayName: Sparkling Love
+			DeviBigMimic.DisplayName: Biome Mimic
+			DeviBoss.DisplayName: Mods.FargowiltasSouls.Projectiles.DeviBoss.DisplayName
+			DeviButterfly.DisplayName: Moth
+			DeviEnergyHeart.DisplayName: Energy Heart
+			DeviGuardian.DisplayName: Baby Guardian
+			DeviHammer.DisplayName: Paladin's Hammer
+			DeviHammerHeld.DisplayName: Paladin's Hammer
+			DeviHeart.DisplayName: Fake Heart
+			DeviLightBall.DisplayName: Light Ball
+			DeviLightBall2.DisplayName: Light Ball
+			DeviLostSoul.DisplayName: Lost Soul
+			DeviMedusa.DisplayName: Medusa Head
+			DeviMimic.DisplayName: Mimic
+			DeviRainHeart.DisplayName: Fake Heart
+			DeviRainHeart2.DisplayName: Fake Heart
+			DeviRingHeart.DisplayName: Energy Heart
+			DeviRitual.DisplayName: Deviantt Seal
+			DeviSparklingLove.DisplayName: Sparkling Love
+			DeviSparklingLoveSmall.DisplayName: Sparkling Love
+			DeviVisualHeart.DisplayName: Fake Heart
+			AcornProjectile.DisplayName: Acorn
+			AcornProjectileExplosion.DisplayName: Acorn Explosion
+			JungleMimicSummon.DisplayName: Jungle Mimic
+			JungleMimicSummonCoin.DisplayName: Coin
+			MahogunyLeafProjectile.DisplayName: Mahoguny Leaf Projectile
+			VineslingerBall.DisplayName: Vineslinger Ball
+			VineslingerProjectileFriendly.DisplayName: Living Leaf Projectile
+			AncientVision.DisplayName: Ancient Vision
+			AncientVisionLunarCultist.DisplayName: Ancient Vision
+			Bee.DisplayName: Bee
+			Beehive.DisplayName: Bee Hive
+			BetsyElectrosphere.DisplayName: Sky Dragon's Fury
+			BetsyElectrosphere2.DisplayName: Sky Dragon's Fury
+			BetsyFury.DisplayName: Sky Dragon's Fury
+			BetsyFury2.DisplayName: Sky Dragon's Fury
+			BetsyPhoenix.DisplayName: Phantom Phoenix
+			BigMimicExplosion.DisplayName: Explosion
+			BloodFountain.DisplayName: Blood Fountain
+			BloodScythe.DisplayName: Moon Sickle
+			BloodScytheFriendly.DisplayName: Blood Scythe
+			BloodThornMissile.DisplayName: Blood Thorn
+			Bloodshed.DisplayName: Bloodshed
+			BrainIllusionProj.DisplayName: Brain of Cthulhu
+			BrainofConfusion.DisplayName: Brain of Confusion
+			BubbleHostile.DisplayName: Bubble
+			CelestialFragment.DisplayName: Celestial Fragment
+			CelestialPillar.DisplayName: Celestial Pillar
+			CelestialRuneAncientVision.DisplayName: Ancient Vision
+			CelestialRuneFireball.DisplayName: Fireball
+			CelestialRuneIceMist.DisplayName: Ice Mist
+			CelestialRuneIceSpike.DisplayName: Ice Spike
+			CelestialRuneLightningArc.DisplayName: Lightning Arc
+			ClingerFlame.DisplayName: Cursed Flames
+			ClownBomb.DisplayName: Clown Bomb
+			CrystalLeafShot.DisplayName: Crystal Leaf
+			CultistArrow.DisplayName: Cultist Arrow
+			CultistFireball.DisplayName: Fireball
+			CultistRitual.DisplayName: Cultist Ritual
+			CultistVortex.DisplayName: Vortex
+			CultistFireballHoming.DisplayName: Mods.FargowiltasSouls.Projectiles.CultistFireballHoming.DisplayName
+			CuresedFlameHostile2.DisplayName: Mods.FargowiltasSouls.Projectiles.CuresedFlameHostile2.DisplayName
+			CursedFlamethrower.DisplayName: Eye Fire
+			DarkStar.DisplayName: Dark Star
+			DarkStarDestroyer.DisplayName: Dark Star
+			DarkStarHoming.DisplayName: Dark Star
+			DarkStarTwins.DisplayName: Dark Star
+			DeathSkull.DisplayName: Death Skull
+			DeerclopsHand.DisplayName: Shadow Hand
+			DestroyerLaser.DisplayName: Death Laser
+			DicerPlantera.DisplayName: Dicer Plantera
+			DrakanianDaybreak.DisplayName: Daybreak
+			ElfArcherArrow.DisplayName: Frostburn Arrow
+			ElfCopterBullet.DisplayName: Explosive Bullet
+			ElfcopterBulletExplosion.DisplayName: Mods.FargowiltasSouls.Projectiles.ElfcopterBulletExplosion.DisplayName
+			EyeBeam2.DisplayName: Eye Beam
+			EyeFire2.DisplayName: Eye Fire
+			FakeHeart.DisplayName: Fake Heart
+			FakeHeart2.DisplayName: Fake Heart
+			FishronBubble.DisplayName: Detonating Bubble
+			FishronFishron.DisplayName: Spectral Fishron
+			FishronRitual.DisplayName: Oceanic Ritual
+			FishronRitual2.DisplayName: Oceanic Ritual
+			FlamingJack.DisplayName: Flaming Jack
+			FragmentRitual.DisplayName: Lunar Ritual
+			FriendHeart.DisplayName: Friend Heart
+			FrostFireball.DisplayName: Frostfireball
+			FrostfireballHostile.DisplayName: Frostfireball
+			FuseBomb.DisplayName: Fuse Bomb
+			FusedExplosion.DisplayName: Sun Blast
+			GelicWingSpike.DisplayName: Crystal Spike
+			GoblinSpikyBall.DisplayName: Spiky Ball
+			GoldenShowerHoming.DisplayName: Golden Shower
+			GoldenShowerWOF.DisplayName: Golden Shower
+			GolemBoulder.DisplayName: Boulder
+			GolemDeathraySmall.DisplayName: Blazing Deathray
+			GolemFireball.DisplayName: Fireball
+			GolemGeyser.DisplayName: Geyser
+			GolemGeyser2.DisplayName: Geyser
+			GolemSpikeBallBig.DisplayName: Spike Ball
+			GolemSpikyBall.DisplayName: Spiky Ball
+			GuardianDeathraySmall.DisplayName: Shadow Deathray
+			HoneyDrop.DisplayName: Honey Drop
+			HorsemansBlade.DisplayName: The Horseman's Blade
+			HostileHealingHeart.DisplayName: Hostile Healing Heart
+			JungleTentacle.DisplayName: Jungle Tentacle
+			LightBall.DisplayName: Light Ball
+			LihzahrdBoulderFriendly.DisplayName: Boulder
+			LunarRitual.DisplayName: Lunar Ritual
+			MimicCoin.DisplayName: Coin
+			MoonLordFireball.DisplayName: Fireball
+			MoonLordMoon.DisplayName: Moon
+			MoonLordMoonBlast.DisplayName: Moon Blast
+			MoonLordNebulaBlaze.DisplayName: Nebula Blaze
+			MoonLordNebulaBlaze2.DisplayName: Nebula Blaze
+			MoonLordSun.DisplayName: Sun
+			MoonLordSunBlast.DisplayName: Sun Blast
+			MoonLordVortex.DisplayName: Vortex
+			MoonLordvortexOld.DisplayName: Mods.FargowiltasSouls.Projectiles.MoonLordvortexOld.DisplayName
+			MothDust.DisplayName: Moth Dust
+			MothronZenith.DisplayName: Zenith
+			PhantasmalBolt2.DisplayName: Phantasmal Bolt
+			PhantasmalSphereDeathray.DisplayName: Phantasmal Deathray
+			PhantasmalSphereRing.DisplayName: Phantasmal Sphere
+			PlanteraCrystalLeafRing.DisplayName: Crystal Leaf
+			PlanteraTentacle.DisplayName: Planty Tentacle
+			PrimeGuardian.DisplayName: Dungeon Guardian Prime
+			PrimeTrail.DisplayName: Trail
+			PumpkingFlamingScythe.DisplayName: Flaming Scythe
+			QueenFlocko.DisplayName: Super Flocko
+			RainbowSlimeSpike.DisplayName: Rainbow Slime Spike
+			RazorbladeTyphoon.DisplayName: Razorblade Typhoon
+			ShadowflamePortal.DisplayName: Shadowflame Portal
+			ShadowflameTentacle.DisplayName: Shadowflame Tentacle
+			SkeletonArcherArrow.DisplayName: Venom Arrow
+			SkeletronBone.DisplayName: Bone
+			SkeletronGuardian.DisplayName: Baby Guardian
+			SkeletronGuardian2.DisplayName: Baby Guardian
+			SlimeBallHostile.DisplayName: Slime Ball
+			SlimeSpike.DisplayName: Slime Spike
+			SlimeSpike2.DisplayName: Slime Spike
+			SniperBullet.DisplayName: High Velocity Crystal Bullet
+			SniperBulletShard.DisplayName: High Velocity Crystal Bullet
+			StardustRain.DisplayName: Cosmic Invader
+			TargetingReticle.DisplayName: Targeting Reticle
+			TorchGodFlame.DisplayName: Torch God
+			VultureFeather.DisplayName: Vulture Feather
+			WOFBlast.DisplayName: Divine Blast
+			WOFChain.DisplayName: The Hungry
+			WOFReticle.DisplayName: Wall of Flesh Reticle
+			AbomMinion.DisplayName: Abominationn
+			AbomMinionScythe.DisplayName: Abominationn Scythe
+			AbomMinionSickle.DisplayName: Abominationn Sickle
+			BigBrainIllusion.DisplayName: Big Brain
+			BigBrainProj.DisplayName: Big Brain
+			BrainMinion.DisplayName: Brain Proj
+			CreeperMinion.DisplayName: Brain Proj
+			CrystalSkull.DisplayName: Crystal Skull
+			DarkStarHomingFriendly.DisplayName: Dark Star
+			DestroyerBody.DisplayName: Destroyer Body
+			DestroyerBody2.DisplayName: Destroyer Body
+			DestroyerHead.DisplayName: Destroyer Head
+			DestroyerHead2.DisplayName: Destroyer Head
+			DestroyerTail.DisplayName: Destroyer Tail
+			DestroyerTail2.DisplayName: Destroyer Tail
+			EaterBody.DisplayName: Eater Body
+			EaterHead.DisplayName: Eater Head
+			EaterTail.DisplayName: Eater Tail
+			EridanusBullet.DisplayName: Eridanus Bullet
+			EridanusDeathray.DisplayName: Cosmic Deathray
+			EridanusFist.DisplayName: Eridanus Fist
+			EridanusMinion.DisplayName: Eridanus
+			EridanusRitual.DisplayName: Lunar Ritual
+			FlameburstMinion.DisplayName: Flameburst Minion
+			FriendRay.DisplayName: Love Ray
+			HallowSword.DisplayName: HallowSword
+			KamikazeSquirrel.DisplayName: Kamikaze Squirrel
+			LunarCultist.DisplayName: Lunar Cultist
+			LunarCultistFireball.DisplayName: Fireball
+			LunarCultistIceMist.DisplayName: Ice Mist
+			LunarCultistIceSpike.DisplayName: Ice Spike
+			LunarCultistLight.DisplayName: Ancient Light
+			LunarCultistLightningArc.DisplayName: Lightning Arc
+			LunarCultistLightningOrb.DisplayName: Lightning Orb
+			MiniSaucer.DisplayName: Mini Saucer
+			NekomiAxe.DisplayName: Sparkling Love
+			NekomiDevi.DisplayName: Deviantt
+			NekomiRitual.DisplayName: Nekomi Ritual
+			OpticFlame.DisplayName: Eye Fire
+			OpticLaser.DisplayName: Death Laser
+			OpticRetinazer.DisplayName: Retinazer
+			OpticSpazmatism.DisplayName: Spazmatism
+			PalmTreeSentry.DisplayName: Palm Tree
+			PhantasmalBoltTrueEye.DisplayName: Phantasmal Bolt
+			PhantasmalDeathrayPungent.DisplayName: Divine Deathray
+			PhantasmalDeathrayTrueEye.DisplayName: Phantasmal Deathray
+			PhantasmalRing.DisplayName: Phantasmal Ring
+			PhantasmalRing2.DisplayName: Phantasmal Ring
+			PhantasmalSphereTrueEye.DisplayName: Phantasmal Sphere
+			PlanterasChild.DisplayName: Plantera's Child
+			PoisonSeedPlanterasChild.DisplayName: Poison Seed
+			Probe1.DisplayName: Probe
+			Probe2.DisplayName: Probe
+			ProbeLaser.DisplayName: Probe Laser
+			PungentEyeball.DisplayName: Pungent Eyeball
+			RainbowSlime.DisplayName: Rainbow Slime
+			RingDeathray.DisplayName: Phantasmal Deathray
+			SaucerDeathray.DisplayName: Saucer Beam
+			SaucerLaser.DisplayName: Laser
+			SaucerRocket.DisplayName: Rocket
+			SeedPlanterasChild.DisplayName: Seed
+			ShadowflamesFriendly.DisplayName: Shadowflames
+			SilverSword.DisplayName: SilverSword
+			SkeletronArmL.DisplayName: Skeletron Hand
+			SkeletronArmR.DisplayName: Skeletron Hand
+			SpikyBallPlanterasChild.DisplayName: Spiky Ball
+			TrueEyeL.DisplayName: True Eye of Cthulhu
+			TrueEyeR.DisplayName: True Eye of Cthulhu
+			TrueEyeS.DisplayName: True Eye of Cthulhu
+			BossRush.DisplayName: Mutant Seal
+			MutantBomb.DisplayName: Phantasmal Blast
+			MutantBombSmall.DisplayName: Phantasmal Blast
+			MutantBoss.DisplayName: Mods.FargowiltasSouls.Projectiles.MutantBoss.DisplayName
+			MutantCrystalLeaf.DisplayName: Crystal Leaf
+			MutantDeathray1.DisplayName: Phantasmal Deathray
+			MutantDeathray2.DisplayName: Phantasmal Deathray
+			MutantDeathray3.DisplayName: Blazing Deathray
+			MutantDeathrayAim.DisplayName: Phantasmal Deathray
+			MutantDeathraySmall.DisplayName: Phantasmal Deathray
+			MutantDestroyerBody.DisplayName: The Destroyer
+			MutantDestroyerHead.DisplayName: The Destroyer
+			MutantDestroyerTail.DisplayName: The Destroyer
+			MutantEye.DisplayName: Phantasmal Eye
+			MutantEyeHoming.DisplayName: Phantasmal Eye
+			MutantEyeOfCthulhu.DisplayName: Eye of Cthulhu
+			MutantEyeWavy.DisplayName: Phantasmal Eye
+			MutantFishron.DisplayName: Spectral Fishron
+			MutantFishronRitual.DisplayName: Fish Nuke
+			MutantFragment.DisplayName: Celestial Fragment
+			MutantGiantDeathray2.DisplayName: Phantasmal Deathray
+			MutantGlowything.DisplayName: Retiray telegraph
+			MutantGuardian.DisplayName: Skeletron Prime
+			MutantHeal.DisplayName: Mutant Heal
+			MutantMark1.DisplayName: Phantasmal Sphere
+			MutantMark2.DisplayName: Crystal Leaf
+			MutantNuke.DisplayName: Fish Nuke
+			MutantPillar.DisplayName: Celestial Pillar
+			MutantReticle.DisplayName: Mutant Reticle
+			MutantReticle2.DisplayName: Mutant Reticle
+			MutantRetirang.DisplayName: Retirang
+			MutantRitual.DisplayName: Mutant Seal
+			MutantRitual2.DisplayName: Mutant Seal
+			MutantRitual3.DisplayName: Mutant Seal
+			MutantRitual4.DisplayName: Mutant Seal
+			MutantRitual5.DisplayName: Mutant Seal
+			MutantScythe1.DisplayName: Mutant Sickle
+			MutantScythe2.DisplayName: Mutant Sickle
+			MutantSlimeBall.DisplayName: Slime Rain
+			MutantSlimeBall2.DisplayName: Slime Rain
+			MutantSlimeRain.DisplayName: Slime Rain
+			MutantSpazmarang.DisplayName: Spazmarang
+			MutantSpearAim.DisplayName: The Penetrator
+			MutantSpearDash.DisplayName: The Penetrator
+			MutantSpearMagical.DisplayName: The Penetrator
+			MutantSpearSpin.DisplayName: The Penetrator
+			MutantSpearThrown.DisplayName: The Penetrator
+			MutantSpearThrownFriendly.DisplayName: The Penetrator
+			MutantSphereRing.DisplayName: Phantasmal Sphere
+			MutantSphereSmall.DisplayName: Phantasmal Sphere
+			MutantSword.DisplayName: Phantasmal Sphere
+			MutantTrueEyeDeathray.DisplayName: Phantasmal Deathray
+			MutantTrueEyeL.DisplayName: True Eye of Mutant
+			MutantTrueEyeR.DisplayName: True Eye of Mutant
+			MutantTrueEyeS.DisplayName: True Eye of Mutant
+			MutantTrueEyeSphere.DisplayName: Phantasmal Sphere
+			MutantTyphoon.DisplayName: Razorblade Typhoon
+			AccursedSarcophagus.DisplayName: Accursed Sarcophagus
+			BabyAbom.DisplayName: Baby Abom
+			BabySilhouette.DisplayName: Baby Silhouette
+			BiteSizeBaron.DisplayName: Bite-size Baron
+			ChibiDevi.DisplayName: Chibi Devi
+			MutantSpawn.DisplayName: Mutant Spawn
+			SeekerOfTreasures.DisplayName: Seeker of Treasures
+			ArrowRain.DisplayName: Arrow Rain
+			CactusNeedle.DisplayName: Cactus Needle
+			Chlorofuck.DisplayName: Chlorofuck
+			CobaltExplosion.DisplayName: Explosion
+			CopperLightning.DisplayName: Lightning Arc
+			DungeonGuardianNecro.DisplayName: Dungeon Guardian
+			ForbiddenTornado.DisplayName: Forbidden Tornado
+			FossilBone.DisplayName: Fossil Bone
+			FrostIcicle.DisplayName: Frost Icicle
+			GladiatorJavelin.DisplayName: Javelin
+			GoldShellProj.DisplayName: Gold Shell
+			GrowingPumpkin.DisplayName: Pumpkin
+			IronParry.DisplayName: Iron Parry
+			MegaFlameburst.DisplayName: Mega Flameburst
+			NecroGrave.DisplayName: Necro Grave
+			PalladOrb.DisplayName: Palladium Life Orb
+			PumpkinFlame.DisplayName: Flame
+			RainCloud.DisplayName: Rain Cloud
+			ShadowBall.DisplayName: Shadow Ball
+			ShadowEnchantOrb.DisplayName: Shadow Orb
+			ShroomiteShroom.DisplayName: Shroom
+			Snowstorm.DisplayName: Snowstorm
+			SpookyScythe.DisplayName: Scythe
+			StardustKnife.DisplayName: Stardust Knife
+			SuperBlood.DisplayName: Super Blood
+			TitaniumShard.DisplayName: Rain Cloud
+			TurtleShield.DisplayName: Turtle Shield
+			Void.DisplayName: Void
+			AbomScytheFriendly.DisplayName: Abominable Scythe
+			BetsyDash.DisplayName: Dash
+			CreeperHitbox.DisplayName: Creeper
+			Explosion.DisplayName: Explosion
+			ExplosionSmall.DisplayName: Explosion
+			GalacticReformerProj.DisplayName: Nuke
+			GeyserFriendly.DisplayName: Geyser
+			GiantDeathray.DisplayName: Phantasmal Deathray
+			GlowLine.DisplayName: Glow Line
+			GlowRing.DisplayName: Glow Ring
+			GlowRingHollow.DisplayName: Glow Ring
+			GrazeRing.DisplayName: Glow Ring
+			HostileLightning.DisplayName: Lightning Arc
+			LightningArc.DisplayName: Lightning Arc
+			LightningVortex.DisplayName: Vortex
+			LightningVortexHostile.DisplayName: Vortex
+			LihzahrdSpikyBallFriendly.DisplayName: Spiky Ball
+			PhantasmalSphere.DisplayName: Phantasmal Sphere
+			SpectralAbominationn.DisplayName: Spectral Abominationn
+			StyxArmorScythe.DisplayName: Styx Scythe
+			StyxArmorScythe2.DisplayName: Styx Scythe
+			StyxGazerArmor.DisplayName: Styx Gazer
+			UniversalCollapseProj.DisplayName: Nuke
+			KingSlimeBallPiercing.DisplayName: Slime Ball
+			KingSlimeMinion.DisplayName: King Slime
+			KingSlimeSpike.DisplayName: Slime Spike
+			DukeFishronMinion.DisplayName: Duke Fishron
+			RazorbladeTyphoonFriendly2.DisplayName: Razorblade Typhoon
+			DevRocket.DisplayName: Dev Rocket
+			RailgunBlast.DisplayName: Railgun Blast
+			RoombaPetProj.DisplayName: Roomba Pet Proj
+			VortexBolt.DisplayName: Lightning Arc
+			VortexRitualProj.DisplayName: Vortex Ritual
+			DoveProj.DisplayName: Dove Proj
+			WolfDashProj.DisplayName: Wolf Dash
+			ChibiiRemii.DisplayName: Chibii Remii
+			PrimeMinionCannon.DisplayName: Prime Cannon Arm
+			PrimeMinionLaserGun.DisplayName: Prime Laser Arm
+			PrimeMinionProj.DisplayName: Micro Prime
+			PrimeMinionSaw.DisplayName: Prime Saw
+			PrimeMinionVice.DisplayName: Prime Vice
+			Bubble.DisplayName: Bubble
+			FishMinion.DisplayName: Fish Minion
+			PufferRang.DisplayName: PufferRang
+			PufferSpray.DisplayName: PufferSpray
+			SpikyLure.DisplayName: Spiky Lure
+			WaterStream.DisplayName: Water Stream
+			Crimetroid.DisplayName: Crimetroid
+			NanoBase.DisplayName: Nano Core
+			NanoBlade.DisplayName: Plasma Blade
+			NanoProbe.DisplayName: Nano Probe
+			PlasmaArrow.DisplayName: Plasma Arrow
+			PlasmaDeathray.DisplayName: Mods.FargowiltasSouls.Projectiles.PlasmaDeathray.DisplayName
+			PlasmaProj.DisplayName: Plasma Bolt
+			GlowRingHallow.DisplayName: Mods.FargowiltasSouls.Projectiles.GlowRingHallow.DisplayName
+			AbomBlast.DisplayName: Phantasmal Blast
+			AbomFlocko2.DisplayName: Super Flocko
+			AbomFlocko3.DisplayName: Super Flocko
+			AbomLaser.DisplayName: Laser
+			EyeProjectile.DisplayName: EyeProjectile2
+			HentaiSpearDash.DisplayName: The Penetrator
+			HentaiSpearRing.DisplayName: Mods.FargowiltasSouls.Projectiles.HentaiSpearRing.DisplayName
+			CosmosFireball.DisplayName: Cosmic Fireball
+			CosmosFireball2.DisplayName: Cosmic Fireball
+			EatrhPalladOrb.DisplayName: Mods.FargowiltasSouls.Projectiles.EatrhPalladOrb.DisplayName
+			ShadowFlameburst.DisplayName: Flameburst
+			ShadowFlamingScythe.DisplayName: Flaming Scythe
+			TimerPalmTree.DisplayName: Mods.FargowiltasSouls.Projectiles.TimerPalmTree.DisplayName
+			WireFireball2.DisplayName: Mods.FargowiltasSouls.Projectiles.WireFireball2.DisplayName
+			DeviRitual2.DisplayName: Deviantt Seal
+			CursedFireballHoming.DisplayName: Cursed Flame
+			CursedFlameHostile2.DisplayName: Cursed Flame
+			ElfCopterBulletExplosion.DisplayName: Explosive Bullet
+			MoonLordVortexOld.DisplayName: Vortex
+			RazorbladeTyphoon2.DisplayName: Razorblade Typhoon
+			VenomSpit.DisplayName: Venom Spit
+			RainbowSlimeSpikeFriendly.DisplayName: Rainbow Slime Spike
+			PlasmaDeathRay.DisplayName: Plasma Deathray
+			AbomBossProjectile.DisplayName: Abominationn
+			BaronMine.DisplayName: Banished Baron's Mine
+			BaronNuke.DisplayName: Banished Baron's Spicy Beeping Nuclear Torpedo of Death and Destruction
+			BaronRocket.DisplayName: Banished Baron's Rocket
+			BaronScrap.DisplayName: Banished Baron Scrap
+			BaronShrapnel.DisplayName: Banished Baron Mine Shrapnel
+			ShadowOrbProjectile.DisplayName: Shadow Orb
+			WillDeathrayBig.DisplayName: Will Deathray
+			DeviBossProjectile.DisplayName: Deviantt
+			JevilScar.DisplayName: Enchanted Lightblade
+			LifeBlaster.DisplayName: Life Blaster
+			LifeBomb.DisplayName: Life Mine
+			LifeTransitionBomb.DisplayName: Life Mine
+			LifeBombExplosion.DisplayName: Life Bomb
+			LifeCageExplosion.DisplayName: Cage Explosion
+			LifeCageProjectile.DisplayName: Life Cage
+			LifeCageTelegraph.DisplayName: Cage Telegraph
+			LifeChalBlasterDeathray.DisplayName: Holy Deathray
+			LifeChalDeathray.DisplayName: Holy Deathray
+			LifeCrosshair.DisplayName: Crosshair
+			LifeHomingProj.DisplayName: Lesser Fairy
+			LifeNeggravProj.DisplayName: Cross
+			LifeNuke.DisplayName: Life Bomb
+			LifeProjLarge.DisplayName: Cross
+			LifeProjSmall.DisplayName: Life Shot
+			LifeRuneHitbox.DisplayName: Life Rune
+			LifeScar.DisplayName: Life Mine
+			LifeSlurp.DisplayName: Gem
+			LifeSplittingProjSmall.DisplayName: Life Shot
+			LifeTpTelegraph.DisplayName: Teleport Telegraph
+			LifeWave.DisplayName: Life Wave
+			MutantBossProjectile.DisplayName: Mutant
+			ArcTelegraph.DisplayName: Arc Telegraph
+			BloomLine.DisplayName: Bloom Line
+			FishStickProjTornado.DisplayName: Fish Stick
+			PrismaRegaliaProj.DisplayName: Prisma Regalia
+			PrismaRegaliaStar.DisplayName: Star
+			CrystallineCongregationProj.DisplayName: Crystal Ball
+			EnchantedLifebladeProjectile.DisplayName: Enchanted Lifeblade
+			LightslingerBomb.DisplayName: Light Bomb
+			LightslingerBombshot.DisplayName: Light Shot
+			LightslingerShot.DisplayName: Light Shot
+			SpiritArrow.DisplayName: Spirit Arrow
+			SpiritArrowFlame.DisplayName: Spirit Flame
+			CirnoBomb.DisplayName: Cirno Bomb
+			RetinazerDeathray.DisplayName: Blazing Deathray
+			MimicDagger.DisplayName: Magic Dagger
+			MimicHallowStar.DisplayName: Hallow Star
+			MimicTitanGlove.DisplayName: Titan Glove
+			KamikazePixie.DisplayName: Pixie
+			BabyLifelight.DisplayName: Petlight
+			Nibble.DisplayName: Nibble
+			SolarMeteor.DisplayName: Solar Meteor
+			SolarFlamePillarSpawner.DisplayName: Solar Flame Pillar Spawner
+			SolarFlamePillar.DisplayName: Solar Flame Pillar
+			LightningTelegraph.DisplayName: Lightning Telegraph
+			PillarSpawner.DisplayName: Pillar Spawner
+			VortexVortex.DisplayName: Vortex Vortex
+			VortexVortexProjectile.DisplayName: Vortex Vortex Projectile
+			PillarNebulaBlaze.DisplayName: Pillar Nebula Blaze
+			NebulaDeathray.DisplayName: Nebula Deathray
+			NebulaPillarProj.DisplayName: Nebula Pillar Proj
+			NebulaTelegraph.DisplayName: Nebula Telegraph
+			PillarArcanum.DisplayName: Pillar Arcanum
+			BaronWhirlpool.DisplayName: Baron Whirlpool
 		}
 
 		WoodHeader: "[i:FargowiltasSouls/TimberForce][c/ffffff:{$Mods.FargowiltasSouls.Toggler.WoodHeader}]"
