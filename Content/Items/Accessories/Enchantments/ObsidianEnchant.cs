@@ -16,12 +16,6 @@ namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
         {
             base.SetStaticDefaults();
 
-            // DisplayName.SetDefault("Obsidian Enchantment");
-            /* Tooltip.SetDefault(
-@"Grants immunity to fire and lava
-You have normal movement and can swim in lava
-While standing in lava or lava wet, your attacks spawn explosions and apply Firecracker
-'The earth calls'"); */
         }
 
         protected override Color nameColor => new(69, 62, 115);

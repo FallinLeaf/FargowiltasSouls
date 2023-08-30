@@ -119,7 +119,8 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
             {
                 if (Timer < StartTime + ReactTime)
                 {
-                    RotateTowards(player.Center, 1);
+                    float TrackingSpeed = WorldSavingSystem.MasochistModeReal ? 1 : 0.2f;
+                    RotateTowards(player.Center, TrackingSpeed);
                 }
                 if (Timer == StartTime + 1)
                 {

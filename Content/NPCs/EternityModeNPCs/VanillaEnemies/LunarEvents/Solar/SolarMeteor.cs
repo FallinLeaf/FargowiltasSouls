@@ -34,6 +34,7 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
             Projectile.scale = 1;
             AIType = 0;
             Projectile.aiStyle = 0;
+            Projectile.alpha = 255;
         }
 
         public override void AI()
@@ -49,6 +50,14 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
         {
             Projectile.velocity = (Vector2.UnitX * Projectile.ai[1]) + (Vector2.UnitY * Projectile.ai[2]);
             Projectile.rotation += (float)Math.PI / 15;
+            if (Projectile.alpha > 0)
+            {
+                Projectile.alpha -= 15;
+            }
+            else
+            {
+                Projectile.alpha = 0;
+            }
         }
 
         public override void Kill(int timeLeft) //vanilla explosion code echhhhhhhhhhh

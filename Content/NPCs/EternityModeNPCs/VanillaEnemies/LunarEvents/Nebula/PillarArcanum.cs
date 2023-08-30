@@ -100,7 +100,7 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
                 if (Projectile.localAI[0] % projTime == 0)
                 {
 
-                    float speed = Main.rand.NextFloat(6, 8);
+                    float speed = Main.rand.NextFloat(4, 6);
                     float rotation = Main.rand.NextFloat(MathHelper.TwoPi);
                     Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), Projectile.Center, speed * rotation.ToRotationVector2(), ModContent.ProjectileType<PillarNebulaBlaze>(), Projectile.damage, Projectile.knockBack);
 
@@ -161,7 +161,7 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
             SoundEngine.PlaySound(SoundID.Item92, Projectile.Center);
             for (int index = 0; index < 40; ++index)
             {
-                float speed = Main.rand.NextFloat(5, 9);
+                float speed = Main.rand.NextFloat(4, 6);
                 float rotation = Main.rand.NextFloat(MathHelper.TwoPi);
                 Projectile.NewProjectile(Terraria.Entity.InheritSource(Projectile), Projectile.Center, speed * rotation.ToRotationVector2(), ModContent.ProjectileType<PillarNebulaBlaze>(), Projectile.damage, Projectile.knockBack);
             }

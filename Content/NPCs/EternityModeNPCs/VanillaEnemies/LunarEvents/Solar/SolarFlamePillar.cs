@@ -35,14 +35,20 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
         int child = -1;
         public override void AI()
         {
+            const int height = 400;
             ref float Timer = ref Projectile.ai[0];
+            if (Timer == 0)
+            {
+                Projectile.Center -= Vector2.UnitY * height;
+                Projectile.height = height;
+            }
             if (Timer == 60 * 2)
             {
                 SoundEngine.PlaySound(SoundID.Item45, Projectile.Center);
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     Vector2 aim = Vector2.UnitY * -30;
-                    child = FargoSoulsUtil.NewNPCEasy(Projectile.GetSource_FromThis(), Projectile.Center, NPCID.SolarGoop, velocity: aim);
+                    child = FargoSoulsUtil.NewNPCEasy(Projectile.GetSource_FromThis(), Projectile.Center + (Vector2.UnitY * height / 2), NPCID.SolarGoop, velocity: aim);
                     if (Main.npc[child].active)
                     {
                         Main.npc[child].damage = Projectile.damage;

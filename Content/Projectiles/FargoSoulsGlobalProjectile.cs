@@ -427,18 +427,27 @@ namespace FargowiltasSouls.Content.Projectiles
                         projectile.Kill();
                     }
 
-                    if (modPlayer.ShroomEnchantActive && player.GetToggleValue("ShroomiteShroom") && projectile.damage > 0 /*&& !townNPCProj*/ && projectile.velocity.Length() > 1 && projectile.minionSlots == 0 && projectile.type != ModContent.ProjectileType<ShroomiteShroom>() && player.ownedProjectileCounts[ModContent.ProjectileType<ShroomiteShroom>()] < 100)
+                    if (modPlayer.ShroomEnchantActive && player.GetToggleValue("ShroomiteShroom") && projectile.damage > 0 /*&& !townNPCProj*/ && projectile.velocity.Length() > 1 && projectile.minionSlots == 0 && projectile.type != ModContent.ProjectileType<ShroomiteShroom>() && player.ownedProjectileCounts[ModContent.ProjectileType<ShroomiteShroom>()] < 75)
                     {
-                        if (shroomiteMushroomCD >= 15)
+                        if (shroomiteMushroomCD >= 18)
                         {
                             shroomiteMushroomCD = 0;
 
-                            if (player.stealth == 0 || modPlayer.NatureForce || modPlayer.WizardEnchantActive)
+                            if (modPlayer.NatureForce || modPlayer.WizardEnchantActive)
+                            {
+                                shroomiteMushroomCD = 15;
+                            }
+                            if (player.stealth == 0)
                             {
                                 shroomiteMushroomCD = 10;
                             }
 
-                            Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, projectile.velocity, ModContent.ProjectileType<ShroomiteShroom>(), projectile.damage / 2, projectile.knockBack / 2, projectile.owner);
+                            int p = Projectile.NewProjectile(projectile.GetSource_FromThis(), projectile.Center, projectile.velocity, ModContent.ProjectileType<ShroomiteShroom>(), projectile.damage / 2, projectile.knockBack / 2, projectile.owner);
+                            if (p != Main.maxProjectiles)
+                            {
+                                Main.projectile[p].GetGlobalProjectile<FargoSoulsGlobalProjectile>().AdamModifier = AdamModifier;
+                            }
+
                         }
                         shroomiteMushroomCD++;
                     }

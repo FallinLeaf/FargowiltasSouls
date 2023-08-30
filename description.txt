@@ -1,32 +1,52 @@
 Fargo's Souls Mod is a content mod that adds the powerful Enchantments and Souls accessories, as well as a variety of bosses and minibosses.
 Features the highly challenging Eternity Mode!
 
-NEW UPDATE - V 1.5
-Updated to tmod 1.4.4, fixing a ton of bugs and issues in the process. Expect some trailing bugs and unintended features to remain.
-
--Renamed Life Challenger Relic to Lieflight Relic
--Tons of resprites
--Disabled shimmer decrafts for all Enchantments, Forces and Souls
--Breaking or right clicking the Mutant Statue (Gift) now takes the Gift from the statue
--Decreased Mutant Boss despawn range to be equal to arena pull range to prevent cheese
--Added small cooldown to Ancient Cobalt Enchant explosion jump to prevent abuse
--Amalgamated Bullet Pouch recipe now takes Silver or Tungsten pouch
--Eternity Mode Betsy now idles for 2 seconds at the start of the fight
--Increased cap of mushrooms spawned by Shroomite Enchant to 100
--Shadow Orbs can only be respawned by changing the amount of orbs once every 10 seconds
--Forbidden Enchantment sandstorm now refreshes flight time when touched
--Changed Mutant's Pact accessory slot to be an Enchantment Slot, which accepts Enchantments, Forces and Souls
-
-* Lieflight:
-	-Increased time before and between many attacks on Eternity Mode and below
-	-Reworked and reintroduced the laser spin attack
-	-Pixies are now destroyed after the attack finishes
-	-Can no longer do pixie charge attack immediately after normal charge attack, or vice versa
-	-Fixed bug causing reaction shotgun attack to break when the player goes too far from the boss
-	-Changed some visuals
-
--Massive internal reorganization of the entire mod file structure.
--Way too many bugfixes to count
+NEW UPDATE - V 1.5.1
+-Added Ash Enchantment and Hokey Ball
+-Completely reworked all four Lunar Pillar fights
+-Reworked Ebonwood Enchantment
+-Fixed some bugs with the Shadow Enchantment orb effect and its upgrades
+-Wizard Enchantment now states when an equipped enchant isn't being upgraded
+-Changed Obsidian Enchantment to use Ash Enchantment in recipe and effects
+-Tiki Enchantment nerfed, no longer gives whip range, and buff duration reduced from 1 to 0.33 seconds
+-Shroomite enchantment shroom max amount reduced from 100 to 75
+-Shroomite enchantment shroom is now affected by Adamantite Enchantment's damage penalty
+-Added force/wizard effect for Tiki Enchantment that gives the old whip range increase
+-Fixed Force of Earth description error
+-Fixed Shadow Force description error
+-Changed the recipe of World Shaper's Soul to include Hand of Creation instead of Architect Gizmo Pack, and added the Ancient Chisel and Treasure Magnet effects to it
+-Doubled the velocity of Big Toss Mode
+-Box of Gizmos autofire penalty removed, now grants Hunter Potion effect while standing still
+-Fixed Mind Break buff disappearing
+-Fixed bug where Blender orbitals could be duplicated
+-Nerfed Vampire Knives in Eternity Mode
+-Fixed bug where Styx Armor's damage reduction always reduced damage to 1 
+-Deer sinew tooltip specifically says dash without accessory
+-Several adjustments to Don't dig up and Get fixed boi seeds,
+-Using Ocram's Razor in the Get fixed boi seed sets the time to night.
+-Mutant Statue now spawns in Don’t Dig Up/Get fixed boi world and retroactively spawns Mutant Statue in old Don’t Dig Up/Get fixed boi worlds if they didn’t have one
+-Deviantt spawns on top of the player in Don’t Dig Up/Get fixed boi worlds
+-Deviantt’s Gift gives you 5 Obsidian Skin Potions in Don’t Dig Up/Get fixed boi worlds
+-Fixed some Eternity Mode drops being broken
+-Made mod paintings effected by Spelunker Potion
+-Low Ground disables Gravitation buff
+-Temporary debuff immunities (parry, gold shell, etc.) can only block debuffs that nurse can cleanse
+-Eternity Mode now massively reduces damage from DoT debuffs at below 10 life, outside Masochist
+-Pumpkin Moon loot is locked to wave 15
+-Completely reworked all four Lunar Pillar fights
+-Adjusted swarming AI of hornets, much more aggressive in Masochist
+-Nymph no longer inflicts Lovestruck on hit
+-Fixed Lunar Pillar Eternity mode AI not activating after rejoining the world while they’re alive
+-Fixed a bug where Dungeon Guardian swarm had full Eternity Mode AI
+-Several bosses adjusted to reduce/remove heals and increased health to compensate
+-Several bosses health adjusted to compensate for vanilla 1.4.4 health buffs, and should now be equal to pre-1.4.4 Eternity Mode
+-Trojan Squirrel Theme added
+-Lieflight Theme added
+-Masochist Skeletron has no reticle and uses Dungeon Guardian attacks while spinning
+-WoF Deathray inflicts Smite instead of Confused, deathray also inflicts Unstable
+-Retinazer's deathray is now comically large in Masochist Mode
+-Empress of Light phase 2 angled sword walls buffed, they slightly track movement
+-Fixed Abominationn's boss bag not being consumed
 
 -See the wiki for full details!
 

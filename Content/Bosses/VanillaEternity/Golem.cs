@@ -129,7 +129,7 @@ namespace FargowiltasSouls.Content.Bosses.VanillaEternity
         {
             base.SetDefaults(npc);
 
-            npc.lifeMax *= 5;
+            npc.lifeMax *= 3; //From 5, compensation for 1.4.4 nerf
             npc.damage = (int)(npc.damage * 1.2);
         }
 
@@ -573,7 +573,7 @@ namespace FargowiltasSouls.Content.Bosses.VanillaEternity
         public override void SetDefaults(NPC npc)
         {
             base.SetDefaults(npc);
-
+            npc.lifeMax = (int)(npc.lifeMax * 0.65f); //Compensation for 1.4.4 buff
             AttackTimer = 540;
             DoDeathray = true;
         }

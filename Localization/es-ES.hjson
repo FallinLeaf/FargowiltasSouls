@@ -9,7 +9,7 @@
 Mods: {
 	FargowiltasSouls: {
 		WizardEffect: {
-			// Wizard: Adamantite: Projectiles now split into 3
+			// Adamantite: Projectiles now split into 3
 			// AncientHallow: No upgrade
 			// AncientShadow: Number of Shadow Orbs increased
 			// Angler: No upgrade
@@ -23,7 +23,7 @@ Mods: {
 			// Crimson: No upgrade
 			// CrystalAssassin: No upgrade
 			// DarkArtist: No upgrade
-			// Ebonwood: Damage threshold increased to 25, additonally kills any npcs with less than 200 HP
+			// Ebonwood: Aura size increased, defense reduction increased to 30
 			// Forbidden: No upgrade
 			// Fossil: No upgrade
 			// Frost: No upgrade
@@ -39,7 +39,7 @@ Mods: {
 			// Nebula: No upgrade
 			// Necro: No upgrade
 			// Ninja: Armor pen increased to 45
-			// Obsidian: You no longer need lava to spawn explosions, cooldown reduced
+			// Obsidian: You no longer need lava to spawn explosions or fireballs, cooldown reduced
 			// Orichalcum: Increases multiplier to 4x
 			// Palladium: Rapid Healing always lasts 5 seconds, increases orb damage
 			// PalmWood: Attack speed and damage increased, 2 more trees can be spawned
@@ -51,7 +51,7 @@ Mods: {
 			// RichMahogany: Hooks pull 2.5x as fast, damage resistance and thorns increased greatly
 			// Shadewood: Aura size and blood damage increased, additionally applies Ichor
 			// Shinobi: No upgrade
-			// Shroomite: No upgrade
+			// Shroomite: Mushrooms are spawned more often
 			// Silver: Parrying blocks up to 200 damage and grants the Striking Moment buff
 			// Solar: No upgrade
 			// Spectre: No upgrade
@@ -67,7 +67,6 @@ Mods: {
 			// Vortex: No upgrade
 			// Wood: Bestiary and banner multiplier increased to 5
 			// AshWood: Fires balls of fire more often
-			// Adamantite: Projectiles now split into 3
 		}
 
 		SetBonus: {
@@ -547,6 +546,7 @@ Mods: {
 			// DefenseFleshKnuckleConfig: Flesh Knuckles Aggro
 			// DefensePaladinConfig: Paladin's Shield
 			// DefenseFrozenConfig: Frozen Turtle Shell
+			// ShimmerImmunityConfig: Shimmer Immunity
 			// FlightMasteryHeader: "{$Mods.FargowiltasSouls.Items.FlightMasterySoul.DisplayName}"
 			// FlightMasteryInsigniaConfig: Soaring Insignia Acceleration
 			// FlightMasteryGravityConfig: Amplified Gravity
@@ -661,7 +661,6 @@ Mods: {
 			// CrystalGelatinConfig: Mods.FargowiltasSouls.Toggler.CrystalGelatinConfig
 			// SilverConfig: Mods.FargowiltasSouls.Toggler.SilverConfig
 			// MasoHoneyConfig: Mods.FargowiltasSouls.Toggler.MasoHoneyConfig
-			// ShimmerImmunityConfig: Shimmer Immunity
 		}
 
 		UI: {
@@ -3877,7 +3876,7 @@ Mods: {
 					Increases HP by 100
 					15% damage reduction
 					Increases life regeneration by 5
-					Grants immunity to knockback, several debuffs, and fall damage
+					Grants immunity to knockback, several debuffs, Shimmering, and fall damage
 					Enemies are more likely to target you
 					Effects of Brain of Confusion, Star Veil, and Bee Cloak
 					Effects of Shiny Stone, Paladin's Shield, and Frozen Turtle Shell
@@ -4092,7 +4091,7 @@ Mods: {
 					'''
 					Increased block and wall placement speed by 50%
 					Near infinite block placement and mining reach
-					Mining speed tripled
+					Mining speed tripled, plus effect of Ancient Chisel
 					Shows the location of enemies, traps, and treasures
 					Auto paint and actuator effect
 					Provides light and allows gravity control
@@ -4100,7 +4099,7 @@ Mods: {
 					    Tiles and walls will not be consumed
 						Increased placement speed and range
 					Effect can be disabled in Soul Toggles menu
-					Effects of the Cell Phone and Royal Gel
+					Effects of the Cell Phone, Royal Gel and Treasure Magnet
 					Summons a pet Magic Lantern
 					'Limitless possibilities'
 					''' */
@@ -6344,6 +6343,7 @@ Mods: {
 		// DefenseFleshKnuckleConfig: "[i:FargowiltasSouls/ColossusSoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.DefenseFleshKnuckleConfig}]"
 		// DefensePaladinConfig: "[i:FargowiltasSouls/ColossusSoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.DefensePaladinConfig}]"
 		// DefenseFrozenConfig: "[i:FargowiltasSouls/ColossusSoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.DefenseFrozenConfig}]"
+		// ShimmerImmunityConfig: "[i:FargowiltasSouls/ColossusSoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.ShimmerImmunityConfig}]"
 		// FlightMasteryHeader: "[i:FargowiltasSouls/FlightMasterySoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.FlightMasteryHeader}]"
 		// FlightMasteryInsigniaConfig: "[i:FargowiltasSouls/FlightMasterySoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.FlightMasteryInsigniaConfig}]"
 		// FlightMasteryGravityConfig: "[i:FargowiltasSouls/FlightMasterySoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.FlightMasteryGravityConfig}]"
@@ -6597,6 +6597,5 @@ Mods: {
 		}
 
 		// Conditions.RoombaPetSold: Mods.FargowiltasSouls.Conditions.RoombaPetSold
-		// ShimmerImmunityConfig: "[i:FargowiltasSouls/ColossusSoul][c/ffffff:Shimmer Immunity]"
 	}
 }

@@ -64,7 +64,8 @@ namespace FargowiltasSouls.Content.Bosses.VanillaEternity
         {
             base.SetDefaults(npc);
 
-            npc.lifeMax *= 2;
+            npc.lifeMax = (int)(npc.lifeMax * 5f / 3f); //Down from x2, compensation for 1.4.4 buff
+
         }
 
         public override void OnFirstTick(NPC npc)

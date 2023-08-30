@@ -142,7 +142,7 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
                 {
                     Suck();
 
-                    int projTime = 2;
+                    int projTime = 4;
                     if (Projectile.localAI[0] % projTime == 0) //shoot lightning out, rotate 48 degrees per second by default
                     {
                         //Projectile.localAI[0] = 0;

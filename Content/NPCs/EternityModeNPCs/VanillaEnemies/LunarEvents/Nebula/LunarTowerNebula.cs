@@ -29,7 +29,7 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
             base.SetDefaults(npc);
 
             npc.lifeMax = (int)Math.Round(npc.lifeMax * 4f);
-            npc.damage = 110;
+            npc.damage = 95;
         }
         public enum Attacks
         {
@@ -157,7 +157,7 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
         private Vector2 tpPos = Vector2.Zero;
         private void TeleportJumpscare(NPC npc, Player player)
         {
-            const int WindupDuration = 70;
+            const int WindupDuration = 100;
             const int AttackDuration = 45;
             const int EndlagDuration = 60;
             const int SafeAngle = 30;

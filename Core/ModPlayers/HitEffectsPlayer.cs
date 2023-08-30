@@ -687,7 +687,7 @@ namespace FargowiltasSouls.Core.ModPlayers
                     }
 
                     // should not go below 1 due to math so no hacking here
-                    hurtInfo.Damage *= (int)(1.0f - (float)maxDR / maxSacrifice * scythesSacrificed);
+                    hurtInfo.Damage = (int)(hurtInfo.Damage * (1.0f - (float)maxDR / maxSacrifice * scythesSacrificed));
                 };
             }
 

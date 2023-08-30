@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.BossBars;
 using static FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEvents.Stardust.StardustMinion;
 using Terraria.Audio;
+using FargowiltasSouls.Core.Systems;
 
 namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEvents.Stardust
 {
@@ -113,7 +114,7 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
                 }
                 
             }
-            if (NPC.CountNPCS(NPCID.CultistDragonHead) <= 0 && bigCells < CellAmount / 2) //spawn james at half cells
+            if (NPC.CountNPCS(NPCID.CultistDragonHead) <= 0 && WorldSavingSystem.MasochistModeReal) //spawn james in maso
             {
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
@@ -142,6 +143,20 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
                     npc.ai[3] = 1f;
                     npc.netUpdate = true;
                     NetSync(npc);
+                }
+                if (NPC.CountNPCS(NPCID.CultistDragonHead) <= 0) //spawn james
+                {
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
+                    {
+                        int n = NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)(npc.Center.Y - npc.height * 0.45f), NPCID.CultistDragonHead);
+                        if (Main.npc[n].active)
+                        {
+                            Main.npc[n].GivenName = "Stardust Dragon";
+                            Main.npc[n].dontTakeDamage = true;
+
+                        }
+                    }
+                    SoundEngine.PlaySound(SoundID.Item119, npc.Center);
                 }
                 return;
             }

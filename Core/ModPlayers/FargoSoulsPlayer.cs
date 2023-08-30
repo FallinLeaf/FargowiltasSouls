@@ -1413,8 +1413,7 @@ namespace FargowiltasSouls.Core.ModPlayers
             }
 
             bool ashBurning = AshWoodEnchantItem != null && (Player.onFire || Player.onFire2 || Player.onFire3);
-            bool obsidianWet = Player.lavaWet && ObsidianEnchantItem != null;
-            if ((ashBurning || obsidianWet) && Player.GetToggleValue("AshWood") && AshwoodCD <= 0)
+            if ((ashBurning || ObsidianEnchantItem != null) && Player.GetToggleValue("AshWood") && AshwoodCD <= 0)
             {
                 AshwoodCD = TerraForce ? 20 : 30;
                 AshWoodEnchant.AshwoodFireball(this, damage);

@@ -9,7 +9,7 @@
 Mods: {
 	FargowiltasSouls: {
 		WizardEffect: {
-			// Wizard: Adamantite: Projectiles now split into 3
+			// Adamantite: Projectiles now split into 3
 			// AncientHallow: No upgrade
 			// AncientShadow: Number of Shadow Orbs increased
 			// Angler: No upgrade
@@ -23,7 +23,7 @@ Mods: {
 			// Crimson: No upgrade
 			// CrystalAssassin: No upgrade
 			// DarkArtist: No upgrade
-			// Ebonwood: Damage threshold increased to 25, additonally kills any npcs with less than 200 HP
+			// Ebonwood: Aura size increased, defense reduction increased to 30
 			// Forbidden: No upgrade
 			// Fossil: No upgrade
 			// Frost: No upgrade
@@ -39,7 +39,7 @@ Mods: {
 			// Nebula: No upgrade
 			// Necro: No upgrade
 			// Ninja: Armor pen increased to 45
-			// Obsidian: You no longer need lava to spawn explosions, cooldown reduced
+			// Obsidian: You no longer need lava to spawn explosions or fireballs, cooldown reduced
 			// Orichalcum: Increases multiplier to 4x
 			// Palladium: Rapid Healing always lasts 5 seconds, increases orb damage
 			// PalmWood: Attack speed and damage increased, 2 more trees can be spawned
@@ -51,7 +51,7 @@ Mods: {
 			// RichMahogany: Hooks pull 2.5x as fast, damage resistance and thorns increased greatly
 			// Shadewood: Aura size and blood damage increased, additionally applies Ichor
 			// Shinobi: No upgrade
-			// Shroomite: No upgrade
+			// Shroomite: Mushrooms are spawned more often
 			// Silver: Parrying blocks up to 200 damage and grants the Striking Moment buff
 			// Solar: No upgrade
 			// Spectre: No upgrade
@@ -67,7 +67,6 @@ Mods: {
 			// Vortex: No upgrade
 			// Wood: Bestiary and banner multiplier increased to 5
 			// AshWood: Fires balls of fire more often
-			// Adamantite: Projectiles now split into 3
 		}
 
 		SetBonus: {
@@ -547,6 +546,7 @@ Mods: {
 			DefenseFleshKnuckleConfig: Agressão dos Punhos de Carne
 			DefensePaladinConfig: Escudo do Paladino
 			DefenseFrozenConfig: Casco de Tartaruga Congelada
+			// ShimmerImmunityConfig: Shimmer Immunity
 			// FlightMasteryHeader: "{$Mods.FargowiltasSouls.Items.FlightMasterySoul.DisplayName}"
 			FlightMasteryInsigniaConfig: Aceleração da Insígnia Voadora
 			FlightMasteryGravityConfig: Gravidade Amplificada
@@ -661,7 +661,6 @@ Mods: {
 			CrystalGelatinConfig: Assassino Cristal: Gelatina Volátil
 			SilverConfig: Prata: Familiar da Espada de Prata
 			MasoHoneyConfig: Mel ao Atingir Inimigos
-			// ShimmerImmunityConfig: Shimmer Immunity
 		}
 
 		UI: {
@@ -6319,6 +6318,7 @@ Mods: {
 		// DefenseFleshKnuckleConfig: "[i:FargowiltasSouls/ColossusSoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.DefenseFleshKnuckleConfig}]"
 		// DefensePaladinConfig: "[i:FargowiltasSouls/ColossusSoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.DefensePaladinConfig}]"
 		// DefenseFrozenConfig: "[i:FargowiltasSouls/ColossusSoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.DefenseFrozenConfig}]"
+		// ShimmerImmunityConfig: "[i:FargowiltasSouls/ColossusSoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.ShimmerImmunityConfig}]"
 		// FlightMasteryHeader: "[i:FargowiltasSouls/FlightMasterySoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.FlightMasteryHeader}]"
 		// FlightMasteryInsigniaConfig: "[i:FargowiltasSouls/FlightMasterySoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.FlightMasteryInsigniaConfig}]"
 		// FlightMasteryGravityConfig: "[i:FargowiltasSouls/FlightMasterySoul][c/ffffff:{$Mods.FargowiltasSouls.Toggler.FlightMasteryGravityConfig}]"
@@ -6572,6 +6572,5 @@ Mods: {
 		}
 
 		// Conditions.RoombaPetSold: Mods.FargowiltasSouls.Conditions.RoombaPetSold
-		// ShimmerImmunityConfig: "[i:FargowiltasSouls/ColossusSoul][c/ffffff:Shimmer Immunity]"
 	}
 }

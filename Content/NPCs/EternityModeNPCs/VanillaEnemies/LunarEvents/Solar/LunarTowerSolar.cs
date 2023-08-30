@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using FargowiltasSouls.Content.Bosses.Lieflight;
 using FargowiltasSouls.Content.Bosses.Champions.Cosmos;
+using FargowiltasSouls.Core.Systems;
 
 namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEvents.Solar
 {
@@ -276,7 +277,7 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
                     for (int i = -2; i <= 2; i++)
                         Projectile.NewProjectile(npc.GetSource_FromThis(), npc.Center, speed.RotatedBy(i * rotate), ProjectileID.CultistBossFireBall, 40, 0f, Main.myPlayer);
 
-                    if (NPC.CountNPCS(NPCID.SolarCrawltipedeHead) <= 0) //spawn john
+                    if (NPC.CountNPCS(NPCID.SolarCrawltipedeHead) <= 0 && WorldSavingSystem.MasochistModeReal) //spawn john
                     {
                         int n = NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)(npc.Center.Y - npc.height * 0.45f), NPCID.SolarCrawltipedeHead);
                         if (Main.npc[n].active)

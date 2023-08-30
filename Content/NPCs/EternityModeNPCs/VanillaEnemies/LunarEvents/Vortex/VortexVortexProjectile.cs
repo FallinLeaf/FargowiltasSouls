@@ -30,6 +30,8 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
             Projectile.penetrate = -1;
             Projectile.alpha = 255;
             Projectile.timeLeft = 60 * 60;
+
+            Projectile.scale = 2f;
         }
         public enum Biomes
         {

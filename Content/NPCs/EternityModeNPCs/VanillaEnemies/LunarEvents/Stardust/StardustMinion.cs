@@ -83,6 +83,7 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
         {
             StardustMinionAI();
         }
+        private Vector2 initialLock = Vector2.Zero;
         private Vector2 LockPos = Vector2.Zero;
         public void StardustMinionAI()
         {
@@ -100,8 +101,8 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
             }
             LunarTowerStardust parentModNPC = parent.GetGlobalNPC<LunarTowerStardust>();
             float NearParent = parent.height * 0.8f;
-            
-            
+
+
             switch (State)
             {
                 case (int)States.Idle: //default, chill around center of pillar
@@ -195,11 +196,22 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
                     }
                 case (int)States.PrepareScissor:
                     {
+                        Player player = Main.player[parent.target];
+                        if (substate != (int)States.PrepareScissor)
+                        {
+                            initialLock = player.Center;
+                            substate = (int)States.PrepareScissor;
+                        }
+                        if (WorldSavingSystem.MasochistModeReal)
+                        {
+                            initialLock = player.Center; //keep tracking
+                        }
                         Scissor(parent, num, parentModNPC, true);
                         break;
                     }
                 case (int)States.Scissor:
                     {
+                        substate = 0;
                         Scissor(parent, num, parentModNPC, false);
                         break;
                     }
@@ -250,10 +262,10 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
                     }
             }
         }
-        public void Scissor(NPC parent, float num, LunarTowerStardust parentModNPC, bool trackPlayer)
+        
+        public void Scissor(NPC parent, float num, LunarTowerStardust parentModNPC, bool telegraph)
         {
             const float speedFactor = 0.05f;
-            Player player = Main.player[parent.target];
             int Side = (num >= LunarTowerStardust.CellAmount / 2) ? 1 : -1;
             int x = Side == 1 ? (int)num - LunarTowerStardust.CellAmount / 2 : (int)num;
             float ScissorSpeed = 1f + (0.08f * (5-x));
@@ -263,9 +275,9 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
                 Distance += parentModNPC.AuraSize / (LunarTowerStardust.CellAmount); //offset one side by half the distance between cells so it overlaps with space on other side
             }
             float rotation;
-            if (trackPlayer)
+            if (telegraph)
             {
-                rotation = parent.DirectionTo(player.Center).ToRotation() + (parentModNPC.CellRotation * Side);
+                rotation = parent.DirectionTo(initialLock).ToRotation() + (parentModNPC.CellRotation * Side);
                 
             }
             else
@@ -275,9 +287,9 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
             }
             Vector2 desiredLocation = parent.Center + Distance * rotation.ToRotationVector2();
             NPC.velocity = (desiredLocation - NPC.Center) * speedFactor;
-            if (trackPlayer)
+            if (telegraph)
             {
-                LockPos = (parent.DirectionTo(player.Center).ToRotation() + (parentModNPC.CellRotation * Side)).ToRotationVector2();
+                LockPos = (parent.DirectionTo(initialLock).ToRotation() + (parentModNPC.CellRotation * Side)).ToRotationVector2();
             }
         }
         public override bool CheckDead()
