@@ -55,6 +55,7 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
 
             if (Projectile.frameCounter > 9)
             {
+                Projectile.frame++;
                 Projectile.frame %= 3;
                 Projectile.frameCounter = 0;
             }

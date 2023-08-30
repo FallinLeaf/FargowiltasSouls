@@ -971,12 +971,10 @@ namespace FargowiltasSouls.Core.Globals
                     npcLoot.Add(BossDrop(ModContent.ItemType<FishStick>()));
                     break;
 
-                //JAVYZ TODO: Prisma Regalia
-                /*
             case NPCID.HallowBoss:
                 npcLoot.Add(BossDrop(ModContent.ItemType<PrismaRegalia>()));
                 break;
-                */
+                
 
                 case NPCID.DD2Betsy:
                     npcLoot.Add(BossDrop(ModContent.ItemType<DragonBreath>()));

@@ -12,7 +12,15 @@ namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
     public abstract class BaseEnchant : SoulsItem
     {
         protected abstract Color nameColor { get; }
-        public string wizardEffect => Language.GetTextValue($"Mods.FargowiltasSouls.WizardEffect.{Name.Replace("Enchantment", "").Replace("Enchant", "")}");
+        public string wizardEffect()
+        {
+            string text = Language.GetTextValue($"Mods.FargowiltasSouls.WizardEffect.{Name.Replace("Enchantment", "").Replace("Enchant", "")}");
+            if (text.Contains("Mods.FargowiltasSouls.WizardEffect") || text.Length <= 1) //if there's no localization entry or it's empty
+            {
+                return "No upgrade";
+            }
+            else return text;
+        }
 
         public override void SetStaticDefaults()
         {

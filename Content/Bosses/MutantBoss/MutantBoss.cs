@@ -52,9 +52,15 @@ namespace FargowiltasSouls.Content.Bosses.MutantBoss
             Main.npcFrameCount[NPC.type] = 4;
             NPCID.Sets.NoMultiplayerSmoothingByType[NPC.type] = true;
             NPCID.Sets.MPAllowedEnemies[Type] = true;
-
             NPCID.Sets.BossBestiaryPriority.Add(NPC.type);
+
+            ModBuff miracleBlight = null;
+            if (ModLoader.HasMod("CalamityMod"))
+            {
+                miracleBlight = ModContent.Find<ModBuff>("CalamityMod", "MiracleBlight");
+            }
             NPCID.Sets.DebuffImmunitySets.Add(NPC.type, new NPCDebuffImmunityData
+
             {
                 SpecificallyImmuneTo = new int[]
                 {
@@ -70,9 +76,11 @@ namespace FargowiltasSouls.Content.Bosses.MutantBoss
                     ModContent.BuffType<SadismBuff>(),
                     ModContent.BuffType<GodEaterBuff>(),
                     ModContent.BuffType<TimeFrozenBuff>(),
-                    ModContent.BuffType<LeadPoisonBuff>()
+                    ModContent.BuffType<LeadPoisonBuff>(),
+                    miracleBlight != null ? miracleBlight.Type : 0
                 }
             });
+            
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

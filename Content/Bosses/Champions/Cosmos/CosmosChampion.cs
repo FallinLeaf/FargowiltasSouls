@@ -1768,7 +1768,7 @@ namespace FargowiltasSouls.Content.Bosses.Champions.Cosmos
         {
             if (NPC.life <= 0)
             {
-                for (int i = 1; i <= 7; i++)
+                for (int i = 1; i <= 6; i++)
                 {
                     Vector2 pos = NPC.position + new Vector2(Main.rand.NextFloat(NPC.width), Main.rand.NextFloat(NPC.height));
                     if (!Main.dedServ)

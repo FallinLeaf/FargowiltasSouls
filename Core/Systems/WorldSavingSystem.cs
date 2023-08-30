@@ -50,6 +50,8 @@ namespace FargowiltasSouls.Core.Systems
 
         public static bool EternityMode { get; set; }
 
+        public static bool EternityVanillaBossBehaviour { get; set; }
+
         public static bool DownedAnyBoss { get => downedAnyBoss; set => downedAnyBoss = value; }
 
         public static int SkipMutantP1 { get => skipMutantP1; set => skipMutantP1 = value; }
@@ -95,6 +97,7 @@ namespace FargowiltasSouls.Core.Systems
 
             ShouldBeEternityMode = false;
             EternityMode = false;
+            EternityVanillaBossBehaviour = true;
             CanPlayMaso = false;
             MasochistModeReal = false;
             DownedFishronEX = false;
@@ -189,6 +192,7 @@ namespace FargowiltasSouls.Core.Systems
             DownedBetsy = downed.Contains("betsy");
             ShouldBeEternityMode = downed.Contains("shouldBeEternityMode");
             EternityMode = downed.Contains("eternity") || downed.Contains("masochist");
+            EternityVanillaBossBehaviour = true;
             CanPlayMaso = downed.Contains("CanPlayMaso");
             MasochistModeReal = downed.Contains("getReal");
             DownedFishronEX = downed.Contains("downedFishronEX");

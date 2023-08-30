@@ -46,6 +46,7 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
             return false;
         }
 
+        Vector2 HomePos = Vector2.Zero;
         public override void AI()
         {
             Dust.NewDust(Projectile.Center - new Vector2(1, 1), 2, 2, DustID.Torch, -Projectile.velocity.X, -Projectile.velocity.Y, 0, default, 1f);
@@ -62,6 +63,14 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
                 if (!(tile.HasUnactuatedTile && Main.tileSolid[tile.TileType] && !Main.tileSolidTop[tile.TileType]))
                     Projectile.tileCollide = true;
             }
+            if (HomePos == Vector2.Zero) //get homing pos
+            {
+                Player player = FargoSoulsUtil.PlayerExists(Projectile.ai[1]);
+                if (player != null)
+                {
+                    HomePos = player.Center;
+                }
+            }
             if (Projectile.ai[0] == 2) //accelerating
             {
                 Projectile.velocity *= 1.05f;
@@ -71,7 +80,7 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
                 Player player = FargoSoulsUtil.PlayerExists(Projectile.ai[1]);
                 if (player != null && Projectile.localAI[0] > 10) //homing
                 {
-                    Vector2 vectorToIdlePosition = player.Center - Projectile.Center;
+                    Vector2 vectorToIdlePosition = Vector2.Lerp(HomePos, player.Center, 0.85f) - Projectile.Center;
                     float speed = WorldSavingSystem.MasochistModeReal ? 18f : 18f;
                     float inertia = 20f;
                     float deadzone = WorldSavingSystem.MasochistModeReal ? 150f : 180f;
@@ -120,7 +129,7 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
         //(public override Color? GetAlpha(Color lightColor) => new Color(255, 255, 255, 610 - Main.mouseTextColor * 2) * Projectile.Opacity * 0.9f;
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D texture2D13 = Projectile.ai[0] != 3 ? Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value : ModContent.Request<Texture2D>("FargowiltasSouls/Content/NPCs/Bosses/BanishedBaron/BaronRocketTorp", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+            Texture2D texture2D13 = Projectile.ai[0] != 3 ? Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value : ModContent.Request<Texture2D>("FargowiltasSouls/Content/Bosses/BanishedBaron/BaronRocketTorp", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
             int num156 = Terraria.GameContent.TextureAssets.Projectile[Projectile.type].Value.Height / Main.projFrames[Projectile.type]; //ypos of lower right corner of sprite to draw
             int y3 = num156 * Projectile.frame; //ypos of upper left corner of sprite to draw
             Rectangle rectangle = new(0, y3, texture2D13.Width, num156);

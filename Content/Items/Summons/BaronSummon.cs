@@ -1,14 +1,14 @@
-﻿//JAVYZ TODO: Banished Baron
-/*
+﻿
+
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
-using FargowiltasSouls.Content.NPCs.Challengers;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader.IO;
 using FargowiltasSouls.Content.Bosses.Champions;
+using FargowiltasSouls.Content.Bosses.BanishedBaron;
 
 namespace FargowiltasSouls.Content.Items.Summons
 {
@@ -18,8 +18,8 @@ namespace FargowiltasSouls.Content.Items.Summons
         public override string Texture => "FargowiltasSouls/Content/Items/Placeholder";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Baron Summon");
-            Tooltip.SetDefault("While underwater at the Ocean, summon the Banished Baron");
+            //DisplayName.SetDefault("Baron Summon");
+            //Tooltip.SetDefault("While underwater at the Ocean, summon the Banished Baron");
 
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 5;
         }
@@ -54,12 +54,27 @@ namespace FargowiltasSouls.Content.Items.Summons
             return false;
         }
 
-        public override bool? UseItem(Player Player)
+        public override bool? UseItem(Player player)
         {
-            FargoSoulsUtil.SpawnBossNetcoded(Player, ModContent.NPCType<BanishedBaron>());
-            SoundEngine.PlaySound(new SoundStyle("FargowiltasSouls/Assets/Sounds/BaronSummon"), Player.Center);
+            if (player.whoAmI == Main.myPlayer)
+            {
+                // If the player using the item is the client
+                // (explicitely excluded serverside here)
+                SoundEngine.PlaySound(new SoundStyle("FargowiltasSouls/Assets/Sounds/BaronSummon"), player.Center);
+
+                if (Main.netMode != NetmodeID.MultiplayerClient)
+                {
+                    // If the player is not in multiplayer, spawn directly
+                    NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<BanishedBaron>());
+                }
+                else
+                {
+                    // If the player is in multiplayer, request a spawn
+                    // This will only work if NPCID.Sets.MPAllowedEnemies[type] is true, set in NPC code
+                    NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, number: player.whoAmI, number2: ModContent.NPCType<BanishedBaron>());
+                }
+            }
             return true;
         }
     }
 }
-*/

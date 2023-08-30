@@ -283,6 +283,7 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
                         if (Main.npc[n].active)
                         {
                             Main.npc[n].GivenName = "John Crawltipede";
+                            Main.npc[n].life *= 6;
                             
                         }
                     }

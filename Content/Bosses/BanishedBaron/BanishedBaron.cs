@@ -1,5 +1,4 @@
-﻿//JAVYZ TODO: Banished Baron
-/*
+﻿
 using System;
 using System.IO;
 using Microsoft.Xna.Framework;
@@ -23,10 +22,10 @@ using Terraria.Graphics.Shaders;
 using System.Diagnostics;
 using FargowiltasSouls.Content.Buffs.Boss;
 using FargowiltasSouls.Content.Projectiles;
-using FargowiltasSouls.Content.Projectiles.Challengers;
 using System.Drawing;
 using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
+using FargowiltasSouls.Core.Systems;
 
 namespace FargowiltasSouls.Content.Bosses.BanishedBaron
 {
@@ -49,11 +48,13 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
             P1SurfaceMines,
             P1FadeDash,
             P1SineSwim,
+            P1Whirlpool,
             P2PredictiveDash,
             P2CarpetBomb,
             P2RocketStorm,
             P2SpinDash,
             P2MineFlurry,
+            P2Whirlpool,
             Swim,
         }
 
@@ -64,6 +65,7 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
             (int)StateEnum.P1SurfaceMines,
             (int)StateEnum.P1FadeDash,
             (int)StateEnum.P1SineSwim,
+            (int)StateEnum.P1Whirlpool
         };
         private static List<int> P2Attacks = new List<int>() //these are randomly chosen attacks in p2
         {
@@ -84,6 +86,8 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
         private int WaterwallDistance = 0;
         private int dustcounter = 0;
 
+        public const int MaxWhirlpools = 20;
+
         private List<int> availablestates = new List<int>(0);
 
         private Vector2 LockVector1 = Vector2.Zero;
@@ -95,12 +99,10 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
         public ref float State => ref NPC.ai[1];
         public ref float AI2 => ref NPC.ai[2];
         public ref float AI3 => ref NPC.ai[3];
-
         #endregion
         #region Standard
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Banished Baron");
             Main.npcFrameCount[NPC.type] = 19;
             NPCID.Sets.TrailCacheLength[NPC.type] = 18; //decrease later if not needed
             NPCID.Sets.TrailingMode[NPC.type] = 1;
@@ -114,8 +116,8 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
                     BuffID.Confused,
                     BuffID.Chilled,
                     BuffID.Suffocation,
-                    ModContent.BuffType<Lethargic>(),
-                    ModContent.BuffType<ClippedWings>()
+                    ModContent.BuffType<LethargicBuff>(),
+                    ModContent.BuffType<ClippedWingsBuff>()
                 }
             });
         }
@@ -150,7 +152,7 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
 
         }
 
-        public override void ScaleExpertStats(int numPlayers, float balance)
+        public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
         {
             NPC.lifeMax = (int)(NPC.lifeMax * balance);
         }
@@ -167,41 +169,10 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
         #endregion
         #region Overrides
 
-        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
-        {
-
-            return true;
-        }
-        public override bool CanHitPlayer(Player target, ref int CooldownSlot)
-        {
-            if (HitPlayer)
-            {
-                return base.CanHitPlayer(target, ref CooldownSlot);
-            }
-            return false;
-        }
-        public override bool? CanHitNPC(NPC target)
-        {
-            if (HitPlayer)
-            {
-                return base.CanHitNPC(target);
-            }
-            return false;
-        }
-
-        public override bool? CanFallThroughPlatforms()
-        {
-            return true;
-        }
-        public override void HitEffect(int hitDirection, double HitDamage)
-        {
-            if (NPC.life <= 0)
-            {
-                //gore
-
-                return;
-            }
-        }
+        public override bool CanHitPlayer(Player target, ref int CooldownSlot) => HitPlayer;
+        public override bool CanHitNPC(NPC target) => HitPlayer;
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position) => !(Timer < 90+50 && State == (int)StateEnum.P1FadeDash);
+        public override bool? CanFallThroughPlatforms() => true;
         public override bool CheckDead()
         {
             return base.CheckDead();
@@ -317,7 +288,7 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
             {
                 Lighting.AddLight(NPC.Center, TorchID.Pink);
             }
-
+            
             if (!AliveCheck(player))
                 return;
 
@@ -337,10 +308,10 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
                         //inflict all nearby permanently with Please Go Underwater debuff that PRESSES them down
                         if (NPC.Distance(Main.LocalPlayer.Center) < 2000)
                         {
-                            Main.LocalPlayer.AddBuff(ModContent.BuffType<BaronsBurden>(), 1);
+                            Main.LocalPlayer.AddBuff(ModContent.BuffType<BaronsBurdenBuff>(), 1);
                         }
                     }
-                    if (Collision.WetCollision(NPC.position, NPC.width, NPC.height) && NPC.velocity.Length() > 0)
+                    if (Wet() && NPC.velocity.Length() > 0)
                     {
                         //stream of water dust behind
                         Dust.NewDust(NPC.Center - NPC.rotation.ToRotationVector2() * new Vector2(NPC.width / 2, 0) - new Vector2(5, 5), 10, 10, DustID.Water, -NPC.velocity.X, -NPC.velocity.Y);
@@ -382,6 +353,9 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
                     case (float)StateEnum.P1SineSwim:
                         P1SineSwim();
                         break;
+                    case (float)StateEnum.P1Whirlpool:
+                        P1Whirlpool();
+                        break;
                     case (float)StateEnum.P2PredictiveDash:
                         P2PredictiveDash();
                         break;
@@ -403,6 +377,14 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
                 }
             }
             Timer++;
+        }
+        bool Wet(Vector2? pos = null) //small helper
+        {
+            if (pos == null)
+            {
+                pos = NPC.position;
+            }
+            return Collision.WetCollision((Vector2)pos, NPC.width, NPC.height);
         }
         #endregion
         #region States
@@ -457,7 +439,7 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
                 WaterwallCenter = Main.screenPosition + new Vector2(Main.screenWidth/2, Main.screenHeight / 2); //not player center to work with map borders
                 Phase = 2;
             }
-            if (!Collision.WetCollision(NPC.position, NPC.width, NPC.height) && Timer > 90)
+            if (!Wet() && Timer > 90)
             {
                 NPC.velocity *= 0.95f;
                 if (NPC.velocity.Length() < 0.1f)
@@ -480,12 +462,17 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
             if (Timer == 1)
             {
                 LockVector1 = player.Center;
+                if (Collision.SolidCollision(NPC.position, NPC.width, NPC.height)) //check if originated in collision, set AI3 to negative
+                {
+                    AI3 = -2;
+                }
             }
 
-            if (Vector2.Distance(NPC.Center, LockVector1) < 25 || Timer > 150 || AI3 == 1)
+            bool NewCollision = (Collision.SolidCollision(NPC.position, NPC.width, NPC.height) && AI3 != -2); //if didn't originate in collision, 
+            if (Vector2.Distance(NPC.Center, LockVector1) < 25 || Timer > 150 || (AI3 != -2 && AI3 != 0) || NewCollision) //if ai3 not 0 (default) or -2 (set when original collision)
             {
 
-                AI3 = 1;
+                AI3 = (AI3 + 1) * 3; //stays negative if set to -2 by checking original collision, otherwise goes positive
                 NPC.velocity *= 0.935f;
                 RotateTowards(player.Center, 3);
                 if (NPC.velocity.Length() < 0.1f)
@@ -497,8 +484,8 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
             else
             {
                 Vector2 vectorToIdlePosition = LockVector1 - NPC.Center;
-                float speed = 20f;
-                float inertia = 20f;
+                float speed = AI3 >= 0 ? 20f : 10f; //less speed if originated in collision
+                float inertia = AI3 >= 0 ? 20f : 10f;
                 vectorToIdlePosition.Normalize();
                 vectorToIdlePosition *= speed;
                 NPC.velocity = (NPC.velocity * (inertia - 1f) + vectorToIdlePosition) / inertia;
@@ -618,7 +605,9 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
                 SoundEngine.PlaySound(SoundID.Item64, NPC.Center);
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
-                    Vector2 vel = (NPC.rotation + (MathHelper.PiOver2 * -NPC.direction) + Main.rand.NextFloat(-MathHelper.PiOver2 / 3, MathHelper.PiOver2 / 3)).ToRotationVector2() * 15;
+                    float progress = (Timer - 10) / 60;
+                    float rotation = progress * (MathHelper.Pi / 6);
+                    Vector2 vel = (NPC.rotation + ((MathHelper.PiOver2 + rotation) * -NPC.direction)).ToRotationVector2() * (10 * progress + 10);
                     Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, vel, ModContent.ProjectileType<BaronRocket>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage), 0f, Main.myPlayer, 3, player.whoAmI);
                 }
             }
@@ -764,23 +753,67 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
                 StateReset();
             }
         }
+        void P1Whirlpool()
+        {
+            int Duration = WorldSavingSystem.MasochistModeReal ? 100 : WorldSavingSystem.EternityMode ? 150 : 180;
+
+
+            NPC.noTileCollide = true;
+            const int Height = 600;
+            if (Timer == 1)
+            {
+                LockVector1 = player.Center - Vector2.UnitY * Height;
+            }
+            if (Timer < 60)
+            {
+                NPC.velocity = (LockVector1 - NPC.Center) * (Timer / 60) * 0.04f;
+                RotateTowards(LockVector1, 2);
+                if (!Wet(NPC.position + NPC.velocity))
+                {
+                    NPC.velocity.Y = 0;
+                }
+                if (Wet())
+                {
+                    NPC.velocity.Y += 0.25f;
+                }
+            }
+            else
+            {
+                NPC.velocity = Vector2.Zero;
+            }
+            if (Timer > 50)
+            {
+                RotateTowards(NPC.Center - Vector2.UnitY.RotatedBy(MathHelper.ToRadians(1)), 16);
+            }
+            if (Timer == 60)
+            {
+                Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center + Vector2.UnitY * ((NPC.height / 2) + 24), Vector2.Zero, ModContent.ProjectileType<BaronWhirlpool>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage), 0f, Main.myPlayer, NPC.whoAmI, MaxWhirlpools);
+            }
+            if (Timer >= 60 * 8)
+            {
+                NPC.noTileCollide = false; //this is probably automatically set in AI anyway but just to make sure
+                NPC.velocity = Vector2.Zero;
+                StateReset();
+            }
+        }
         #endregion
         #region Phase 2 Attacks
         void P2PredictiveDash()
         {
             float PredictStr = 35;
+            const int ReactTime = 72;
             if (Timer == 1)
             {
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                     Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, Vector2.Zero, ModContent.ProjectileType<BloomLine>(), FargoSoulsUtil.ScaledProjectileDamage(NPC.damage), 0f, Main.myPlayer, 2, NPC.whoAmI);
             }
-            if (Timer < 60)
+            if (Timer < ReactTime)
             {
                 NPC.velocity = player.velocity;
                 LockVector1 = NPC.DirectionTo(player.Center + (player.velocity * PredictStr)) * PredictStr;
                 RotateTowards(NPC.Center + LockVector1, 4);
             }
-            if (Timer == 60)
+            if (Timer == ReactTime)
             {
                 SoundEngine.PlaySound(BaronRoar, NPC.Center);
                 Trail = 8;
@@ -790,7 +823,7 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
                 float lambda = Vector2.Dot(uv, lp);
                 LockVector2 = NPC.Center + (uv * lambda);
             }
-            if (Timer >= 60 && NPC.velocity.Length() > 5)
+            if (Timer >= ReactTime && NPC.velocity.Length() > 5)
             {
                 if (Timer % 5 == 0)
                 {
@@ -1270,4 +1303,3 @@ namespace FargowiltasSouls.Content.Bosses.BanishedBaron
         #endregion
     }
 }
-*/

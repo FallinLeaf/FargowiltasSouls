@@ -17,12 +17,13 @@ namespace FargowiltasSouls.Content.Items.Weapons.Challengers
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 3));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
+            ItemID.Sets.BonusAttackSpeedMultiplier[Item.type] = 0.25f;
         }
         public override void SetDefaults()
         {
             Item.width = 80;
             Item.height = 80;
-            Item.damage = 22;
+            Item.damage = 53;
             Item.knockBack = 3f;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useAnimation = Item.useTime = 40;

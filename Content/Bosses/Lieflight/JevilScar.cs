@@ -111,7 +111,7 @@ namespace FargowiltasSouls.Content.Bosses.Lieflight
                 if (Main.player[(int)Projectile.ai[1]].active && !Main.player[(int)Projectile.ai[1]].dead)
                 {
                     Vector2 vectorToIdlePosition = Main.player[(int)Projectile.ai[1]].Center - Projectile.Center;
-                    float speed = WorldSavingSystem.MasochistModeReal ? 24f : 20f;
+                    float speed = 18f;
                     float inertia = 48f;
                     vectorToIdlePosition.Normalize();
                     vectorToIdlePosition *= speed;

@@ -69,6 +69,7 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
         private bool gotBossBar = false;
         public const int CellAmount = 20;
         public float CellRotation = 0;
+        int DragonTimer = 0;
         public override void ShieldsDownAI(NPC npc)
         {
             if (!gotBossBar)
@@ -86,11 +87,8 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
                 }
                 cells++;
             }
-            foreach (NPC n in Main.npc.Where(n => n.active && DragonParts.Contains(n.type)))
+            foreach (NPC n in Main.npc.Where(n => n.active && DragonParts.Contains(n.type) && n.GivenName != "Stardust Dragon"))
             {
-                //The dragon is purposefully not immune because it's meant to bait aggro, this is a mechanic you need to deal with. Same goes for the pillar.
-                n.defense = 99999;
-                n.life = n.lifeMax;
                 n.GivenName = "Stardust Dragon";
             }
             //cells are sorted by a unique key, stored in their NPC.ai[3], that determines their behavior during attacks, for example spot in a circle. 
@@ -114,20 +112,22 @@ namespace FargowiltasSouls.Content.NPCs.EternityModeNPCs.VanillaEnemies.LunarEve
                 }
                 
             }
-            if (NPC.CountNPCS(NPCID.CultistDragonHead) <= 0 && WorldSavingSystem.MasochistModeReal) //spawn james in maso
+            if (NPC.CountNPCS(NPCID.CultistDragonHead) <= 0 && WorldSavingSystem.MasochistModeReal && DragonTimer <= 0) //spawn james in maso
             {
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
+                    
                     int n = NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)(npc.Center.Y - npc.height * 0.45f), NPCID.CultistDragonHead);
                     if (Main.npc[n].active)
                     {
                         Main.npc[n].GivenName = "Stardust Dragon";
-                        Main.npc[n].dontTakeDamage = true;
 
                     }
                 }
                 SoundEngine.PlaySound(SoundID.Item119, npc.Center);
+                DragonTimer = 0;
             }
+            DragonTimer++;
             if (bigCells > 0)
             {
                 //The pillar is purposefully not immune because it's meant to bait aggro, this is a mechanic you need to deal with. Same goes for the dragon.

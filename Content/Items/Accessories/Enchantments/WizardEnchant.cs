@@ -42,8 +42,8 @@ namespace FargowiltasSouls.Content.Items.Accessories.Enchantments
                 {
                     continue;
                 }
-                if (enchant.wizardEffect.Length != 0)
-                    tooltips.Add(new TooltipLine(Mod, "wizard", $"[i:{enchant.Item.type}] " + enchant.wizardEffect));
+                if (enchant.wizardEffect().Length != 0)
+                    tooltips.Add(new TooltipLine(Mod, "wizard", $"[i:{enchant.Item.type}] " + enchant.wizardEffect()));
             }
         }
 

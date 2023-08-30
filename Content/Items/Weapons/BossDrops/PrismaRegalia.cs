@@ -1,5 +1,4 @@
-// JAVYZ TODO: PRISMA REGALIA
-/*
+
 using FargowiltasSouls.Content.Projectiles;
 using FargowiltasSouls.Content.Projectiles.BossWeapons;
 using Microsoft.Xna.Framework;
@@ -16,8 +15,8 @@ namespace FargowiltasSouls.Content.Items.Weapons.BossDrops
         public override void SetStaticDefaults()
         {
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-            DisplayName.SetDefault("Prisma Regalia");
-            Tooltip.SetDefault("Hitting with the tip of the spear releases homing stars\nHold to charge for more damage \nWhile fully charged, tip hits release twice as many stars\n'The radiant power of a foe's pure essence...'");
+            //DisplayName.SetDefault("Prisma Regalia");
+            //Tooltip.SetDefault("Hitting with the tip of the spear releases homing stars\nHold to charge for more damage \nWhile fully charged, tip hits release twice as many stars\n'The radiant power of a foe's pure essence...'");
             //DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "");
             //Tooltip.AddTranslation((int)GameCulture.CultureName.Chinese, "");
         }
@@ -25,8 +24,8 @@ namespace FargowiltasSouls.Content.Items.Weapons.BossDrops
         public override void SetDefaults()
         {
             Item.mana = 0;
-            Item.damage = 150;
-            Item.DamageType = DamageClass.Melee;
+            Item.damage = 135;
+            Item.DamageType = DamageClass.MeleeNoSpeed;
             Item.width = 64;
             Item.height = 64;
             Item.useTime = 25;
@@ -54,4 +53,3 @@ namespace FargowiltasSouls.Content.Items.Weapons.BossDrops
         }
     }
 }
-*/

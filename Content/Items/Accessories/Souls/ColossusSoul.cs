@@ -64,7 +64,6 @@ Effects of Shiny Stone, Paladin's Shield, and Frozen Turtle Shell
             .AddIngredient(ItemID.ObsidianHorseshoe)
             .AddIngredient(ItemID.WormScarf)
             .AddIngredient(ItemID.BrainOfConfusion)
-            .AddIngredient(ItemID.PocketMirror)
             .AddIngredient(ItemID.CharmofMyths)
             .AddIngredient(ItemID.BeeCloak)
             .AddIngredient(ItemID.StarVeil)

@@ -231,6 +231,7 @@ namespace FargowiltasSouls.Core.Globals
                     }
                     break;
                 case NPCID.MartianSaucer:
+                case NPCID.MartianSaucerCore:
                     {
                         emodeRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<SaucerControlConsole>(), 5));
                     }

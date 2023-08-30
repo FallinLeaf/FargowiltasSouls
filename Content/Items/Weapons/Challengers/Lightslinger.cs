@@ -47,7 +47,7 @@ namespace FargowiltasSouls.Content.Items.Weapons.Challengers
         {
             type = ShotType;
             if (player.altFunctionUse == 2)
-                damage *= 5;
+                damage *= 10;
         }
         public override Vector2? HoldoutOffset()
         {

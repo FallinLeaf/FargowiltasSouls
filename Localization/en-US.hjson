@@ -10,8 +10,10 @@ Mods: {
 	FargowiltasSouls: {
 		WizardEffect: {
 			Adamantite: Projectiles now split into 3
+			Apprentice: No upgrade
 			AncientHallow: No upgrade
 			AncientShadow: Number of Shadow Orbs increased
+			AncientCobalt: No upgrade
 			Angler: No upgrade
 			Bee: No upgrade
 			Beetle: No upgrade
@@ -30,11 +32,14 @@ Mods: {
 			Gladiator: No upgrade
 			Gold: No upgrade
 			Hallow: No upgrade
+			Huntress: No upgrade
 			Iron: Increases item range by 4x, crafting bonus now affects Mythril Anvil
+			Jungle: No upgrade
 			Lead: Lead Poisoning damage increased, DoT resistance increased to 60%
 			Meteor: No upgrade
 			Miner: No upgrade
 			Molten: Inferno ring does more damage and can affect enemies in slightly larger range
+			Monk: No upgrade
 			Mythril: Max attack speed bonus increased and lasts longer
 			Nebula: No upgrade
 			Necro: No upgrade
@@ -58,6 +63,9 @@ Mods: {
 			Spider: No upgrade
 			Spooky: No upgrade
 			Stardust: No upgrade
+			Snow: No upgrade
+			Shadow: No upgrade
+			Squire: No upgrade
 			Tiki: Increases whip range by 20%
 			Tin: Minimum crit increased to 10%, max crit is at least 50%, reduced proc cooldown
 			Titanium: Shard damage increased, Titanium Shield duration increased to 5 seconds and damage resistance increased to 75%
@@ -180,7 +188,7 @@ Mods: {
 			CursedCoffinDespawn: The Cursed Coffin returns to its slumber...
 			BanishedBaronDespawn: The Banished Baron dives deeper into the ocean...
 			DeviBossSpawnInfo: Spawn by using [i:FargowiltasSouls/DevisCurse]
-			AbomBossSpawnInfo: Spawn by using [i:FargowiltasSouls/AbomsCure]
+			AbomBossSpawnInfo: Spawn by using [i:FargowiltasSouls/AbomsCurse]
 			MutantBossSpawnInfo: Throw [i:FargowiltasSouls/MutantsCurse] into a pool of lava while Abominationn is alive in Mutant's presence.
 			TimberChampionSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions] on the surface during day.
 			TerraChampionSpawnInfo: Spawn by using [i:FargowiltasSouls/SigilOfChampions] underground.
@@ -2342,7 +2350,7 @@ Mods: {
 			}
 
 			AshWoodEnchant: {
-				DisplayName: Ash Enchantment
+				DisplayName: Ash Wood Enchantment
 				Tooltip:
 					'''
 					On Fire debuff doesn't damage you or town NPCs
@@ -2677,7 +2685,7 @@ Mods: {
 					Grants immunity to lava
 					You have normal movement and can swim in lava
 					While standing in lava or lava wet, your attacks spawn explosions and are accompanied by balls of fire
-					Effects of Ash Enchantment
+					Effects of Ash Wood Enchantment
 					'The earth calls'
 					'''
 			}
@@ -4388,7 +4396,11 @@ Mods: {
 
 			EternityAdvisor: {
 				DisplayName: Eternity Advisor
-				Tooltip: Suggests loadouts for Eternity Mode based on progression
+				Tooltip:
+					'''
+					Suggests loadouts for Eternity Mode based on progression
+					[c/ff0000: Note: These suggestions are currently outdated. Take them with a grain of salt.]
+					'''
 			}
 
 			GalacticReformer: {
@@ -5275,6 +5287,22 @@ Mods: {
 				DisplayName: Wires Painting
 				Tooltip: Look inside
 			}
+
+			PrismaRegalia: {
+				DisplayName: Prisma Regalia
+				Tooltip:
+					'''
+					Hitting with the tip of the spear releases homing stars
+					Hold to charge for more damage
+					While fully charged, hits release extra stars regardless
+					'The radiant power of a foe's pure essence...'
+					'''
+			}
+
+			BaronSummon: {
+				Tooltip: ""
+				DisplayName: Baron Summon
+			}
 		}
 
 		NPCs: {
@@ -5457,6 +5485,7 @@ Mods: {
 
 			DetonatingBubbleNPC.DisplayName: Detonating Bubble
 			StardustMinion.DisplayName: Stardust Minion
+			BanishedBaron.DisplayName: Banished Baron
 		}
 
 		Tiles: {
@@ -6153,6 +6182,7 @@ Mods: {
 			NebulaPillarProj.DisplayName: Nebula Pillar Proj
 			NebulaTelegraph.DisplayName: Nebula Telegraph
 			PillarArcanum.DisplayName: Pillar Arcanum
+			BaronWhirlpool.DisplayName: Baron Whirlpool
 		}
 
 		WoodHeader: "[i:FargowiltasSouls/TimberForce][c/ffffff:{$Mods.FargowiltasSouls.Toggler.WoodHeader}]"

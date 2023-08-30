@@ -329,6 +329,15 @@ namespace FargowiltasSouls
                     case "EternityMode":
                         return WorldSavingSystem.EternityMode;
 
+                    case "EternityVanillaBossBehaviour":
+                        bool BehaviourWasOn = WorldSavingSystem.EternityVanillaBossBehaviour;
+                        bool? arg = args[1] as bool?;
+                        if (arg != null)
+                        {
+                            WorldSavingSystem.EternityVanillaBossBehaviour = (bool)arg;
+                        }
+                        return BehaviourWasOn;
+
                     case "Masomode":
                     case "MasoMode":
                     case "MasochistMode":

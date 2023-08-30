@@ -63,8 +63,10 @@ namespace FargowiltasSouls.Content.Projectiles.BossWeapons
                 {
                     SoundEngine.PlaySound(new SoundStyle("FargowiltasSouls/Assets/Sounds/ChargeSound"), Projectile.Center + Projectile.velocity * Projectile.Size.Length() / 2);
                 }
-                int d = Dust.NewDust(player.MountedCenter + Projectile.velocity * Projectile.Size.Length(), 0, 0, DustID.CrystalPulse);
-                Main.dust[d].noGravity = true;
+                Projectile.localAI[1] = Projectile.ai[0]; //store the charge amount
+                //int d = Dust.NewDust(player.MountedCenter + Projectile.velocity * Projectile.Size.Length() * 0.95f, 0, 0, DustID.CrystalPulse);
+                //Main.dust[d].noGravity = true;
+                FargoSoulsUtil.AuraDust(player, Projectile.Size.Length() * 0.95f, DustID.CrystalPulse);
             }
             else
             {
@@ -149,7 +151,10 @@ namespace FargowiltasSouls.Content.Projectiles.BossWeapons
                 }
 
                 if (Projectile.ai[1] == duration / 2)
-                    SoundEngine.PlaySound(SoundID.Item1, player.Center);
+                {
+                    float pitch = Charged ? -1 : 0;
+                    SoundEngine.PlaySound(SoundID.Item1 with { Pitch = pitch}, player.Center);
+                }
 
                 Projectile.ai[1]++;
                 Projectile.velocity = Vector2.Normalize(Projectile.velocity); //store direction
@@ -174,14 +179,30 @@ namespace FargowiltasSouls.Content.Projectiles.BossWeapons
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Extension > 0.75f)
+            Vector2 pos = Projectile.Center + Projectile.velocity * (Projectile.Size.Length() / 2f);
+            int count = 0;
+            if (Charged)
             {
-                Vector2 pos = Projectile.Center + Projectile.velocity * (Projectile.Size.Length() / 2f);
-                SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, pos);
-                int count = Charged ? 8 : 4;
-                for (int i = 0; i < count; i++)
-                    Projectile.NewProjectile(Projectile.GetSource_FromThis(), pos, Main.rand.NextFloat(MathHelper.TwoPi).ToRotationVector2() * 5,
-                        ModContent.ProjectileType<PrismaRegaliaStar>(), Projectile.damage / 3, Projectile.knockBack, Projectile.owner);
+                count = 4;
+            }
+            if (Extension > 0.7f)
+            {
+                SoundEngine.PlaySound(SoundID.Item68, pos);
+                count += 4;
+            }
+            if (count == 0)
+            {
+                return;
+            }
+            for (int i = 0; i < count; i++)
+            {
+                int p = Projectile.NewProjectile(Projectile.GetSource_FromThis(), pos, Main.rand.NextFloat(MathHelper.TwoPi).ToRotationVector2() * 10,
+                    ProjectileID.FairyQueenMagicItemShot, Projectile.damage / 6, Projectile.knockBack, Projectile.owner, -1, Main.rand.NextFloat(1)); //random ai1 decides color completely randomly
+                if (Main.projectile[p] != null && p != Main.maxProjectiles)
+                {
+                    Main.projectile[p].DamageType = DamageClass.Melee;
+                    //Main.projectile[p].
+                }
             }
         }
         public override bool PreDraw(ref Color lightColor)
@@ -195,19 +216,31 @@ namespace FargowiltasSouls.Content.Projectiles.BossWeapons
 
             Color color26 = lightColor;
             color26 = Projectile.GetAlpha(color26);
+            Vector2 pos = Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY);
 
-            for (int i = 0; i < ProjectileID.Sets.TrailCacheLength[Projectile.type]; i++)
+
+            if (!Main.player[Projectile.owner].channel)
             {
-                Color color27 = color26;
-                color27 *= (float)(ProjectileID.Sets.TrailCacheLength[Projectile.type] - i) / ProjectileID.Sets.TrailCacheLength[Projectile.type];
-                Vector2 value4 = Projectile.oldPos[i];
-                float num165 = Projectile.rotation;//Projectile.oldRot[i];
-                Main.EntitySpriteDraw(texture2D13, value4 + Projectile.Size / 2f - Main.screenPosition + new Vector2(0, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), color27, num165, origin2, Projectile.scale, effects, 0);
+                for (int i = 0; i < ProjectileID.Sets.TrailCacheLength[Projectile.type]; i++)
+                {
+                    Color color27 = color26;
+                    color27 *= (float)(ProjectileID.Sets.TrailCacheLength[Projectile.type] - i) / ProjectileID.Sets.TrailCacheLength[Projectile.type];
+                    Vector2 value4 = Projectile.oldPos[i];
+                    float num165 = Projectile.rotation;//Projectile.oldRot[i];
+                    Main.EntitySpriteDraw(texture2D13, value4 + Projectile.Size / 2f - Main.screenPosition + new Vector2(0, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), color27, num165, origin2, Projectile.scale, effects, 0);
+                }
             }
 
+            //offset glow
+            for (int j = 0; j < 16; j++)
+            {
+                float offsetDistance = 4f * (Projectile.localAI[1] / 180f);
+                Vector2 afterimageOffset = (MathHelper.TwoPi * j / 12f).ToRotationVector2() * offsetDistance;
+                Color glowColor = Main.DiscoColor * 0.3f;
+                Main.spriteBatch.Draw(texture2D13, pos + afterimageOffset, null, glowColor, Projectile.rotation, origin2, Projectile.scale, effects, 0f);
+            }
 
-
-            Main.EntitySpriteDraw(texture2D13, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(rectangle), Projectile.GetAlpha(lightColor), Projectile.rotation, origin2, Projectile.scale, effects, 0);
+            Main.EntitySpriteDraw(texture2D13, pos, new Microsoft.Xna.Framework.Rectangle?(rectangle), Projectile.GetAlpha(lightColor), Projectile.rotation, origin2, Projectile.scale, effects, 0);
             return false;
         }
     }
